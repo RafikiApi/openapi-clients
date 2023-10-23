@@ -1,0 +1,20 @@
+
+# OpenapiPayoutCreateRequestSender
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**address** | [**OpenapiPayoutCreateRequestSenderAddress**](OpenapiPayoutCreateRequestSenderAddress.md) |  |  [optional]
+**individual** | [**OpenapiPayoutCreateRequestSenderIndividual**](OpenapiPayoutCreateRequestSenderIndividual.md) |  |  [optional]
+**name** | **kotlin.String** | &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if sender is provided&lt;/span&gt;  The individual full name or registered business legal name |  [optional]
+**type** | [**inline**](#Type) | &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if sender is provided&lt;/span&gt;  Either &#x60;INDIVIDUAL&#x60; or &#x60;BUSINESS&#x60; |  [optional]
+
+
+<a id="Type"></a>
+## Enum: type
+Name | Value
+---- | -----
+type | INDIVIDUAL, BUSINESS
+
+
+

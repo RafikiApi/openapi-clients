@@ -1,0 +1,9 @@
+# Resources.OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**after** | **String** |  | [optional] 
+
+

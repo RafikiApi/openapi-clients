@@ -1,0 +1,974 @@
+openapi: 3.0.0
+info:
+  contact: {}
+  title: Resources
+  version: "1"
+servers:
+- url: https://rest.sandbox.rafiki-api.com/v1
+paths:
+  /banks:
+    get:
+      description: |-
+        Within the scope of this API, the "Bank" resource serves the purpose of identifying the financial institutions that own payment accounts.
+
+        This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_banks_get_200_response'
+          description: OK
+      security:
+      - Bearer: []
+      summary: List
+      tags:
+      - Bank
+  /payment-accounts:
+    post:
+      description: |
+        A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).
+
+        This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).
+
+        > 💁
+        >
+        > Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a `200 OK` status. Otherwise, we proceed to create a new one and respond with a `201 Created` status. In both scenarios, the structure of the response body will remain identical.
+
+        ### Mobile Money
+
+        The "mobile money" type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.
+
+        The following table outlines the operators supported by our API for each specific country.
+
+        | Country | Operators         |
+        |---------|-------------------|
+        | KE      | SAFARICOM, AIRTEL |
+
+        ### Bank account
+
+        The "bank account" type is designated for conventional accounts registered with bank institutions, such as "Equity Bank." It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.
+
+        We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/openapi.PaymentAccountGetOrCreateRequest'
+        description: The payment account
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payment_accounts_post_201_response'
+          description: Created
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
+          description: Validation failed
+      security:
+      - Bearer: []
+      summary: Get or create
+      tags:
+      - Payment Account
+  /payouts:
+    get:
+      description: |+
+        Using this endpoint, you can list all your historical payouts with an optional dates filter. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary.
+
+
+
+
+      parameters:
+      - description: "Filters for payouts created from the specified datetime. The\
+          \ expected format can be either a standard date (YYYY-MM-DD) that defaults\
+          \ to 00:00:00 UTC or a valid RFC3339 string, including time and/or offset\
+          \ information."
+        explode: true
+        in: query
+        name: created_at_from
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filters for payouts created before the specified datetime. The\
+          \ expected format can be either a standard date (YYYY-MM-DD) that defaults\
+          \ to 23:59:59 UTC or a valid RFC3339 string, including time and/or offset\
+          \ information."
+        explode: true
+        in: query
+        name: created_at_to
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The count of items returned as part of the pagination cursor\
+          \ iteration, minimum value is 1 and maximum 50"
+        explode: true
+        in: query
+        name: paging_limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The base64 URL encoded cursor used to access the next set of
+          paginated results
+        explode: true
+        in: query
+        name: paging_after
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payouts_get_200_response'
+          description: OK
+      security:
+      - Bearer: []
+      summary: List
+      tags:
+      - Payout
+    post:
+      description: "The payout resource finds its application in various scenarios\
+        \ where funds need to be disbursed electronically; For example, but not limited\
+        \ to, money remittance services or businesses that need to disburse salaries\
+        \ to their employees.\n\nRegardless of your specific use case, this endpoint\
+        \ has you covered, offering a versatile API to facilitate money disbursement\
+        \ from your [local wallets](get_wallets) to designated recipients (a.k.a [payment\
+        \ accounts](post_payment-accounts)).\n\n> ℹ️ Lifecycle\n>\n> If the request\
+        \ you submit meets our minimum validation standards for processing the payout,\
+        \ our server will accept the request. It will defer the execution to a background\
+        \ asynchronous process, and in response, send you an HTTP 202 status code,\
+        \ along with the payout unique identifier.\n> <br>\n> Upon acceptance, the\
+        \ payout is marked as pending. Your client program will need to poll at intervals\
+        \ to [query the payout state](get_payouts-id) and determine whether it has\
+        \ succeeded or not.\n> <br>\n> <details>\n>  <summary>Payout States</summary>\n\
+        > <br>\n>  <table>\n>    <thead>\n>        <tr>\n>            <th>State</th>\n\
+        >            <th>Description</th>\n>        </tr>\n>    </thead>\n>    <tbody>\n\
+        >        <tr>\n>            <th>⏳<br>PENDING</th>\n>            <th>Your payout\
+        \ has been accepted, and it is currently awaiting processing.</th>\n>    \
+        \    </tr>\n>        <tr>\n>           <th>🎉<br>SENT</th>\n>           <th>The\
+        \ payout has been successfully processed, and the intended recipient should\
+        \ have received the funds.</th>\n>        </tr>\n>        <tr>\n>        \
+        \   <th>🔙<br>REVERSED</th>\n>           <th>Upon reaching the \"SENT\" state,\
+        \ you can request a manual reversal (for instance, if funds were sent to the\
+        \ wrong recipient) by contacting our support team. Please be aware that there\
+        \ is no programmatic API available for this process yet. This state indicates\
+        \ a successful reversal.</th>\n>        </tr>\n>        <tr>\n>          \
+        \ <th>🙅<br>CANCELLED</th>\n>           <th>If the payout has not yet reached\
+        \ the intended recipient, you have the option to request manual cancellation\
+        \ by reaching out to our support team (please note that there is no programmatic\
+        \ API for this yet). This state signifies that the payout has been successfully\
+        \ canceled.</th>\n>        </tr>\n>        <tr>\n>           <th>💔<br>FAILED</th>\n\
+        >           <th>\n>               The funds did not reach the intended recipient\
+        \ due to a failure. If the \"context\" property does not provide specific\
+        \ information about the reason for the failure, please contact our customer\
+        \ support for assistance.\n>           </th>\n>        </tr>\n>    </tbody>\n\
+        >  </table>\n>  </details>\n\n> ⚠️ Compliance requirements\n> \n> Depending\
+        \ on the country and/or bank you plan to disburse money to, there are specific\
+        \ compliance and regulatory requirements that must be adhered to. For example,\
+        \ some countries might necessitate more comprehensive sender details or impose\
+        \ limits on minimum/maximum payout amounts.\n> <br>\n> We understand that\
+        \ navigating these varying rules for different countries can be complex, considering\
+        \ the multitude of combinations possible. To simplify this process for you,\
+        \ the table below outlines the specific requirements for each country we offer\
+        \ payout support, streamlining the compliance process.\n> <br>\n> <details>\n\
+        <summary>Requirements</summary>\n<table>\n    <thead>\n        <tr>\n    \
+        \        <th>Field</th>\n            <th>KE 🇰🇪</th>\n        </tr>\n   \
+        \ </thead>\n    <tbody>\n        <tr>\n            <td>amount.value</td>\n\
+        \            <td>\n                <table>\n                    <thead>\n\
+        \                         <tr>\n                            <th>Min</th>\n\
+        \                            <th>Max</th>\n                        </tr>\n\
+        \                    </thead>\n                    <tbody>\n             \
+        \           <tr>\n                            <td>140 KES</td>\n         \
+        \                   <td>500,000 KES</td> <!-- Kenya -->\n                \
+        \        </tr>\n                    </tbody>\n                </table>\n \
+        \           </td> <!-- Kenya -->\n        </tr>\n        <tr>\n          \
+        \  <td>sender.type</td>\n            <td>Required</td> <!-- Kenya -->\n  \
+        \      </tr>\n        <tr>\n            <td>sender.name</td>\n           \
+        \ <td>Required</td> <!-- Kenya -->\n        </tr>\n        <tr>\n        \
+        \    <td>sender.address.line1</td>\n            <td>Required</td> <!-- Kenya\
+        \ -->\n        </tr>\n        <tr>\n            <td>sender.address.line2</td>\n\
+        \            <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n    \
+        \        <td>sender.address.line3</td>\n            <td>-</td> <!-- Kenya\
+        \ -->\n        </tr>\n        <tr>\n            <td>sender.address.city</td>\n\
+        \            <td>Required</td> <!-- Kenya -->\n        </tr>\n        <tr>\n\
+        \            <td>sender.address.postal_code</td>\n            <td>Required</td>\
+        \ <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.address.country</td>\n\
+        \            <td>Required</td> <!-- Kenya -->\n        </tr>\n        <tr>\n\
+        \            <td>sender.individual.dob</td>\n            <td>Required</td>\
+        \ <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.individual.dob</td>\n\
+        \            <td>Required with INDIVIDUAL sender's type</td> <!-- Kenya -->\n\
+        \        </tr>\n        <tr>\n            <td>sender.individual.identity_document.type</td>\n\
+        \            <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n    \
+        \        <td>sender.individual.identity_document.country</td>\n          \
+        \  <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.individual.identity_document.number</td>\n\
+        \            <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n    \
+        \        <td>sender.individual.identity_document.issued_on</td>\n        \
+        \    <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.individual.identity_document.expires_on</td>\n\
+        \            <td>-</td> <!-- Kenya -->\n        </tr>\n    </tbody>\n</table>\n\
+        </details>"
+      parameters:
+      - description: "🚨️ Prevent duplicate payouts! See: [x-idempotency-key security\
+          \ scheme](idempotency)"
+        explode: false
+        in: header
+        name: X-Idempotency-Key
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/openapi.PayoutCreateRequest'
+        description: The payout
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payouts_post_202_response'
+          description: Accepted
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyWalletInsufficientBalance'
+          description: Not enough balance
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
+          description: Validation failed
+      security:
+      - Bearer: []
+      summary: Send money
+      tags:
+      - Payout
+  /payouts/{id}:
+    get:
+      description: |-
+        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.
+
+        To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+      parameters:
+      - description: The Payout ID (pyt-xxx)
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payouts__id__get_200_response'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Query status
+      tags:
+      - Payout
+  /wallets:
+    get:
+      description: |-
+        Wallets serve as repositories for your funds in a specific currency and are employed in tandem with payouts as the origin from which funds will be disbursed.
+
+        This particular endpoint will return a comprehensive list of your active wallets, showcasing their associated currencies and the most recent updates on available balances.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_wallets_get_200_response'
+          description: OK
+      security:
+      - Bearer: []
+      summary: List
+      tags:
+      - Wallet
+components:
+  schemas:
+    openapi.PaymentAccountGetOrCreateRequest:
+      properties:
+        bank_account:
+          $ref: '#/components/schemas/openapi_PaymentAccountGetOrCreateRequest_bank_account'
+        country:
+          description: |-
+            <span style="color:#e95f6a;">required</span>
+
+            The ISO 3166 alpha-2 country code in which the payment account is registered.
+          example: KE
+          format: iso3166 alpha-2
+          type: string
+          x-order: "2"
+        holder:
+          $ref: '#/components/schemas/openapi_PaymentAccountGetOrCreateRequest_holder'
+        mobile_money:
+          $ref: '#/components/schemas/openapi_PaymentAccountGetOrCreateRequest_mobile_money'
+        type:
+          description: |-
+            <span style="color:#e95f6a;">required</span>
+
+            Either `MOBILE_MONEY` or `BANK_ACCOUNT`
+          enum:
+          - MOBILE_MONEY
+          - BANK_ACCOUNT
+          type: string
+          x-order: "1"
+      type: object
+    openapi.PaymentAccountGetOrCreateResponse:
+      properties:
+        bank_account:
+          $ref: '#/components/schemas/openapi_PaymentAccountGetOrCreateResponse_bank_account'
+        country:
+          example: KE
+          format: iso3166 alpha-2
+          type: string
+          x-order: "2"
+        created_at:
+          example: 2006-01-02T15:04:05Z07:00
+          format: RFC 3339
+          type: string
+        holder:
+          $ref: '#/components/schemas/openapi_PaymentAccountGetOrCreateResponse_holder'
+        id:
+          description: The newly created payment account unique identifier
+          example: pac-xxx
+          format: iso3166 alpha-2
+          type: string
+          x-order: "0"
+        mobile_money:
+          $ref: '#/components/schemas/openapi_PaymentAccountGetOrCreateResponse_mobile_money'
+        type:
+          default: MOBILE_MONEY
+          type: string
+          x-order: "1"
+      type: object
+    openapi.PayoutCreateRequest:
+      properties:
+        amount:
+          $ref: '#/components/schemas/openapi_PayoutCreateRequest_amount'
+        payment_account:
+          allOf:
+          - $ref: '#/components/schemas/openapi.PaymentAccountGetOrCreateRequest'
+          description: |-
+            <span style="color:#e95f6a;">required if payment_account_id is empty</span>
+
+            You have the option to create a payment account on the spot by including it here. If it doesn't already exist, it will be created and automatically employed as the recipient for the payout request. If it already exists, we will simply retrieve it and utilize it, preventing the creation of duplicate accounts.
+        payment_account_id:
+          description: |-
+            <span style="color:#e95f6a;">required if payment_account is empty</span>
+
+            The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
+          example: pac-xxx
+          type: string
+        sender:
+          $ref: '#/components/schemas/openapi_PayoutCreateRequest_sender'
+        wallet_id:
+          description: "The wallet ID from which to disburse money, if not provided,\
+            \ we will attempt to use the one that matches the provided currency amount."
+          example: wlt-xxx
+          type: string
+      type: object
+    openapi.PayoutCreateResponse:
+      properties:
+        amount:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_amount'
+        created_at:
+          example: 2006-01-02T15:04:05Z07:00
+          format: RFC 3339
+          type: string
+        id:
+          description: The payout unique identifier
+          example: pyt-xxx
+          type: string
+        payment_account_id:
+          description: The recipient payment account receiving funds
+          example: pac-xxx
+          type: string
+        sender:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_sender'
+        state:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_state'
+        wallet_id:
+          description: The wallet ID from which the money will disburse
+          example: wlt-xxx
+          type: string
+      type: object
+    openapi.PayoutGetResponse:
+      properties:
+        amount:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_amount'
+        bank_reference:
+          description: |-
+            The reference provided by the recipient account's actual bank on a successful payout.
+
+            > ⚠️
+            > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+          example: ref-xxx
+          type: string
+        created_at:
+          example: 2006-01-02T15:04:05Z07:00
+          format: RFC 3339
+          type: string
+        id:
+          description: The payout unique identifier
+          example: pyt-xxx
+          type: string
+        payment_account_id:
+          description: The recipient payment account receiving funds
+          example: pac-xxx
+          type: string
+        sender:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_sender'
+        state:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_state'
+        wallet_id:
+          description: The wallet ID from which the money will disburse
+          example: wlt-xxx
+          type: string
+      type: object
+    openapi.ResponseBodySuccessCollectionNoMeta:
+      properties:
+        data:
+          items: {}
+          type: array
+      type: object
+    openapi.ResponseBodySuccessCursorPaginated:
+      properties:
+        data:
+          items: {}
+          type: array
+        meta:
+          $ref: '#/components/schemas/openapi_ResponseBodySuccessCursorPaginated_meta'
+      type: object
+    openapi.ResponseBodySuccessNoMeta:
+      properties:
+        data: {}
+      type: object
+    openapi.ResponseBodyValidationFailed:
+      properties:
+        code:
+          example: VALIDATION_FAILED
+          type: string
+        errors:
+          $ref: '#/components/schemas/openapi_ResponseBodyValidationFailed_errors'
+        message:
+          example: Validation failed.
+          type: string
+      type: object
+    openapi.ResponseBodyWalletInsufficientBalance:
+      properties:
+        code:
+          example: WALLET_INSUFFICIENT_BALANCE
+          type: string
+        message:
+          example: "wallet '{wlt-xxx}' doesn't have enough balance"
+          type: string
+      type: object
+    _banks_get_200_response_allOf_data_inner_branches_inner:
+      properties:
+        id:
+          example: brn-xxx
+          format: ksuid
+          type: string
+        name:
+          example: Mbeya
+          type: string
+      type: object
+    _banks_get_200_response_allOf_data_inner:
+      properties:
+        branches:
+          description: "If the bank operates across multiple branches within a country,\
+            \ this property will be included, listing all the branches available from\
+            \ the bank."
+          items:
+            $ref: '#/components/schemas/_banks_get_200_response_allOf_data_inner_branches_inner'
+          type: array
+        country:
+          description: The ISO 3166 alpha-2 country code in which the bank operates.
+          example: TZ
+          type: string
+        id:
+          example: bnk-xxx
+          format: ksuid
+          type: string
+        name:
+          example: TIB Corporate Bank Limited
+          type: string
+      type: object
+    _banks_get_200_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessCollectionNoMeta'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/_banks_get_200_response_allOf_data_inner'
+            type: array
+        type: object
+    _payment_accounts_post_201_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessNoMeta'
+      - properties:
+          data:
+            $ref: '#/components/schemas/openapi.PaymentAccountGetOrCreateResponse'
+        type: object
+    _payouts_get_200_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessCursorPaginated'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/openapi.PayoutGetResponse'
+            type: array
+        type: object
+    _payouts_post_202_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessNoMeta'
+      - properties:
+          data:
+            $ref: '#/components/schemas/openapi.PayoutCreateResponse'
+        type: object
+    _payouts__id__get_200_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessNoMeta'
+      - properties:
+          data:
+            $ref: '#/components/schemas/openapi.PayoutGetResponse'
+        type: object
+    _wallets_get_200_response_allOf_data_inner:
+      properties:
+        available:
+          description: The actual available balance
+          example: "2000.99"
+          type: string
+        balance:
+          description: The total balance yet to settle
+          example: "2000.99"
+          type: string
+        currency:
+          description: The ISO 4217 currency code associated with the wallet
+          example: KES
+          format: iso4217
+          type: string
+        id:
+          example: wlt-xxx
+          format: ksuid
+          type: string
+      type: object
+    _wallets_get_200_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessCollectionNoMeta'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/_wallets_get_200_response_allOf_data_inner'
+            type: array
+        type: object
+    openapi_PaymentAccountGetOrCreateRequest_bank_account:
+      properties:
+        bank_id:
+          description: |-
+            <span style="color:#e95f6a;">required with type BANK_ACCOUNT</span>
+
+            The bank identifier representing the bank associated with the payment account
+          example: bnk-xxx
+          format: ksuid
+          type: string
+        branch_id:
+          description: |-
+            <span style="color:#e95f6a;">required with type BANK_ACCOUNT</span>
+            <span style="color:#e95f6a;">required if the bank spans across multiple branches</span>
+
+            The branch identifier representing the branch associated with the payment account
+          example: brn-xxx
+          format: ksuid
+          type: string
+        number:
+          description: |-
+            <span style="color:#e95f6a;">required with type BANK_ACCOUNT</span>
+
+            The actual bank account number (alphanum).
+          example: "12345678"
+          format: alphanum
+          type: string
+      type: object
+      x-order: "4"
+    openapi_PaymentAccountGetOrCreateRequest_holder:
+      description: |-
+        <span style="color:#e95f6a;">required</span>
+
+        The individual (or business) in whose name the bank account is registered
+      properties:
+        name:
+          description: |-
+            <span style="color:#e95f6a;">required</span>
+
+            Either the INDIVIDUAL full name or the BUSINESS registered legal name
+          type: string
+        type:
+          description: |-
+            <span style="color:#e95f6a;">required</span>
+
+            The holder legal entity type, whether an INDIVIDUAL person or a BUSINESS
+          enum:
+          - INDIVIDUAL
+          - BUSINESS
+          type: string
+      type: object
+      x-order: "3"
+    openapi_PaymentAccountGetOrCreateRequest_mobile_money:
+      properties:
+        number:
+          description: |-
+            <span style="color:#e95f6a;">required with type MOBILE_MONEY</span>
+
+            The actual phone number formatted as E.164
+          example: +254000000000
+          format: e164
+          type: string
+        operator:
+          description: |-
+            <span style="color:#e95f6a;">required with type MOBILE_MONEY</span>
+
+            The telco network associated with the phone number. Each country allows only a subset of operators, this is documented [here](post_payment-accounts#mobile-money).
+          enum:
+          - SAFARICOM
+          - AIRTEL
+          type: string
+      type: object
+      x-order: "4"
+    openapi_PaymentAccountGetOrCreateResponse_bank_account:
+      properties:
+        bank_id:
+          example: bnk-xxx
+          format: ksuid
+          type: string
+        branch_id:
+          example: brn-xxx
+          format: ksuid
+          type: string
+        number:
+          format: alphanum
+          type: string
+      type: object
+      x-order: "4"
+    openapi_PaymentAccountGetOrCreateResponse_holder:
+      properties:
+        name:
+          type: string
+        type:
+          enum:
+          - INDIVIDUAL
+          - BUSINESS
+          type: string
+      type: object
+      x-order: "3"
+    openapi_PaymentAccountGetOrCreateResponse_mobile_money:
+      properties:
+        number:
+          example: +254000000000
+          format: e164
+          type: string
+        operator:
+          enum:
+          - SAFARICOM
+          - AIRTEL
+          example: SAFARICOM
+          type: string
+      type: object
+    openapi_PayoutCreateRequest_amount:
+      description: |-
+        <span style="color:#e95f6a;">required</span>
+
+        The intended amount to send to either the payment_account_id or payment_account
+      properties:
+        currency:
+          description: |-
+            <span style="color:#e95f6a;">required</span>
+
+            The currency associated with the amount value, formatted according to ISO 4217
+          example: KES
+          format: ISO 4217
+          type: string
+        value:
+          description: <span style="color:#e95f6a;">required</span>
+          example: "2000.99"
+          type: string
+      type: object
+    openapi_PayoutCreateRequest_sender_address:
+      properties:
+        city:
+          description: <span style="color:#e95f6a;">required if address is provided</span>
+          example: Roma
+          type: string
+        country:
+          description: |-
+            <span style="color:#e95f6a;">required if address is provided</span>
+
+            The ISO 3166 alpha-2 country code associated with the address.
+          example: IT
+          type: string
+        line_1:
+          description: <span style="color:#e95f6a;">required if address is provided</span>
+          example: Piazza del Colosseo
+          type: string
+        line_2:
+          example: "1"
+          type: string
+        line_3:
+          example: ""
+          type: string
+          x-omitempty: true
+        postal_code:
+          description: |-
+            <span style="color:#e95f6a;">required if address is provided</span>
+
+            ⚠️ We enforce postal code validation for these following country codes : GB, US, PT, IE, MT, NG, NL, SK
+          example: "00184"
+          type: string
+      type: object
+    openapi_PayoutCreateRequest_sender_individual_identity_document:
+      properties:
+        country:
+          description: |-
+            <span style="color:#e95f6a;">required if identity_document is provided</span>
+
+            The ISO 3166 alpha-2 country code indicating the issuing country of the document.
+          example: IT
+          format: ISO 3166 alpha-2
+          type: string
+        expires_on:
+          description: |-
+            <span style="color:#e95f6a;">required if identity_document is provided</span>
+
+            Date formatted as yyyy-mm-dd
+          example: 2030-01-01
+          format: yyyy-mm-dd
+          type: string
+        issued_on:
+          description: Date formatted as yyyy-mm-dd
+          example: 2020-01-01
+          format: yyyy-mm-dd
+          type: string
+        number:
+          description: <span style="color:#e95f6a;">required if identity_document
+            is provided</span>
+          example: YA0000000
+          type: string
+        type:
+          description: |-
+            <span style="color:#e95f6a;">required if identity_document is provided</span>
+
+            One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+          enum:
+          - PASSPORT
+          - DRIVING_LICENCE
+          - NATIONAL_ID_CARD
+          type: string
+      type: object
+    openapi_PayoutCreateRequest_sender_individual:
+      properties:
+        dob:
+          description: Date of birth formatted as yyyy-mm-dd
+          example: 1970-01-01
+          format: yyyy-mm-dd
+          type: string
+        identity_document:
+          $ref: '#/components/schemas/openapi_PayoutCreateRequest_sender_individual_identity_document'
+      type: object
+    openapi_PayoutCreateRequest_sender:
+      description: An optional property for incorporating sender details. Please refer
+        to the "💡 **Compliance requirements**" documentation above.
+      properties:
+        address:
+          $ref: '#/components/schemas/openapi_PayoutCreateRequest_sender_address'
+        individual:
+          $ref: '#/components/schemas/openapi_PayoutCreateRequest_sender_individual'
+        name:
+          description: |-
+            <span style="color:#e95f6a;">required if sender is provided</span>
+
+            The individual full name or registered business legal name
+          example: Mario Rossi
+          type: string
+        type:
+          description: |-
+            <span style="color:#e95f6a;">required if sender is provided</span>
+
+            Either `INDIVIDUAL` or `BUSINESS`
+          enum:
+          - INDIVIDUAL
+          - BUSINESS
+          type: string
+      type: object
+    openapi_PayoutCreateResponse_amount:
+      properties:
+        currency:
+          description: "The currency associated with the amount value, formatted according\
+            \ to ISO 4217"
+          example: KES
+          format: ISO 4217
+          type: string
+        value:
+          example: "2000.99"
+          type: string
+      type: object
+    openapi_PayoutCreateResponse_sender_address:
+      properties:
+        city:
+          example: Roma
+          type: string
+        country:
+          description: The ISO 3166 alpha-2 country code associated with the address.
+          example: IT
+          format: ISO 3166 alpha-2
+          type: string
+        line_1:
+          example: Piazza del Colosseo
+          type: string
+        line_2:
+          example: "1"
+          type: string
+        line_3:
+          example: ""
+          type: string
+          x-omitempty: true
+        postal_code:
+          example: "00184"
+          type: string
+      type: object
+    openapi_PayoutCreateResponse_sender_individual_identity_document:
+      properties:
+        country:
+          description: The ISO 3166 alpha-2 country code indicating the issuing country
+            of the document.
+          example: IT
+          format: ISO 3166 alpha-2
+          type: string
+        expires_on:
+          description: Date formatted as yyyy-mm-dd
+          example: 2030-01-01
+          format: yyyy-mm-dd
+          type: string
+        issued_on:
+          description: Date formatted as yyyy-mm-dd
+          example: 2020-01-01
+          format: yyyy-mm-dd
+          type: string
+        number:
+          example: YA0000000
+          type: string
+        type:
+          enum:
+          - PASSPORT
+          - DRIVING_LICENCE
+          - NATIONAL_ID_CARD
+          type: string
+      type: object
+    openapi_PayoutCreateResponse_sender_individual:
+      properties:
+        dob:
+          description: Date of birth formatted as yyyy-mm-dd
+          example: 1970-01-01
+          format: yyyy-mm-dd
+          type: string
+        identity_document:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_sender_individual_identity_document'
+      type: object
+    openapi_PayoutCreateResponse_sender:
+      properties:
+        address:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_sender_address'
+        individual:
+          $ref: '#/components/schemas/openapi_PayoutCreateResponse_sender_individual'
+        name:
+          description: The individual full name or registered business legal name
+          example: Mario Rossi
+          type: string
+        type:
+          enum:
+          - INDIVIDUAL
+          - BUSINESS
+          type: string
+      type: object
+    openapi_PayoutCreateResponse_state:
+      properties:
+        code:
+          description: "The state code signifies the overall status of a payout. For\
+            \ detailed information about the meaning of each state, please consult\
+            \ the lifecycle section above."
+          enum:
+          - PENDING
+          - REVERSED
+          - SENT
+          - CANCELLED
+          - FAILED
+          example: PENDING
+          type: string
+        context:
+          description: "Together with the \"code\" property, the \"context\" property\
+            \ offers additional context and information, whenever possible, about\
+            \ the specific state. For instance, if a payout fails, there are numerous\
+            \ reasons why this might occur. The \"context\" property will provide\
+            \ more detailed information in such cases."
+          type: string
+      type: object
+    openapi_ResponseBodySuccessCursorPaginated_meta_paging_cursors:
+      properties:
+        after:
+          example: dHJ4LTJXTFhiOGJQNnNTN1FSdkE2QUZHcDdOaEdzNw==
+          type: string
+      type: object
+    openapi_ResponseBodySuccessCursorPaginated_meta_paging:
+      properties:
+        cursors:
+          $ref: '#/components/schemas/openapi_ResponseBodySuccessCursorPaginated_meta_paging_cursors'
+        next:
+          example: https://rest.sandbox.rafiki-api.com/v1/payouts?paging_after=dHJ4LTJXTFhiOGJQNnNTN1FSdkE2QUZHcDdOaEdzNw%3D%3D&paging_limit=10
+          type: string
+      type: object
+    openapi_ResponseBodySuccessCursorPaginated_meta:
+      properties:
+        paging:
+          $ref: '#/components/schemas/openapi_ResponseBodySuccessCursorPaginated_meta_paging'
+      type: object
+    openapi_ResponseBodyValidationFailed_errors:
+      properties:
+        fields:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: Every key corresponds to the name of a property that has not
+            passed validation. The value associated with each key is an array of strings
+            that serves to provide a descriptive explanation of the requirements for
+            that particular property and the reasons for its failure.
+          type: object
+      type: object
+  securitySchemes:
+    Bearer:
+      in: header
+      name: Authorization
+      type: apiKey
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true
+
