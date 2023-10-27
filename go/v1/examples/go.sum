@@ -1,4 +1,6 @@
 github.com/RafikiApi/openapi-clients/go/v1/generated v0.0.0-20231023120620-acf84e9108f3 h1:4ck14lIEt5ased+aq+yIjeHnrlovaE4AG4CmF62ULjM=
 github.com/RafikiApi/openapi-clients/go/v1/generated v0.0.0-20231023120620-acf84e9108f3/go.mod h1:drVeQ3uQ2J24JLycu8O3tb/iDvMwEs+UOAFSN9e5Tt4=
+github.com/RafikiApi/openapi-clients/go/v1/generated v0.0.0-20231027135953-5f96a6065756 h1:xZlVMtFxCPgWRfcLdCS5Tziln+AxPuy6x9KZI03WXMA=
+github.com/RafikiApi/openapi-clients/go/v1/generated v0.0.0-20231027135953-5f96a6065756/go.mod h1:drVeQ3uQ2J24JLycu8O3tb/iDvMwEs+UOAFSN9e5Tt4=
 github.com/google/uuid v1.3.1 h1:KjJaJ9iWZ3jOFZIf1Lqf4laDRCasjl0BCmnEGxkdLb4=
 github.com/google/uuid v1.3.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=

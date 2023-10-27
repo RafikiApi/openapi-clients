@@ -18,7 +18,13 @@ func main() {
 		log.Fatal("The env variable RAFIKI_API_KEY needs to be set")
 	}
 
-	c := client.NewAPIClient(client.NewConfiguration())
+	// points to the sandbox environment by default
+	conf := client.NewConfiguration()
+
+	// Uncomment to point to the production environment instead
+	//conf.Servers[0].URL = "https://rest.prod.rafiki-api.com/v1"
+
+	c := client.NewAPIClient(conf)
 
 	ctx := context.WithValue(
 		context.Background(),
@@ -103,7 +109,16 @@ func main() {
 			continue
 		}
 
-		log.Printf("The payout settled with final state: %s", pyt.Data.State.GetCode())
+		if pyt.Data.State.GetCode() == "SENT" {
+			receipt := "unavailable"
+			if r := pyt.Data.Receipt; r != nil {
+				receipt = *r
+			}
+			log.Printf("The payout was sent successfully with receipt reference: %s", receipt)
+			break
+		}
+
+		log.Printf("The payout failed with state: %s", pyt.Data.State.GetCode())
 
 		break
 	}
