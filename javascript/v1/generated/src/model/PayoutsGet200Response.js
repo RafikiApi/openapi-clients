@@ -13,8 +13,8 @@
 
 import ApiClient from '../ApiClient';
 import OpenapiPayoutGetResponse from './OpenapiPayoutGetResponse';
-import OpenapiResponseBodySuccessCursorPaginated from './OpenapiResponseBodySuccessCursorPaginated';
-import OpenapiResponseBodySuccessCursorPaginatedMeta from './OpenapiResponseBodySuccessCursorPaginatedMeta';
+import OpenapiPayoutListResponseMeta from './OpenapiPayoutListResponseMeta';
+import OpenapiResponseBodySuccessCollection from './OpenapiResponseBodySuccessCollection';
 
 /**
  * The PayoutsGet200Response model module.
@@ -25,10 +25,10 @@ class PayoutsGet200Response {
     /**
      * Constructs a new <code>PayoutsGet200Response</code>.
      * @alias module:model/PayoutsGet200Response
-     * @implements module:model/OpenapiResponseBodySuccessCursorPaginated
+     * @implements module:model/OpenapiResponseBodySuccessCollection
      */
     constructor() { 
-        OpenapiResponseBodySuccessCursorPaginated.initialize(this);
+        OpenapiResponseBodySuccessCollection.initialize(this);
         PayoutsGet200Response.initialize(this);
     }
 
@@ -50,13 +50,13 @@ class PayoutsGet200Response {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new PayoutsGet200Response();
-            OpenapiResponseBodySuccessCursorPaginated.constructFromObject(data, obj);
+            OpenapiResponseBodySuccessCollection.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('data')) {
                 obj['data'] = ApiClient.convertToType(data['data'], [OpenapiPayoutGetResponse]);
             }
             if (data.hasOwnProperty('meta')) {
-                obj['meta'] = OpenapiResponseBodySuccessCursorPaginatedMeta.constructFromObject(data['meta']);
+                obj['meta'] = OpenapiPayoutListResponseMeta.constructFromObject(data['meta']);
             }
         }
         return obj;
@@ -80,7 +80,7 @@ class PayoutsGet200Response {
         }
         // validate the optional field `meta`
         if (data['meta']) { // data not null
-          OpenapiResponseBodySuccessCursorPaginatedMeta.validateJSON(data['meta']);
+          OpenapiPayoutListResponseMeta.validateJSON(data['meta']);
         }
 
         return true;
@@ -97,20 +97,20 @@ class PayoutsGet200Response {
 PayoutsGet200Response.prototype['data'] = undefined;
 
 /**
- * @member {module:model/OpenapiResponseBodySuccessCursorPaginatedMeta} meta
+ * @member {module:model/OpenapiPayoutListResponseMeta} meta
  */
 PayoutsGet200Response.prototype['meta'] = undefined;
 
 
-// Implement OpenapiResponseBodySuccessCursorPaginated interface:
+// Implement OpenapiResponseBodySuccessCollection interface:
 /**
  * @member {Array.<Object>} data
  */
-OpenapiResponseBodySuccessCursorPaginated.prototype['data'] = undefined;
+OpenapiResponseBodySuccessCollection.prototype['data'] = undefined;
 /**
- * @member {module:model/OpenapiResponseBodySuccessCursorPaginatedMeta} meta
+ * @member {Object} meta
  */
-OpenapiResponseBodySuccessCursorPaginated.prototype['meta'] = undefined;
+OpenapiResponseBodySuccessCollection.prototype['meta'] = undefined;
 
 
 

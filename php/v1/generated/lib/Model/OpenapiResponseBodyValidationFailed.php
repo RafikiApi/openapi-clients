@@ -316,7 +316,7 @@ class OpenapiResponseBodyValidationFailed implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param string|null $code code
+     * @param string|null $code `VALIDATION_FAILED`
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class OpenapiResponseBodyValidationFailed implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string|null $message E.g. \"Validation failed.\"
      *
      * @return self
      */

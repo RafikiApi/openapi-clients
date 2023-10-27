@@ -20,8 +20,10 @@ import okhttp3.OkHttpClient
 import okhttp3.HttpUrl
 
 import rafikigen.models.OpenapiPaymentAccountGetOrCreateRequest
+import rafikigen.models.OpenapiResponseBodyInternalServerError
 import rafikigen.models.OpenapiResponseBodyValidationFailed
-import rafikigen.models.PaymentAccountsPost201Response
+import rafikigen.models.PaymentAccountsGet200Response
+import rafikigen.models.PaymentAccountsPost200Response
 
 import com.squareup.moshi.Json
 
@@ -48,10 +50,11 @@ class PaymentAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
     }
 
     /**
-     * Get or create
-     * A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  &gt; 💁 &gt; &gt; Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a &#x60;200 OK&#x60; status. Otherwise, we proceed to create a new one and respond with a &#x60;201 Created&#x60; status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \&quot;mobile money\&quot; type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \&quot;bank account\&quot; type is designated for conventional accounts registered with bank institutions, such as \&quot;Equity Bank.\&quot; It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
-     * @param openapiPaymentAccountGetOrCreateRequest The payment account
-     * @return PaymentAccountsPost201Response
+     * List
+     * Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @return PaymentAccountsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -60,11 +63,92 @@ class PaymentAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest: OpenapiPaymentAccountGetOrCreateRequest) : PaymentAccountsPost201Response {
+    fun paymentAccountsGet(pagingLimit: kotlin.Int? = null, pagingAfter: kotlin.String? = null) : PaymentAccountsGet200Response {
+        val localVarResponse = paymentAccountsGetWithHttpInfo(pagingLimit = pagingLimit, pagingAfter = pagingAfter)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentAccountsGet200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * List
+     * Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @return ApiResponse<PaymentAccountsGet200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun paymentAccountsGetWithHttpInfo(pagingLimit: kotlin.Int?, pagingAfter: kotlin.String?) : ApiResponse<PaymentAccountsGet200Response?> {
+        val localVariableConfig = paymentAccountsGetRequestConfig(pagingLimit = pagingLimit, pagingAfter = pagingAfter)
+
+        return request<Unit, PaymentAccountsGet200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation paymentAccountsGet
+     *
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @return RequestConfig
+     */
+    fun paymentAccountsGetRequestConfig(pagingLimit: kotlin.Int?, pagingAfter: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (pagingLimit != null) {
+                    put("paging_limit", listOf(pagingLimit.toString()))
+                }
+                if (pagingAfter != null) {
+                    put("paging_after", listOf(pagingAfter.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/payment-accounts",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Get or create
+     * A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  &gt; 💁 &gt; &gt; Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a &#x60;200 OK&#x60; status. Otherwise, we proceed to create a new one and respond with a &#x60;201 Created&#x60; status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \&quot;mobile money\&quot; type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \&quot;bank account\&quot; type is designated for conventional accounts registered with bank institutions, such as \&quot;Equity Bank.\&quot; It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
+     * @param openapiPaymentAccountGetOrCreateRequest The payment account
+     * @return PaymentAccountsPost200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest: OpenapiPaymentAccountGetOrCreateRequest) : PaymentAccountsPost200Response {
         val localVarResponse = paymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest = openapiPaymentAccountGetOrCreateRequest)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentAccountsPost201Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentAccountsPost200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -82,16 +166,16 @@ class PaymentAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      * Get or create
      * A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  &gt; 💁 &gt; &gt; Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a &#x60;200 OK&#x60; status. Otherwise, we proceed to create a new one and respond with a &#x60;201 Created&#x60; status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \&quot;mobile money\&quot; type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \&quot;bank account\&quot; type is designated for conventional accounts registered with bank institutions, such as \&quot;Equity Bank.\&quot; It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
      * @param openapiPaymentAccountGetOrCreateRequest The payment account
-     * @return ApiResponse<PaymentAccountsPost201Response?>
+     * @return ApiResponse<PaymentAccountsPost200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun paymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest: OpenapiPaymentAccountGetOrCreateRequest) : ApiResponse<PaymentAccountsPost201Response?> {
+    fun paymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest: OpenapiPaymentAccountGetOrCreateRequest) : ApiResponse<PaymentAccountsPost200Response?> {
         val localVariableConfig = paymentAccountsPostRequestConfig(openapiPaymentAccountGetOrCreateRequest = openapiPaymentAccountGetOrCreateRequest)
 
-        return request<OpenapiPaymentAccountGetOrCreateRequest, PaymentAccountsPost201Response>(
+        return request<OpenapiPaymentAccountGetOrCreateRequest, PaymentAccountsPost200Response>(
             localVariableConfig
         )
     }

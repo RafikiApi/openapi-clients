@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **string** | &#x60;WALLET_INSUFFICIENT_BALANCE&#x60; | [optional] 
+**Message** | Pointer to **string** | E.g. \&quot;Wallet &#39;{wlt-xxx}&#39; doesn&#39;t have enough balance\&quot; | [optional] 
 
 ## Methods
 

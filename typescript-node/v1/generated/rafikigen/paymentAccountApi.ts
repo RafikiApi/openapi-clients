@@ -16,8 +16,10 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { OpenapiPaymentAccountGetOrCreateRequest } from '../model/openapiPaymentAccountGetOrCreateRequest';
+import { OpenapiResponseBodyInternalServerError } from '../model/openapiResponseBodyInternalServerError';
 import { OpenapiResponseBodyValidationFailed } from '../model/openapiResponseBodyValidationFailed';
-import { PaymentAccountsPost201Response } from '../model/paymentAccountsPost201Response';
+import { PaymentAccountsGet200Response } from '../model/paymentAccountsGet200Response';
+import { PaymentAccountsPost200Response } from '../model/paymentAccountsPost200Response';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -92,11 +94,86 @@ export class PaymentAccountApi {
     }
 
     /**
+     * Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+     * @summary List
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results
+     */
+    public async paymentAccountsGet (pagingLimit?: number, pagingAfter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaymentAccountsGet200Response;  }> {
+        const localVarPath = this.basePath + '/payment-accounts';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        if (pagingLimit !== undefined) {
+            localVarQueryParameters['paging_limit'] = ObjectSerializer.serialize(pagingLimit, "number");
+        }
+
+        if (pagingAfter !== undefined) {
+            localVarQueryParameters['paging_after'] = ObjectSerializer.serialize(pagingAfter, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.Bearer.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.Bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: PaymentAccountsGet200Response;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "PaymentAccountsGet200Response");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
      * A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  > 💁 > > Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a `200 OK` status. Otherwise, we proceed to create a new one and respond with a `201 Created` status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \"mobile money\" type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \"bank account\" type is designated for conventional accounts registered with bank institutions, such as \"Equity Bank.\" It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
      * @summary Get or create
      * @param openapiPaymentAccountGetOrCreateRequest The payment account
      */
-    public async paymentAccountsPost (openapiPaymentAccountGetOrCreateRequest: OpenapiPaymentAccountGetOrCreateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaymentAccountsPost201Response;  }> {
+    public async paymentAccountsPost (openapiPaymentAccountGetOrCreateRequest: OpenapiPaymentAccountGetOrCreateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaymentAccountsPost200Response;  }> {
         const localVarPath = this.basePath + '/payment-accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -147,13 +224,13 @@ export class PaymentAccountApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: PaymentAccountsPost201Response;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: PaymentAccountsPost200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "PaymentAccountsPost201Response");
+                            body = ObjectSerializer.deserialize(body, "PaymentAccountsPost200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

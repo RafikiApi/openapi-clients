@@ -4,12 +4,65 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**paymentAccountsGet**](PaymentAccountApi.md#paymentAccountsGet) | **GET** /payment-accounts | List
 [**paymentAccountsPost**](PaymentAccountApi.md#paymentAccountsPost) | **POST** /payment-accounts | Get or create
 
 
+<a id="paymentAccountsGet"></a>
+# **paymentAccountsGet**
+> PaymentAccountsGet200Response paymentAccountsGet(pagingLimit, pagingAfter)
+
+List
+
+Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+
+### Example
+```kotlin
+// Import classes:
+//import rafikigen.infrastructure.*
+//import rafikigen.models.*
+
+val apiInstance = PaymentAccountApi()
+val pagingLimit : kotlin.Int = 56 // kotlin.Int | The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50
+val pagingAfter : kotlin.String = pagingAfter_example // kotlin.String | The base64 URL encoded cursor used to access the next set of paginated results
+try {
+    val result : PaymentAccountsGet200Response = apiInstance.paymentAccountsGet(pagingLimit, pagingAfter)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling PaymentAccountApi#paymentAccountsGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling PaymentAccountApi#paymentAccountsGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pagingLimit** | **kotlin.Int**| The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 | [optional]
+ **pagingAfter** | **kotlin.String**| The base64 URL encoded cursor used to access the next set of paginated results | [optional]
+
+### Return type
+
+[**PaymentAccountsGet200Response**](PaymentAccountsGet200Response.md)
+
+### Authorization
+
+
+Configure Bearer:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a id="paymentAccountsPost"></a>
 # **paymentAccountsPost**
-> PaymentAccountsPost201Response paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest)
+> PaymentAccountsPost200Response paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest)
 
 Get or create
 
@@ -24,7 +77,7 @@ A payment account is a uniquely identifiable entity that serves the purpose of a
 val apiInstance = PaymentAccountApi()
 val openapiPaymentAccountGetOrCreateRequest : OpenapiPaymentAccountGetOrCreateRequest =  // OpenapiPaymentAccountGetOrCreateRequest | The payment account
 try {
-    val result : PaymentAccountsPost201Response = apiInstance.paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest)
+    val result : PaymentAccountsPost200Response = apiInstance.paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentAccountApi#paymentAccountsPost")
@@ -43,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaymentAccountsPost201Response**](PaymentAccountsPost201Response.md)
+[**PaymentAccountsPost200Response**](PaymentAccountsPost200Response.md)
 
 ### Authorization
 

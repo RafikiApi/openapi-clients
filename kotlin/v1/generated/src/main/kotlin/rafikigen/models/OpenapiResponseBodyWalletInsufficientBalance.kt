@@ -22,16 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param code 
- * @param message 
+ * @param code `WALLET_INSUFFICIENT_BALANCE`
+ * @param message E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"
  */
 
 
 data class OpenapiResponseBodyWalletInsufficientBalance (
 
+    /* `WALLET_INSUFFICIENT_BALANCE` */
     @Json(name = "code")
     val code: kotlin.String? = null,
 
+    /* E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\" */
     @Json(name = "message")
     val message: kotlin.String? = null
 

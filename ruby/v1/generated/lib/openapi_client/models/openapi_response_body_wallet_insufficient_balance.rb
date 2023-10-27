@@ -15,8 +15,10 @@ require 'time'
 
 module OpenapiClient
   class OpenapiResponseBodyWalletInsufficientBalance
+    # `WALLET_INSUFFICIENT_BALANCE`
     attr_accessor :code
 
+    # E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"
     attr_accessor :message
 
     # Attribute mapping from ruby-style variable name to JSON key.

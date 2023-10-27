@@ -131,7 +131,7 @@ class WalletApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WalletsGet200Response
+     * @return \OpenAPI\Client\Model\WalletsGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
      */
     public function walletsGet(string $contentType = self::contentTypes['walletsGet'][0])
     {
@@ -148,7 +148,7 @@ class WalletApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WalletsGet200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WalletsGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function walletsGetWithHttpInfo(string $contentType = self::contentTypes['walletsGet'][0])
     {
@@ -205,6 +205,21 @@ class WalletApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\WalletsGet200Response';
@@ -229,6 +244,14 @@ class WalletApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\WalletsGet200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

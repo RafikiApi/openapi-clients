@@ -13,8 +13,10 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OpenapiPeriodResponseBodyWalletInsufficientBalance {
+    /// `WALLET_INSUFFICIENT_BALANCE`
     #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
     pub code: Option<String>,
+    /// E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 }

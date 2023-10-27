@@ -20,13 +20,13 @@ var _ MappedNullable = &OpenapiPayoutGetResponse{}
 // OpenapiPayoutGetResponse struct for OpenapiPayoutGetResponse
 type OpenapiPayoutGetResponse struct {
 	Amount *OpenapiPayoutCreateResponseAmount `json:"amount,omitempty"`
-	// The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-	BankReference *string `json:"bank_reference,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	// The payout unique identifier
 	Id *string `json:"id,omitempty"`
 	// The recipient payment account receiving funds
 	PaymentAccountId *string `json:"payment_account_id,omitempty"`
+	// The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+	Receipt *string `json:"receipt,omitempty"`
 	Sender *OpenapiPayoutCreateResponseSender `json:"sender,omitempty"`
 	State *OpenapiPayoutCreateResponseState `json:"state,omitempty"`
 	// The wallet ID from which the money will disburse
@@ -80,38 +80,6 @@ func (o *OpenapiPayoutGetResponse) HasAmount() bool {
 // SetAmount gets a reference to the given OpenapiPayoutCreateResponseAmount and assigns it to the Amount field.
 func (o *OpenapiPayoutGetResponse) SetAmount(v OpenapiPayoutCreateResponseAmount) {
 	o.Amount = &v
-}
-
-// GetBankReference returns the BankReference field value if set, zero value otherwise.
-func (o *OpenapiPayoutGetResponse) GetBankReference() string {
-	if o == nil || IsNil(o.BankReference) {
-		var ret string
-		return ret
-	}
-	return *o.BankReference
-}
-
-// GetBankReferenceOk returns a tuple with the BankReference field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenapiPayoutGetResponse) GetBankReferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.BankReference) {
-		return nil, false
-	}
-	return o.BankReference, true
-}
-
-// HasBankReference returns a boolean if a field has been set.
-func (o *OpenapiPayoutGetResponse) HasBankReference() bool {
-	if o != nil && !IsNil(o.BankReference) {
-		return true
-	}
-
-	return false
-}
-
-// SetBankReference gets a reference to the given string and assigns it to the BankReference field.
-func (o *OpenapiPayoutGetResponse) SetBankReference(v string) {
-	o.BankReference = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -208,6 +176,38 @@ func (o *OpenapiPayoutGetResponse) HasPaymentAccountId() bool {
 // SetPaymentAccountId gets a reference to the given string and assigns it to the PaymentAccountId field.
 func (o *OpenapiPayoutGetResponse) SetPaymentAccountId(v string) {
 	o.PaymentAccountId = &v
+}
+
+// GetReceipt returns the Receipt field value if set, zero value otherwise.
+func (o *OpenapiPayoutGetResponse) GetReceipt() string {
+	if o == nil || IsNil(o.Receipt) {
+		var ret string
+		return ret
+	}
+	return *o.Receipt
+}
+
+// GetReceiptOk returns a tuple with the Receipt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutGetResponse) GetReceiptOk() (*string, bool) {
+	if o == nil || IsNil(o.Receipt) {
+		return nil, false
+	}
+	return o.Receipt, true
+}
+
+// HasReceipt returns a boolean if a field has been set.
+func (o *OpenapiPayoutGetResponse) HasReceipt() bool {
+	if o != nil && !IsNil(o.Receipt) {
+		return true
+	}
+
+	return false
+}
+
+// SetReceipt gets a reference to the given string and assigns it to the Receipt field.
+func (o *OpenapiPayoutGetResponse) SetReceipt(v string) {
+	o.Receipt = &v
 }
 
 // GetSender returns the Sender field value if set, zero value otherwise.
@@ -319,9 +319,6 @@ func (o OpenapiPayoutGetResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
-	if !IsNil(o.BankReference) {
-		toSerialize["bank_reference"] = o.BankReference
-	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
@@ -330,6 +327,9 @@ func (o OpenapiPayoutGetResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentAccountId) {
 		toSerialize["payment_account_id"] = o.PaymentAccountId
+	}
+	if !IsNil(o.Receipt) {
+		toSerialize["receipt"] = o.Receipt
 	}
 	if !IsNil(o.Sender) {
 		toSerialize["sender"] = o.Sender

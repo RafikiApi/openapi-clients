@@ -5,8 +5,8 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PayoutsGet**](PayoutAPI.md#PayoutsGet) | **Get** /payouts | List
-[**PayoutsIdGet**](PayoutAPI.md#PayoutsIdGet) | **Get** /payouts/{id} | Query status
-[**PayoutsPost**](PayoutAPI.md#PayoutsPost) | **Post** /payouts | Send money
+[**PayoutsIdGet**](PayoutAPI.md#PayoutsIdGet) | **Get** /payouts/{id} | Get
+[**PayoutsPost**](PayoutAPI.md#PayoutsPost) | **Post** /payouts | Create
 
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > PayoutsIdGet200Response PayoutsIdGet(ctx, id).Execute()
 
-Query status
+Get
 
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > PayoutsPost202Response PayoutsPost(ctx).XIdempotencyKey(xIdempotencyKey).OpenapiPayoutCreateRequest(openapiPayoutCreateRequest).Execute()
 
-Send money
+Create
 
 
 

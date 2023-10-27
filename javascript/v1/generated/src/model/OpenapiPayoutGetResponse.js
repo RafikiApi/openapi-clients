@@ -53,9 +53,6 @@ class OpenapiPayoutGetResponse {
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = OpenapiPayoutCreateResponseAmount.constructFromObject(data['amount']);
             }
-            if (data.hasOwnProperty('bank_reference')) {
-                obj['bank_reference'] = ApiClient.convertToType(data['bank_reference'], 'String');
-            }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
             }
@@ -64,6 +61,9 @@ class OpenapiPayoutGetResponse {
             }
             if (data.hasOwnProperty('payment_account_id')) {
                 obj['payment_account_id'] = ApiClient.convertToType(data['payment_account_id'], 'String');
+            }
+            if (data.hasOwnProperty('receipt')) {
+                obj['receipt'] = ApiClient.convertToType(data['receipt'], 'String');
             }
             if (data.hasOwnProperty('sender')) {
                 obj['sender'] = OpenapiPayoutCreateResponseSender.constructFromObject(data['sender']);
@@ -89,10 +89,6 @@ class OpenapiPayoutGetResponse {
           OpenapiPayoutCreateResponseAmount.validateJSON(data['amount']);
         }
         // ensure the json data is a string
-        if (data['bank_reference'] && !(typeof data['bank_reference'] === 'string' || data['bank_reference'] instanceof String)) {
-            throw new Error("Expected the field `bank_reference` to be a primitive type in the JSON string but got " + data['bank_reference']);
-        }
-        // ensure the json data is a string
         if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
             throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
         }
@@ -103,6 +99,10 @@ class OpenapiPayoutGetResponse {
         // ensure the json data is a string
         if (data['payment_account_id'] && !(typeof data['payment_account_id'] === 'string' || data['payment_account_id'] instanceof String)) {
             throw new Error("Expected the field `payment_account_id` to be a primitive type in the JSON string but got " + data['payment_account_id']);
+        }
+        // ensure the json data is a string
+        if (data['receipt'] && !(typeof data['receipt'] === 'string' || data['receipt'] instanceof String)) {
+            throw new Error("Expected the field `receipt` to be a primitive type in the JSON string but got " + data['receipt']);
         }
         // validate the optional field `sender`
         if (data['sender']) { // data not null
@@ -131,12 +131,6 @@ class OpenapiPayoutGetResponse {
 OpenapiPayoutGetResponse.prototype['amount'] = undefined;
 
 /**
- * The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
- * @member {String} bank_reference
- */
-OpenapiPayoutGetResponse.prototype['bank_reference'] = undefined;
-
-/**
  * @member {String} created_at
  */
 OpenapiPayoutGetResponse.prototype['created_at'] = undefined;
@@ -152,6 +146,12 @@ OpenapiPayoutGetResponse.prototype['id'] = undefined;
  * @member {String} payment_account_id
  */
 OpenapiPayoutGetResponse.prototype['payment_account_id'] = undefined;
+
+/**
+ * The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+ * @member {String} receipt
+ */
+OpenapiPayoutGetResponse.prototype['receipt'] = undefined;
 
 /**
  * @member {module:model/OpenapiPayoutCreateResponseSender} sender

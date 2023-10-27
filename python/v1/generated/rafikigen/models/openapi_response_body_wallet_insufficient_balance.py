@@ -19,14 +19,14 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, Field, StrictStr
 
 class OpenapiResponseBodyWalletInsufficientBalance(BaseModel):
     """
     OpenapiResponseBodyWalletInsufficientBalance
     """
-    code: Optional[StrictStr] = None
-    message: Optional[StrictStr] = None
+    code: Optional[StrictStr] = Field(None, description="`WALLET_INSUFFICIENT_BALANCE`")
+    message: Optional[StrictStr] = Field(None, description="E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"")
     __properties = ["code", "message"]
 
     class Config:

@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** |  | [optional] 
+**code** | **str** | &#x60;VALIDATION_FAILED&#x60; | [optional] 
 **errors** | [**OpenapiResponseBodyValidationFailedErrors**](OpenapiResponseBodyValidationFailedErrors.md) |  | [optional] 
-**message** | **str** |  | [optional] 
+**message** | **str** | E.g. \&quot;Validation failed.\&quot; | [optional] 
 
 ## Example
 

@@ -27,6 +27,31 @@ namespace rafikigen.rafikigen
     {
         #region Synchronous Operations
         /// <summary>
+        /// List
+        /// </summary>
+        /// <remarks>
+        /// Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </remarks>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentAccountsGet200Response</returns>
+        PaymentAccountsGet200Response PaymentAccountsGet(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0);
+
+        /// <summary>
+        /// List
+        /// </summary>
+        /// <remarks>
+        /// Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </remarks>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentAccountsGet200Response</returns>
+        ApiResponse<PaymentAccountsGet200Response> PaymentAccountsGetWithHttpInfo(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0);
+        /// <summary>
         /// Get or create
         /// </summary>
         /// <remarks>
@@ -35,8 +60,8 @@ namespace rafikigen.rafikigen
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PaymentAccountsPost201Response</returns>
-        PaymentAccountsPost201Response PaymentAccountsPost(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0);
+        /// <returns>PaymentAccountsPost200Response</returns>
+        PaymentAccountsPost200Response PaymentAccountsPost(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0);
 
         /// <summary>
         /// Get or create
@@ -47,8 +72,8 @@ namespace rafikigen.rafikigen
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PaymentAccountsPost201Response</returns>
-        ApiResponse<PaymentAccountsPost201Response> PaymentAccountsPostWithHttpInfo(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0);
+        /// <returns>ApiResponse of PaymentAccountsPost200Response</returns>
+        ApiResponse<PaymentAccountsPost200Response> PaymentAccountsPostWithHttpInfo(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -59,6 +84,33 @@ namespace rafikigen.rafikigen
     {
         #region Asynchronous Operations
         /// <summary>
+        /// List
+        /// </summary>
+        /// <remarks>
+        /// Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </remarks>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PaymentAccountsGet200Response</returns>
+        System.Threading.Tasks.Task<PaymentAccountsGet200Response> PaymentAccountsGetAsync(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List
+        /// </summary>
+        /// <remarks>
+        /// Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </remarks>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PaymentAccountsGet200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentAccountsGet200Response>> PaymentAccountsGetWithHttpInfoAsync(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Get or create
         /// </summary>
         /// <remarks>
@@ -68,8 +120,8 @@ namespace rafikigen.rafikigen
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PaymentAccountsPost201Response</returns>
-        System.Threading.Tasks.Task<PaymentAccountsPost201Response> PaymentAccountsPostAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of PaymentAccountsPost200Response</returns>
+        System.Threading.Tasks.Task<PaymentAccountsPost200Response> PaymentAccountsPostAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get or create
@@ -81,8 +133,8 @@ namespace rafikigen.rafikigen
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PaymentAccountsPost201Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaymentAccountsPost201Response>> PaymentAccountsPostWithHttpInfoAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (PaymentAccountsPost200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentAccountsPost200Response>> PaymentAccountsPostWithHttpInfoAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -204,15 +256,175 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
+        /// List Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </summary>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentAccountsGet200Response</returns>
+        public PaymentAccountsGet200Response PaymentAccountsGet(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0)
+        {
+            rafikigen.Client.ApiResponse<PaymentAccountsGet200Response> localVarResponse = PaymentAccountsGetWithHttpInfo(pagingLimit, pagingAfter);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </summary>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentAccountsGet200Response</returns>
+        public rafikigen.Client.ApiResponse<PaymentAccountsGet200Response> PaymentAccountsGetWithHttpInfo(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0)
+        {
+            rafikigen.Client.RequestOptions localVarRequestOptions = new rafikigen.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = rafikigen.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = rafikigen.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (pagingLimit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(rafikigen.Client.ClientUtils.ParameterToMultiMap("", "paging_limit", pagingLimit));
+            }
+            if (pagingAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(rafikigen.Client.ClientUtils.ParameterToMultiMap("", "paging_after", pagingAfter));
+            }
+
+            localVarRequestOptions.Operation = "PaymentAccountApi.PaymentAccountsGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Bearer) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PaymentAccountsGet200Response>("/payment-accounts", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PaymentAccountsGet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </summary>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PaymentAccountsGet200Response</returns>
+        public async System.Threading.Tasks.Task<PaymentAccountsGet200Response> PaymentAccountsGetAsync(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            rafikigen.Client.ApiResponse<PaymentAccountsGet200Response> localVarResponse = await PaymentAccountsGetWithHttpInfoAsync(pagingLimit, pagingAfter, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+        /// </summary>
+        /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pagingLimit">The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)</param>
+        /// <param name="pagingAfter">The base64 URL encoded cursor used to access the next set of paginated results (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PaymentAccountsGet200Response)</returns>
+        public async System.Threading.Tasks.Task<rafikigen.Client.ApiResponse<PaymentAccountsGet200Response>> PaymentAccountsGetWithHttpInfoAsync(int? pagingLimit = default(int?), string? pagingAfter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            rafikigen.Client.RequestOptions localVarRequestOptions = new rafikigen.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = rafikigen.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = rafikigen.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (pagingLimit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(rafikigen.Client.ClientUtils.ParameterToMultiMap("", "paging_limit", pagingLimit));
+            }
+            if (pagingAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(rafikigen.Client.ClientUtils.ParameterToMultiMap("", "paging_after", pagingAfter));
+            }
+
+            localVarRequestOptions.Operation = "PaymentAccountApi.PaymentAccountsGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Bearer) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PaymentAccountsGet200Response>("/payment-accounts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PaymentAccountsGet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get or create A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  &gt; 💁 &gt; &gt; Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a &#x60;200 OK&#x60; status. Otherwise, we proceed to create a new one and respond with a &#x60;201 Created&#x60; status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \&quot;mobile money\&quot; type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |- -- -- -- --|- -- -- -- -- -- -- -- -- --| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \&quot;bank account\&quot; type is designated for conventional accounts registered with bank institutions, such as \&quot;Equity Bank.\&quot; It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PaymentAccountsPost201Response</returns>
-        public PaymentAccountsPost201Response PaymentAccountsPost(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0)
+        /// <returns>PaymentAccountsPost200Response</returns>
+        public PaymentAccountsPost200Response PaymentAccountsPost(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0)
         {
-            rafikigen.Client.ApiResponse<PaymentAccountsPost201Response> localVarResponse = PaymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest);
+            rafikigen.Client.ApiResponse<PaymentAccountsPost200Response> localVarResponse = PaymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest);
             return localVarResponse.Data;
         }
 
@@ -222,8 +434,8 @@ namespace rafikigen.rafikigen
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PaymentAccountsPost201Response</returns>
-        public rafikigen.Client.ApiResponse<PaymentAccountsPost201Response> PaymentAccountsPostWithHttpInfo(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0)
+        /// <returns>ApiResponse of PaymentAccountsPost200Response</returns>
+        public rafikigen.Client.ApiResponse<PaymentAccountsPost200Response> PaymentAccountsPostWithHttpInfo(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0)
         {
             // verify the required parameter 'openapiPaymentAccountGetOrCreateRequest' is set
             if (openapiPaymentAccountGetOrCreateRequest == null)
@@ -266,7 +478,7 @@ namespace rafikigen.rafikigen
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<PaymentAccountsPost201Response>("/payment-accounts", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<PaymentAccountsPost200Response>("/payment-accounts", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PaymentAccountsPost", localVarResponse);
@@ -286,10 +498,10 @@ namespace rafikigen.rafikigen
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PaymentAccountsPost201Response</returns>
-        public async System.Threading.Tasks.Task<PaymentAccountsPost201Response> PaymentAccountsPostAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of PaymentAccountsPost200Response</returns>
+        public async System.Threading.Tasks.Task<PaymentAccountsPost200Response> PaymentAccountsPostAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            rafikigen.Client.ApiResponse<PaymentAccountsPost201Response> localVarResponse = await PaymentAccountsPostWithHttpInfoAsync(openapiPaymentAccountGetOrCreateRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            rafikigen.Client.ApiResponse<PaymentAccountsPost200Response> localVarResponse = await PaymentAccountsPostWithHttpInfoAsync(openapiPaymentAccountGetOrCreateRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -300,8 +512,8 @@ namespace rafikigen.rafikigen
         /// <param name="openapiPaymentAccountGetOrCreateRequest">The payment account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PaymentAccountsPost201Response)</returns>
-        public async System.Threading.Tasks.Task<rafikigen.Client.ApiResponse<PaymentAccountsPost201Response>> PaymentAccountsPostWithHttpInfoAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (PaymentAccountsPost200Response)</returns>
+        public async System.Threading.Tasks.Task<rafikigen.Client.ApiResponse<PaymentAccountsPost200Response>> PaymentAccountsPostWithHttpInfoAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'openapiPaymentAccountGetOrCreateRequest' is set
             if (openapiPaymentAccountGetOrCreateRequest == null)
@@ -345,7 +557,7 @@ namespace rafikigen.rafikigen
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<PaymentAccountsPost201Response>("/payment-accounts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<PaymentAccountsPost200Response>("/payment-accounts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

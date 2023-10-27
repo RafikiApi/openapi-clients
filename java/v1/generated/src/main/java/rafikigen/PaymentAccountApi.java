@@ -28,8 +28,10 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.OpenapiPaymentAccountGetOrCreateRequest;
+import org.openapitools.client.model.OpenapiResponseBodyInternalServerError;
 import org.openapitools.client.model.OpenapiResponseBodyValidationFailed;
-import org.openapitools.client.model.PaymentAccountsPost201Response;
+import org.openapitools.client.model.PaymentAccountsGet200Response;
+import org.openapitools.client.model.PaymentAccountsPost200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,6 +77,143 @@ public class PaymentAccountApi {
     }
 
     /**
+     * Build call for paymentAccountsGet
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call paymentAccountsGetCall(Integer pagingLimit, String pagingAfter, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payment-accounts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (pagingLimit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("paging_limit", pagingLimit));
+        }
+
+        if (pagingAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("paging_after", pagingAfter));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call paymentAccountsGetValidateBeforeCall(Integer pagingLimit, String pagingAfter, final ApiCallback _callback) throws ApiException {
+        return paymentAccountsGetCall(pagingLimit, pagingAfter, _callback);
+
+    }
+
+    /**
+     * List
+     * Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @return PaymentAccountsGet200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public PaymentAccountsGet200Response paymentAccountsGet(Integer pagingLimit, String pagingAfter) throws ApiException {
+        ApiResponse<PaymentAccountsGet200Response> localVarResp = paymentAccountsGetWithHttpInfo(pagingLimit, pagingAfter);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List
+     * Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @return ApiResponse&lt;PaymentAccountsGet200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PaymentAccountsGet200Response> paymentAccountsGetWithHttpInfo(Integer pagingLimit, String pagingAfter) throws ApiException {
+        okhttp3.Call localVarCall = paymentAccountsGetValidateBeforeCall(pagingLimit, pagingAfter, null);
+        Type localVarReturnType = new TypeToken<PaymentAccountsGet200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List (asynchronously)
+     * Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+     * @param pagingLimit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param pagingAfter The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call paymentAccountsGetAsync(Integer pagingLimit, String pagingAfter, final ApiCallback<PaymentAccountsGet200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = paymentAccountsGetValidateBeforeCall(pagingLimit, pagingAfter, _callback);
+        Type localVarReturnType = new TypeToken<PaymentAccountsGet200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for paymentAccountsPost
      * @param openapiPaymentAccountGetOrCreateRequest The payment account (required)
      * @param _callback Callback for upload/download progress
@@ -83,8 +222,10 @@ public class PaymentAccountApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The already existing payment account was returned </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The payment account was created </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call paymentAccountsPostCall(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, final ApiCallback _callback) throws ApiException {
@@ -147,17 +288,19 @@ public class PaymentAccountApi {
      * Get or create
      * A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  &gt; 💁 &gt; &gt; Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a &#x60;200 OK&#x60; status. Otherwise, we proceed to create a new one and respond with a &#x60;201 Created&#x60; status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \&quot;mobile money\&quot; type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \&quot;bank account\&quot; type is designated for conventional accounts registered with bank institutions, such as \&quot;Equity Bank.\&quot; It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
      * @param openapiPaymentAccountGetOrCreateRequest The payment account (required)
-     * @return PaymentAccountsPost201Response
+     * @return PaymentAccountsPost200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The already existing payment account was returned </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The payment account was created </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public PaymentAccountsPost201Response paymentAccountsPost(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest) throws ApiException {
-        ApiResponse<PaymentAccountsPost201Response> localVarResp = paymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest);
+    public PaymentAccountsPost200Response paymentAccountsPost(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest) throws ApiException {
+        ApiResponse<PaymentAccountsPost200Response> localVarResp = paymentAccountsPostWithHttpInfo(openapiPaymentAccountGetOrCreateRequest);
         return localVarResp.getData();
     }
 
@@ -165,18 +308,20 @@ public class PaymentAccountApi {
      * Get or create
      * A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  &gt; 💁 &gt; &gt; Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a &#x60;200 OK&#x60; status. Otherwise, we proceed to create a new one and respond with a &#x60;201 Created&#x60; status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \&quot;mobile money\&quot; type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \&quot;bank account\&quot; type is designated for conventional accounts registered with bank institutions, such as \&quot;Equity Bank.\&quot; It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches. 
      * @param openapiPaymentAccountGetOrCreateRequest The payment account (required)
-     * @return ApiResponse&lt;PaymentAccountsPost201Response&gt;
+     * @return ApiResponse&lt;PaymentAccountsPost200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The already existing payment account was returned </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The payment account was created </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PaymentAccountsPost201Response> paymentAccountsPostWithHttpInfo(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest) throws ApiException {
+    public ApiResponse<PaymentAccountsPost200Response> paymentAccountsPostWithHttpInfo(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = paymentAccountsPostValidateBeforeCall(openapiPaymentAccountGetOrCreateRequest, null);
-        Type localVarReturnType = new TypeToken<PaymentAccountsPost201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<PaymentAccountsPost200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -190,14 +335,16 @@ public class PaymentAccountApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The already existing payment account was returned </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The payment account was created </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call paymentAccountsPostAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, final ApiCallback<PaymentAccountsPost201Response> _callback) throws ApiException {
+    public okhttp3.Call paymentAccountsPostAsync(OpenapiPaymentAccountGetOrCreateRequest openapiPaymentAccountGetOrCreateRequest, final ApiCallback<PaymentAccountsPost200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = paymentAccountsPostValidateBeforeCall(openapiPaymentAccountGetOrCreateRequest, _callback);
-        Type localVarReturnType = new TypeToken<PaymentAccountsPost201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<PaymentAccountsPost200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

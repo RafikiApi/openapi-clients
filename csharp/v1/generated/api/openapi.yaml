@@ -19,12 +19,64 @@ paths:
               schema:
                 $ref: '#/components/schemas/_banks_get_200_response'
           description: OK
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
       security:
       - Bearer: []
       summary: List
       tags:
       - Bank
   /payment-accounts:
+    get:
+      description: |
+        Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary.
+      parameters:
+      - description: "The count of items returned as part of the pagination cursor\
+          \ iteration, minimum value is 1 and maximum 50"
+        explode: true
+        in: query
+        name: paging_limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The base64 URL encoded cursor used to access the next set of
+          paginated results
+        explode: true
+        in: query
+        name: paging_after
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payment_accounts_get_200_response'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
+          description: "Validation failed, see [error codes](error-codes#validation_failed-http-422)"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
+      security:
+      - Bearer: []
+      summary: List
+      tags:
+      - Payment Account
     post:
       description: |
         A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).
@@ -58,18 +110,30 @@ paths:
         description: The payment account
         required: true
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payment_accounts_post_200_response'
+          description: The already existing payment account was returned
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_payment_accounts_post_201_response'
-          description: Created
+                $ref: '#/components/schemas/_payment_accounts_post_200_response'
+          description: The payment account was created
         "422":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
           description: Validation failed
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
       security:
       - Bearer: []
       summary: Get or create
@@ -131,6 +195,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/_payouts_get_200_response'
           description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
+          description: "Validation failed, see [error codes](error-codes#validation_failed-http-422)"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
       security:
       - Bearer: []
       summary: List
@@ -245,16 +321,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/openapi.ResponseBodyWalletInsufficientBalance'
-          description: Not enough balance
+          description: "Not enough balance, see [error codes](error-codes#wallet_insufficient_balance-http-402)"
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyIdempotencyConflict'
+          description: "Idempotency conflict, see [error codes](error-codes#idempotency_race-http-409)"
         "422":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
-          description: Validation failed
+          description: "Validation failed, see [error codes](error-codes#validation_failed-http-422)"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
       security:
       - Bearer: []
-      summary: Send money
+      summary: Create
       tags:
       - Payout
   /payouts/{id}:
@@ -279,9 +367,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/_payouts__id__get_200_response'
           description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyNotFound'
+          description: Couldn't find any payout with the provided ID
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
       security:
       - Bearer: []
-      summary: Query status
+      summary: Get
       tags:
       - Payout
   /wallets:
@@ -297,6 +397,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/_wallets_get_200_response'
           description: OK
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
       security:
       - Bearer: []
       summary: List
@@ -360,6 +466,11 @@ components:
           type: string
           x-order: "1"
       type: object
+    openapi.PaymentAccountListResponseMeta:
+      properties:
+        paging:
+          $ref: '#/components/schemas/openapi_PaymentAccountListResponseMeta_paging'
+      type: object
     openapi.PayoutCreateRequest:
       properties:
         amount:
@@ -415,14 +526,6 @@ components:
       properties:
         amount:
           $ref: '#/components/schemas/openapi_PayoutCreateResponse_amount'
-        bank_reference:
-          description: |-
-            The reference provided by the recipient account's actual bank on a successful payout.
-
-            > ⚠️
-            > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-          example: ref-xxx
-          type: string
         created_at:
           example: 2006-01-02T15:04:05Z07:00
           format: RFC 3339
@@ -435,6 +538,14 @@ components:
           description: The recipient payment account receiving funds
           example: pac-xxx
           type: string
+        receipt:
+          description: |-
+            The reference provided by the recipient account's actual bank or telco on a successful payout.
+
+            > ⚠️
+            > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+          example: ref-xxx (format changes depending on the telco/bank)
+          type: string
         sender:
           $ref: '#/components/schemas/openapi_PayoutCreateResponse_sender'
         state:
@@ -444,19 +555,56 @@ components:
           example: wlt-xxx
           type: string
       type: object
+    openapi.PayoutListResponseMeta:
+      properties:
+        paging:
+          $ref: '#/components/schemas/openapi_PayoutListResponseMeta_paging'
+      type: object
+    openapi.ResponseBodyIdempotencyConflict:
+      properties:
+        code:
+          description: Can be either `IDEMPOTENCY_RACE` or `IDEMPOTENCY_KEY_ALREADY_USED`
+          example: IDEMPOTENCY_RACE
+          type: string
+        message:
+          description: E.g. "Idempotency key already in use"
+          example: Idempotency key already in use
+          type: string
+      type: object
+    openapi.ResponseBodyInternalServerError:
+      properties:
+        code:
+          description: '`INTERNAL_SERVER_ERROR`'
+          example: INTERNAL_SERVER_ERROR
+          type: string
+        message:
+          description: E.g. "An internal error has occurred."
+          example: An internal error has occurred.
+          type: string
+      type: object
+    openapi.ResponseBodyNotFound:
+      properties:
+        code:
+          description: '`NOT_FOUND`'
+          example: NOT_FOUND
+          type: string
+        message:
+          description: E.g. "The resource you are looking for cannot be found."
+          example: The resource you are looking for cannot be found.
+          type: string
+      type: object
+    openapi.ResponseBodySuccessCollection:
+      properties:
+        data:
+          items: {}
+          type: array
+        meta: {}
+      type: object
     openapi.ResponseBodySuccessCollectionNoMeta:
       properties:
         data:
           items: {}
           type: array
-      type: object
-    openapi.ResponseBodySuccessCursorPaginated:
-      properties:
-        data:
-          items: {}
-          type: array
-        meta:
-          $ref: '#/components/schemas/openapi_ResponseBodySuccessCursorPaginated_meta'
       type: object
     openapi.ResponseBodySuccessNoMeta:
       properties:
@@ -465,20 +613,24 @@ components:
     openapi.ResponseBodyValidationFailed:
       properties:
         code:
+          description: '`VALIDATION_FAILED`'
           example: VALIDATION_FAILED
           type: string
         errors:
           $ref: '#/components/schemas/openapi_ResponseBodyValidationFailed_errors'
         message:
+          description: E.g. "Validation failed."
           example: Validation failed.
           type: string
       type: object
     openapi.ResponseBodyWalletInsufficientBalance:
       properties:
         code:
+          description: '`WALLET_INSUFFICIENT_BALANCE`'
           example: WALLET_INSUFFICIENT_BALANCE
           type: string
         message:
+          description: "E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\""
           example: "wallet '{wlt-xxx}' doesn't have enough balance"
           type: string
       type: object
@@ -522,7 +674,18 @@ components:
               $ref: '#/components/schemas/_banks_get_200_response_allOf_data_inner'
             type: array
         type: object
-    _payment_accounts_post_201_response:
+    _payment_accounts_get_200_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessCollection'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/openapi.PaymentAccountGetOrCreateResponse'
+            type: array
+          meta:
+            $ref: '#/components/schemas/openapi.PaymentAccountListResponseMeta'
+        type: object
+    _payment_accounts_post_200_response:
       allOf:
       - $ref: '#/components/schemas/openapi.ResponseBodySuccessNoMeta'
       - properties:
@@ -531,12 +694,14 @@ components:
         type: object
     _payouts_get_200_response:
       allOf:
-      - $ref: '#/components/schemas/openapi.ResponseBodySuccessCursorPaginated'
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessCollection'
       - properties:
           data:
             items:
               $ref: '#/components/schemas/openapi.PayoutGetResponse'
             type: array
+          meta:
+            $ref: '#/components/schemas/openapi.PayoutListResponseMeta'
         type: object
     _payouts_post_202_response:
       allOf:
@@ -691,6 +856,20 @@ components:
           - SAFARICOM
           - AIRTEL
           example: SAFARICOM
+          type: string
+      type: object
+    openapi_PaymentAccountListResponseMeta_paging_cursors:
+      properties:
+        after:
+          example: cGFjLTJXTFhiOGJQNnNTN1FSdkE2QUZHcDdOaEdzNw==
+          type: string
+      type: object
+    openapi_PaymentAccountListResponseMeta_paging:
+      properties:
+        cursors:
+          $ref: '#/components/schemas/openapi_PaymentAccountListResponseMeta_paging_cursors'
+        next:
+          example: https://rest.sandbox.rafiki-api.com/v1/payment-accounts?paging_after=cGFjLTJXTFhiOGJQNnNTN1FSdkE2QUZHcDdOaEdzNw%3D%3D&paging_limit=15
           type: string
       type: object
     openapi_PayoutCreateRequest_amount:
@@ -930,24 +1109,19 @@ components:
             \ more detailed information in such cases."
           type: string
       type: object
-    openapi_ResponseBodySuccessCursorPaginated_meta_paging_cursors:
+    openapi_PayoutListResponseMeta_paging_cursors:
       properties:
         after:
           example: dHJ4LTJXTFhiOGJQNnNTN1FSdkE2QUZHcDdOaEdzNw==
           type: string
       type: object
-    openapi_ResponseBodySuccessCursorPaginated_meta_paging:
+    openapi_PayoutListResponseMeta_paging:
       properties:
         cursors:
-          $ref: '#/components/schemas/openapi_ResponseBodySuccessCursorPaginated_meta_paging_cursors'
+          $ref: '#/components/schemas/openapi_PayoutListResponseMeta_paging_cursors'
         next:
           example: https://rest.sandbox.rafiki-api.com/v1/payouts?paging_after=dHJ4LTJXTFhiOGJQNnNTN1FSdkE2QUZHcDdOaEdzNw%3D%3D&paging_limit=10
           type: string
-      type: object
-    openapi_ResponseBodySuccessCursorPaginated_meta:
-      properties:
-        paging:
-          $ref: '#/components/schemas/openapi_ResponseBodySuccessCursorPaginated_meta_paging'
       type: object
     openapi_ResponseBodyValidationFailed_errors:
       properties:

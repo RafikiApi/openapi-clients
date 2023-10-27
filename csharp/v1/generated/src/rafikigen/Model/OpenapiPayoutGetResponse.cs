@@ -35,20 +35,20 @@ namespace rafikigen.Model
         /// Initializes a new instance of the <see cref="OpenapiPayoutGetResponse" /> class.
         /// </summary>
         /// <param name="amount">amount.</param>
-        /// <param name="bankReference">The reference provided by the recipient account&#39;s actual bank on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property..</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="id">The payout unique identifier.</param>
         /// <param name="paymentAccountId">The recipient payment account receiving funds.</param>
+        /// <param name="receipt">The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property..</param>
         /// <param name="sender">sender.</param>
         /// <param name="state">state.</param>
         /// <param name="walletId">The wallet ID from which the money will disburse.</param>
-        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string bankReference = default(string), string createdAt = default(string), string id = default(string), string paymentAccountId = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
+        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string id = default(string), string paymentAccountId = default(string), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
         {
             this.Amount = amount;
-            this.BankReference = bankReference;
             this.CreatedAt = createdAt;
             this.Id = id;
             this.PaymentAccountId = paymentAccountId;
+            this.Receipt = receipt;
             this.Sender = sender;
             this.State = state;
             this.WalletId = walletId;
@@ -59,14 +59,6 @@ namespace rafikigen.Model
         /// </summary>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
         public OpenapiPayoutCreateResponseAmount Amount { get; set; }
-
-        /// <summary>
-        /// The reference provided by the recipient account&#39;s actual bank on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-        /// </summary>
-        /// <value>The reference provided by the recipient account&#39;s actual bank on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.</value>
-        /// <example>ref-xxx</example>
-        [DataMember(Name = "bank_reference", EmitDefaultValue = false)]
-        public string BankReference { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -90,6 +82,14 @@ namespace rafikigen.Model
         /// <example>pac-xxx</example>
         [DataMember(Name = "payment_account_id", EmitDefaultValue = false)]
         public string PaymentAccountId { get; set; }
+
+        /// <summary>
+        /// The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+        /// </summary>
+        /// <value>The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.</value>
+        /// <example>ref-xxx (format changes depending on the telco/bank)</example>
+        [DataMember(Name = "receipt", EmitDefaultValue = false)]
+        public string Receipt { get; set; }
 
         /// <summary>
         /// Gets or Sets Sender
@@ -120,10 +120,10 @@ namespace rafikigen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class OpenapiPayoutGetResponse {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
-            sb.Append("  BankReference: ").Append(BankReference).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
+            sb.Append("  Receipt: ").Append(Receipt).Append("\n");
             sb.Append("  Sender: ").Append(Sender).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  WalletId: ").Append(WalletId).Append("\n");
@@ -168,11 +168,6 @@ namespace rafikigen.Model
                     this.Amount.Equals(input.Amount))
                 ) && 
                 (
-                    this.BankReference == input.BankReference ||
-                    (this.BankReference != null &&
-                    this.BankReference.Equals(input.BankReference))
-                ) && 
-                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -186,6 +181,11 @@ namespace rafikigen.Model
                     this.PaymentAccountId == input.PaymentAccountId ||
                     (this.PaymentAccountId != null &&
                     this.PaymentAccountId.Equals(input.PaymentAccountId))
+                ) && 
+                (
+                    this.Receipt == input.Receipt ||
+                    (this.Receipt != null &&
+                    this.Receipt.Equals(input.Receipt))
                 ) && 
                 (
                     this.Sender == input.Sender ||
@@ -217,10 +217,6 @@ namespace rafikigen.Model
                 {
                     hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 }
-                if (this.BankReference != null)
-                {
-                    hashCode = (hashCode * 59) + this.BankReference.GetHashCode();
-                }
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
@@ -232,6 +228,10 @@ namespace rafikigen.Model
                 if (this.PaymentAccountId != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentAccountId.GetHashCode();
+                }
+                if (this.Receipt != null)
+                {
+                    hashCode = (hashCode * 59) + this.Receipt.GetHashCode();
                 }
                 if (this.Sender != null)
                 {

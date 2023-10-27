@@ -141,7 +141,7 @@ class PayoutApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PayoutsGet200Response
+     * @return \OpenAPI\Client\Model\PayoutsGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
      */
     public function payoutsGet($created_at_from = null, $created_at_to = null, $paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['payoutsGet'][0])
     {
@@ -162,7 +162,7 @@ class PayoutApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PayoutsGet200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PayoutsGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function payoutsGetWithHttpInfo($created_at_from = null, $created_at_to = null, $paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['payoutsGet'][0])
     {
@@ -219,6 +219,36 @@ class PayoutApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 422:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\PayoutsGet200Response';
@@ -243,6 +273,22 @@ class PayoutApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\PayoutsGet200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -459,14 +505,14 @@ class PayoutApi
     /**
      * Operation payoutsIdGet
      *
-     * Query status
+     * Get
      *
      * @param  string $id The Payout ID (pyt-xxx) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PayoutsIdGet200Response
+     * @return \OpenAPI\Client\Model\PayoutsIdGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyNotFound|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
      */
     public function payoutsIdGet($id, string $contentType = self::contentTypes['payoutsIdGet'][0])
     {
@@ -477,14 +523,14 @@ class PayoutApi
     /**
      * Operation payoutsIdGetWithHttpInfo
      *
-     * Query status
+     * Get
      *
      * @param  string $id The Payout ID (pyt-xxx) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PayoutsIdGet200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PayoutsIdGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyNotFound|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function payoutsIdGetWithHttpInfo($id, string $contentType = self::contentTypes['payoutsIdGet'][0])
     {
@@ -541,6 +587,36 @@ class PayoutApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyNotFound' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyNotFound' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyNotFound', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\PayoutsIdGet200Response';
@@ -569,6 +645,22 @@ class PayoutApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyNotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -577,7 +669,7 @@ class PayoutApi
     /**
      * Operation payoutsIdGetAsync
      *
-     * Query status
+     * Get
      *
      * @param  string $id The Payout ID (pyt-xxx) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
@@ -598,7 +690,7 @@ class PayoutApi
     /**
      * Operation payoutsIdGetAsyncWithHttpInfo
      *
-     * Query status
+     * Get
      *
      * @param  string $id The Payout ID (pyt-xxx) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
@@ -747,7 +839,7 @@ class PayoutApi
     /**
      * Operation payoutsPost
      *
-     * Send money
+     * Create
      *
      * @param  string $x_idempotency_key 🚨️ Prevent duplicate payouts! See: [x-idempotency-key security scheme](idempotency) (required)
      * @param  \OpenAPI\Client\Model\OpenapiPayoutCreateRequest $openapi_payout_create_request The payout (required)
@@ -755,7 +847,7 @@ class PayoutApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed
+     * @return \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
      */
     public function payoutsPost($x_idempotency_key, $openapi_payout_create_request, string $contentType = self::contentTypes['payoutsPost'][0])
     {
@@ -766,7 +858,7 @@ class PayoutApi
     /**
      * Operation payoutsPostWithHttpInfo
      *
-     * Send money
+     * Create
      *
      * @param  string $x_idempotency_key 🚨️ Prevent duplicate payouts! See: [x-idempotency-key security scheme](idempotency) (required)
      * @param  \OpenAPI\Client\Model\OpenapiPayoutCreateRequest $openapi_payout_create_request The payout (required)
@@ -774,7 +866,7 @@ class PayoutApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function payoutsPostWithHttpInfo($x_idempotency_key, $openapi_payout_create_request, string $contentType = self::contentTypes['payoutsPost'][0])
     {
@@ -846,6 +938,21 @@ class PayoutApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 409:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 422:
                     if ('\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -858,6 +965,21 @@ class PayoutApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -897,10 +1019,26 @@ class PayoutApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -913,7 +1051,7 @@ class PayoutApi
     /**
      * Operation payoutsPostAsync
      *
-     * Send money
+     * Create
      *
      * @param  string $x_idempotency_key 🚨️ Prevent duplicate payouts! See: [x-idempotency-key security scheme](idempotency) (required)
      * @param  \OpenAPI\Client\Model\OpenapiPayoutCreateRequest $openapi_payout_create_request The payout (required)
@@ -935,7 +1073,7 @@ class PayoutApi
     /**
      * Operation payoutsPostAsyncWithHttpInfo
      *
-     * Send money
+     * Create
      *
      * @param  string $x_idempotency_key 🚨️ Prevent duplicate payouts! See: [x-idempotency-key security scheme](idempotency) (required)
      * @param  \OpenAPI\Client\Model\OpenapiPayoutCreateRequest $openapi_payout_create_request The payout (required)

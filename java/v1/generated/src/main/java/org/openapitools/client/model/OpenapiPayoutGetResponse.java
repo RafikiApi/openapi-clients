@@ -52,15 +52,11 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutGetResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-23T12:05:31.906423Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T13:57:01.660841Z[Etc/UTC]")
 public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private OpenapiPayoutCreateResponseAmount amount;
-
-  public static final String SERIALIZED_NAME_BANK_REFERENCE = "bank_reference";
-  @SerializedName(SERIALIZED_NAME_BANK_REFERENCE)
-  private String bankReference;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -73,6 +69,10 @@ public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT_ID = "payment_account_id";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT_ID)
   private String paymentAccountId;
+
+  public static final String SERIALIZED_NAME_RECEIPT = "receipt";
+  @SerializedName(SERIALIZED_NAME_RECEIPT)
+  private String receipt;
 
   public static final String SERIALIZED_NAME_SENDER = "sender";
   @SerializedName(SERIALIZED_NAME_SENDER)
@@ -107,27 +107,6 @@ public class OpenapiPayoutGetResponse {
 
   public void setAmount(OpenapiPayoutCreateResponseAmount amount) {
     this.amount = amount;
-  }
-
-
-  public OpenapiPayoutGetResponse bankReference(String bankReference) {
-    
-    this.bankReference = bankReference;
-    return this;
-  }
-
-   /**
-   * The reference provided by the recipient account&#39;s actual bank on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-   * @return bankReference
-  **/
-  @javax.annotation.Nullable
-  public String getBankReference() {
-    return bankReference;
-  }
-
-
-  public void setBankReference(String bankReference) {
-    this.bankReference = bankReference;
   }
 
 
@@ -191,6 +170,27 @@ public class OpenapiPayoutGetResponse {
 
   public void setPaymentAccountId(String paymentAccountId) {
     this.paymentAccountId = paymentAccountId;
+  }
+
+
+  public OpenapiPayoutGetResponse receipt(String receipt) {
+    
+    this.receipt = receipt;
+    return this;
+  }
+
+   /**
+   * The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+   * @return receipt
+  **/
+  @javax.annotation.Nullable
+  public String getReceipt() {
+    return receipt;
+  }
+
+
+  public void setReceipt(String receipt) {
+    this.receipt = receipt;
   }
 
 
@@ -268,10 +268,10 @@ public class OpenapiPayoutGetResponse {
     }
     OpenapiPayoutGetResponse openapiPayoutGetResponse = (OpenapiPayoutGetResponse) o;
     return Objects.equals(this.amount, openapiPayoutGetResponse.amount) &&
-        Objects.equals(this.bankReference, openapiPayoutGetResponse.bankReference) &&
         Objects.equals(this.createdAt, openapiPayoutGetResponse.createdAt) &&
         Objects.equals(this.id, openapiPayoutGetResponse.id) &&
         Objects.equals(this.paymentAccountId, openapiPayoutGetResponse.paymentAccountId) &&
+        Objects.equals(this.receipt, openapiPayoutGetResponse.receipt) &&
         Objects.equals(this.sender, openapiPayoutGetResponse.sender) &&
         Objects.equals(this.state, openapiPayoutGetResponse.state) &&
         Objects.equals(this.walletId, openapiPayoutGetResponse.walletId);
@@ -279,7 +279,7 @@ public class OpenapiPayoutGetResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, bankReference, createdAt, id, paymentAccountId, sender, state, walletId);
+    return Objects.hash(amount, createdAt, id, paymentAccountId, receipt, sender, state, walletId);
   }
 
   @Override
@@ -287,10 +287,10 @@ public class OpenapiPayoutGetResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class OpenapiPayoutGetResponse {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    bankReference: ").append(toIndentedString(bankReference)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentAccountId: ").append(toIndentedString(paymentAccountId)).append("\n");
+    sb.append("    receipt: ").append(toIndentedString(receipt)).append("\n");
     sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
@@ -317,10 +317,10 @@ public class OpenapiPayoutGetResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("amount");
-    openapiFields.add("bank_reference");
     openapiFields.add("created_at");
     openapiFields.add("id");
     openapiFields.add("payment_account_id");
+    openapiFields.add("receipt");
     openapiFields.add("sender");
     openapiFields.add("state");
     openapiFields.add("wallet_id");
@@ -354,9 +354,6 @@ public class OpenapiPayoutGetResponse {
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         OpenapiPayoutCreateResponseAmount.validateJsonElement(jsonObj.get("amount"));
       }
-      if ((jsonObj.get("bank_reference") != null && !jsonObj.get("bank_reference").isJsonNull()) && !jsonObj.get("bank_reference").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bank_reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_reference").toString()));
-      }
       if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
       }
@@ -365,6 +362,9 @@ public class OpenapiPayoutGetResponse {
       }
       if ((jsonObj.get("payment_account_id") != null && !jsonObj.get("payment_account_id").isJsonNull()) && !jsonObj.get("payment_account_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payment_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_account_id").toString()));
+      }
+      if ((jsonObj.get("receipt") != null && !jsonObj.get("receipt").isJsonNull()) && !jsonObj.get("receipt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `receipt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("receipt").toString()));
       }
       // validate the optional field `sender`
       if (jsonObj.get("sender") != null && !jsonObj.get("sender").isJsonNull()) {

@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import org.openapitools.client.model.OpenapiResponseBodyInternalServerError;
 import org.openapitools.client.model.WalletsGet200Response;
 
 import java.lang.reflect.Type;
@@ -81,6 +82,7 @@ public class WalletApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call walletsGetCall(final ApiCallback _callback) throws ApiException {
@@ -142,6 +144,7 @@ public class WalletApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
     public WalletsGet200Response walletsGet() throws ApiException {
@@ -158,6 +161,7 @@ public class WalletApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<WalletsGet200Response> walletsGetWithHttpInfo() throws ApiException {
@@ -176,6 +180,7 @@ public class WalletApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call walletsGetAsync(final ApiCallback<WalletsGet200Response> _callback) throws ApiException {

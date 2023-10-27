@@ -26,10 +26,10 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param amount 
- * @param bankReference The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
  * @param createdAt 
  * @param id The payout unique identifier
  * @param paymentAccountId The recipient payment account receiving funds
+ * @param receipt The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
  * @param sender 
  * @param state 
  * @param walletId The wallet ID from which the money will disburse
@@ -41,10 +41,6 @@ data class OpenapiPayoutGetResponse (
     @Json(name = "amount")
     val amount: OpenapiPayoutCreateResponseAmount? = null,
 
-    /* The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property. */
-    @Json(name = "bank_reference")
-    val bankReference: kotlin.String? = null,
-
     @Json(name = "created_at")
     val createdAt: kotlin.String? = null,
 
@@ -55,6 +51,10 @@ data class OpenapiPayoutGetResponse (
     /* The recipient payment account receiving funds */
     @Json(name = "payment_account_id")
     val paymentAccountId: kotlin.String? = null,
+
+    /* The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property. */
+    @Json(name = "receipt")
+    val receipt: kotlin.String? = null,
 
     @Json(name = "sender")
     val sender: OpenapiPayoutCreateResponseSender? = null,

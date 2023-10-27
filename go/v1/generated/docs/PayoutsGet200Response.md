@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]OpenapiPayoutGetResponse**](OpenapiPayoutGetResponse.md) |  | [optional] 
-**Meta** | Pointer to [**OpenapiResponseBodySuccessCursorPaginatedMeta**](OpenapiResponseBodySuccessCursorPaginatedMeta.md) |  | [optional] 
+**Meta** | Pointer to [**OpenapiPayoutListResponseMeta**](OpenapiPayoutListResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *PayoutsGet200Response) GetMeta() OpenapiResponseBodySuccessCursorPaginatedMeta`
+`func (o *PayoutsGet200Response) GetMeta() OpenapiPayoutListResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *PayoutsGet200Response) GetMetaOk() (*OpenapiResponseBodySuccessCursorPaginatedMeta, bool)`
+`func (o *PayoutsGet200Response) GetMetaOk() (*OpenapiPayoutListResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *PayoutsGet200Response) SetMeta(v OpenapiResponseBodySuccessCursorPaginatedMeta)`
+`func (o *PayoutsGet200Response) SetMeta(v OpenapiPayoutListResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

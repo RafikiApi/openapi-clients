@@ -13,7 +13,13 @@
 import { RequestFile } from './models';
 
 export class OpenapiResponseBodyWalletInsufficientBalance {
+    /**
+    * `WALLET_INSUFFICIENT_BALANCE`
+    */
     'code'?: string;
+    /**
+    * E.g. \"Wallet \'{wlt-xxx}\' doesn\'t have enough balance\"
+    */
     'message'?: string;
 
     static discriminator: string | undefined = undefined;

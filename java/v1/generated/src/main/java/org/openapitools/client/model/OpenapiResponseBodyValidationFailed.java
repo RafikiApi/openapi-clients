@@ -50,7 +50,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiResponseBodyValidationFailed
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-23T12:05:31.906423Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T13:57:01.660841Z[Etc/UTC]")
 public class OpenapiResponseBodyValidationFailed {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -74,7 +74,7 @@ public class OpenapiResponseBodyValidationFailed {
   }
 
    /**
-   * Get code
+   * &#x60;VALIDATION_FAILED&#x60;
    * @return code
   **/
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class OpenapiResponseBodyValidationFailed {
   }
 
    /**
-   * Get message
+   * E.g. \&quot;Validation failed.\&quot;
    * @return message
   **/
   @javax.annotation.Nullable

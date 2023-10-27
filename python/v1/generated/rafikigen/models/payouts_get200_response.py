@@ -21,14 +21,14 @@ import json
 from typing import List, Optional
 from pydantic import BaseModel, conlist
 from rafikigen.models.openapi_payout_get_response import OpenapiPayoutGetResponse
-from rafikigen.models.openapi_response_body_success_cursor_paginated_meta import OpenapiResponseBodySuccessCursorPaginatedMeta
+from rafikigen.models.openapi_payout_list_response_meta import OpenapiPayoutListResponseMeta
 
 class PayoutsGet200Response(BaseModel):
     """
     PayoutsGet200Response
     """
     data: Optional[conlist(OpenapiPayoutGetResponse)] = None
-    meta: Optional[OpenapiResponseBodySuccessCursorPaginatedMeta] = None
+    meta: Optional[OpenapiPayoutListResponseMeta] = None
     __properties = ["data", "meta"]
 
     class Config:
@@ -78,7 +78,7 @@ class PayoutsGet200Response(BaseModel):
 
         _obj = PayoutsGet200Response.parse_obj({
             "data": [OpenapiPayoutGetResponse.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None,
-            "meta": OpenapiResponseBodySuccessCursorPaginatedMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None
+            "meta": OpenapiPayoutListResponseMeta.from_dict(obj.get("meta")) if obj.get("meta") is not None else None
         })
         return _obj
 

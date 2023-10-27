@@ -19,6 +19,8 @@ use super::{Error, configuration};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PayoutsGetError {
+    Status422(crate::models::OpenapiPeriodResponseBodyValidationFailed),
+    Status500(crate::models::OpenapiPeriodResponseBodyInternalServerError),
     UnknownValue(serde_json::Value),
 }
 
@@ -26,6 +28,8 @@ pub enum PayoutsGetError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PayoutsIdGetError {
+    Status404(crate::models::OpenapiPeriodResponseBodyNotFound),
+    Status500(crate::models::OpenapiPeriodResponseBodyInternalServerError),
     UnknownValue(serde_json::Value),
 }
 
@@ -34,7 +38,9 @@ pub enum PayoutsIdGetError {
 #[serde(untagged)]
 pub enum PayoutsPostError {
     Status402(crate::models::OpenapiPeriodResponseBodyWalletInsufficientBalance),
+    Status409(crate::models::OpenapiPeriodResponseBodyIdempotencyConflict),
     Status422(crate::models::OpenapiPeriodResponseBodyValidationFailed),
+    Status500(crate::models::OpenapiPeriodResponseBodyInternalServerError),
     UnknownValue(serde_json::Value),
 }
 

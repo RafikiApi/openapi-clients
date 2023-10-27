@@ -36,7 +36,7 @@ module OpenapiClient
     def self.openapi_types
       {
         :'data' => :'Array<OpenapiPayoutGetResponse>',
-        :'meta' => :'OpenapiResponseBodySuccessCursorPaginatedMeta'
+        :'meta' => :'OpenapiPayoutListResponseMeta'
       }
     end
 
@@ -49,7 +49,7 @@ module OpenapiClient
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'OpenapiResponseBodySuccessCursorPaginated'
+      :'OpenapiResponseBodySuccessCollection'
       ]
     end
 

@@ -36,7 +36,7 @@ namespace rafikigen.Model
         /// </summary>
         /// <param name="data">data.</param>
         /// <param name="meta">meta.</param>
-        public PayoutsGet200Response(List<OpenapiPayoutGetResponse> data = default(List<OpenapiPayoutGetResponse>), OpenapiResponseBodySuccessCursorPaginatedMeta meta = default(OpenapiResponseBodySuccessCursorPaginatedMeta))
+        public PayoutsGet200Response(List<OpenapiPayoutGetResponse> data = default(List<OpenapiPayoutGetResponse>), OpenapiPayoutListResponseMeta meta = default(OpenapiPayoutListResponseMeta))
         {
             this.Data = data;
             this.Meta = meta;
@@ -52,7 +52,7 @@ namespace rafikigen.Model
         /// Gets or Sets Meta
         /// </summary>
         [DataMember(Name = "meta", EmitDefaultValue = false)]
-        public OpenapiResponseBodySuccessCursorPaginatedMeta Meta { get; set; }
+        public OpenapiPayoutListResponseMeta Meta { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

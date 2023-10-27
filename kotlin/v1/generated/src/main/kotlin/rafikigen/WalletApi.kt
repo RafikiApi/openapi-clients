@@ -19,6 +19,7 @@ import java.io.IOException
 import okhttp3.OkHttpClient
 import okhttp3.HttpUrl
 
+import rafikigen.models.OpenapiResponseBodyInternalServerError
 import rafikigen.models.WalletsGet200Response
 
 import com.squareup.moshi.Json

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.OpenapiPayoutGetResponse;
-import org.openapitools.client.model.OpenapiResponseBodySuccessCursorPaginatedMeta;
+import org.openapitools.client.model.OpenapiPayoutListResponseMeta;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +53,7 @@ import invalidPackageName.JSON;
 /**
  * PayoutsGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-23T12:05:31.906423Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T13:57:01.660841Z[Etc/UTC]")
 public class PayoutsGet200Response {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -61,7 +61,7 @@ public class PayoutsGet200Response {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private OpenapiResponseBodySuccessCursorPaginatedMeta meta;
+  private OpenapiPayoutListResponseMeta meta;
 
   public PayoutsGet200Response() {
   }
@@ -95,7 +95,7 @@ public class PayoutsGet200Response {
   }
 
 
-  public PayoutsGet200Response meta(OpenapiResponseBodySuccessCursorPaginatedMeta meta) {
+  public PayoutsGet200Response meta(OpenapiPayoutListResponseMeta meta) {
     
     this.meta = meta;
     return this;
@@ -106,12 +106,12 @@ public class PayoutsGet200Response {
    * @return meta
   **/
   @javax.annotation.Nullable
-  public OpenapiResponseBodySuccessCursorPaginatedMeta getMeta() {
+  public OpenapiPayoutListResponseMeta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(OpenapiResponseBodySuccessCursorPaginatedMeta meta) {
+  public void setMeta(OpenapiPayoutListResponseMeta meta) {
     this.meta = meta;
   }
 
@@ -207,7 +207,7 @@ public class PayoutsGet200Response {
       }
       // validate the optional field `meta`
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        OpenapiResponseBodySuccessCursorPaginatedMeta.validateJsonElement(jsonObj.get("meta"));
+        OpenapiPayoutListResponseMeta.validateJsonElement(jsonObj.get("meta"));
       }
   }
 

@@ -34,9 +34,9 @@ namespace rafikigen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenapiResponseBodyValidationFailed" /> class.
         /// </summary>
-        /// <param name="code">code.</param>
+        /// <param name="code">&#x60;VALIDATION_FAILED&#x60;.</param>
         /// <param name="errors">errors.</param>
-        /// <param name="message">message.</param>
+        /// <param name="message">E.g. \&quot;Validation failed.\&quot;.</param>
         public OpenapiResponseBodyValidationFailed(string code = default(string), OpenapiResponseBodyValidationFailedErrors errors = default(OpenapiResponseBodyValidationFailedErrors), string message = default(string))
         {
             this.Code = code;
@@ -45,8 +45,9 @@ namespace rafikigen.Model
         }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// &#x60;VALIDATION_FAILED&#x60;
         /// </summary>
+        /// <value>&#x60;VALIDATION_FAILED&#x60;</value>
         /// <example>VALIDATION_FAILED</example>
         [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
@@ -58,8 +59,9 @@ namespace rafikigen.Model
         public OpenapiResponseBodyValidationFailedErrors Errors { get; set; }
 
         /// <summary>
-        /// Gets or Sets Message
+        /// E.g. \&quot;Validation failed.\&quot;
         /// </summary>
+        /// <value>E.g. \&quot;Validation failed.\&quot;</value>
         /// <example>Validation failed.</example>
         [DataMember(Name = "message", EmitDefaultValue = false)]
         public string Message { get; set; }

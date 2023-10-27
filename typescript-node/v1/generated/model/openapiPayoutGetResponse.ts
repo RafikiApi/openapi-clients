@@ -17,10 +17,6 @@ import { OpenapiPayoutCreateResponseState } from './openapiPayoutCreateResponseS
 
 export class OpenapiPayoutGetResponse {
     'amount'?: OpenapiPayoutCreateResponseAmount;
-    /**
-    * The reference provided by the recipient account\'s actual bank on a successful payout.  > ⚠️ > It\'s important to be aware that this information might not be accessible for every payout. If there\'s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-    */
-    'bankReference'?: string;
     'createdAt'?: string;
     /**
     * The payout unique identifier
@@ -30,6 +26,10 @@ export class OpenapiPayoutGetResponse {
     * The recipient payment account receiving funds
     */
     'paymentAccountId'?: string;
+    /**
+    * The reference provided by the recipient account\'s actual bank or telco on a successful payout.  > ⚠️ > It\'s important to be aware that this information might not be accessible for every payout. If there\'s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+    */
+    'receipt'?: string;
     'sender'?: OpenapiPayoutCreateResponseSender;
     'state'?: OpenapiPayoutCreateResponseState;
     /**
@@ -46,11 +46,6 @@ export class OpenapiPayoutGetResponse {
             "type": "OpenapiPayoutCreateResponseAmount"
         },
         {
-            "name": "bankReference",
-            "baseName": "bank_reference",
-            "type": "string"
-        },
-        {
             "name": "createdAt",
             "baseName": "created_at",
             "type": "string"
@@ -63,6 +58,11 @@ export class OpenapiPayoutGetResponse {
         {
             "name": "paymentAccountId",
             "baseName": "payment_account_id",
+            "type": "string"
+        },
+        {
+            "name": "receipt",
+            "baseName": "receipt",
             "type": "string"
         },
         {

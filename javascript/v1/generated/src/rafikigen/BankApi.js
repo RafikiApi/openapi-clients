@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import BanksGet200Response from '../model/BanksGet200Response';
+import OpenapiResponseBodyInternalServerError from '../model/OpenapiResponseBodyInternalServerError';
 
 /**
 * Bank service.

@@ -71,6 +71,9 @@ class PaymentAccountApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'paymentAccountsGet' => [
+            'application/json',
+        ],
         'paymentAccountsPost' => [
             'application/json',
         ],
@@ -123,6 +126,350 @@ class PaymentAccountApi
     }
 
     /**
+     * Operation paymentAccountsGet
+     *
+     * List
+     *
+     * @param  int $paging_limit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param  string $paging_after The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentAccountsGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PaymentAccountsGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
+     */
+    public function paymentAccountsGet($paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['paymentAccountsGet'][0])
+    {
+        list($response) = $this->paymentAccountsGetWithHttpInfo($paging_limit, $paging_after, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation paymentAccountsGetWithHttpInfo
+     *
+     * List
+     *
+     * @param  int $paging_limit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param  string $paging_after The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentAccountsGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PaymentAccountsGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function paymentAccountsGetWithHttpInfo($paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['paymentAccountsGet'][0])
+    {
+        $request = $this->paymentAccountsGetRequest($paging_limit, $paging_after, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\PaymentAccountsGet200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\PaymentAccountsGet200Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PaymentAccountsGet200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\PaymentAccountsGet200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PaymentAccountsGet200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation paymentAccountsGetAsync
+     *
+     * List
+     *
+     * @param  int $paging_limit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param  string $paging_after The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentAccountsGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function paymentAccountsGetAsync($paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['paymentAccountsGet'][0])
+    {
+        return $this->paymentAccountsGetAsyncWithHttpInfo($paging_limit, $paging_after, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation paymentAccountsGetAsyncWithHttpInfo
+     *
+     * List
+     *
+     * @param  int $paging_limit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param  string $paging_after The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentAccountsGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function paymentAccountsGetAsyncWithHttpInfo($paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['paymentAccountsGet'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PaymentAccountsGet200Response';
+        $request = $this->paymentAccountsGetRequest($paging_limit, $paging_after, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'paymentAccountsGet'
+     *
+     * @param  int $paging_limit The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 (optional)
+     * @param  string $paging_after The base64 URL encoded cursor used to access the next set of paginated results (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentAccountsGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function paymentAccountsGetRequest($paging_limit = null, $paging_after = null, string $contentType = self::contentTypes['paymentAccountsGet'][0])
+    {
+
+
+
+
+        $resourcePath = '/payment-accounts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $paging_limit,
+            'paging_limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $paging_after,
+            'paging_after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation paymentAccountsPost
      *
      * Get or create
@@ -132,7 +479,7 @@ class PaymentAccountApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PaymentAccountsPost201Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed
+     * @return \OpenAPI\Client\Model\PaymentAccountsPost200Response|\OpenAPI\Client\Model\PaymentAccountsPost200Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
      */
     public function paymentAccountsPost($openapi_payment_account_get_or_create_request, string $contentType = self::contentTypes['paymentAccountsPost'][0])
     {
@@ -150,7 +497,7 @@ class PaymentAccountApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PaymentAccountsPost201Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PaymentAccountsPost200Response|\OpenAPI\Client\Model\PaymentAccountsPost200Response|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function paymentAccountsPostWithHttpInfo($openapi_payment_account_get_or_create_request, string $contentType = self::contentTypes['paymentAccountsPost'][0])
     {
@@ -192,18 +539,33 @@ class PaymentAccountApi
             }
 
             switch($statusCode) {
-                case 201:
-                    if ('\OpenAPI\Client\Model\PaymentAccountsPost201Response' === '\SplFileObject') {
+                case 200:
+                    if ('\OpenAPI\Client\Model\PaymentAccountsPost200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\PaymentAccountsPost201Response' !== 'string') {
+                        if ('\OpenAPI\Client\Model\PaymentAccountsPost200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PaymentAccountsPost201Response', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PaymentAccountsPost200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 201:
+                    if ('\OpenAPI\Client\Model\PaymentAccountsPost200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\PaymentAccountsPost200Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PaymentAccountsPost200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -222,9 +584,24 @@ class PaymentAccountApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\PaymentAccountsPost201Response';
+            $returnType = '\OpenAPI\Client\Model\PaymentAccountsPost200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -242,10 +619,18 @@ class PaymentAccountApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PaymentAccountsPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PaymentAccountsPost201Response',
+                        '\OpenAPI\Client\Model\PaymentAccountsPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,6 +639,14 @@ class PaymentAccountApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -297,7 +690,7 @@ class PaymentAccountApi
      */
     public function paymentAccountsPostAsyncWithHttpInfo($openapi_payment_account_get_or_create_request, string $contentType = self::contentTypes['paymentAccountsPost'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\PaymentAccountsPost201Response';
+        $returnType = '\OpenAPI\Client\Model\PaymentAccountsPost200Response';
         $request = $this->paymentAccountsPostRequest($openapi_payment_account_get_or_create_request, $contentType);
 
         return $this->client

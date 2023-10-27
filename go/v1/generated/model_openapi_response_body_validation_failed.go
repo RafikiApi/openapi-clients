@@ -19,8 +19,10 @@ var _ MappedNullable = &OpenapiResponseBodyValidationFailed{}
 
 // OpenapiResponseBodyValidationFailed struct for OpenapiResponseBodyValidationFailed
 type OpenapiResponseBodyValidationFailed struct {
+	// `VALIDATION_FAILED`
 	Code *string `json:"code,omitempty"`
 	Errors *OpenapiResponseBodyValidationFailedErrors `json:"errors,omitempty"`
+	// E.g. \"Validation failed.\"
 	Message *string `json:"message,omitempty"`
 }
 

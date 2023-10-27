@@ -34,8 +34,8 @@ namespace rafikigen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenapiResponseBodyWalletInsufficientBalance" /> class.
         /// </summary>
-        /// <param name="code">code.</param>
-        /// <param name="message">message.</param>
+        /// <param name="code">&#x60;WALLET_INSUFFICIENT_BALANCE&#x60;.</param>
+        /// <param name="message">E.g. \&quot;Wallet &#39;{wlt-xxx}&#39; doesn&#39;t have enough balance\&quot;.</param>
         public OpenapiResponseBodyWalletInsufficientBalance(string code = default(string), string message = default(string))
         {
             this.Code = code;
@@ -43,15 +43,17 @@ namespace rafikigen.Model
         }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// &#x60;WALLET_INSUFFICIENT_BALANCE&#x60;
         /// </summary>
+        /// <value>&#x60;WALLET_INSUFFICIENT_BALANCE&#x60;</value>
         /// <example>WALLET_INSUFFICIENT_BALANCE</example>
         [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or Sets Message
+        /// E.g. \&quot;Wallet &#39;{wlt-xxx}&#39; doesn&#39;t have enough balance\&quot;
         /// </summary>
+        /// <value>E.g. \&quot;Wallet &#39;{wlt-xxx}&#39; doesn&#39;t have enough balance\&quot;</value>
         /// <example>wallet &#39;{wlt-xxx}&#39; doesn&#39;t have enough balance</example>
         [DataMember(Name = "message", EmitDefaultValue = false)]
         public string Message { get; set; }

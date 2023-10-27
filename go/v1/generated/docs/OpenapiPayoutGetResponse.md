@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to [**OpenapiPayoutCreateResponseAmount**](OpenapiPayoutCreateResponseAmount.md) |  | [optional] 
-**BankReference** | Pointer to **string** | The reference provided by the recipient account&#39;s actual bank on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property. | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** | The payout unique identifier | [optional] 
 **PaymentAccountId** | Pointer to **string** | The recipient payment account receiving funds | [optional] 
+**Receipt** | Pointer to **string** | The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property. | [optional] 
 **Sender** | Pointer to [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional] 
 **State** | Pointer to [**OpenapiPayoutCreateResponseState**](OpenapiPayoutCreateResponseState.md) |  | [optional] 
 **WalletId** | Pointer to **string** | The wallet ID from which the money will disburse | [optional] 
@@ -56,31 +56,6 @@ SetAmount sets Amount field to given value.
 `func (o *OpenapiPayoutGetResponse) HasAmount() bool`
 
 HasAmount returns a boolean if a field has been set.
-
-### GetBankReference
-
-`func (o *OpenapiPayoutGetResponse) GetBankReference() string`
-
-GetBankReference returns the BankReference field if non-nil, zero value otherwise.
-
-### GetBankReferenceOk
-
-`func (o *OpenapiPayoutGetResponse) GetBankReferenceOk() (*string, bool)`
-
-GetBankReferenceOk returns a tuple with the BankReference field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBankReference
-
-`func (o *OpenapiPayoutGetResponse) SetBankReference(v string)`
-
-SetBankReference sets BankReference field to given value.
-
-### HasBankReference
-
-`func (o *OpenapiPayoutGetResponse) HasBankReference() bool`
-
-HasBankReference returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -156,6 +131,31 @@ SetPaymentAccountId sets PaymentAccountId field to given value.
 `func (o *OpenapiPayoutGetResponse) HasPaymentAccountId() bool`
 
 HasPaymentAccountId returns a boolean if a field has been set.
+
+### GetReceipt
+
+`func (o *OpenapiPayoutGetResponse) GetReceipt() string`
+
+GetReceipt returns the Receipt field if non-nil, zero value otherwise.
+
+### GetReceiptOk
+
+`func (o *OpenapiPayoutGetResponse) GetReceiptOk() (*string, bool)`
+
+GetReceiptOk returns a tuple with the Receipt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReceipt
+
+`func (o *OpenapiPayoutGetResponse) SetReceipt(v string)`
+
+SetReceipt sets Receipt field to given value.
+
+### HasReceipt
+
+`func (o *OpenapiPayoutGetResponse) HasReceipt() bool`
+
+HasReceipt returns a boolean if a field has been set.
 
 ### GetSender
 

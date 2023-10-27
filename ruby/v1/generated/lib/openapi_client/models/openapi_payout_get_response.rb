@@ -17,9 +17,6 @@ module OpenapiClient
   class OpenapiPayoutGetResponse
     attr_accessor :amount
 
-    # The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-    attr_accessor :bank_reference
-
     attr_accessor :created_at
 
     # The payout unique identifier
@@ -27,6 +24,9 @@ module OpenapiClient
 
     # The recipient payment account receiving funds
     attr_accessor :payment_account_id
+
+    # The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+    attr_accessor :receipt
 
     attr_accessor :sender
 
@@ -39,10 +39,10 @@ module OpenapiClient
     def self.attribute_map
       {
         :'amount' => :'amount',
-        :'bank_reference' => :'bank_reference',
         :'created_at' => :'created_at',
         :'id' => :'id',
         :'payment_account_id' => :'payment_account_id',
+        :'receipt' => :'receipt',
         :'sender' => :'sender',
         :'state' => :'state',
         :'wallet_id' => :'wallet_id'
@@ -58,10 +58,10 @@ module OpenapiClient
     def self.openapi_types
       {
         :'amount' => :'OpenapiPayoutCreateResponseAmount',
-        :'bank_reference' => :'String',
         :'created_at' => :'String',
         :'id' => :'String',
         :'payment_account_id' => :'String',
+        :'receipt' => :'String',
         :'sender' => :'OpenapiPayoutCreateResponseSender',
         :'state' => :'OpenapiPayoutCreateResponseState',
         :'wallet_id' => :'String'
@@ -93,10 +93,6 @@ module OpenapiClient
         self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'bank_reference')
-        self.bank_reference = attributes[:'bank_reference']
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -107,6 +103,10 @@ module OpenapiClient
 
       if attributes.key?(:'payment_account_id')
         self.payment_account_id = attributes[:'payment_account_id']
+      end
+
+      if attributes.key?(:'receipt')
+        self.receipt = attributes[:'receipt']
       end
 
       if attributes.key?(:'sender')
@@ -143,10 +143,10 @@ module OpenapiClient
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
-          bank_reference == o.bank_reference &&
           created_at == o.created_at &&
           id == o.id &&
           payment_account_id == o.payment_account_id &&
+          receipt == o.receipt &&
           sender == o.sender &&
           state == o.state &&
           wallet_id == o.wallet_id
@@ -161,7 +161,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, bank_reference, created_at, id, payment_account_id, sender, state, wallet_id].hash
+      [amount, created_at, id, payment_account_id, receipt, sender, state, wallet_id].hash
     end
 
     # Builds the object from hash

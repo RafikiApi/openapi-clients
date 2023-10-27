@@ -13,6 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
+import OpenapiResponseBodyInternalServerError from '../model/OpenapiResponseBodyInternalServerError';
 import WalletsGet200Response from '../model/WalletsGet200Response';
 
 /**

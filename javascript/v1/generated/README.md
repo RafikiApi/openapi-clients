@@ -126,10 +126,11 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *Resources.BankApi* | [**banksGet**](docs/BankApi.md#banksGet) | **GET** /banks | List
+*Resources.PaymentAccountApi* | [**paymentAccountsGet**](docs/PaymentAccountApi.md#paymentAccountsGet) | **GET** /payment-accounts | List
 *Resources.PaymentAccountApi* | [**paymentAccountsPost**](docs/PaymentAccountApi.md#paymentAccountsPost) | **POST** /payment-accounts | Get or create
 *Resources.PayoutApi* | [**payoutsGet**](docs/PayoutApi.md#payoutsGet) | **GET** /payouts | List
-*Resources.PayoutApi* | [**payoutsIdGet**](docs/PayoutApi.md#payoutsIdGet) | **GET** /payouts/{id} | Query status
-*Resources.PayoutApi* | [**payoutsPost**](docs/PayoutApi.md#payoutsPost) | **POST** /payouts | Send money
+*Resources.PayoutApi* | [**payoutsIdGet**](docs/PayoutApi.md#payoutsIdGet) | **GET** /payouts/{id} | Get
+*Resources.PayoutApi* | [**payoutsPost**](docs/PayoutApi.md#payoutsPost) | **POST** /payouts | Create
 *Resources.WalletApi* | [**walletsGet**](docs/WalletApi.md#walletsGet) | **GET** /wallets | List
 
 
@@ -146,6 +147,9 @@ Class | Method | HTTP request | Description
  - [Resources.OpenapiPaymentAccountGetOrCreateResponseBankAccount](docs/OpenapiPaymentAccountGetOrCreateResponseBankAccount.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateResponseHolder](docs/OpenapiPaymentAccountGetOrCreateResponseHolder.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateResponseMobileMoney](docs/OpenapiPaymentAccountGetOrCreateResponseMobileMoney.md)
+ - [Resources.OpenapiPaymentAccountListResponseMeta](docs/OpenapiPaymentAccountListResponseMeta.md)
+ - [Resources.OpenapiPaymentAccountListResponseMetaPaging](docs/OpenapiPaymentAccountListResponseMetaPaging.md)
+ - [Resources.OpenapiPaymentAccountListResponseMetaPagingCursors](docs/OpenapiPaymentAccountListResponseMetaPagingCursors.md)
  - [Resources.OpenapiPayoutCreateRequest](docs/OpenapiPayoutCreateRequest.md)
  - [Resources.OpenapiPayoutCreateRequestAmount](docs/OpenapiPayoutCreateRequestAmount.md)
  - [Resources.OpenapiPayoutCreateRequestSender](docs/OpenapiPayoutCreateRequestSender.md)
@@ -160,16 +164,20 @@ Class | Method | HTTP request | Description
  - [Resources.OpenapiPayoutCreateResponseSenderIndividualIdentityDocument](docs/OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.md)
  - [Resources.OpenapiPayoutCreateResponseState](docs/OpenapiPayoutCreateResponseState.md)
  - [Resources.OpenapiPayoutGetResponse](docs/OpenapiPayoutGetResponse.md)
+ - [Resources.OpenapiPayoutListResponseMeta](docs/OpenapiPayoutListResponseMeta.md)
+ - [Resources.OpenapiPayoutListResponseMetaPaging](docs/OpenapiPayoutListResponseMetaPaging.md)
+ - [Resources.OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
+ - [Resources.OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
+ - [Resources.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [Resources.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [Resources.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [Resources.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
- - [Resources.OpenapiResponseBodySuccessCursorPaginated](docs/OpenapiResponseBodySuccessCursorPaginated.md)
- - [Resources.OpenapiResponseBodySuccessCursorPaginatedMeta](docs/OpenapiResponseBodySuccessCursorPaginatedMeta.md)
- - [Resources.OpenapiResponseBodySuccessCursorPaginatedMetaPaging](docs/OpenapiResponseBodySuccessCursorPaginatedMetaPaging.md)
- - [Resources.OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors](docs/OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors.md)
  - [Resources.OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)
  - [Resources.OpenapiResponseBodyValidationFailed](docs/OpenapiResponseBodyValidationFailed.md)
  - [Resources.OpenapiResponseBodyValidationFailedErrors](docs/OpenapiResponseBodyValidationFailedErrors.md)
  - [Resources.OpenapiResponseBodyWalletInsufficientBalance](docs/OpenapiResponseBodyWalletInsufficientBalance.md)
- - [Resources.PaymentAccountsPost201Response](docs/PaymentAccountsPost201Response.md)
+ - [Resources.PaymentAccountsGet200Response](docs/PaymentAccountsGet200Response.md)
+ - [Resources.PaymentAccountsPost200Response](docs/PaymentAccountsPost200Response.md)
  - [Resources.PayoutsGet200Response](docs/PayoutsGet200Response.md)
  - [Resources.PayoutsIdGet200Response](docs/PayoutsIdGet200Response.md)
  - [Resources.PayoutsPost202Response](docs/PayoutsPost202Response.md)

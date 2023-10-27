@@ -4,12 +4,88 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**payment_accounts_get**](PaymentAccountApi.md#payment_accounts_get) | **GET** /payment-accounts | List |
 | [**payment_accounts_post**](PaymentAccountApi.md#payment_accounts_post) | **POST** /payment-accounts | Get or create |
+
+
+## payment_accounts_get
+
+> <PaymentAccountsGet200Response> payment_accounts_get(opts)
+
+List
+
+Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'openapi_client'
+# setup authorization
+OpenapiClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Bearer'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Bearer'] = 'Bearer'
+end
+
+api_instance = OpenapiClient::PaymentAccountApi.new
+opts = {
+  paging_limit: 56, # Integer | The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50
+  paging_after: 'paging_after_example' # String | The base64 URL encoded cursor used to access the next set of paginated results
+}
+
+begin
+  # List
+  result = api_instance.payment_accounts_get(opts)
+  p result
+rescue OpenapiClient::ApiError => e
+  puts "Error when calling PaymentAccountApi->payment_accounts_get: #{e}"
+end
+```
+
+#### Using the payment_accounts_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaymentAccountsGet200Response>, Integer, Hash)> payment_accounts_get_with_http_info(opts)
+
+```ruby
+begin
+  # List
+  data, status_code, headers = api_instance.payment_accounts_get_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaymentAccountsGet200Response>
+rescue OpenapiClient::ApiError => e
+  puts "Error when calling PaymentAccountApi->payment_accounts_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **paging_limit** | **Integer** | The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 | [optional] |
+| **paging_after** | **String** | The base64 URL encoded cursor used to access the next set of paginated results | [optional] |
+
+### Return type
+
+[**PaymentAccountsGet200Response**](PaymentAccountsGet200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## payment_accounts_post
 
-> <PaymentAccountsPost201Response> payment_accounts_post(openapi_payment_account_get_or_create_request)
+> <PaymentAccountsPost200Response> payment_accounts_post(openapi_payment_account_get_or_create_request)
 
 Get or create
 
@@ -44,7 +120,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaymentAccountsPost201Response>, Integer, Hash)> payment_accounts_post_with_http_info(openapi_payment_account_get_or_create_request)
+> <Array(<PaymentAccountsPost200Response>, Integer, Hash)> payment_accounts_post_with_http_info(openapi_payment_account_get_or_create_request)
 
 ```ruby
 begin
@@ -52,7 +128,7 @@ begin
   data, status_code, headers = api_instance.payment_accounts_post_with_http_info(openapi_payment_account_get_or_create_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PaymentAccountsPost201Response>
+  p data # => <PaymentAccountsPost200Response>
 rescue OpenapiClient::ApiError => e
   puts "Error when calling PaymentAccountApi->payment_accounts_post_with_http_info: #{e}"
 end
@@ -66,7 +142,7 @@ end
 
 ### Return type
 
-[**PaymentAccountsPost201Response**](PaymentAccountsPost201Response.md)
+[**PaymentAccountsPost200Response**](PaymentAccountsPost200Response.md)
 
 ### Authorization
 

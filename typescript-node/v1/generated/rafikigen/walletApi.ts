@@ -15,6 +15,7 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { OpenapiResponseBodyInternalServerError } from '../model/openapiResponseBodyInternalServerError';
 import { WalletsGet200Response } from '../model/walletsGet200Response';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';

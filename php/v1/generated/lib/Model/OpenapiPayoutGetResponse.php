@@ -58,10 +58,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'amount' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseAmount',
-        'bank_reference' => 'string',
         'created_at' => 'string',
         'id' => 'string',
         'payment_account_id' => 'string',
+        'receipt' => 'string',
         'sender' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseSender',
         'state' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseState',
         'wallet_id' => 'string'
@@ -76,10 +76,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'amount' => null,
-        'bank_reference' => null,
         'created_at' => 'RFC 3339',
         'id' => null,
         'payment_account_id' => null,
+        'receipt' => null,
         'sender' => null,
         'state' => null,
         'wallet_id' => null
@@ -92,10 +92,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'amount' => false,
-		'bank_reference' => false,
 		'created_at' => false,
 		'id' => false,
 		'payment_account_id' => false,
+		'receipt' => false,
 		'sender' => false,
 		'state' => false,
 		'wallet_id' => false
@@ -188,10 +188,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-        'bank_reference' => 'bank_reference',
         'created_at' => 'created_at',
         'id' => 'id',
         'payment_account_id' => 'payment_account_id',
+        'receipt' => 'receipt',
         'sender' => 'sender',
         'state' => 'state',
         'wallet_id' => 'wallet_id'
@@ -204,10 +204,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'amount' => 'setAmount',
-        'bank_reference' => 'setBankReference',
         'created_at' => 'setCreatedAt',
         'id' => 'setId',
         'payment_account_id' => 'setPaymentAccountId',
+        'receipt' => 'setReceipt',
         'sender' => 'setSender',
         'state' => 'setState',
         'wallet_id' => 'setWalletId'
@@ -220,10 +220,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'amount' => 'getAmount',
-        'bank_reference' => 'getBankReference',
         'created_at' => 'getCreatedAt',
         'id' => 'getId',
         'payment_account_id' => 'getPaymentAccountId',
+        'receipt' => 'getReceipt',
         'sender' => 'getSender',
         'state' => 'getState',
         'wallet_id' => 'getWalletId'
@@ -287,10 +287,10 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('bank_reference', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
+        $this->setIfExists('receipt', $data ?? [], null);
         $this->setIfExists('sender', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('wallet_id', $data ?? [], null);
@@ -361,33 +361,6 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_reference
-     *
-     * @return string|null
-     */
-    public function getBankReference()
-    {
-        return $this->container['bank_reference'];
-    }
-
-    /**
-     * Sets bank_reference
-     *
-     * @param string|null $bank_reference The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-     *
-     * @return self
-     */
-    public function setBankReference($bank_reference)
-    {
-        if (is_null($bank_reference)) {
-            throw new \InvalidArgumentException('non-nullable bank_reference cannot be null');
-        }
-        $this->container['bank_reference'] = $bank_reference;
 
         return $this;
     }
@@ -469,6 +442,33 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable payment_account_id cannot be null');
         }
         $this->container['payment_account_id'] = $payment_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets receipt
+     *
+     * @return string|null
+     */
+    public function getReceipt()
+    {
+        return $this->container['receipt'];
+    }
+
+    /**
+     * Sets receipt
+     *
+     * @param string|null $receipt The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+     *
+     * @return self
+     */
+    public function setReceipt($receipt)
+    {
+        if (is_null($receipt)) {
+            throw new \InvalidArgumentException('non-nullable receipt cannot be null');
+        }
+        $this->container['receipt'] = $receipt;
 
         return $this;
     }

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **String** |  | [optional] 
+**code** | **String** | &#x60;VALIDATION_FAILED&#x60; | [optional] 
 **errors** | [**OpenapiResponseBodyValidationFailedErrors**](OpenapiResponseBodyValidationFailedErrors.md) |  | [optional] 
-**message** | **String** |  | [optional] 
+**message** | **String** | E.g. \&quot;Validation failed.\&quot; | [optional] 
 
 

@@ -4,13 +4,69 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**paymentAccountsGet**](PaymentAccountApi.md#paymentAccountsGet) | **GET** /payment-accounts | List
 [**paymentAccountsPost**](PaymentAccountApi.md#paymentAccountsPost) | **POST** /payment-accounts | Get or create
 
 
 
+## paymentAccountsGet
+
+> PaymentAccountsGet200Response paymentAccountsGet(opts)
+
+List
+
+Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary. 
+
+### Example
+
+```javascript
+import Resources from 'resources';
+let defaultClient = Resources.ApiClient.instance;
+// Configure API key authorization: Bearer
+let Bearer = defaultClient.authentications['Bearer'];
+Bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Bearer.apiKeyPrefix = 'Token';
+
+let apiInstance = new Resources.PaymentAccountApi();
+let opts = {
+  'pagingLimit': 56, // Number | The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50
+  'pagingAfter': "pagingAfter_example" // String | The base64 URL encoded cursor used to access the next set of paginated results
+};
+apiInstance.paymentAccountsGet(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pagingLimit** | **Number**| The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50 | [optional] 
+ **pagingAfter** | **String**| The base64 URL encoded cursor used to access the next set of paginated results | [optional] 
+
+### Return type
+
+[**PaymentAccountsGet200Response**](PaymentAccountsGet200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## paymentAccountsPost
 
-> PaymentAccountsPost201Response paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest)
+> PaymentAccountsPost200Response paymentAccountsPost(openapiPaymentAccountGetOrCreateRequest)
 
 Get or create
 
@@ -47,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaymentAccountsPost201Response**](PaymentAccountsPost201Response.md)
+[**PaymentAccountsPost200Response**](PaymentAccountsPost200Response.md)
 
 ### Authorization
 

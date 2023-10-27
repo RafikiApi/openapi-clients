@@ -16,6 +16,7 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { BanksGet200Response } from '../model/banksGet200Response';
+import { OpenapiResponseBodyInternalServerError } from '../model/openapiResponseBodyInternalServerError';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';

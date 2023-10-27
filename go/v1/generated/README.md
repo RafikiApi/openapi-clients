@@ -78,10 +78,11 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankAPI* | [**BanksGet**](docs/BankAPI.md#banksget) | **Get** /banks | List
+*PaymentAccountAPI* | [**PaymentAccountsGet**](docs/PaymentAccountAPI.md#paymentaccountsget) | **Get** /payment-accounts | List
 *PaymentAccountAPI* | [**PaymentAccountsPost**](docs/PaymentAccountAPI.md#paymentaccountspost) | **Post** /payment-accounts | Get or create
 *PayoutAPI* | [**PayoutsGet**](docs/PayoutAPI.md#payoutsget) | **Get** /payouts | List
-*PayoutAPI* | [**PayoutsIdGet**](docs/PayoutAPI.md#payoutsidget) | **Get** /payouts/{id} | Query status
-*PayoutAPI* | [**PayoutsPost**](docs/PayoutAPI.md#payoutspost) | **Post** /payouts | Send money
+*PayoutAPI* | [**PayoutsIdGet**](docs/PayoutAPI.md#payoutsidget) | **Get** /payouts/{id} | Get
+*PayoutAPI* | [**PayoutsPost**](docs/PayoutAPI.md#payoutspost) | **Post** /payouts | Create
 *WalletAPI* | [**WalletsGet**](docs/WalletAPI.md#walletsget) | **Get** /wallets | List
 
 
@@ -98,6 +99,9 @@ Class | Method | HTTP request | Description
  - [OpenapiPaymentAccountGetOrCreateResponseBankAccount](docs/OpenapiPaymentAccountGetOrCreateResponseBankAccount.md)
  - [OpenapiPaymentAccountGetOrCreateResponseHolder](docs/OpenapiPaymentAccountGetOrCreateResponseHolder.md)
  - [OpenapiPaymentAccountGetOrCreateResponseMobileMoney](docs/OpenapiPaymentAccountGetOrCreateResponseMobileMoney.md)
+ - [OpenapiPaymentAccountListResponseMeta](docs/OpenapiPaymentAccountListResponseMeta.md)
+ - [OpenapiPaymentAccountListResponseMetaPaging](docs/OpenapiPaymentAccountListResponseMetaPaging.md)
+ - [OpenapiPaymentAccountListResponseMetaPagingCursors](docs/OpenapiPaymentAccountListResponseMetaPagingCursors.md)
  - [OpenapiPayoutCreateRequest](docs/OpenapiPayoutCreateRequest.md)
  - [OpenapiPayoutCreateRequestAmount](docs/OpenapiPayoutCreateRequestAmount.md)
  - [OpenapiPayoutCreateRequestSender](docs/OpenapiPayoutCreateRequestSender.md)
@@ -112,16 +116,20 @@ Class | Method | HTTP request | Description
  - [OpenapiPayoutCreateResponseSenderIndividualIdentityDocument](docs/OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.md)
  - [OpenapiPayoutCreateResponseState](docs/OpenapiPayoutCreateResponseState.md)
  - [OpenapiPayoutGetResponse](docs/OpenapiPayoutGetResponse.md)
+ - [OpenapiPayoutListResponseMeta](docs/OpenapiPayoutListResponseMeta.md)
+ - [OpenapiPayoutListResponseMetaPaging](docs/OpenapiPayoutListResponseMetaPaging.md)
+ - [OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
+ - [OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
+ - [OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
- - [OpenapiResponseBodySuccessCursorPaginated](docs/OpenapiResponseBodySuccessCursorPaginated.md)
- - [OpenapiResponseBodySuccessCursorPaginatedMeta](docs/OpenapiResponseBodySuccessCursorPaginatedMeta.md)
- - [OpenapiResponseBodySuccessCursorPaginatedMetaPaging](docs/OpenapiResponseBodySuccessCursorPaginatedMetaPaging.md)
- - [OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors](docs/OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors.md)
  - [OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)
  - [OpenapiResponseBodyValidationFailed](docs/OpenapiResponseBodyValidationFailed.md)
  - [OpenapiResponseBodyValidationFailedErrors](docs/OpenapiResponseBodyValidationFailedErrors.md)
  - [OpenapiResponseBodyWalletInsufficientBalance](docs/OpenapiResponseBodyWalletInsufficientBalance.md)
- - [PaymentAccountsPost201Response](docs/PaymentAccountsPost201Response.md)
+ - [PaymentAccountsGet200Response](docs/PaymentAccountsGet200Response.md)
+ - [PaymentAccountsPost200Response](docs/PaymentAccountsPost200Response.md)
  - [PayoutsGet200Response](docs/PayoutsGet200Response.md)
  - [PayoutsIdGet200Response](docs/PayoutsIdGet200Response.md)
  - [PayoutsPost202Response](docs/PayoutsPost202Response.md)

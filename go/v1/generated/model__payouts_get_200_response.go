@@ -20,7 +20,7 @@ var _ MappedNullable = &PayoutsGet200Response{}
 // PayoutsGet200Response struct for PayoutsGet200Response
 type PayoutsGet200Response struct {
 	Data []OpenapiPayoutGetResponse `json:"data,omitempty"`
-	Meta *OpenapiResponseBodySuccessCursorPaginatedMeta `json:"meta,omitempty"`
+	Meta *OpenapiPayoutListResponseMeta `json:"meta,omitempty"`
 }
 
 // NewPayoutsGet200Response instantiates a new PayoutsGet200Response object
@@ -73,9 +73,9 @@ func (o *PayoutsGet200Response) SetData(v []OpenapiPayoutGetResponse) {
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *PayoutsGet200Response) GetMeta() OpenapiResponseBodySuccessCursorPaginatedMeta {
+func (o *PayoutsGet200Response) GetMeta() OpenapiPayoutListResponseMeta {
 	if o == nil || IsNil(o.Meta) {
-		var ret OpenapiResponseBodySuccessCursorPaginatedMeta
+		var ret OpenapiPayoutListResponseMeta
 		return ret
 	}
 	return *o.Meta
@@ -83,7 +83,7 @@ func (o *PayoutsGet200Response) GetMeta() OpenapiResponseBodySuccessCursorPagina
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PayoutsGet200Response) GetMetaOk() (*OpenapiResponseBodySuccessCursorPaginatedMeta, bool) {
+func (o *PayoutsGet200Response) GetMetaOk() (*OpenapiPayoutListResponseMeta, bool) {
 	if o == nil || IsNil(o.Meta) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *PayoutsGet200Response) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given OpenapiResponseBodySuccessCursorPaginatedMeta and assigns it to the Meta field.
-func (o *PayoutsGet200Response) SetMeta(v OpenapiResponseBodySuccessCursorPaginatedMeta) {
+// SetMeta gets a reference to the given OpenapiPayoutListResponseMeta and assigns it to the Meta field.
+func (o *PayoutsGet200Response) SetMeta(v OpenapiPayoutListResponseMeta) {
 	o.Meta = &v
 }
 

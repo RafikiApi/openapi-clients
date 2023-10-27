@@ -14,8 +14,14 @@ import { RequestFile } from './models';
 import { OpenapiResponseBodyValidationFailedErrors } from './openapiResponseBodyValidationFailedErrors';
 
 export class OpenapiResponseBodyValidationFailed {
+    /**
+    * `VALIDATION_FAILED`
+    */
     'code'?: string;
     'errors'?: OpenapiResponseBodyValidationFailedErrors;
+    /**
+    * E.g. \"Validation failed.\"
+    */
     'message'?: string;
 
     static discriminator: string | undefined = undefined;

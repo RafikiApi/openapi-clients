@@ -58,7 +58,7 @@ class PayoutsGet200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'data' => '\OpenAPI\Client\Model\OpenapiPayoutGetResponse[]',
-        'meta' => '\OpenAPI\Client\Model\OpenapiResponseBodySuccessCursorPaginatedMeta'
+        'meta' => '\OpenAPI\Client\Model\OpenapiPayoutListResponseMeta'
     ];
 
     /**
@@ -326,7 +326,7 @@ class PayoutsGet200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\OpenapiResponseBodySuccessCursorPaginatedMeta|null
+     * @return \OpenAPI\Client\Model\OpenapiPayoutListResponseMeta|null
      */
     public function getMeta()
     {
@@ -336,7 +336,7 @@ class PayoutsGet200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\OpenapiResponseBodySuccessCursorPaginatedMeta|null $meta meta
+     * @param \OpenAPI\Client\Model\OpenapiPayoutListResponseMeta|null $meta meta
      *
      * @return self
      */

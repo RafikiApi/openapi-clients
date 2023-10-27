@@ -81,11 +81,13 @@ class OpenapiResponseBodyWalletInsufficientBalance {
 
 
 /**
+ * `WALLET_INSUFFICIENT_BALANCE`
  * @member {String} code
  */
 OpenapiResponseBodyWalletInsufficientBalance.prototype['code'] = undefined;
 
 /**
+ * E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"
  * @member {String} message
  */
 OpenapiResponseBodyWalletInsufficientBalance.prototype['message'] = undefined;

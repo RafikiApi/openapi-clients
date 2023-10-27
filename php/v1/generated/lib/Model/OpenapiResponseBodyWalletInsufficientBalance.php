@@ -309,7 +309,7 @@ class OpenapiResponseBodyWalletInsufficientBalance implements ModelInterface, Ar
     /**
      * Sets code
      *
-     * @param string|null $code code
+     * @param string|null $code `WALLET_INSUFFICIENT_BALANCE`
      *
      * @return self
      */
@@ -336,7 +336,7 @@ class OpenapiResponseBodyWalletInsufficientBalance implements ModelInterface, Ar
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string|null $message E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"
      *
      * @return self
      */

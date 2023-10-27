@@ -19,7 +19,9 @@ var _ MappedNullable = &OpenapiResponseBodyWalletInsufficientBalance{}
 
 // OpenapiResponseBodyWalletInsufficientBalance struct for OpenapiResponseBodyWalletInsufficientBalance
 type OpenapiResponseBodyWalletInsufficientBalance struct {
+	// `WALLET_INSUFFICIENT_BALANCE`
 	Code *string `json:"code,omitempty"`
+	// E.g. \"Wallet '{wlt-xxx}' doesn't have enough balance\"
 	Message *string `json:"message,omitempty"`
 }
 

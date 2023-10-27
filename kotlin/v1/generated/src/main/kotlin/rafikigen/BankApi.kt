@@ -20,6 +20,7 @@ import okhttp3.OkHttpClient
 import okhttp3.HttpUrl
 
 import rafikigen.models.BanksGet200Response
+import rafikigen.models.OpenapiResponseBodyInternalServerError
 
 import com.squareup.moshi.Json
 

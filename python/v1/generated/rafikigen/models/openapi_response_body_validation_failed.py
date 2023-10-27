@@ -19,16 +19,16 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, Field, StrictStr
 from rafikigen.models.openapi_response_body_validation_failed_errors import OpenapiResponseBodyValidationFailedErrors
 
 class OpenapiResponseBodyValidationFailed(BaseModel):
     """
     OpenapiResponseBodyValidationFailed
     """
-    code: Optional[StrictStr] = None
+    code: Optional[StrictStr] = Field(None, description="`VALIDATION_FAILED`")
     errors: Optional[OpenapiResponseBodyValidationFailedErrors] = None
-    message: Optional[StrictStr] = None
+    message: Optional[StrictStr] = Field(None, description="E.g. \"Validation failed.\"")
     __properties = ["code", "errors", "message"]
 
     class Config:

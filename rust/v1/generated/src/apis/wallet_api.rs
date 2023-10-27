@@ -19,6 +19,7 @@ use super::{Error, configuration};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WalletsGetError {
+    Status500(crate::models::OpenapiPeriodResponseBodyInternalServerError),
     UnknownValue(serde_json::Value),
 }
 

@@ -12,11 +12,11 @@
 
 import { RequestFile } from './models';
 import { OpenapiPayoutGetResponse } from './openapiPayoutGetResponse';
-import { OpenapiResponseBodySuccessCursorPaginatedMeta } from './openapiResponseBodySuccessCursorPaginatedMeta';
+import { OpenapiPayoutListResponseMeta } from './openapiPayoutListResponseMeta';
 
 export class PayoutsGet200Response {
     'data'?: Array<OpenapiPayoutGetResponse>;
-    'meta'?: OpenapiResponseBodySuccessCursorPaginatedMeta;
+    'meta'?: OpenapiPayoutListResponseMeta;
 
     static discriminator: string | undefined = undefined;
 
@@ -29,7 +29,7 @@ export class PayoutsGet200Response {
         {
             "name": "meta",
             "baseName": "meta",
-            "type": "OpenapiResponseBodySuccessCursorPaginatedMeta"
+            "type": "OpenapiPayoutListResponseMeta"
         }    ];
 
     static getAttributeTypeMap() {

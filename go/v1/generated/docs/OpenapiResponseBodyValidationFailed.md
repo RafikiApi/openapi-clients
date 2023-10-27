@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **string** | &#x60;VALIDATION_FAILED&#x60; | [optional] 
 **Errors** | Pointer to [**OpenapiResponseBodyValidationFailedErrors**](OpenapiResponseBodyValidationFailedErrors.md) |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
+**Message** | Pointer to **string** | E.g. \&quot;Validation failed.\&quot; | [optional] 
 
 ## Methods
 

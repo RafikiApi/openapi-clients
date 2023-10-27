@@ -45,10 +45,11 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankApi* | [**banksGet**](docs/BankApi.md#banksget) | **GET** /banks | List
+*PaymentAccountApi* | [**paymentAccountsGet**](docs/PaymentAccountApi.md#paymentaccountsget) | **GET** /payment-accounts | List
 *PaymentAccountApi* | [**paymentAccountsPost**](docs/PaymentAccountApi.md#paymentaccountspost) | **POST** /payment-accounts | Get or create
 *PayoutApi* | [**payoutsGet**](docs/PayoutApi.md#payoutsget) | **GET** /payouts | List
-*PayoutApi* | [**payoutsIdGet**](docs/PayoutApi.md#payoutsidget) | **GET** /payouts/{id} | Query status
-*PayoutApi* | [**payoutsPost**](docs/PayoutApi.md#payoutspost) | **POST** /payouts | Send money
+*PayoutApi* | [**payoutsIdGet**](docs/PayoutApi.md#payoutsidget) | **GET** /payouts/{id} | Get
+*PayoutApi* | [**payoutsPost**](docs/PayoutApi.md#payoutspost) | **POST** /payouts | Create
 *WalletApi* | [**walletsGet**](docs/WalletApi.md#walletsget) | **GET** /wallets | List
 
 
@@ -66,6 +67,9 @@ Class | Method | HTTP request | Description
  - [rafikigen.models.OpenapiPaymentAccountGetOrCreateResponseBankAccount](docs/OpenapiPaymentAccountGetOrCreateResponseBankAccount.md)
  - [rafikigen.models.OpenapiPaymentAccountGetOrCreateResponseHolder](docs/OpenapiPaymentAccountGetOrCreateResponseHolder.md)
  - [rafikigen.models.OpenapiPaymentAccountGetOrCreateResponseMobileMoney](docs/OpenapiPaymentAccountGetOrCreateResponseMobileMoney.md)
+ - [rafikigen.models.OpenapiPaymentAccountListResponseMeta](docs/OpenapiPaymentAccountListResponseMeta.md)
+ - [rafikigen.models.OpenapiPaymentAccountListResponseMetaPaging](docs/OpenapiPaymentAccountListResponseMetaPaging.md)
+ - [rafikigen.models.OpenapiPaymentAccountListResponseMetaPagingCursors](docs/OpenapiPaymentAccountListResponseMetaPagingCursors.md)
  - [rafikigen.models.OpenapiPayoutCreateRequest](docs/OpenapiPayoutCreateRequest.md)
  - [rafikigen.models.OpenapiPayoutCreateRequestAmount](docs/OpenapiPayoutCreateRequestAmount.md)
  - [rafikigen.models.OpenapiPayoutCreateRequestSender](docs/OpenapiPayoutCreateRequestSender.md)
@@ -80,16 +84,20 @@ Class | Method | HTTP request | Description
  - [rafikigen.models.OpenapiPayoutCreateResponseSenderIndividualIdentityDocument](docs/OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.md)
  - [rafikigen.models.OpenapiPayoutCreateResponseState](docs/OpenapiPayoutCreateResponseState.md)
  - [rafikigen.models.OpenapiPayoutGetResponse](docs/OpenapiPayoutGetResponse.md)
+ - [rafikigen.models.OpenapiPayoutListResponseMeta](docs/OpenapiPayoutListResponseMeta.md)
+ - [rafikigen.models.OpenapiPayoutListResponseMetaPaging](docs/OpenapiPayoutListResponseMetaPaging.md)
+ - [rafikigen.models.OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
+ - [rafikigen.models.OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
+ - [rafikigen.models.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [rafikigen.models.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [rafikigen.models.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [rafikigen.models.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
- - [rafikigen.models.OpenapiResponseBodySuccessCursorPaginated](docs/OpenapiResponseBodySuccessCursorPaginated.md)
- - [rafikigen.models.OpenapiResponseBodySuccessCursorPaginatedMeta](docs/OpenapiResponseBodySuccessCursorPaginatedMeta.md)
- - [rafikigen.models.OpenapiResponseBodySuccessCursorPaginatedMetaPaging](docs/OpenapiResponseBodySuccessCursorPaginatedMetaPaging.md)
- - [rafikigen.models.OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors](docs/OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors.md)
  - [rafikigen.models.OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)
  - [rafikigen.models.OpenapiResponseBodyValidationFailed](docs/OpenapiResponseBodyValidationFailed.md)
  - [rafikigen.models.OpenapiResponseBodyValidationFailedErrors](docs/OpenapiResponseBodyValidationFailedErrors.md)
  - [rafikigen.models.OpenapiResponseBodyWalletInsufficientBalance](docs/OpenapiResponseBodyWalletInsufficientBalance.md)
- - [rafikigen.models.PaymentAccountsPost201Response](docs/PaymentAccountsPost201Response.md)
+ - [rafikigen.models.PaymentAccountsGet200Response](docs/PaymentAccountsGet200Response.md)
+ - [rafikigen.models.PaymentAccountsPost200Response](docs/PaymentAccountsPost200Response.md)
  - [rafikigen.models.PayoutsGet200Response](docs/PayoutsGet200Response.md)
  - [rafikigen.models.PayoutsIdGet200Response](docs/PayoutsIdGet200Response.md)
  - [rafikigen.models.PayoutsPost202Response](docs/PayoutsPost202Response.md)

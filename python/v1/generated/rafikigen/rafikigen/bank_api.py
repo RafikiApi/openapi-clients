@@ -153,6 +153,7 @@ class BankApi:
 
         _response_types_map = {
             '200': "BanksGet200Response",
+            '500': "OpenapiResponseBodyInternalServerError",
         }
 
         return self.api_client.call_api(

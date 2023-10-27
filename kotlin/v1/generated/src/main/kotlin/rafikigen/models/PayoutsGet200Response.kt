@@ -16,7 +16,7 @@
 package rafikigen.models
 
 import rafikigen.models.OpenapiPayoutGetResponse
-import rafikigen.models.OpenapiResponseBodySuccessCursorPaginatedMeta
+import rafikigen.models.OpenapiPayoutListResponseMeta
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -35,7 +35,7 @@ data class PayoutsGet200Response (
     val `data`: kotlin.collections.List<OpenapiPayoutGetResponse>? = null,
 
     @Json(name = "meta")
-    val meta: OpenapiResponseBodySuccessCursorPaginatedMeta? = null
+    val meta: OpenapiPayoutListResponseMeta? = null
 
 )
 

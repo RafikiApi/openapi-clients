@@ -89,6 +89,7 @@ class OpenapiResponseBodyValidationFailed {
 
 
 /**
+ * `VALIDATION_FAILED`
  * @member {String} code
  */
 OpenapiResponseBodyValidationFailed.prototype['code'] = undefined;
@@ -99,6 +100,7 @@ OpenapiResponseBodyValidationFailed.prototype['code'] = undefined;
 OpenapiResponseBodyValidationFailed.prototype['errors'] = undefined;
 
 /**
+ * E.g. \"Validation failed.\"
  * @member {String} message
  */
 OpenapiResponseBodyValidationFailed.prototype['message'] = undefined;

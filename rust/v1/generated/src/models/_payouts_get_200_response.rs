@@ -16,7 +16,7 @@ pub struct PayoutsGet200Response {
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
     pub data: Option<Vec<crate::models::OpenapiPeriodPayoutGetResponse>>,
     #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
-    pub meta: Option<Box<crate::models::OpenapiResponseBodySuccessCursorPaginatedMeta>>,
+    pub meta: Option<Box<crate::models::OpenapiPeriodPayoutListResponseMeta>>,
 }
 
 impl PayoutsGet200Response {

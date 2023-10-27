@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;OpenapiPayoutGetResponse&gt;**](OpenapiPayoutGetResponse.md) |  | [optional] |
-| **meta** | [**OpenapiResponseBodySuccessCursorPaginatedMeta**](OpenapiResponseBodySuccessCursorPaginatedMeta.md) |  | [optional] |
+| **meta** | [**OpenapiPayoutListResponseMeta**](OpenapiPayoutListResponseMeta.md) |  | [optional] |
 
 ## Example
 

@@ -19,10 +19,13 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field
+from pydantic import Field, StrictInt, StrictStr
+
+from typing import Optional
 
 from rafikigen.models.openapi_payment_account_get_or_create_request import OpenapiPaymentAccountGetOrCreateRequest
-from rafikigen.models.payment_accounts_post201_response import PaymentAccountsPost201Response
+from rafikigen.models.payment_accounts_get200_response import PaymentAccountsGet200Response
+from rafikigen.models.payment_accounts_post200_response import PaymentAccountsPost200Response
 
 from rafikigen.api_client import ApiClient
 from rafikigen.api_response import ApiResponse
@@ -45,7 +48,157 @@ class PaymentAccountApi:
         self.api_client = api_client
 
     @validate_arguments
-    def payment_accounts_post(self, openapi_payment_account_get_or_create_request : Annotated[OpenapiPaymentAccountGetOrCreateRequest, Field(..., description="The payment account")], **kwargs) -> PaymentAccountsPost201Response:  # noqa: E501
+    def payment_accounts_get(self, paging_limit : Annotated[Optional[StrictInt], Field(description="The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50")] = None, paging_after : Annotated[Optional[StrictStr], Field(description="The base64 URL encoded cursor used to access the next set of paginated results")] = None, **kwargs) -> PaymentAccountsGet200Response:  # noqa: E501
+        """List  # noqa: E501
+
+        Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.payment_accounts_get(paging_limit, paging_after, async_req=True)
+        >>> result = thread.get()
+
+        :param paging_limit: The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50
+        :type paging_limit: int
+        :param paging_after: The base64 URL encoded cursor used to access the next set of paginated results
+        :type paging_after: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: PaymentAccountsGet200Response
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the payment_accounts_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.payment_accounts_get_with_http_info(paging_limit, paging_after, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def payment_accounts_get_with_http_info(self, paging_limit : Annotated[Optional[StrictInt], Field(description="The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50")] = None, paging_after : Annotated[Optional[StrictStr], Field(description="The base64 URL encoded cursor used to access the next set of paginated results")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """List  # noqa: E501
+
+        Using this endpoint, you can list all your payment accounts ordered by their creation date in descending order. Considering that the returned data may contain thousands of records, the results will be paginated with a cursor [(see pagination docs)](pagination), allowing you to scroll through the data using multiple requests as necessary.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.payment_accounts_get_with_http_info(paging_limit, paging_after, async_req=True)
+        >>> result = thread.get()
+
+        :param paging_limit: The count of items returned as part of the pagination cursor iteration, minimum value is 1 and maximum 50
+        :type paging_limit: int
+        :param paging_after: The base64 URL encoded cursor used to access the next set of paginated results
+        :type paging_after: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(PaymentAccountsGet200Response, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'paging_limit',
+            'paging_after'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method payment_accounts_get" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('paging_limit') is not None:  # noqa: E501
+            _query_params.append(('paging_limit', _params['paging_limit']))
+
+        if _params.get('paging_after') is not None:  # noqa: E501
+            _query_params.append(('paging_after', _params['paging_after']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "PaymentAccountsGet200Response",
+            '422': "OpenapiResponseBodyValidationFailed",
+            '500': "OpenapiResponseBodyInternalServerError",
+        }
+
+        return self.api_client.call_api(
+            '/payment-accounts', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def payment_accounts_post(self, openapi_payment_account_get_or_create_request : Annotated[OpenapiPaymentAccountGetOrCreateRequest, Field(..., description="The payment account")], **kwargs) -> PaymentAccountsPost200Response:  # noqa: E501
         """Get or create  # noqa: E501
 
         A payment account is a uniquely identifiable entity that serves the purpose of a recipient to send money to (e.g. a remittance recipient).  This endpoint allows you to create payment accounts of both **Mobile Money** and **Bank Account** types, which can subsequently serve as recipient accounts for making [payouts](post_payouts).  > 💁 > > Although HTTP POST is not inherently idempotent, with this endpoint, you can confidently retry the same request without inadvertently creating duplicate records. Our process involves checking the existence of the payment account first. If it exists, we promptly respond with a `200 OK` status. Otherwise, we proceed to create a new one and respond with a `201 Created` status. In both scenarios, the structure of the response body will remain identical.  ### Mobile Money  The \"mobile money\" type refers to accounts registered with telecom companies (a.k.a operators) like SAFARICOM in Kenya, and it necessitates a valid mobile number for identification of the payment account within that telecom provider.  The following table outlines the operators supported by our API for each specific country.  | Country | Operators         | |---------|-------------------| | KE      | SAFARICOM, AIRTEL |  ### Bank account  The \"bank account\" type is designated for conventional accounts registered with bank institutions, such as \"Equity Bank.\" It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.  We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches.   # noqa: E501
@@ -66,7 +219,7 @@ class PaymentAccountApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PaymentAccountsPost201Response
+        :rtype: PaymentAccountsPost200Response
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -109,7 +262,7 @@ class PaymentAccountApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PaymentAccountsPost201Response, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PaymentAccountsPost200Response, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -171,8 +324,10 @@ class PaymentAccountApi:
         _auth_settings = ['Bearer']  # noqa: E501
 
         _response_types_map = {
-            '201': "PaymentAccountsPost201Response",
+            '200': "PaymentAccountsPost200Response",
+            '201': "PaymentAccountsPost200Response",
             '422': "OpenapiResponseBodyValidationFailed",
+            '500': "OpenapiResponseBodyInternalServerError",
         }
 
         return self.api_client.call_api(

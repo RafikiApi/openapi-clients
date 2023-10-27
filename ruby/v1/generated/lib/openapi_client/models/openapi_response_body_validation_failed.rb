@@ -15,10 +15,12 @@ require 'time'
 
 module OpenapiClient
   class OpenapiResponseBodyValidationFailed
+    # `VALIDATION_FAILED`
     attr_accessor :code
 
     attr_accessor :errors
 
+    # E.g. \"Validation failed.\"
     attr_accessor :message
 
     # Attribute mapping from ruby-style variable name to JSON key.

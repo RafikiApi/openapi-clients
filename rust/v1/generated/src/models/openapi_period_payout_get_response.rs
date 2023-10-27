@@ -15,9 +15,6 @@
 pub struct OpenapiPeriodPayoutGetResponse {
     #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
     pub amount: Option<Box<crate::models::OpenapiPayoutCreateResponseAmount>>,
-    /// The reference provided by the recipient account's actual bank on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
-    #[serde(rename = "bank_reference", skip_serializing_if = "Option::is_none")]
-    pub bank_reference: Option<String>,
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
     pub created_at: Option<String>,
     /// The payout unique identifier
@@ -26,6 +23,9 @@ pub struct OpenapiPeriodPayoutGetResponse {
     /// The recipient payment account receiving funds
     #[serde(rename = "payment_account_id", skip_serializing_if = "Option::is_none")]
     pub payment_account_id: Option<String>,
+    /// The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
+    #[serde(rename = "receipt", skip_serializing_if = "Option::is_none")]
+    pub receipt: Option<String>,
     #[serde(rename = "sender", skip_serializing_if = "Option::is_none")]
     pub sender: Option<Box<crate::models::OpenapiPayoutCreateResponseSender>>,
     #[serde(rename = "state", skip_serializing_if = "Option::is_none")]
@@ -39,10 +39,10 @@ impl OpenapiPeriodPayoutGetResponse {
     pub fn new() -> OpenapiPeriodPayoutGetResponse {
         OpenapiPeriodPayoutGetResponse {
             amount: None,
-            bank_reference: None,
             created_at: None,
             id: None,
             payment_account_id: None,
+            receipt: None,
             sender: None,
             state: None,
             wallet_id: None,

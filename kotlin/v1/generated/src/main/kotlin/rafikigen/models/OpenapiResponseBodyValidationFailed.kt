@@ -23,20 +23,22 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param code 
+ * @param code `VALIDATION_FAILED`
  * @param errors 
- * @param message 
+ * @param message E.g. \"Validation failed.\"
  */
 
 
 data class OpenapiResponseBodyValidationFailed (
 
+    /* `VALIDATION_FAILED` */
     @Json(name = "code")
     val code: kotlin.String? = null,
 
     @Json(name = "errors")
     val errors: OpenapiResponseBodyValidationFailedErrors? = null,
 
+    /* E.g. \"Validation failed.\" */
     @Json(name = "message")
     val message: kotlin.String? = null
 

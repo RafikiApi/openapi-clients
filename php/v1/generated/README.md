@@ -78,10 +78,11 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankApi* | [**banksGet**](docs/Api/BankApi.md#banksget) | **GET** /banks | List
+*PaymentAccountApi* | [**paymentAccountsGet**](docs/Api/PaymentAccountApi.md#paymentaccountsget) | **GET** /payment-accounts | List
 *PaymentAccountApi* | [**paymentAccountsPost**](docs/Api/PaymentAccountApi.md#paymentaccountspost) | **POST** /payment-accounts | Get or create
 *PayoutApi* | [**payoutsGet**](docs/Api/PayoutApi.md#payoutsget) | **GET** /payouts | List
-*PayoutApi* | [**payoutsIdGet**](docs/Api/PayoutApi.md#payoutsidget) | **GET** /payouts/{id} | Query status
-*PayoutApi* | [**payoutsPost**](docs/Api/PayoutApi.md#payoutspost) | **POST** /payouts | Send money
+*PayoutApi* | [**payoutsIdGet**](docs/Api/PayoutApi.md#payoutsidget) | **GET** /payouts/{id} | Get
+*PayoutApi* | [**payoutsPost**](docs/Api/PayoutApi.md#payoutspost) | **POST** /payouts | Create
 *WalletApi* | [**walletsGet**](docs/Api/WalletApi.md#walletsget) | **GET** /wallets | List
 
 ## Models
@@ -97,6 +98,9 @@ Class | Method | HTTP request | Description
 - [OpenapiPaymentAccountGetOrCreateResponseBankAccount](docs/Model/OpenapiPaymentAccountGetOrCreateResponseBankAccount.md)
 - [OpenapiPaymentAccountGetOrCreateResponseHolder](docs/Model/OpenapiPaymentAccountGetOrCreateResponseHolder.md)
 - [OpenapiPaymentAccountGetOrCreateResponseMobileMoney](docs/Model/OpenapiPaymentAccountGetOrCreateResponseMobileMoney.md)
+- [OpenapiPaymentAccountListResponseMeta](docs/Model/OpenapiPaymentAccountListResponseMeta.md)
+- [OpenapiPaymentAccountListResponseMetaPaging](docs/Model/OpenapiPaymentAccountListResponseMetaPaging.md)
+- [OpenapiPaymentAccountListResponseMetaPagingCursors](docs/Model/OpenapiPaymentAccountListResponseMetaPagingCursors.md)
 - [OpenapiPayoutCreateRequest](docs/Model/OpenapiPayoutCreateRequest.md)
 - [OpenapiPayoutCreateRequestAmount](docs/Model/OpenapiPayoutCreateRequestAmount.md)
 - [OpenapiPayoutCreateRequestSender](docs/Model/OpenapiPayoutCreateRequestSender.md)
@@ -111,16 +115,20 @@ Class | Method | HTTP request | Description
 - [OpenapiPayoutCreateResponseSenderIndividualIdentityDocument](docs/Model/OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.md)
 - [OpenapiPayoutCreateResponseState](docs/Model/OpenapiPayoutCreateResponseState.md)
 - [OpenapiPayoutGetResponse](docs/Model/OpenapiPayoutGetResponse.md)
+- [OpenapiPayoutListResponseMeta](docs/Model/OpenapiPayoutListResponseMeta.md)
+- [OpenapiPayoutListResponseMetaPaging](docs/Model/OpenapiPayoutListResponseMetaPaging.md)
+- [OpenapiPayoutListResponseMetaPagingCursors](docs/Model/OpenapiPayoutListResponseMetaPagingCursors.md)
+- [OpenapiResponseBodyIdempotencyConflict](docs/Model/OpenapiResponseBodyIdempotencyConflict.md)
+- [OpenapiResponseBodyInternalServerError](docs/Model/OpenapiResponseBodyInternalServerError.md)
+- [OpenapiResponseBodyNotFound](docs/Model/OpenapiResponseBodyNotFound.md)
+- [OpenapiResponseBodySuccessCollection](docs/Model/OpenapiResponseBodySuccessCollection.md)
 - [OpenapiResponseBodySuccessCollectionNoMeta](docs/Model/OpenapiResponseBodySuccessCollectionNoMeta.md)
-- [OpenapiResponseBodySuccessCursorPaginated](docs/Model/OpenapiResponseBodySuccessCursorPaginated.md)
-- [OpenapiResponseBodySuccessCursorPaginatedMeta](docs/Model/OpenapiResponseBodySuccessCursorPaginatedMeta.md)
-- [OpenapiResponseBodySuccessCursorPaginatedMetaPaging](docs/Model/OpenapiResponseBodySuccessCursorPaginatedMetaPaging.md)
-- [OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors](docs/Model/OpenapiResponseBodySuccessCursorPaginatedMetaPagingCursors.md)
 - [OpenapiResponseBodySuccessNoMeta](docs/Model/OpenapiResponseBodySuccessNoMeta.md)
 - [OpenapiResponseBodyValidationFailed](docs/Model/OpenapiResponseBodyValidationFailed.md)
 - [OpenapiResponseBodyValidationFailedErrors](docs/Model/OpenapiResponseBodyValidationFailedErrors.md)
 - [OpenapiResponseBodyWalletInsufficientBalance](docs/Model/OpenapiResponseBodyWalletInsufficientBalance.md)
-- [PaymentAccountsPost201Response](docs/Model/PaymentAccountsPost201Response.md)
+- [PaymentAccountsGet200Response](docs/Model/PaymentAccountsGet200Response.md)
+- [PaymentAccountsPost200Response](docs/Model/PaymentAccountsPost200Response.md)
 - [PayoutsGet200Response](docs/Model/PayoutsGet200Response.md)
 - [PayoutsIdGet200Response](docs/Model/PayoutsIdGet200Response.md)
 - [PayoutsPost202Response](docs/Model/PayoutsPost202Response.md)
