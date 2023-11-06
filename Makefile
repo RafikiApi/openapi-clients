@@ -14,6 +14,7 @@ generate-all:
 #  e.g. `make lang=go generate`
 generate:
 	docker run \
+		--rm \
 		-v $(PWD):/tmp/generating \
 		openapitools/openapi-generator-cli:v7.0.1 generate \
 			--git-host github.com \
