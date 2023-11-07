@@ -109,15 +109,3 @@ src/rafikigen/BankApi.js
 src/rafikigen/PaymentAccountApi.js
 src/rafikigen/PayoutApi.js
 src/rafikigen/WalletApi.js
-test/model/OpenapiPaymentAccountListResponseMeta.spec.js
-test/model/OpenapiPaymentAccountListResponseMetaPaging.spec.js
-test/model/OpenapiPaymentAccountListResponseMetaPagingCursors.spec.js
-test/model/OpenapiPayoutListResponseMeta.spec.js
-test/model/OpenapiPayoutListResponseMetaPaging.spec.js
-test/model/OpenapiPayoutListResponseMetaPagingCursors.spec.js
-test/model/OpenapiResponseBodyIdempotencyConflict.spec.js
-test/model/OpenapiResponseBodyInternalServerError.spec.js
-test/model/OpenapiResponseBodyNotFound.spec.js
-test/model/OpenapiResponseBodySuccessCollection.spec.js
-test/model/PaymentAccountsGet200Response.spec.js
-test/model/PaymentAccountsPost200Response.spec.js

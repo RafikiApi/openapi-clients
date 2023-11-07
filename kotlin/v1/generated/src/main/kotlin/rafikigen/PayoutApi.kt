@@ -149,8 +149,8 @@ class PayoutApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
 
     /**
      * Get
-     * This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
-     * @param id The Payout ID (pyt-xxx)
+     * This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
+     * @param id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
      * @return PayoutsIdGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -180,8 +180,8 @@ class PayoutApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
 
     /**
      * Get
-     * This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
-     * @param id The Payout ID (pyt-xxx)
+     * This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
+     * @param id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
      * @return ApiResponse<PayoutsIdGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -199,7 +199,7 @@ class PayoutApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
     /**
      * To obtain the request config of the operation payoutsIdGet
      *
-     * @param id The Payout ID (pyt-xxx)
+     * @param id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
      * @return RequestConfig
      */
     fun payoutsIdGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {

@@ -52,11 +52,15 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T13:57:01.660841Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-07T11:58:47.787462Z[Etc/UTC]")
 public class OpenapiPayoutCreateRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private OpenapiPayoutCreateRequestAmount amount;
+
+  public static final String SERIALIZED_NAME_CUSTOM_ID = "custom_id";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_ID)
+  private String customId;
 
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT = "payment_account";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT)
@@ -95,6 +99,27 @@ public class OpenapiPayoutCreateRequest {
 
   public void setAmount(OpenapiPayoutCreateRequestAmount amount) {
     this.amount = amount;
+  }
+
+
+  public OpenapiPayoutCreateRequest customId(String customId) {
+    
+    this.customId = customId;
+    return this;
+  }
+
+   /**
+   * An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;.
+   * @return customId
+  **/
+  @javax.annotation.Nullable
+  public String getCustomId() {
+    return customId;
+  }
+
+
+  public void setCustomId(String customId) {
+    this.customId = customId;
   }
 
 
@@ -193,6 +218,7 @@ public class OpenapiPayoutCreateRequest {
     }
     OpenapiPayoutCreateRequest openapiPayoutCreateRequest = (OpenapiPayoutCreateRequest) o;
     return Objects.equals(this.amount, openapiPayoutCreateRequest.amount) &&
+        Objects.equals(this.customId, openapiPayoutCreateRequest.customId) &&
         Objects.equals(this.paymentAccount, openapiPayoutCreateRequest.paymentAccount) &&
         Objects.equals(this.paymentAccountId, openapiPayoutCreateRequest.paymentAccountId) &&
         Objects.equals(this.sender, openapiPayoutCreateRequest.sender) &&
@@ -201,7 +227,7 @@ public class OpenapiPayoutCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, paymentAccount, paymentAccountId, sender, walletId);
+    return Objects.hash(amount, customId, paymentAccount, paymentAccountId, sender, walletId);
   }
 
   @Override
@@ -209,6 +235,7 @@ public class OpenapiPayoutCreateRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class OpenapiPayoutCreateRequest {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    customId: ").append(toIndentedString(customId)).append("\n");
     sb.append("    paymentAccount: ").append(toIndentedString(paymentAccount)).append("\n");
     sb.append("    paymentAccountId: ").append(toIndentedString(paymentAccountId)).append("\n");
     sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
@@ -236,6 +263,7 @@ public class OpenapiPayoutCreateRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("amount");
+    openapiFields.add("custom_id");
     openapiFields.add("payment_account");
     openapiFields.add("payment_account_id");
     openapiFields.add("sender");
@@ -269,6 +297,9 @@ public class OpenapiPayoutCreateRequest {
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         OpenapiPayoutCreateRequestAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      if ((jsonObj.get("custom_id") != null && !jsonObj.get("custom_id").isJsonNull()) && !jsonObj.get("custom_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `custom_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_id").toString()));
       }
       // validate the optional field `payment_account`
       if (jsonObj.get("payment_account") != null && !jsonObj.get("payment_account").isJsonNull()) {

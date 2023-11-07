@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The Payout ID (pyt-xxx)
+    id := "id_example" // string | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Payout ID (pyt-xxx) | 
+**id** | **string** | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation | 
 
 ### Other Parameters
 

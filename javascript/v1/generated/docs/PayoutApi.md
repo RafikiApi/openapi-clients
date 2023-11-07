@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 Get
 
-This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
 
 ### Example
 
@@ -89,7 +89,7 @@ Bearer.apiKey = 'YOUR API KEY';
 //Bearer.apiKeyPrefix = 'Token';
 
 let apiInstance = new Resources.PayoutApi();
-let id = "id_example"; // String | The Payout ID (pyt-xxx)
+let id = "id_example"; // String | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
 apiInstance.payoutsIdGet(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -104,7 +104,7 @@ apiInstance.payoutsIdGet(id, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Payout ID (pyt-xxx) | 
+ **id** | **String**| The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation | 
 
 ### Return type
 

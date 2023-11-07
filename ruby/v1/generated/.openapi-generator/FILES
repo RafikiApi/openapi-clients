@@ -117,16 +117,4 @@ lib/openapi_client/version.rb
 openapi_client.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/openapi_payment_account_list_response_meta_paging_cursors_spec.rb
-spec/models/openapi_payment_account_list_response_meta_paging_spec.rb
-spec/models/openapi_payment_account_list_response_meta_spec.rb
-spec/models/openapi_payout_list_response_meta_paging_cursors_spec.rb
-spec/models/openapi_payout_list_response_meta_paging_spec.rb
-spec/models/openapi_payout_list_response_meta_spec.rb
-spec/models/openapi_response_body_idempotency_conflict_spec.rb
-spec/models/openapi_response_body_internal_server_error_spec.rb
-spec/models/openapi_response_body_not_found_spec.rb
-spec/models/openapi_response_body_success_collection_spec.rb
-spec/models/payment_accounts_get200_response_spec.rb
-spec/models/payment_accounts_post200_response_spec.rb
 spec/spec_helper.rb

@@ -118,7 +118,7 @@ catch (ApiException e)
 
 Get
 
-This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
 
 ### Example
 ```csharp
@@ -142,7 +142,7 @@ namespace Example
             // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new PayoutApi(config);
-            var id = "id_example";  // string | The Payout ID (pyt-xxx)
+            var id = "id_example";  // string | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
 
             try
             {
@@ -185,7 +185,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The Payout ID (pyt-xxx) |  |
+| **id** | **string** | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation |  |
 
 ### Return type
 

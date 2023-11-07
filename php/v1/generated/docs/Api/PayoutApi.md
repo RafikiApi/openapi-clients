@@ -85,7 +85,7 @@ payoutsIdGet($id): \OpenAPI\Client\Model\PayoutsIdGet200Response
 
 Get
 
-This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
 
 ### Example
 
@@ -106,7 +106,7 @@ $apiInstance = new OpenAPI\Client\Api\PayoutApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | The Payout ID (pyt-xxx)
+$id = 'id_example'; // string | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
 
 try {
     $result = $apiInstance->payoutsIdGet($id);
@@ -120,7 +120,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The Payout ID (pyt-xxx) | |
+| **id** | **string**| The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation | |
 
 ### Return type
 

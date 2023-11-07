@@ -50,7 +50,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutListResponseMetaPaging
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T13:57:01.660841Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-07T11:58:47.787462Z[Etc/UTC]")
 public class OpenapiPayoutListResponseMetaPaging {
   public static final String SERIALIZED_NAME_CURSORS = "cursors";
   @SerializedName(SERIALIZED_NAME_CURSORS)

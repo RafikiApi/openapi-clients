@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 Get
 
-This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
 
 ### Example
 
@@ -134,7 +134,7 @@ configuration.api_key['Bearer'] = os.environ["API_KEY"]
 with rafikigen.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = rafikigen.PayoutApi(api_client)
-    id = 'id_example' # str | The Payout ID (pyt-xxx)
+    id = 'id_example' # str | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
 
     try:
         # Get
@@ -151,7 +151,7 @@ with rafikigen.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Payout ID (pyt-xxx) | 
+ **id** | **str**| The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation | 
 
 ### Return type
 

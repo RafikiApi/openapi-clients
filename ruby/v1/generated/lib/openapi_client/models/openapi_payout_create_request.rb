@@ -17,6 +17,9 @@ module OpenapiClient
   class OpenapiPayoutCreateRequest
     attr_accessor :amount
 
+    # An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
+    attr_accessor :custom_id
+
     attr_accessor :payment_account
 
     # <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
@@ -31,6 +34,7 @@ module OpenapiClient
     def self.attribute_map
       {
         :'amount' => :'amount',
+        :'custom_id' => :'custom_id',
         :'payment_account' => :'payment_account',
         :'payment_account_id' => :'payment_account_id',
         :'sender' => :'sender',
@@ -47,6 +51,7 @@ module OpenapiClient
     def self.openapi_types
       {
         :'amount' => :'OpenapiPayoutCreateRequestAmount',
+        :'custom_id' => :'String',
         :'payment_account' => :'OpenapiPaymentAccountGetOrCreateRequest',
         :'payment_account_id' => :'String',
         :'sender' => :'OpenapiPayoutCreateRequestSender',
@@ -77,6 +82,10 @@ module OpenapiClient
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'custom_id')
+        self.custom_id = attributes[:'custom_id']
       end
 
       if attributes.key?(:'payment_account')
@@ -117,6 +126,7 @@ module OpenapiClient
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
+          custom_id == o.custom_id &&
           payment_account == o.payment_account &&
           payment_account_id == o.payment_account_id &&
           sender == o.sender &&
@@ -132,7 +142,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, payment_account, payment_account_id, sender, wallet_id].hash
+      [amount, custom_id, payment_account, payment_account_id, sender, wallet_id].hash
     end
 
     # Builds the object from hash

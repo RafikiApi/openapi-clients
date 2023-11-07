@@ -18,6 +18,7 @@ import { OpenapiPayoutCreateResponseState } from './openapiPayoutCreateResponseS
 export class OpenapiPayoutCreateResponse {
     'amount'?: OpenapiPayoutCreateResponseAmount;
     'createdAt'?: string;
+    'customId'?: string;
     /**
     * The payout unique identifier
     */
@@ -44,6 +45,11 @@ export class OpenapiPayoutCreateResponse {
         {
             "name": "createdAt",
             "baseName": "created_at",
+            "type": "string"
+        },
+        {
+            "name": "customId",
+            "baseName": "custom_id",
             "type": "string"
         },
         {

@@ -89,8 +89,8 @@ module OpenapiClient
     end
 
     # Get
-    # This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
-    # @param id [String] The Payout ID (pyt-xxx)
+    # This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
+    # @param id [String] The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
     # @param [Hash] opts the optional parameters
     # @return [PayoutsIdGet200Response]
     def payouts_id_get(id, opts = {})
@@ -99,8 +99,8 @@ module OpenapiClient
     end
 
     # Get
-    # This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
-    # @param id [String] The Payout ID (pyt-xxx)
+    # This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
+    # @param id [String] The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
     # @param [Hash] opts the optional parameters
     # @return [Array<(PayoutsIdGet200Response, Integer, Hash)>] PayoutsIdGet200Response data, response status code and response headers
     def payouts_id_get_with_http_info(id, opts = {})

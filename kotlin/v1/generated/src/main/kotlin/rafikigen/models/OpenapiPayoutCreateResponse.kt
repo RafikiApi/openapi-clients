@@ -27,6 +27,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param amount 
  * @param createdAt 
+ * @param customId 
  * @param id The payout unique identifier
  * @param paymentAccountId The recipient payment account receiving funds
  * @param sender 
@@ -42,6 +43,9 @@ data class OpenapiPayoutCreateResponse (
 
     @Json(name = "created_at")
     val createdAt: kotlin.String? = null,
+
+    @Json(name = "custom_id")
+    val customId: kotlin.String? = null,
 
     /* The payout unique identifier */
     @Json(name = "id")

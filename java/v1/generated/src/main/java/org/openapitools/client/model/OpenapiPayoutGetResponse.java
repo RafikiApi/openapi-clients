@@ -52,7 +52,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutGetResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T13:57:01.660841Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-07T11:58:47.787462Z[Etc/UTC]")
 public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -61,6 +61,10 @@ public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private String createdAt;
+
+  public static final String SERIALIZED_NAME_CUSTOM_ID = "custom_id";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_ID)
+  private String customId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -128,6 +132,27 @@ public class OpenapiPayoutGetResponse {
 
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
+  }
+
+
+  public OpenapiPayoutGetResponse customId(String customId) {
+    
+    this.customId = customId;
+    return this;
+  }
+
+   /**
+   * Get customId
+   * @return customId
+  **/
+  @javax.annotation.Nullable
+  public String getCustomId() {
+    return customId;
+  }
+
+
+  public void setCustomId(String customId) {
+    this.customId = customId;
   }
 
 
@@ -269,6 +294,7 @@ public class OpenapiPayoutGetResponse {
     OpenapiPayoutGetResponse openapiPayoutGetResponse = (OpenapiPayoutGetResponse) o;
     return Objects.equals(this.amount, openapiPayoutGetResponse.amount) &&
         Objects.equals(this.createdAt, openapiPayoutGetResponse.createdAt) &&
+        Objects.equals(this.customId, openapiPayoutGetResponse.customId) &&
         Objects.equals(this.id, openapiPayoutGetResponse.id) &&
         Objects.equals(this.paymentAccountId, openapiPayoutGetResponse.paymentAccountId) &&
         Objects.equals(this.receipt, openapiPayoutGetResponse.receipt) &&
@@ -279,7 +305,7 @@ public class OpenapiPayoutGetResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, createdAt, id, paymentAccountId, receipt, sender, state, walletId);
+    return Objects.hash(amount, createdAt, customId, id, paymentAccountId, receipt, sender, state, walletId);
   }
 
   @Override
@@ -288,6 +314,7 @@ public class OpenapiPayoutGetResponse {
     sb.append("class OpenapiPayoutGetResponse {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    customId: ").append(toIndentedString(customId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentAccountId: ").append(toIndentedString(paymentAccountId)).append("\n");
     sb.append("    receipt: ").append(toIndentedString(receipt)).append("\n");
@@ -318,6 +345,7 @@ public class OpenapiPayoutGetResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("amount");
     openapiFields.add("created_at");
+    openapiFields.add("custom_id");
     openapiFields.add("id");
     openapiFields.add("payment_account_id");
     openapiFields.add("receipt");
@@ -356,6 +384,9 @@ public class OpenapiPayoutGetResponse {
       }
       if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
+      }
+      if ((jsonObj.get("custom_id") != null && !jsonObj.get("custom_id").isJsonNull()) && !jsonObj.get("custom_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `custom_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_id").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

@@ -29,11 +29,12 @@ class OpenapiPayoutCreateRequest(BaseModel):
     OpenapiPayoutCreateRequest
     """
     amount: Optional[OpenapiPayoutCreateRequestAmount] = None
+    custom_id: Optional[StrictStr] = Field(None, description="An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".")
     payment_account: Optional[OpenapiPaymentAccountGetOrCreateRequest] = None
     payment_account_id: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.")
     sender: Optional[OpenapiPayoutCreateRequestSender] = None
     wallet_id: Optional[StrictStr] = Field(None, description="The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount.")
-    __properties = ["amount", "payment_account", "payment_account_id", "sender", "wallet_id"]
+    __properties = ["amount", "custom_id", "payment_account", "payment_account_id", "sender", "wallet_id"]
 
     class Config:
         """Pydantic configuration"""
@@ -81,6 +82,7 @@ class OpenapiPayoutCreateRequest(BaseModel):
 
         _obj = OpenapiPayoutCreateRequest.parse_obj({
             "amount": OpenapiPayoutCreateRequestAmount.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
+            "custom_id": obj.get("custom_id"),
             "payment_account": OpenapiPaymentAccountGetOrCreateRequest.from_dict(obj.get("payment_account")) if obj.get("payment_account") is not None else None,
             "payment_account_id": obj.get("payment_account_id"),
             "sender": OpenapiPayoutCreateRequestSender.from_dict(obj.get("sender")) if obj.get("sender") is not None else None,

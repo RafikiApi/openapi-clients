@@ -59,6 +59,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'amount' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseAmount',
         'created_at' => 'string',
+        'custom_id' => 'string',
         'id' => 'string',
         'payment_account_id' => 'string',
         'sender' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseSender',
@@ -76,6 +77,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'amount' => null,
         'created_at' => 'RFC 3339',
+        'custom_id' => '[a-zA-Z0-9-_]{1,64}',
         'id' => null,
         'payment_account_id' => null,
         'sender' => null,
@@ -91,6 +93,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'amount' => false,
 		'created_at' => false,
+		'custom_id' => false,
 		'id' => false,
 		'payment_account_id' => false,
 		'sender' => false,
@@ -186,6 +189,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'amount' => 'amount',
         'created_at' => 'created_at',
+        'custom_id' => 'custom_id',
         'id' => 'id',
         'payment_account_id' => 'payment_account_id',
         'sender' => 'sender',
@@ -201,6 +205,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'amount' => 'setAmount',
         'created_at' => 'setCreatedAt',
+        'custom_id' => 'setCustomId',
         'id' => 'setId',
         'payment_account_id' => 'setPaymentAccountId',
         'sender' => 'setSender',
@@ -216,6 +221,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'amount' => 'getAmount',
         'created_at' => 'getCreatedAt',
+        'custom_id' => 'getCustomId',
         'id' => 'getId',
         'payment_account_id' => 'getPaymentAccountId',
         'sender' => 'getSender',
@@ -282,6 +288,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('custom_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
         $this->setIfExists('sender', $data ?? [], null);
@@ -381,6 +388,33 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_id
+     *
+     * @return string|null
+     */
+    public function getCustomId()
+    {
+        return $this->container['custom_id'];
+    }
+
+    /**
+     * Sets custom_id
+     *
+     * @param string|null $custom_id custom_id
+     *
+     * @return self
+     */
+    public function setCustomId($custom_id)
+    {
+        if (is_null($custom_id)) {
+            throw new \InvalidArgumentException('non-nullable custom_id cannot be null');
+        }
+        $this->container['custom_id'] = $custom_id;
 
         return $this;
     }

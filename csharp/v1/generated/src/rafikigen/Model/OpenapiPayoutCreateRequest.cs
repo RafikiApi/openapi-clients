@@ -35,13 +35,15 @@ namespace rafikigen.Model
         /// Initializes a new instance of the <see cref="OpenapiPayoutCreateRequest" /> class.
         /// </summary>
         /// <param name="amount">amount.</param>
+        /// <param name="customId">An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;..</param>
         /// <param name="paymentAccount">paymentAccount.</param>
         /// <param name="paymentAccountId">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account is empty&lt;/span&gt;  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout..</param>
         /// <param name="sender">sender.</param>
         /// <param name="walletId">The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount..</param>
-        public OpenapiPayoutCreateRequest(OpenapiPayoutCreateRequestAmount amount = default(OpenapiPayoutCreateRequestAmount), OpenapiPaymentAccountGetOrCreateRequest paymentAccount = default(OpenapiPaymentAccountGetOrCreateRequest), string paymentAccountId = default(string), OpenapiPayoutCreateRequestSender sender = default(OpenapiPayoutCreateRequestSender), string walletId = default(string))
+        public OpenapiPayoutCreateRequest(OpenapiPayoutCreateRequestAmount amount = default(OpenapiPayoutCreateRequestAmount), string customId = default(string), OpenapiPaymentAccountGetOrCreateRequest paymentAccount = default(OpenapiPaymentAccountGetOrCreateRequest), string paymentAccountId = default(string), OpenapiPayoutCreateRequestSender sender = default(OpenapiPayoutCreateRequestSender), string walletId = default(string))
         {
             this.Amount = amount;
+            this.CustomId = customId;
             this.PaymentAccount = paymentAccount;
             this.PaymentAccountId = paymentAccountId;
             this.Sender = sender;
@@ -53,6 +55,14 @@ namespace rafikigen.Model
         /// </summary>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
         public OpenapiPayoutCreateRequestAmount Amount { get; set; }
+
+        /// <summary>
+        /// An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;.
+        /// </summary>
+        /// <value>An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;.</value>
+        /// <example>custom-id-xxx</example>
+        [DataMember(Name = "custom_id", EmitDefaultValue = false)]
+        public string CustomId { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentAccount
@@ -91,6 +101,7 @@ namespace rafikigen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class OpenapiPayoutCreateRequest {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  PaymentAccount: ").Append(PaymentAccount).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
             sb.Append("  Sender: ").Append(Sender).Append("\n");
@@ -136,6 +147,11 @@ namespace rafikigen.Model
                     this.Amount.Equals(input.Amount))
                 ) && 
                 (
+                    this.CustomId == input.CustomId ||
+                    (this.CustomId != null &&
+                    this.CustomId.Equals(input.CustomId))
+                ) && 
+                (
                     this.PaymentAccount == input.PaymentAccount ||
                     (this.PaymentAccount != null &&
                     this.PaymentAccount.Equals(input.PaymentAccount))
@@ -169,6 +185,10 @@ namespace rafikigen.Model
                 if (this.Amount != null)
                 {
                     hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
+                if (this.CustomId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustomId.GetHashCode();
                 }
                 if (this.PaymentAccount != null)
                 {

@@ -507,7 +507,7 @@ class PayoutApi
      *
      * Get
      *
-     * @param  string $id The Payout ID (pyt-xxx) (required)
+     * @param  string $id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
@@ -525,7 +525,7 @@ class PayoutApi
      *
      * Get
      *
-     * @param  string $id The Payout ID (pyt-xxx) (required)
+     * @param  string $id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
@@ -671,7 +671,7 @@ class PayoutApi
      *
      * Get
      *
-     * @param  string $id The Payout ID (pyt-xxx) (required)
+     * @param  string $id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -692,7 +692,7 @@ class PayoutApi
      *
      * Get
      *
-     * @param  string $id The Payout ID (pyt-xxx) (required)
+     * @param  string $id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -742,7 +742,7 @@ class PayoutApi
     /**
      * Create request for operation 'payoutsIdGet'
      *
-     * @param  string $id The Payout ID (pyt-xxx) (required)
+     * @param  string $id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['payoutsIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

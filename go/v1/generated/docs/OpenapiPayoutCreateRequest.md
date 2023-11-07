@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to [**OpenapiPayoutCreateRequestAmount**](OpenapiPayoutCreateRequestAmount.md) |  | [optional] 
+**CustomId** | Pointer to **string** | An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;. | [optional] 
 **PaymentAccount** | Pointer to [**OpenapiPaymentAccountGetOrCreateRequest**](OpenapiPaymentAccountGetOrCreateRequest.md) |  | [optional] 
 **PaymentAccountId** | Pointer to **string** | &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account is empty&lt;/span&gt;  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout. | [optional] 
 **Sender** | Pointer to [**OpenapiPayoutCreateRequestSender**](OpenapiPayoutCreateRequestSender.md) |  | [optional] 
@@ -53,6 +54,31 @@ SetAmount sets Amount field to given value.
 `func (o *OpenapiPayoutCreateRequest) HasAmount() bool`
 
 HasAmount returns a boolean if a field has been set.
+
+### GetCustomId
+
+`func (o *OpenapiPayoutCreateRequest) GetCustomId() string`
+
+GetCustomId returns the CustomId field if non-nil, zero value otherwise.
+
+### GetCustomIdOk
+
+`func (o *OpenapiPayoutCreateRequest) GetCustomIdOk() (*string, bool)`
+
+GetCustomIdOk returns a tuple with the CustomId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomId
+
+`func (o *OpenapiPayoutCreateRequest) SetCustomId(v string)`
+
+SetCustomId sets CustomId field to given value.
+
+### HasCustomId
+
+`func (o *OpenapiPayoutCreateRequest) HasCustomId() bool`
+
+HasCustomId returns a boolean if a field has been set.
 
 ### GetPaymentAccount
 

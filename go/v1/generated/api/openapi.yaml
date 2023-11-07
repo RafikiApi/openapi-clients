@@ -347,12 +347,13 @@ paths:
       - Payout
   /payouts/{id}:
     get:
-      description: |-
-        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.
+      description: |
+        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.
 
         To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
       parameters:
-      - description: The Payout ID (pyt-xxx)
+      - description: The Payout ID (pyt-xxx) or the custom_id provided at the time
+          of payout creation
         explode: false
         in: path
         name: id
@@ -475,6 +476,14 @@ components:
       properties:
         amount:
           $ref: '#/components/schemas/openapi_PayoutCreateRequest_amount'
+        custom_id:
+          description: |-
+            An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.
+
+            The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols "-" and "_".
+          example: custom-id-xxx
+          format: "[a-zA-Z0-9-_]{1,64}"
+          type: string
         payment_account:
           allOf:
           - $ref: '#/components/schemas/openapi.PaymentAccountGetOrCreateRequest'
@@ -505,6 +514,10 @@ components:
           example: 2006-01-02T15:04:05Z07:00
           format: RFC 3339
           type: string
+        custom_id:
+          example: custom-id-xxx
+          format: "[a-zA-Z0-9-_]{1,64}"
+          type: string
         id:
           description: The payout unique identifier
           example: pyt-xxx
@@ -529,6 +542,10 @@ components:
         created_at:
           example: 2006-01-02T15:04:05Z07:00
           format: RFC 3339
+          type: string
+        custom_id:
+          example: custom-id-xxx
+          format: "[a-zA-Z0-9-_]{1,64}"
           type: string
         id:
           description: The payout unique identifier

@@ -30,12 +30,13 @@ class OpenapiPayoutCreateResponse(BaseModel):
     """
     amount: Optional[OpenapiPayoutCreateResponseAmount] = None
     created_at: Optional[StrictStr] = None
+    custom_id: Optional[StrictStr] = None
     id: Optional[StrictStr] = Field(None, description="The payout unique identifier")
     payment_account_id: Optional[StrictStr] = Field(None, description="The recipient payment account receiving funds")
     sender: Optional[OpenapiPayoutCreateResponseSender] = None
     state: Optional[OpenapiPayoutCreateResponseState] = None
     wallet_id: Optional[StrictStr] = Field(None, description="The wallet ID from which the money will disburse")
-    __properties = ["amount", "created_at", "id", "payment_account_id", "sender", "state", "wallet_id"]
+    __properties = ["amount", "created_at", "custom_id", "id", "payment_account_id", "sender", "state", "wallet_id"]
 
     class Config:
         """Pydantic configuration"""
@@ -84,6 +85,7 @@ class OpenapiPayoutCreateResponse(BaseModel):
         _obj = OpenapiPayoutCreateResponse.parse_obj({
             "amount": OpenapiPayoutCreateResponseAmount.from_dict(obj.get("amount")) if obj.get("amount") is not None else None,
             "created_at": obj.get("created_at"),
+            "custom_id": obj.get("custom_id"),
             "id": obj.get("id"),
             "payment_account_id": obj.get("payment_account_id"),
             "sender": OpenapiPayoutCreateResponseSender.from_dict(obj.get("sender")) if obj.get("sender") is not None else None,

@@ -215,17 +215,17 @@ class PayoutApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def payouts_id_get(self, id : Annotated[StrictStr, Field(..., description="The Payout ID (pyt-xxx)")], **kwargs) -> PayoutsIdGet200Response:  # noqa: E501
+    def payouts_id_get(self, id : Annotated[StrictStr, Field(..., description="The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation")], **kwargs) -> PayoutsIdGet200Response:  # noqa: E501
         """Get  # noqa: E501
 
-        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.  # noqa: E501
+        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.payouts_id_get(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: The Payout ID (pyt-xxx) (required)
+        :param id: The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -245,17 +245,17 @@ class PayoutApi:
         return self.payouts_id_get_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def payouts_id_get_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Payout ID (pyt-xxx)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def payouts_id_get_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get  # noqa: E501
 
-        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.  # noqa: E501
+        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.payouts_id_get_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: The Payout ID (pyt-xxx) (required)
+        :param id: The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional

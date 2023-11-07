@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**amount** | [**OpenapiPayoutCreateResponseAmount**](OpenapiPayoutCreateResponseAmount.md) |  |  [optional] |
 |**createdAt** | **String** |  |  [optional] |
+|**customId** | **String** |  |  [optional] |
 |**id** | **String** | The payout unique identifier |  [optional] |
 |**paymentAccountId** | **String** | The recipient payment account receiving funds |  [optional] |
 |**sender** | [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  |  [optional] |

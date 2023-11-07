@@ -53,6 +53,9 @@ class OpenapiPayoutCreateRequest {
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = OpenapiPayoutCreateRequestAmount.constructFromObject(data['amount']);
             }
+            if (data.hasOwnProperty('custom_id')) {
+                obj['custom_id'] = ApiClient.convertToType(data['custom_id'], 'String');
+            }
             if (data.hasOwnProperty('payment_account')) {
                 obj['payment_account'] = ApiClient.convertToType(data['payment_account'], OpenapiPaymentAccountGetOrCreateRequest);
             }
@@ -78,6 +81,10 @@ class OpenapiPayoutCreateRequest {
         // validate the optional field `amount`
         if (data['amount']) { // data not null
           OpenapiPayoutCreateRequestAmount.validateJSON(data['amount']);
+        }
+        // ensure the json data is a string
+        if (data['custom_id'] && !(typeof data['custom_id'] === 'string' || data['custom_id'] instanceof String)) {
+            throw new Error("Expected the field `custom_id` to be a primitive type in the JSON string but got " + data['custom_id']);
         }
         // validate the optional field `payment_account`
         if (data['payment_account']) { // data not null
@@ -108,6 +115,12 @@ class OpenapiPayoutCreateRequest {
  * @member {module:model/OpenapiPayoutCreateRequestAmount} amount
  */
 OpenapiPayoutCreateRequest.prototype['amount'] = undefined;
+
+/**
+ * An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
+ * @member {String} custom_id
+ */
+OpenapiPayoutCreateRequest.prototype['custom_id'] = undefined;
 
 /**
  * @member {module:model/OpenapiPaymentAccountGetOrCreateRequest} payment_account

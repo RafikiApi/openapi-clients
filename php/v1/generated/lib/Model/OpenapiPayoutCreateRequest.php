@@ -58,6 +58,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'amount' => '\OpenAPI\Client\Model\OpenapiPayoutCreateRequestAmount',
+        'custom_id' => 'string',
         'payment_account' => '\OpenAPI\Client\Model\OpenapiPaymentAccountGetOrCreateRequest',
         'payment_account_id' => 'string',
         'sender' => '\OpenAPI\Client\Model\OpenapiPayoutCreateRequestSender',
@@ -73,6 +74,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'amount' => null,
+        'custom_id' => '[a-zA-Z0-9-_]{1,64}',
         'payment_account' => null,
         'payment_account_id' => null,
         'sender' => null,
@@ -86,6 +88,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'amount' => false,
+		'custom_id' => false,
 		'payment_account' => false,
 		'payment_account_id' => false,
 		'sender' => false,
@@ -179,6 +182,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'amount' => 'amount',
+        'custom_id' => 'custom_id',
         'payment_account' => 'payment_account',
         'payment_account_id' => 'payment_account_id',
         'sender' => 'sender',
@@ -192,6 +196,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'amount' => 'setAmount',
+        'custom_id' => 'setCustomId',
         'payment_account' => 'setPaymentAccount',
         'payment_account_id' => 'setPaymentAccountId',
         'sender' => 'setSender',
@@ -205,6 +210,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'amount' => 'getAmount',
+        'custom_id' => 'getCustomId',
         'payment_account' => 'getPaymentAccount',
         'payment_account_id' => 'getPaymentAccountId',
         'sender' => 'getSender',
@@ -269,6 +275,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('custom_id', $data ?? [], null);
         $this->setIfExists('payment_account', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
         $this->setIfExists('sender', $data ?? [], null);
@@ -340,6 +347,33 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_id
+     *
+     * @return string|null
+     */
+    public function getCustomId()
+    {
+        return $this->container['custom_id'];
+    }
+
+    /**
+     * Sets custom_id
+     *
+     * @param string|null $custom_id An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
+     *
+     * @return self
+     */
+    public function setCustomId($custom_id)
+    {
+        if (is_null($custom_id)) {
+            throw new \InvalidArgumentException('non-nullable custom_id cannot be null');
+        }
+        $this->container['custom_id'] = $custom_id;
 
         return $this;
     }

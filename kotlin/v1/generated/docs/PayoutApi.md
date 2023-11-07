@@ -71,7 +71,7 @@ Configure Bearer:
 
 Get
 
-This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
 
 ### Example
 ```kotlin
@@ -80,7 +80,7 @@ This endpoint enables the retrieval of a previously accepted payout using its un
 //import rafikigen.models.*
 
 val apiInstance = PayoutApi()
-val id : kotlin.String = id_example // kotlin.String | The Payout ID (pyt-xxx)
+val id : kotlin.String = id_example // kotlin.String | The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
 try {
     val result : PayoutsIdGet200Response = apiInstance.payoutsIdGet(id)
     println(result)
@@ -97,7 +97,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **kotlin.String**| The Payout ID (pyt-xxx) |
+ **id** | **kotlin.String**| The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation |
 
 ### Return type
 

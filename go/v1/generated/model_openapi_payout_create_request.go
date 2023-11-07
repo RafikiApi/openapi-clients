@@ -20,6 +20,8 @@ var _ MappedNullable = &OpenapiPayoutCreateRequest{}
 // OpenapiPayoutCreateRequest struct for OpenapiPayoutCreateRequest
 type OpenapiPayoutCreateRequest struct {
 	Amount *OpenapiPayoutCreateRequestAmount `json:"amount,omitempty"`
+	// An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
+	CustomId *string `json:"custom_id,omitempty"`
 	PaymentAccount *OpenapiPaymentAccountGetOrCreateRequest `json:"payment_account,omitempty"`
 	// <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
 	PaymentAccountId *string `json:"payment_account_id,omitempty"`
@@ -75,6 +77,38 @@ func (o *OpenapiPayoutCreateRequest) HasAmount() bool {
 // SetAmount gets a reference to the given OpenapiPayoutCreateRequestAmount and assigns it to the Amount field.
 func (o *OpenapiPayoutCreateRequest) SetAmount(v OpenapiPayoutCreateRequestAmount) {
 	o.Amount = &v
+}
+
+// GetCustomId returns the CustomId field value if set, zero value otherwise.
+func (o *OpenapiPayoutCreateRequest) GetCustomId() string {
+	if o == nil || IsNil(o.CustomId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomId
+}
+
+// GetCustomIdOk returns a tuple with the CustomId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutCreateRequest) GetCustomIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomId) {
+		return nil, false
+	}
+	return o.CustomId, true
+}
+
+// HasCustomId returns a boolean if a field has been set.
+func (o *OpenapiPayoutCreateRequest) HasCustomId() bool {
+	if o != nil && !IsNil(o.CustomId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomId gets a reference to the given string and assigns it to the CustomId field.
+func (o *OpenapiPayoutCreateRequest) SetCustomId(v string) {
+	o.CustomId = &v
 }
 
 // GetPaymentAccount returns the PaymentAccount field value if set, zero value otherwise.
@@ -217,6 +251,9 @@ func (o OpenapiPayoutCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
+	}
+	if !IsNil(o.CustomId) {
+		toSerialize["custom_id"] = o.CustomId
 	}
 	if !IsNil(o.PaymentAccount) {
 		toSerialize["payment_account"] = o.PaymentAccount

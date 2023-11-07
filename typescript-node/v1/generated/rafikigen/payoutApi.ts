@@ -183,9 +183,9 @@ export class PayoutApi {
         });
     }
     /**
-     * This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+     * This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
      * @summary Get
-     * @param id The Payout ID (pyt-xxx)
+     * @param id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
      */
     public async payoutsIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PayoutsIdGet200Response;  }> {
         const localVarPath = this.basePath + '/payouts/{id}'

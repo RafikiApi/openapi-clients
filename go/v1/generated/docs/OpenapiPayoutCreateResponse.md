@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to [**OpenapiPayoutCreateResponseAmount**](OpenapiPayoutCreateResponseAmount.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
+**CustomId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** | The payout unique identifier | [optional] 
 **PaymentAccountId** | Pointer to **string** | The recipient payment account receiving funds | [optional] 
 **Sender** | Pointer to [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional] 
@@ -80,6 +81,31 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *OpenapiPayoutCreateResponse) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### GetCustomId
+
+`func (o *OpenapiPayoutCreateResponse) GetCustomId() string`
+
+GetCustomId returns the CustomId field if non-nil, zero value otherwise.
+
+### GetCustomIdOk
+
+`func (o *OpenapiPayoutCreateResponse) GetCustomIdOk() (*string, bool)`
+
+GetCustomIdOk returns a tuple with the CustomId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomId
+
+`func (o *OpenapiPayoutCreateResponse) SetCustomId(v string)`
+
+SetCustomId sets CustomId field to given value.
+
+### HasCustomId
+
+`func (o *OpenapiPayoutCreateResponse) HasCustomId() bool`
+
+HasCustomId returns a boolean if a field has been set.
 
 ### GetId
 

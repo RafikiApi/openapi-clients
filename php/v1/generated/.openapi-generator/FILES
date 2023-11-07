@@ -112,15 +112,3 @@ lib/rafikigen/PaymentAccountApi.php
 lib/rafikigen/PayoutApi.php
 lib/rafikigen/WalletApi.php
 phpunit.xml.dist
-test/Model/OpenapiPaymentAccountListResponseMetaPagingCursorsTest.php
-test/Model/OpenapiPaymentAccountListResponseMetaPagingTest.php
-test/Model/OpenapiPaymentAccountListResponseMetaTest.php
-test/Model/OpenapiPayoutListResponseMetaPagingCursorsTest.php
-test/Model/OpenapiPayoutListResponseMetaPagingTest.php
-test/Model/OpenapiPayoutListResponseMetaTest.php
-test/Model/OpenapiResponseBodyIdempotencyConflictTest.php
-test/Model/OpenapiResponseBodyInternalServerErrorTest.php
-test/Model/OpenapiResponseBodyNotFoundTest.php
-test/Model/OpenapiResponseBodySuccessCollectionTest.php
-test/Model/PaymentAccountsGet200ResponseTest.php
-test/Model/PaymentAccountsPost200ResponseTest.php

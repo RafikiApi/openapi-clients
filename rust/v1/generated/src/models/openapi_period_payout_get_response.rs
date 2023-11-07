@@ -17,6 +17,8 @@ pub struct OpenapiPeriodPayoutGetResponse {
     pub amount: Option<Box<crate::models::OpenapiPayoutCreateResponseAmount>>,
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
     pub created_at: Option<String>,
+    #[serde(rename = "custom_id", skip_serializing_if = "Option::is_none")]
+    pub custom_id: Option<String>,
     /// The payout unique identifier
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -40,6 +42,7 @@ impl OpenapiPeriodPayoutGetResponse {
         OpenapiPeriodPayoutGetResponse {
             amount: None,
             created_at: None,
+            custom_id: None,
             id: None,
             payment_account_id: None,
             receipt: None,

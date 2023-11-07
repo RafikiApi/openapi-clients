@@ -215,12 +215,13 @@ func (r ApiPayoutsIdGetRequest) Execute() (*PayoutsIdGet200Response, *http.Respo
 /*
 PayoutsIdGet Get
 
-This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.
+This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.
 
 To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
 
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Payout ID (pyt-xxx)
+ @param id The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation
  @return ApiPayoutsIdGetRequest
 */
 func (a *PayoutAPIService) PayoutsIdGet(ctx context.Context, id string) ApiPayoutsIdGetRequest {

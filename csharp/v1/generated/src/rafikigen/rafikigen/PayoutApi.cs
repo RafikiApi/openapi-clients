@@ -59,10 +59,10 @@ namespace rafikigen.rafikigen
         /// Get
         /// </summary>
         /// <remarks>
-        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PayoutsIdGet200Response</returns>
         PayoutsIdGet200Response PayoutsIdGet(string id, int operationIndex = 0);
@@ -71,10 +71,10 @@ namespace rafikigen.rafikigen
         /// Get
         /// </summary>
         /// <remarks>
-        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PayoutsIdGet200Response</returns>
         ApiResponse<PayoutsIdGet200Response> PayoutsIdGetWithHttpInfo(string id, int operationIndex = 0);
@@ -147,10 +147,10 @@ namespace rafikigen.rafikigen
         /// Get
         /// </summary>
         /// <remarks>
-        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PayoutsIdGet200Response</returns>
@@ -160,10 +160,10 @@ namespace rafikigen.rafikigen
         /// Get
         /// </summary>
         /// <remarks>
-        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PayoutsIdGet200Response)</returns>
@@ -500,10 +500,10 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PayoutsIdGet200Response</returns>
         public PayoutsIdGet200Response PayoutsIdGet(string id, int operationIndex = 0)
@@ -513,10 +513,10 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PayoutsIdGet200Response</returns>
         public rafikigen.Client.ApiResponse<PayoutsIdGet200Response> PayoutsIdGetWithHttpInfo(string id, int operationIndex = 0)
@@ -575,10 +575,10 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PayoutsIdGet200Response</returns>
@@ -589,10 +589,10 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;). Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
+        /// Get This endpoint enables the retrieval of a previously accepted payout using its unique ID (&#x60;pyt-xxx&#x60;) or the &#x60;custom_id&#x60; submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.  To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The Payout ID (pyt-xxx)</param>
+        /// <param name="id">The Payout ID (pyt-xxx) or the custom_id provided at the time of payout creation</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PayoutsIdGet200Response)</returns>

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | [**OpenapiPayoutCreateResponseAmount**](OpenapiPayoutCreateResponseAmount.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**custom_id** | **str** |  | [optional] 
 **id** | **str** | The payout unique identifier | [optional] 
 **payment_account_id** | **str** | The recipient payment account receiving funds | [optional] 
 **sender** | [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional] 

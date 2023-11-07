@@ -26,6 +26,7 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param amount 
+ * @param customId An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
  * @param paymentAccount 
  * @param paymentAccountId <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
  * @param sender 
@@ -37,6 +38,10 @@ data class OpenapiPayoutCreateRequest (
 
     @Json(name = "amount")
     val amount: OpenapiPayoutCreateRequestAmount? = null,
+
+    /* An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\". */
+    @Json(name = "custom_id")
+    val customId: kotlin.String? = null,
 
     @Json(name = "payment_account")
     val paymentAccount: OpenapiPaymentAccountGetOrCreateRequest? = null,

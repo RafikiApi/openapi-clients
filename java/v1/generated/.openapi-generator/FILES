@@ -134,15 +134,3 @@ src/main/java/rafikigen/BankApi.java
 src/main/java/rafikigen/PaymentAccountApi.java
 src/main/java/rafikigen/PayoutApi.java
 src/main/java/rafikigen/WalletApi.java
-src/test/java/org/openapitools/client/model/OpenapiPaymentAccountListResponseMetaPagingCursorsTest.java
-src/test/java/org/openapitools/client/model/OpenapiPaymentAccountListResponseMetaPagingTest.java
-src/test/java/org/openapitools/client/model/OpenapiPaymentAccountListResponseMetaTest.java
-src/test/java/org/openapitools/client/model/OpenapiPayoutListResponseMetaPagingCursorsTest.java
-src/test/java/org/openapitools/client/model/OpenapiPayoutListResponseMetaPagingTest.java
-src/test/java/org/openapitools/client/model/OpenapiPayoutListResponseMetaTest.java
-src/test/java/org/openapitools/client/model/OpenapiResponseBodyIdempotencyConflictTest.java
-src/test/java/org/openapitools/client/model/OpenapiResponseBodyInternalServerErrorTest.java
-src/test/java/org/openapitools/client/model/OpenapiResponseBodyNotFoundTest.java
-src/test/java/org/openapitools/client/model/OpenapiResponseBodySuccessCollectionTest.java
-src/test/java/org/openapitools/client/model/PaymentAccountsGet200ResponseTest.java
-src/test/java/org/openapitools/client/model/PaymentAccountsPost200ResponseTest.java

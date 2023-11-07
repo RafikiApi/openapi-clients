@@ -36,16 +36,18 @@ namespace rafikigen.Model
         /// </summary>
         /// <param name="amount">amount.</param>
         /// <param name="createdAt">createdAt.</param>
+        /// <param name="customId">customId.</param>
         /// <param name="id">The payout unique identifier.</param>
         /// <param name="paymentAccountId">The recipient payment account receiving funds.</param>
         /// <param name="receipt">The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property..</param>
         /// <param name="sender">sender.</param>
         /// <param name="state">state.</param>
         /// <param name="walletId">The wallet ID from which the money will disburse.</param>
-        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string id = default(string), string paymentAccountId = default(string), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
+        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string customId = default(string), string id = default(string), string paymentAccountId = default(string), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
         {
             this.Amount = amount;
             this.CreatedAt = createdAt;
+            this.CustomId = customId;
             this.Id = id;
             this.PaymentAccountId = paymentAccountId;
             this.Receipt = receipt;
@@ -66,6 +68,13 @@ namespace rafikigen.Model
         /// <example>2006-01-02T15:04:05Z07:00</example>
         [DataMember(Name = "created_at", EmitDefaultValue = false)]
         public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustomId
+        /// </summary>
+        /// <example>custom-id-xxx</example>
+        [DataMember(Name = "custom_id", EmitDefaultValue = false)]
+        public string CustomId { get; set; }
 
         /// <summary>
         /// The payout unique identifier
@@ -121,6 +130,7 @@ namespace rafikigen.Model
             sb.Append("class OpenapiPayoutGetResponse {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
             sb.Append("  Receipt: ").Append(Receipt).Append("\n");
@@ -173,6 +183,11 @@ namespace rafikigen.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
+                    this.CustomId == input.CustomId ||
+                    (this.CustomId != null &&
+                    this.CustomId.Equals(input.CustomId))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -220,6 +235,10 @@ namespace rafikigen.Model
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.CustomId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustomId.GetHashCode();
                 }
                 if (this.Id != null)
                 {

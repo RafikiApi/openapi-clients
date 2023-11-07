@@ -56,6 +56,9 @@ class OpenapiPayoutGetResponse {
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
             }
+            if (data.hasOwnProperty('custom_id')) {
+                obj['custom_id'] = ApiClient.convertToType(data['custom_id'], 'String');
+            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
@@ -91,6 +94,10 @@ class OpenapiPayoutGetResponse {
         // ensure the json data is a string
         if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
             throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
+        }
+        // ensure the json data is a string
+        if (data['custom_id'] && !(typeof data['custom_id'] === 'string' || data['custom_id'] instanceof String)) {
+            throw new Error("Expected the field `custom_id` to be a primitive type in the JSON string but got " + data['custom_id']);
         }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
@@ -134,6 +141,11 @@ OpenapiPayoutGetResponse.prototype['amount'] = undefined;
  * @member {String} created_at
  */
 OpenapiPayoutGetResponse.prototype['created_at'] = undefined;
+
+/**
+ * @member {String} custom_id
+ */
+OpenapiPayoutGetResponse.prototype['custom_id'] = undefined;
 
 /**
  * The payout unique identifier
