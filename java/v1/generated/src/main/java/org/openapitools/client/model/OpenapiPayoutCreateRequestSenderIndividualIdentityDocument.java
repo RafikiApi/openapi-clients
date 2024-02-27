@@ -49,7 +49,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutCreateRequestSenderIndividualIdentityDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-07T11:58:47.787462Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-27T15:32:35.482757Z[Etc/UTC]")
 public class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
@@ -68,7 +68,7 @@ public class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
   private String number;
 
   /**
-   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;
+   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -76,7 +76,9 @@ public class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
     
     DRIVING_LICENCE("DRIVING_LICENCE"),
     
-    NATIONAL_ID_CARD("NATIONAL_ID_CARD");
+    NATIONAL_ID_CARD("NATIONAL_ID_CARD"),
+    
+    RESIDENCE_PERMIT("RESIDENCE_PERMIT");
 
     private String value;
 
@@ -214,7 +216,7 @@ public class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
   }
 
    /**
-   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;
+   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;
    * @return type
   **/
   @javax.annotation.Nullable

@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 
 * `NATIONAL_ID_CARD` (value: `"NATIONAL_ID_CARD"`)
 
+* `RESIDENCE_PERMIT` (value: `"RESIDENCE_PERMIT"`)
+
 
 
 

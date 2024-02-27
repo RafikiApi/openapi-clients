@@ -70,7 +70,7 @@ class OpenapiPaymentAccountGetOrCreateRequestHolder implements ModelInterface, A
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'name' => '^(?:[\p{L}'\-]+\s*)+$',
         'type' => null
     ];
 

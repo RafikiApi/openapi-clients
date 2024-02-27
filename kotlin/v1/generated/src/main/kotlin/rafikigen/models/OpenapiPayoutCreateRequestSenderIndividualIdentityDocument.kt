@@ -26,7 +26,7 @@ import com.squareup.moshi.JsonClass
  * @param expiresOn <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  Date formatted as yyyy-mm-dd
  * @param issuedOn Date formatted as yyyy-mm-dd
  * @param number <span style=\"color:#e95f6a;\">required if identity_document is provided</span>
- * @param type <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+ * @param type <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
  */
 
 
@@ -48,22 +48,23 @@ data class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument (
     @Json(name = "number")
     val number: kotlin.String? = null,
 
-    /* <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD` */
+    /* <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT` */
     @Json(name = "type")
     val type: OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.Type? = null
 
 ) {
 
     /**
-     * <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+     * <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
      *
-     * Values: pASSPORT,dRIVINGLICENCE,nATIONALIDCARD
+     * Values: pASSPORT,dRIVINGLICENCE,nATIONALIDCARD,rESIDENCEPERMIT
      */
     @JsonClass(generateAdapter = false)
     enum class Type(val value: kotlin.String) {
         @Json(name = "PASSPORT") pASSPORT("PASSPORT"),
         @Json(name = "DRIVING_LICENCE") dRIVINGLICENCE("DRIVING_LICENCE"),
-        @Json(name = "NATIONAL_ID_CARD") nATIONALIDCARD("NATIONAL_ID_CARD");
+        @Json(name = "NATIONAL_ID_CARD") nATIONALIDCARD("NATIONAL_ID_CARD"),
+        @Json(name = "RESIDENCE_PERMIT") rESIDENCEPERMIT("RESIDENCE_PERMIT");
     }
 }
 

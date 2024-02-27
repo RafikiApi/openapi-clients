@@ -255,6 +255,7 @@ class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument implements Mode
     public const TYPE_PASSPORT = 'PASSPORT';
     public const TYPE_DRIVING_LICENCE = 'DRIVING_LICENCE';
     public const TYPE_NATIONAL_ID_CARD = 'NATIONAL_ID_CARD';
+    public const TYPE_RESIDENCE_PERMIT = 'RESIDENCE_PERMIT';
 
     /**
      * Gets allowable values of the enum
@@ -267,6 +268,7 @@ class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument implements Mode
             self::TYPE_PASSPORT,
             self::TYPE_DRIVING_LICENCE,
             self::TYPE_NATIONAL_ID_CARD,
+            self::TYPE_RESIDENCE_PERMIT,
         ];
     }
 
@@ -464,7 +466,7 @@ class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument implements Mode
     /**
      * Sets type
      *
-     * @param string|null $type <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+     * @param string|null $type <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
      *
      * @return self
      */

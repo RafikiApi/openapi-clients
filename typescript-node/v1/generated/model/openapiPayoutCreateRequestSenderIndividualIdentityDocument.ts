@@ -30,7 +30,7 @@ export class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
     */
     'number'?: string;
     /**
-    * <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+    * <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
     */
     'type'?: OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.TypeEnum;
 
@@ -72,6 +72,7 @@ export namespace OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
     export enum TypeEnum {
         Passport = <any> 'PASSPORT',
         DrivingLicence = <any> 'DRIVING_LICENCE',
-        NationalIdCard = <any> 'NATIONAL_ID_CARD'
+        NationalIdCard = <any> 'NATIONAL_ID_CARD',
+        ResidencePermit = <any> 'RESIDENCE_PERMIT'
     }
 }

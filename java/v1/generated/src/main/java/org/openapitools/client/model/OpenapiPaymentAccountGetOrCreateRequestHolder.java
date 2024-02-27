@@ -49,7 +49,7 @@ import invalidPackageName.JSON;
 /**
  * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required&lt;/span&gt;  The individual (or business) in whose name the bank account is registered
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-07T11:58:47.787462Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-27T15:32:35.482757Z[Etc/UTC]")
 public class OpenapiPaymentAccountGetOrCreateRequestHolder {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

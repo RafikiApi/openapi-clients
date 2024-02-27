@@ -18,6 +18,11 @@
 |---- | -----|
 | SAFARICOM | &quot;SAFARICOM&quot; |
 | AIRTEL | &quot;AIRTEL&quot; |
+| VODACOM | &quot;VODACOM&quot; |
+| TIGO | &quot;TIGO&quot; |
+| HALOTEL | &quot;HALOTEL&quot; |
+| TTCL | &quot;TTCL&quot; |
+| MTN | &quot;MTN&quot; |
 
 
 

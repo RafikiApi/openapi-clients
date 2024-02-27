@@ -29,7 +29,7 @@ class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument(BaseModel):
     expires_on: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if identity_document is provided</span>  Date formatted as yyyy-mm-dd")
     issued_on: Optional[StrictStr] = Field(None, description="Date formatted as yyyy-mm-dd")
     number: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if identity_document is provided</span>")
-    type: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`")
+    type: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`")
     __properties = ["country", "expires_on", "issued_on", "number", "type"]
 
     @validator('type')
@@ -38,8 +38,8 @@ class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD'):
-            raise ValueError("must be one of enum values ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD')")
+        if value not in ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD', 'RESIDENCE_PERMIT'):
+            raise ValueError("must be one of enum values ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD', 'RESIDENCE_PERMIT')")
         return value
 
     class Config:

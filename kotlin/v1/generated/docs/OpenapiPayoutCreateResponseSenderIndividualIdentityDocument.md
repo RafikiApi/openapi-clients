@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Enum: type
 Name | Value
 ---- | -----
-type | PASSPORT, DRIVING_LICENCE, NATIONAL_ID_CARD
+type | PASSPORT, DRIVING_LICENCE, NATIONAL_ID_CARD, RESIDENCE_PERMIT
 
 
 

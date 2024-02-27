@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **expires_on** | Option<**String**> | <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  Date formatted as yyyy-mm-dd | [optional]
 **issued_on** | Option<**String**> | Date formatted as yyyy-mm-dd | [optional]
 **number** | Option<**String**> | <span style=\"color:#e95f6a;\">required if identity_document is provided</span> | [optional]
-**r#type** | Option<**String**> | <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD` | [optional]
+**r#type** | Option<**String**> | <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT` | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

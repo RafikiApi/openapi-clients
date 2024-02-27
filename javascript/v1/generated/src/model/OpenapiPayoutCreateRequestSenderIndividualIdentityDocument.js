@@ -126,7 +126,7 @@ OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.prototype['issued_on'
 OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.prototype['number'] = undefined;
 
 /**
- * <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+ * <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
  * @member {module:model/OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.TypeEnum} type
  */
 OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.prototype['type'] = undefined;
@@ -158,7 +158,13 @@ OpenapiPayoutCreateRequestSenderIndividualIdentityDocument['TypeEnum'] = {
      * value: "NATIONAL_ID_CARD"
      * @const
      */
-    "NATIONAL_ID_CARD": "NATIONAL_ID_CARD"
+    "NATIONAL_ID_CARD": "NATIONAL_ID_CARD",
+
+    /**
+     * value: "RESIDENCE_PERMIT"
+     * @const
+     */
+    "RESIDENCE_PERMIT": "RESIDENCE_PERMIT"
 };
 
 

@@ -156,7 +156,13 @@ OpenapiPayoutCreateResponseSenderIndividualIdentityDocument['TypeEnum'] = {
      * value: "NATIONAL_ID_CARD"
      * @const
      */
-    "NATIONAL_ID_CARD": "NATIONAL_ID_CARD"
+    "NATIONAL_ID_CARD": "NATIONAL_ID_CARD",
+
+    /**
+     * value: "RESIDENCE_PERMIT"
+     * @const
+     */
+    "RESIDENCE_PERMIT": "RESIDENCE_PERMIT"
 };
 
 

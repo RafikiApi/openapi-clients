@@ -37,6 +37,16 @@ pub enum Operator {
     Safaricom,
     #[serde(rename = "AIRTEL")]
     Airtel,
+    #[serde(rename = "VODACOM")]
+    Vodacom,
+    #[serde(rename = "TIGO")]
+    Tigo,
+    #[serde(rename = "HALOTEL")]
+    Halotel,
+    #[serde(rename = "TTCL")]
+    Ttcl,
+    #[serde(rename = "MTN")]
+    Mtn,
 }
 
 impl Default for Operator {

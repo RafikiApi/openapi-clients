@@ -22,6 +22,7 @@
 | PASSPORT | &quot;PASSPORT&quot; |
 | DRIVING_LICENCE | &quot;DRIVING_LICENCE&quot; |
 | NATIONAL_ID_CARD | &quot;NATIONAL_ID_CARD&quot; |
+| RESIDENCE_PERMIT | &quot;RESIDENCE_PERMIT&quot; |
 
 
 

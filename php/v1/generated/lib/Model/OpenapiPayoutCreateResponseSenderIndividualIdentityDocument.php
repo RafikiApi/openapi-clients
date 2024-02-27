@@ -255,6 +255,7 @@ class OpenapiPayoutCreateResponseSenderIndividualIdentityDocument implements Mod
     public const TYPE_PASSPORT = 'PASSPORT';
     public const TYPE_DRIVING_LICENCE = 'DRIVING_LICENCE';
     public const TYPE_NATIONAL_ID_CARD = 'NATIONAL_ID_CARD';
+    public const TYPE_RESIDENCE_PERMIT = 'RESIDENCE_PERMIT';
 
     /**
      * Gets allowable values of the enum
@@ -267,6 +268,7 @@ class OpenapiPayoutCreateResponseSenderIndividualIdentityDocument implements Mod
             self::TYPE_PASSPORT,
             self::TYPE_DRIVING_LICENCE,
             self::TYPE_NATIONAL_ID_CARD,
+            self::TYPE_RESIDENCE_PERMIT,
         ];
     }
 

@@ -25,7 +25,7 @@ pub struct OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
     /// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>
     #[serde(rename = "number", skip_serializing_if = "Option::is_none")]
     pub number: Option<String>,
-    /// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+    /// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub r#type: Option<Type>,
 }
@@ -42,7 +42,7 @@ impl OpenapiPayoutCreateRequestSenderIndividualIdentityDocument {
     }
 }
 
-/// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+/// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Type {
     #[serde(rename = "PASSPORT")]
@@ -51,6 +51,8 @@ pub enum Type {
     DrivingLicence,
     #[serde(rename = "NATIONAL_ID_CARD")]
     NationalIdCard,
+    #[serde(rename = "RESIDENCE_PERMIT")]
+    ResidencePermit,
 }
 
 impl Default for Type {

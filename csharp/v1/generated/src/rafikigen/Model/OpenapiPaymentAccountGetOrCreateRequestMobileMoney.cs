@@ -48,7 +48,37 @@ namespace rafikigen.Model
             /// Enum AIRTEL for value: AIRTEL
             /// </summary>
             [EnumMember(Value = "AIRTEL")]
-            AIRTEL = 2
+            AIRTEL = 2,
+
+            /// <summary>
+            /// Enum VODACOM for value: VODACOM
+            /// </summary>
+            [EnumMember(Value = "VODACOM")]
+            VODACOM = 3,
+
+            /// <summary>
+            /// Enum TIGO for value: TIGO
+            /// </summary>
+            [EnumMember(Value = "TIGO")]
+            TIGO = 4,
+
+            /// <summary>
+            /// Enum HALOTEL for value: HALOTEL
+            /// </summary>
+            [EnumMember(Value = "HALOTEL")]
+            HALOTEL = 5,
+
+            /// <summary>
+            /// Enum TTCL for value: TTCL
+            /// </summary>
+            [EnumMember(Value = "TTCL")]
+            TTCL = 6,
+
+            /// <summary>
+            /// Enum MTN for value: MTN
+            /// </summary>
+            [EnumMember(Value = "MTN")]
+            MTN = 7
         }
 
 

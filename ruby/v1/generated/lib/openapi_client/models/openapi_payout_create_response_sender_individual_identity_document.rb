@@ -131,7 +131,7 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      type_validator = EnumAttributeValidator.new('String', ["PASSPORT", "DRIVING_LICENCE", "NATIONAL_ID_CARD"])
+      type_validator = EnumAttributeValidator.new('String', ["PASSPORT", "DRIVING_LICENCE", "NATIONAL_ID_CARD", "RESIDENCE_PERMIT"])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -139,7 +139,7 @@ module OpenapiClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["PASSPORT", "DRIVING_LICENCE", "NATIONAL_ID_CARD"])
+      validator = EnumAttributeValidator.new('String', ["PASSPORT", "DRIVING_LICENCE", "NATIONAL_ID_CARD", "RESIDENCE_PERMIT"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end

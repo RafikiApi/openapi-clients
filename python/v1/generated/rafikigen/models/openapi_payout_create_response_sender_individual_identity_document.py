@@ -38,8 +38,8 @@ class OpenapiPayoutCreateResponseSenderIndividualIdentityDocument(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD'):
-            raise ValueError("must be one of enum values ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD')")
+        if value not in ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD', 'RESIDENCE_PERMIT'):
+            raise ValueError("must be one of enum values ('PASSPORT', 'DRIVING_LICENCE', 'NATIONAL_ID_CARD', 'RESIDENCE_PERMIT')")
         return value
 
     class Config:

@@ -53,7 +53,13 @@ namespace rafikigen.Model
             /// Enum NATIONALIDCARD for value: NATIONAL_ID_CARD
             /// </summary>
             [EnumMember(Value = "NATIONAL_ID_CARD")]
-            NATIONALIDCARD = 3
+            NATIONALIDCARD = 3,
+
+            /// <summary>
+            /// Enum RESIDENCEPERMIT for value: RESIDENCE_PERMIT
+            /// </summary>
+            [EnumMember(Value = "RESIDENCE_PERMIT")]
+            RESIDENCEPERMIT = 4
         }
 
 

@@ -55,13 +55,14 @@ data class OpenapiPayoutCreateResponseSenderIndividualIdentityDocument (
     /**
      * 
      *
-     * Values: pASSPORT,dRIVINGLICENCE,nATIONALIDCARD
+     * Values: pASSPORT,dRIVINGLICENCE,nATIONALIDCARD,rESIDENCEPERMIT
      */
     @JsonClass(generateAdapter = false)
     enum class Type(val value: kotlin.String) {
         @Json(name = "PASSPORT") pASSPORT("PASSPORT"),
         @Json(name = "DRIVING_LICENCE") dRIVINGLICENCE("DRIVING_LICENCE"),
-        @Json(name = "NATIONAL_ID_CARD") nATIONALIDCARD("NATIONAL_ID_CARD");
+        @Json(name = "NATIONAL_ID_CARD") nATIONALIDCARD("NATIONAL_ID_CARD"),
+        @Json(name = "RESIDENCE_PERMIT") rESIDENCEPERMIT("RESIDENCE_PERMIT");
     }
 }
 

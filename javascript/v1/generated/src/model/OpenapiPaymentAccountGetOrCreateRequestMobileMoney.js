@@ -113,7 +113,37 @@ OpenapiPaymentAccountGetOrCreateRequestMobileMoney['OperatorEnum'] = {
      * value: "AIRTEL"
      * @const
      */
-    "AIRTEL": "AIRTEL"
+    "AIRTEL": "AIRTEL",
+
+    /**
+     * value: "VODACOM"
+     * @const
+     */
+    "VODACOM": "VODACOM",
+
+    /**
+     * value: "TIGO"
+     * @const
+     */
+    "TIGO": "TIGO",
+
+    /**
+     * value: "HALOTEL"
+     * @const
+     */
+    "HALOTEL": "HALOTEL",
+
+    /**
+     * value: "TTCL"
+     * @const
+     */
+    "TTCL": "TTCL",
+
+    /**
+     * value: "MTN"
+     * @const
+     */
+    "MTN": "MTN"
 };
 
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Enum: operator
 Name | Value
 ---- | -----
-&#x60;operator&#x60; | SAFARICOM, AIRTEL
+&#x60;operator&#x60; | SAFARICOM, AIRTEL, VODACOM, TIGO, HALOTEL, TTCL, MTN
 
 
 

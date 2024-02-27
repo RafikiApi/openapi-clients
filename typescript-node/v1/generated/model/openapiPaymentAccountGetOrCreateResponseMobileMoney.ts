@@ -38,6 +38,11 @@ export class OpenapiPaymentAccountGetOrCreateResponseMobileMoney {
 export namespace OpenapiPaymentAccountGetOrCreateResponseMobileMoney {
     export enum OperatorEnum {
         Safaricom = <any> 'SAFARICOM',
-        Airtel = <any> 'AIRTEL'
+        Airtel = <any> 'AIRTEL',
+        Vodacom = <any> 'VODACOM',
+        Tigo = <any> 'TIGO',
+        Halotel = <any> 'HALOTEL',
+        Ttcl = <any> 'TTCL',
+        Mtn = <any> 'MTN'
     }
 }

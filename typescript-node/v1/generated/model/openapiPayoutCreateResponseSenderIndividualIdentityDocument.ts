@@ -66,6 +66,7 @@ export namespace OpenapiPayoutCreateResponseSenderIndividualIdentityDocument {
     export enum TypeEnum {
         Passport = <any> 'PASSPORT',
         DrivingLicence = <any> 'DRIVING_LICENCE',
-        NationalIdCard = <any> 'NATIONAL_ID_CARD'
+        NationalIdCard = <any> 'NATIONAL_ID_CARD',
+        ResidencePermit = <any> 'RESIDENCE_PERMIT'
     }
 }

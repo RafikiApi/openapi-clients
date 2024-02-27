@@ -49,6 +49,8 @@ pub enum Type {
     DrivingLicence,
     #[serde(rename = "NATIONAL_ID_CARD")]
     NationalIdCard,
+    #[serde(rename = "RESIDENCE_PERMIT")]
+    ResidencePermit,
 }
 
 impl Default for Type {

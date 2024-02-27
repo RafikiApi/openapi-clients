@@ -16,6 +16,16 @@ Name | Type | Description | Notes
 
 * `AIRTEL` (value: `"AIRTEL"`)
 
+* `VODACOM` (value: `"VODACOM"`)
+
+* `TIGO` (value: `"TIGO"`)
+
+* `HALOTEL` (value: `"HALOTEL"`)
+
+* `TTCL` (value: `"TTCL"`)
+
+* `MTN` (value: `"MTN"`)
+
 
 
 

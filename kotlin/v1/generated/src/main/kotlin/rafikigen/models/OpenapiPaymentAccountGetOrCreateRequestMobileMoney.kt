@@ -42,12 +42,17 @@ data class OpenapiPaymentAccountGetOrCreateRequestMobileMoney (
     /**
      * <span style=\"color:#e95f6a;\">required with type MOBILE_MONEY</span>  The telco network associated with the phone number. Each country allows only a subset of operators, this is documented [here](post_payment-accounts#mobile-money).
      *
-     * Values: sAFARICOM,aIRTEL
+     * Values: sAFARICOM,aIRTEL,vODACOM,tIGO,hALOTEL,tTCL,mTN
      */
     @JsonClass(generateAdapter = false)
     enum class `Operator`(val value: kotlin.String) {
         @Json(name = "SAFARICOM") sAFARICOM("SAFARICOM"),
-        @Json(name = "AIRTEL") aIRTEL("AIRTEL");
+        @Json(name = "AIRTEL") aIRTEL("AIRTEL"),
+        @Json(name = "VODACOM") vODACOM("VODACOM"),
+        @Json(name = "TIGO") tIGO("TIGO"),
+        @Json(name = "HALOTEL") hALOTEL("HALOTEL"),
+        @Json(name = "TTCL") tTCL("TTCL"),
+        @Json(name = "MTN") mTN("MTN");
     }
 }
 

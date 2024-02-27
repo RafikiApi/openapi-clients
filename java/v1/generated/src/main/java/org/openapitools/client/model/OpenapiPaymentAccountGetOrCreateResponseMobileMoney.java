@@ -49,7 +49,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPaymentAccountGetOrCreateResponseMobileMoney
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-07T11:58:47.787462Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-27T15:32:35.482757Z[Etc/UTC]")
 public class OpenapiPaymentAccountGetOrCreateResponseMobileMoney {
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
@@ -62,7 +62,17 @@ public class OpenapiPaymentAccountGetOrCreateResponseMobileMoney {
   public enum OperatorEnum {
     SAFARICOM("SAFARICOM"),
     
-    AIRTEL("AIRTEL");
+    AIRTEL("AIRTEL"),
+    
+    VODACOM("VODACOM"),
+    
+    TIGO("TIGO"),
+    
+    HALOTEL("HALOTEL"),
+    
+    TTCL("TTCL"),
+    
+    MTN("MTN");
 
     private String value;
 

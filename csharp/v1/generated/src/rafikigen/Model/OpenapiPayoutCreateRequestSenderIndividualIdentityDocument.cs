@@ -32,9 +32,9 @@ namespace rafikigen.Model
     public partial class OpenapiPayoutCreateRequestSenderIndividualIdentityDocument : IEquatable<OpenapiPayoutCreateRequestSenderIndividualIdentityDocument>, IValidatableObject
     {
         /// <summary>
-        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;
+        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;
         /// </summary>
-        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;</value>
+        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
@@ -54,14 +54,20 @@ namespace rafikigen.Model
             /// Enum NATIONALIDCARD for value: NATIONAL_ID_CARD
             /// </summary>
             [EnumMember(Value = "NATIONAL_ID_CARD")]
-            NATIONALIDCARD = 3
+            NATIONALIDCARD = 3,
+
+            /// <summary>
+            /// Enum RESIDENCEPERMIT for value: RESIDENCE_PERMIT
+            /// </summary>
+            [EnumMember(Value = "RESIDENCE_PERMIT")]
+            RESIDENCEPERMIT = 4
         }
 
 
         /// <summary>
-        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;
+        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;
         /// </summary>
-        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;</value>
+        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
@@ -71,7 +77,7 @@ namespace rafikigen.Model
         /// <param name="expiresOn">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  Date formatted as yyyy-mm-dd.</param>
         /// <param name="issuedOn">Date formatted as yyyy-mm-dd.</param>
         /// <param name="number">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;.</param>
-        /// <param name="type">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;.</param>
+        /// <param name="type">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if identity_document is provided&lt;/span&gt;  One of &#x60;PASSPORT&#x60;, &#x60;DRIVING_LICENCE&#x60;, &#x60;NATIONAL_ID_CARD&#x60;, &#x60;RESIDENCE_PERMIT&#x60;.</param>
         public OpenapiPayoutCreateRequestSenderIndividualIdentityDocument(string country = default(string), string expiresOn = default(string), string issuedOn = default(string), string number = default(string), TypeEnum? type = default(TypeEnum?))
         {
             this.Country = country;

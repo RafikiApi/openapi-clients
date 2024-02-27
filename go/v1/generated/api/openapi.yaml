@@ -93,9 +93,11 @@ paths:
 
         The following table outlines the operators supported by our API for each specific country.
 
-        | Country | Operators         |
-        |---------|-------------------|
-        | KE      | SAFARICOM, AIRTEL |
+        | Country | Operators                            |
+        |---------|--------------------------------------|
+        | KE      | SAFARICOM, AIRTEL                    |
+        | TZ      | VODACOM, AIRTEL, TIGO, HALOTEL, TTCL |
+        | RW      | AIRTEL, MTN                          |
 
         ### Bank account
 
@@ -226,9 +228,11 @@ paths:
         \ along with the payout unique identifier.\n> <br>\n> Upon acceptance, the\
         \ payout is marked as pending. Your client program will need to poll at intervals\
         \ to [query the payout state](get_payouts-id) and determine whether it has\
-        \ succeeded or not.\n> <br>\n> <details>\n>  <summary>Payout States</summary>\n\
-        > <br>\n>  <table>\n>    <thead>\n>        <tr>\n>            <th>State</th>\n\
-        >            <th>Description</th>\n>        </tr>\n>    </thead>\n>    <tbody>\n\
+        \ succeeded or not. After the payout is completed, provided [webhook notifications](webhooks)\
+        \ are set up, Rafiki will also dispatch [payout.state-updated](payoutstate-updated)\
+        \ events\n> <br>\n>\n> <details>\n>  <summary>Payout States</summary>\n> <br>\n\
+        >  <table>\n>    <thead>\n>        <tr>\n>            <th>State</th>\n>  \
+        \          <th>Description</th>\n>        </tr>\n>    </thead>\n>    <tbody>\n\
         >        <tr>\n>            <th>⏳<br>PENDING</th>\n>            <th>Your payout\
         \ has been accepted, and it is currently awaiting processing.</th>\n>    \
         \    </tr>\n>        <tr>\n>           <th>🎉<br>SENT</th>\n>           <th>The\
@@ -248,50 +252,163 @@ paths:
         \ due to a failure. If the \"context\" property does not provide specific\
         \ information about the reason for the failure, please contact our customer\
         \ support for assistance.\n>           </th>\n>        </tr>\n>    </tbody>\n\
-        >  </table>\n>  </details>\n\n> ⚠️ Compliance requirements\n> \n> Depending\
+        >  </table>\n>  </details>\n> <br>\n> <details>\n>  <summary>Payout state\
+        \ context</summary>\n> <br>\n> When a payout fails, the \"context\" property\
+        \ of the state object will provide additional information about the reason\
+        \ for the failure. The table below outlines the possible values for this property.\n\
+        >\n> #### `WALLET_INSUFFICIENT_BALANCE`\n>\n> The selected wallet currently\
+        \ doesn't have enough money to process the payout. <br><br>\n>\n> #### `PAYMENT_ACCOUNT_INVALID_ACCOUNT_NUMBER`\n\
+        >\n> The account number provided is invalid. <br><br>\n>\n> #### `PAYMENT_ACCOUNT_BALANCE_MAXED_OUT`\n\
+        >\n> The payment account balance has reached the maximum allowed. <br><br>\n\
+        >\n> #### `PAYMENT_ACCOUNT_PER_TRANSACTION_LIMIT_REACHED`\n>\n> The amount\
+        \ to be sent exceeds the maximum allowed per transaction for this payment\
+        \ account <br><br>\n>\n> #### `PAYMENT_ACCOUNT_DAILY_LIMIT_REACHED`\n>\n>\
+        \ The payment account has reached the daily limit or would reach it by processing\
+        \ this payout. <br><br>\n>\n> #### `PAYMENT_ACCOUNT_MONTHLY_LIMIT_REACHED`\n\
+        >\n> The payment account has reached the monthly limit or would reach it by\
+        \ processing this payout. <br><br>\n>\n> #### `PAYMENT_ACCOUNT_LIMIT_REACHED`\n\
+        >\n> The payment account has reached a limit but we don't know which one.\
+        \ <br><br>\n>\n>  </details>\n\n> ⚠️ Compliance requirements\n>\n> Depending\
         \ on the country and/or bank you plan to disburse money to, there are specific\
         \ compliance and regulatory requirements that must be adhered to. For example,\
         \ some countries might necessitate more comprehensive sender details or impose\
         \ limits on minimum/maximum payout amounts.\n> <br>\n> We understand that\
         \ navigating these varying rules for different countries can be complex, considering\
-        \ the multitude of combinations possible. To simplify this process for you,\
-        \ the table below outlines the specific requirements for each country we offer\
-        \ payout support, streamlining the compliance process.\n> <br>\n> <details>\n\
-        <summary>Requirements</summary>\n<table>\n    <thead>\n        <tr>\n    \
-        \        <th>Field</th>\n            <th>KE 🇰🇪</th>\n        </tr>\n   \
-        \ </thead>\n    <tbody>\n        <tr>\n            <td>amount.value</td>\n\
-        \            <td>\n                <table>\n                    <thead>\n\
-        \                         <tr>\n                            <th>Min</th>\n\
-        \                            <th>Max</th>\n                        </tr>\n\
-        \                    </thead>\n                    <tbody>\n             \
-        \           <tr>\n                            <td>140 KES</td>\n         \
-        \                   <td>500,000 KES</td> <!-- Kenya -->\n                \
-        \        </tr>\n                    </tbody>\n                </table>\n \
-        \           </td> <!-- Kenya -->\n        </tr>\n        <tr>\n          \
-        \  <td>sender.type</td>\n            <td>Required</td> <!-- Kenya -->\n  \
-        \      </tr>\n        <tr>\n            <td>sender.name</td>\n           \
-        \ <td>Required</td> <!-- Kenya -->\n        </tr>\n        <tr>\n        \
-        \    <td>sender.address.line1</td>\n            <td>Required</td> <!-- Kenya\
-        \ -->\n        </tr>\n        <tr>\n            <td>sender.address.line2</td>\n\
-        \            <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n    \
-        \        <td>sender.address.line3</td>\n            <td>-</td> <!-- Kenya\
-        \ -->\n        </tr>\n        <tr>\n            <td>sender.address.city</td>\n\
-        \            <td>Required</td> <!-- Kenya -->\n        </tr>\n        <tr>\n\
-        \            <td>sender.address.postal_code</td>\n            <td>Required</td>\
-        \ <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.address.country</td>\n\
-        \            <td>Required</td> <!-- Kenya -->\n        </tr>\n        <tr>\n\
-        \            <td>sender.individual.dob</td>\n            <td>Required</td>\
-        \ <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.individual.dob</td>\n\
-        \            <td>Required with INDIVIDUAL sender's type</td> <!-- Kenya -->\n\
-        \        </tr>\n        <tr>\n            <td>sender.individual.identity_document.type</td>\n\
-        \            <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n    \
-        \        <td>sender.individual.identity_document.country</td>\n          \
-        \  <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.individual.identity_document.number</td>\n\
-        \            <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n    \
-        \        <td>sender.individual.identity_document.issued_on</td>\n        \
-        \    <td>-</td> <!-- Kenya -->\n        </tr>\n        <tr>\n            <td>sender.individual.identity_document.expires_on</td>\n\
-        \            <td>-</td> <!-- Kenya -->\n        </tr>\n    </tbody>\n</table>\n\
-        </details>"
+        \ the multitude of combinations possible. To simplify this process, you can\
+        \ detail the requirements for each country listed below.\n> <br>\n>\n> <details>\n\
+        > <summary>🇰🇪 Kenya</summary>\n> <table>\n>     <thead>\n>         <tr>\n\
+        >             <th>Field</th>\n>         </tr>\n>     </thead>\n>     <tbody>\n\
+        >         <tr>\n>             <td>amount.value</td>\n>             <td>\n\
+        >                 <table>\n>                     <thead>\n>              \
+        \            <tr>\n>                             <th>Min</th>\n>         \
+        \                    <th>Max</th>\n>                         </tr>\n>    \
+        \                 </thead>\n>                     <tbody>\n>             \
+        \            <tr>\n>                             <td>140 KES</td>\n>     \
+        \                        <td>500,000 KES</td>\n>                         </tr>\n\
+        >                     </tbody>\n>                 </table>\n>            \
+        \ </td>\n>         </tr>\n>         <tr>\n>             <td>sender.type</td>\n\
+        >             <td>Required</td> <!-- Kenya -->\n>         </tr>\n>       \
+        \  <tr>\n>             <td>sender.name</td>\n>             <td>Required</td>\
+        \ <!-- Kenya -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line1</td>\n\
+        >             <td>Required</td> <!-- Kenya -->\n>         </tr>\n>       \
+        \  <tr>\n>             <td>sender.address.line2</td>\n>             <td>-</td>\
+        \ <!-- Kenya -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line3</td>\n\
+        >             <td>-</td> <!-- Kenya -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.address.city</td>\n>             <td>Required</td>\
+        \ <!-- Kenya -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.postal_code</td>\n\
+        >             <td>Required</td> <!-- Kenya -->\n>         </tr>\n>       \
+        \  <tr>\n>             <td>sender.address.country</td>\n>             <td>Required</td>\
+        \ <!-- Kenya -->\n>         </tr>\n>         <tr>\n>             <td>sender.individual.dob</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Kenya -->\n> \
+        \        </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.country</td>\n\
+        >             <td>-</td> <!-- Kenya -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.individual.identity_document.number</td>\n>     \
+        \        <td>-</td> <!-- Kenya -->\n>         </tr>\n>         <tr>\n>   \
+        \          <td>sender.individual.identity_document.issued_on</td>\n>     \
+        \        <td>-</td> <!-- Kenya -->\n>         </tr>\n>         <tr>\n>   \
+        \          <td>sender.individual.identity_document.expires_on</td>\n>    \
+        \         <td>-</td> <!-- Kenya -->\n>         </tr>\n>     </tbody>\n> </table>\n\
+        > <br>\n> </details>\n> \n> <details>\n> <summary>🇳🇬 Nigeria</summary>\n\
+        > <table>\n>     <thead>\n>         <tr>\n>             <th>Field</th>\n>\
+        \         </tr>\n>     </thead>\n>     <tbody>\n>         <tr>\n>        \
+        \     <td>amount.value</td>\n>             <td>\n>                 <table>\n\
+        >                     <thead>\n>                          <tr>\n>        \
+        \                     <th>Min</th>\n>                             <th>Max</th>\n\
+        >                         </tr>\n>                     </thead>\n>       \
+        \              <tbody>\n>                         <tr>\n>                \
+        \             <td>100 NGN</td>\n>                             <td> - </td>\
+        \ <!-- TODO -->\n>                         </tr>\n>                     </tbody>\n\
+        >                 </table>\n>             </td> <!-- Nigeria -->\n>      \
+        \   </tr>\n>         <tr>\n>             <td>sender.type</td>\n>         \
+        \    <td>Required</td> <!-- Nigeria -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.name</td>\n>             <td>Required</td> <!-- Nigeria\
+        \ -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line1</td>\n\
+        >             <td>Required</td> <!-- Nigeria -->\n>         </tr>\n>     \
+        \    <tr>\n>             <td>sender.address.line2</td>\n>             <td>-</td>\
+        \ <!-- Nigeria -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line3</td>\n\
+        >             <td>-</td> <!-- Nigeria -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.address.city</td>\n>             <td>Required</td>\
+        \ <!-- Nigeria -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.postal_code</td>\n\
+        >             <td>Required</td> <!-- Nigeria -->\n>         </tr>\n>     \
+        \    <tr>\n>             <td>sender.address.country</td>\n>             <td>Required</td>\
+        \ <!-- Nigeria -->\n>         </tr>\n>         <tr>\n>             <td>sender.individual.dob</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->\n\
+        >         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.country</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->\n\
+        >         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.number</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->\n\
+        >         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.issued_on</td>\n\
+        >             <td>-</td> <!-- Nigeria -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.individual.identity_document.expires_on</td>\n> \
+        \            <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->\n>\
+        \         </tr>\n>     </tbody>\n> </table>\n> <br>\n> </details>\n> \n> <details>\n\
+        > <summary>🇹🇿 Tanzania</summary>\n> <table>\n>     <thead>\n>         <tr>\n\
+        >             <th>Field</th>\n>         </tr>\n>     </thead>\n>     <tbody>\n\
+        >         <tr>\n>             <td>amount.value</td>\n>             <td>\n\
+        >                 <table>\n>                     <thead>\n>              \
+        \            <tr>\n>                             <th>Min</th>\n>         \
+        \                    <th>Max</th>\n>                         </tr>\n>    \
+        \                 </thead>\n>                     <tbody>\n>             \
+        \            <tr>\n>                             <td>2,500 TZS</td>\n>   \
+        \                          <td>1,000,000 TZS</td>\n>                     \
+        \    </tr>\n>                     </tbody>\n>                 </table>\n>\
+        \             </td> <!-- Tanzania -->\n>         </tr>\n>         <tr>\n>\
+        \             <td>sender.type</td>\n>             <td>Required</td> <!-- Tanzania\
+        \ -->\n>         </tr>\n>         <tr>\n>             <td>sender.name</td>\n\
+        >             <td>Required</td> <!-- Tanzania -->\n>         </tr>\n>    \
+        \     <tr>\n>             <td>sender.address.line1</td>\n>             <td>Required</td>\
+        \ <!-- Tanzania -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line2</td>\n\
+        >             <td>-</td> <!-- Tanzania -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.address.line3</td>\n>             <td>-</td> <!--\
+        \ Tanzania -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.city</td>\n\
+        >             <td>Required</td> <!-- Tanzania -->\n>         </tr>\n>    \
+        \     <tr>\n>             <td>sender.address.postal_code</td>\n>         \
+        \    <td>Required</td> <!-- Tanzania -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.address.country</td>\n>             <td>Required</td>\
+        \ <!-- Tanzania -->\n>         </tr>\n>         <tr>\n>             <td>sender.individual.dob</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->\n\
+        >         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.country</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->\n\
+        >         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.number</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->\n\
+        >         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.issued_on</td>\n\
+        >             <td>-</td> <!-- Tanzania -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.individual.identity_document.expires_on</td>\n> \
+        \            <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->\n\
+        >         </tr>\n>     </tbody>\n> </table>\n> <br>\n> </details>\n> \n> <details>\n\
+        > <summary>🇷🇼 Rwanda</summary>\n> <table>\n>     <thead>\n>         <tr>\n\
+        >             <th>Field</th>\n>         </tr>\n>     </thead>\n>     <tbody>\n\
+        >         <tr>\n>             <td>amount.value</td>\n>             <td>\n\
+        >                 <table>\n>                     <thead>\n>              \
+        \           <tr>\n>                             <th>Min</th>\n>          \
+        \                   <th>Max</th>\n>                         </tr>\n>     \
+        \                </thead>\n>                     <tbody>\n>              \
+        \           <tr>\n>                             <td>500 RWF</td>\n>      \
+        \                       <td>-</td>\n>                         </tr>\n>   \
+        \                  </tbody>\n>                 </table>\n>             </td>\
+        \ <!-- Rwanda -->\n>         </tr>\n>         <tr>\n>             <td>sender.type</td>\n\
+        >             <td>Required</td> <!-- Rwanda -->\n>         </tr>\n>      \
+        \   <tr>\n>             <td>sender.name</td>\n>             <td>Required</td>\
+        \ <!-- Rwanda -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line1</td>\n\
+        >             <td>Required</td> <!-- Rwanda -->\n>         </tr>\n>      \
+        \   <tr>\n>             <td>sender.address.line2</td>\n>             <td>-</td>\
+        \ <!-- Rwanda -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.line3</td>\n\
+        >             <td>-</td> <!-- Rwanda -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.address.city</td>\n>             <td>Required</td>\
+        \ <!-- Rwanda -->\n>         </tr>\n>         <tr>\n>             <td>sender.address.postal_code</td>\n\
+        >             <td>Required</td> <!-- Rwanda -->\n>         </tr>\n>      \
+        \   <tr>\n>             <td>sender.address.country</td>\n>             <td>Required</td>\
+        \ <!-- Rwanda -->\n>         </tr>\n>         <tr>\n>             <td>sender.individual.dob</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->\n>\
+        \         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.country</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->\n>\
+        \         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.number</td>\n\
+        >             <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->\n>\
+        \         </tr>\n>         <tr>\n>             <td>sender.individual.identity_document.issued_on</td>\n\
+        >             <td>-</td> <!-- Rwanda -->\n>         </tr>\n>         <tr>\n\
+        >             <td>sender.individual.identity_document.expires_on</td>\n> \
+        \            <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->\n> \
+        \        </tr>\n>     </tbody>\n> </table>\n> <br>\n> </details>"
       parameters:
       - description: "🚨️ Prevent duplicate payouts! See: [x-idempotency-key security\
           \ scheme](idempotency)"
@@ -348,7 +465,7 @@ paths:
   /payouts/{id}:
     get:
       description: |
-        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status. Currently, we do not provide webhooks, so this method serves as the only available option in such cases.
+        This endpoint enables the retrieval of a previously accepted payout using its unique ID (`pyt-xxx`) or the `custom_id` submitted when creating it. Its primary purpose is to periodically check for changes in the payout status.
 
         To learn more about the lifecycle of payouts, please refer to the dedicated section under the [Send Money](post_payouts) endpoint.
       parameters:
@@ -803,6 +920,7 @@ components:
             <span style="color:#e95f6a;">required</span>
 
             Either the INDIVIDUAL full name or the BUSINESS registered legal name
+          format: "^(?:[\\p{L}'\\-]+\\s*)+$"
           type: string
         type:
           description: |-
@@ -833,6 +951,11 @@ components:
           enum:
           - SAFARICOM
           - AIRTEL
+          - VODACOM
+          - TIGO
+          - HALOTEL
+          - TTCL
+          - MTN
           type: string
       type: object
       x-order: "4"
@@ -872,6 +995,11 @@ components:
           enum:
           - SAFARICOM
           - AIRTEL
+          - VODACOM
+          - TIGO
+          - HALOTEL
+          - TTCL
+          - MTN
           example: SAFARICOM
           type: string
       type: object
@@ -972,11 +1100,12 @@ components:
           description: |-
             <span style="color:#e95f6a;">required if identity_document is provided</span>
 
-            One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+            One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
           enum:
           - PASSPORT
           - DRIVING_LICENCE
           - NATIONAL_ID_CARD
+          - RESIDENCE_PERMIT
           type: string
       type: object
     openapi_PayoutCreateRequest_sender_individual:
@@ -1076,6 +1205,7 @@ components:
           - PASSPORT
           - DRIVING_LICENCE
           - NATIONAL_ID_CARD
+          - RESIDENCE_PERMIT
           type: string
       type: object
     openapi_PayoutCreateResponse_sender_individual:

@@ -210,9 +210,11 @@ The "mobile money" type refers to accounts registered with telecom companies (a.
 
 The following table outlines the operators supported by our API for each specific country.
 
-| Country | Operators         |
-|---------|-------------------|
-| KE      | SAFARICOM, AIRTEL |
+| Country | Operators                            |
+|---------|--------------------------------------|
+| KE      | SAFARICOM, AIRTEL                    |
+| TZ      | VODACOM, AIRTEL, TIGO, HALOTEL, TTCL |
+| RW      | AIRTEL, MTN                          |
 
 ### Bank account
 
