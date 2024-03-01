@@ -89,7 +89,6 @@ Class | Method | HTTP request | Description
 
 - [BanksGet200Response](docs/Model/BanksGet200Response.md)
 - [BanksGet200ResponseAllOfDataInner](docs/Model/BanksGet200ResponseAllOfDataInner.md)
-- [BanksGet200ResponseAllOfDataInnerBranchesInner](docs/Model/BanksGet200ResponseAllOfDataInnerBranchesInner.md)
 - [OpenapiPaymentAccountGetOrCreateRequest](docs/Model/OpenapiPaymentAccountGetOrCreateRequest.md)
 - [OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
 - [OpenapiPaymentAccountGetOrCreateRequestHolder](docs/Model/OpenapiPaymentAccountGetOrCreateRequestHolder.md)

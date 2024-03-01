@@ -57,7 +57,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'branches' => '\OpenAPI\Client\Model\BanksGet200ResponseAllOfDataInnerBranchesInner[]',
         'country' => 'string',
         'id' => 'string',
         'name' => 'string'
@@ -71,7 +70,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'branches' => null,
         'country' => null,
         'id' => 'ksuid',
         'name' => null
@@ -83,8 +81,7 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'branches' => false,
-		'country' => false,
+        'country' => false,
 		'id' => false,
 		'name' => false
     ];
@@ -175,7 +172,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'branches' => 'branches',
         'country' => 'country',
         'id' => 'id',
         'name' => 'name'
@@ -187,7 +183,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'branches' => 'setBranches',
         'country' => 'setCountry',
         'id' => 'setId',
         'name' => 'setName'
@@ -199,7 +194,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'branches' => 'getBranches',
         'country' => 'getCountry',
         'id' => 'getId',
         'name' => 'getName'
@@ -262,7 +256,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('branches', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -309,33 +302,6 @@ class BanksGet200ResponseAllOfDataInner implements ModelInterface, ArrayAccess, 
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets branches
-     *
-     * @return \OpenAPI\Client\Model\BanksGet200ResponseAllOfDataInnerBranchesInner[]|null
-     */
-    public function getBranches()
-    {
-        return $this->container['branches'];
-    }
-
-    /**
-     * Sets branches
-     *
-     * @param \OpenAPI\Client\Model\BanksGet200ResponseAllOfDataInnerBranchesInner[]|null $branches If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-     *
-     * @return self
-     */
-    public function setBranches($branches)
-    {
-        if (is_null($branches)) {
-            throw new \InvalidArgumentException('non-nullable branches cannot be null');
-        }
-        $this->container['branches'] = $branches;
-
-        return $this;
-    }
 
     /**
      * Gets country

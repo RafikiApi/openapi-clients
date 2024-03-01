@@ -18,10 +18,6 @@ export class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
     */
     'bankId'?: string;
     /**
-    * <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account
-    */
-    'branchId'?: string;
-    /**
     * <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).
     */
     'number'?: string;
@@ -32,11 +28,6 @@ export class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
         {
             "name": "bankId",
             "baseName": "bank_id",
-            "type": "string"
-        },
-        {
-            "name": "branchId",
-            "baseName": "branch_id",
             "type": "string"
         },
         {

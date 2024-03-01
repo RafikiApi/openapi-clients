@@ -9,7 +9,6 @@ docs/Api/PayoutApi.md
 docs/Api/WalletApi.md
 docs/Model/BanksGet200Response.md
 docs/Model/BanksGet200ResponseAllOfDataInner.md
-docs/Model/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/Model/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/Model/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -60,7 +59,6 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/BanksGet200Response.php
 lib/Model/BanksGet200ResponseAllOfDataInner.php
-lib/Model/BanksGet200ResponseAllOfDataInnerBranchesInner.php
 lib/Model/ModelInterface.php
 lib/Model/OpenapiPaymentAccountGetOrCreateRequest.php
 lib/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.php

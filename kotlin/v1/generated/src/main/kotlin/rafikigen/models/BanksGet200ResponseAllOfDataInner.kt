@@ -15,7 +15,6 @@
 
 package rafikigen.models
 
-import rafikigen.models.BanksGet200ResponseAllOfDataInnerBranchesInner
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,7 +22,6 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param branches If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
  * @param country The ISO 3166 alpha-2 country code in which the bank operates.
  * @param id 
  * @param name 
@@ -31,10 +29,6 @@ import com.squareup.moshi.JsonClass
 
 
 data class BanksGet200ResponseAllOfDataInner (
-
-    /* If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank. */
-    @Json(name = "branches")
-    val branches: kotlin.collections.List<BanksGet200ResponseAllOfDataInnerBranchesInner>? = null,
 
     /* The ISO 3166 alpha-2 country code in which the bank operates. */
     @Json(name = "country")

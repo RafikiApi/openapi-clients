@@ -11,13 +11,8 @@
  */
 
 import { RequestFile } from './models';
-import { BanksGet200ResponseAllOfDataInnerBranchesInner } from './banksGet200ResponseAllOfDataInnerBranchesInner';
 
 export class BanksGet200ResponseAllOfDataInner {
-    /**
-    * If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-    */
-    'branches'?: Array<BanksGet200ResponseAllOfDataInnerBranchesInner>;
     /**
     * The ISO 3166 alpha-2 country code in which the bank operates.
     */
@@ -28,11 +23,6 @@ export class BanksGet200ResponseAllOfDataInner {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "branches",
-            "baseName": "branches",
-            "type": "Array<BanksGet200ResponseAllOfDataInnerBranchesInner>"
-        },
         {
             "name": "country",
             "baseName": "country",

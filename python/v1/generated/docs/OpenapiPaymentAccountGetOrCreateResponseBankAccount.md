@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bank_id** | **str** |  | [optional] 
-**branch_id** | **str** |  | [optional] 
 **number** | **str** |  | [optional] 
 
 ## Example

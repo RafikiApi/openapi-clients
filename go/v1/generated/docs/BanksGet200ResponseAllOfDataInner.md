@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Branches** | Pointer to [**[]BanksGet200ResponseAllOfDataInnerBranchesInner**](BanksGet200ResponseAllOfDataInnerBranchesInner.md) | If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank. | [optional] 
 **Country** | Pointer to **string** | The ISO 3166 alpha-2 country code in which the bank operates. | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -27,31 +26,6 @@ will change when the set of required properties is changed
 NewBanksGet200ResponseAllOfDataInnerWithDefaults instantiates a new BanksGet200ResponseAllOfDataInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetBranches
-
-`func (o *BanksGet200ResponseAllOfDataInner) GetBranches() []BanksGet200ResponseAllOfDataInnerBranchesInner`
-
-GetBranches returns the Branches field if non-nil, zero value otherwise.
-
-### GetBranchesOk
-
-`func (o *BanksGet200ResponseAllOfDataInner) GetBranchesOk() (*[]BanksGet200ResponseAllOfDataInnerBranchesInner, bool)`
-
-GetBranchesOk returns a tuple with the Branches field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBranches
-
-`func (o *BanksGet200ResponseAllOfDataInner) SetBranches(v []BanksGet200ResponseAllOfDataInnerBranchesInner)`
-
-SetBranches sets Branches field to given value.
-
-### HasBranches
-
-`func (o *BanksGet200ResponseAllOfDataInner) HasBranches() bool`
-
-HasBranches returns a boolean if a field has been set.
 
 ### GetCountry
 

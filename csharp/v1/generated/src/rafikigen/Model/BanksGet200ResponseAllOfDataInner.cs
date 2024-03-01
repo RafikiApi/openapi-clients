@@ -34,24 +34,15 @@ namespace rafikigen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BanksGet200ResponseAllOfDataInner" /> class.
         /// </summary>
-        /// <param name="branches">If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank..</param>
         /// <param name="country">The ISO 3166 alpha-2 country code in which the bank operates..</param>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
-        public BanksGet200ResponseAllOfDataInner(List<BanksGet200ResponseAllOfDataInnerBranchesInner> branches = default(List<BanksGet200ResponseAllOfDataInnerBranchesInner>), string country = default(string), string id = default(string), string name = default(string))
+        public BanksGet200ResponseAllOfDataInner(string country = default(string), string id = default(string), string name = default(string))
         {
-            this.Branches = branches;
             this.Country = country;
             this.Id = id;
             this.Name = name;
         }
-
-        /// <summary>
-        /// If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-        /// </summary>
-        /// <value>If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.</value>
-        [DataMember(Name = "branches", EmitDefaultValue = false)]
-        public List<BanksGet200ResponseAllOfDataInnerBranchesInner> Branches { get; set; }
 
         /// <summary>
         /// The ISO 3166 alpha-2 country code in which the bank operates.
@@ -83,7 +74,6 @@ namespace rafikigen.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BanksGet200ResponseAllOfDataInner {\n");
-            sb.Append("  Branches: ").Append(Branches).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -123,12 +113,6 @@ namespace rafikigen.Model
             }
             return 
                 (
-                    this.Branches == input.Branches ||
-                    this.Branches != null &&
-                    input.Branches != null &&
-                    this.Branches.SequenceEqual(input.Branches)
-                ) && 
-                (
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
@@ -154,10 +138,6 @@ namespace rafikigen.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Branches != null)
-                {
-                    hashCode = (hashCode * 59) + this.Branches.GetHashCode();
-                }
                 if (this.Country != null)
                 {
                     hashCode = (hashCode * 59) + this.Country.GetHashCode();

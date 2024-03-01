@@ -95,7 +95,6 @@ Class | Method | HTTP request | Description
 
  - [OpenapiClient::BanksGet200Response](docs/BanksGet200Response.md)
  - [OpenapiClient::BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
- - [OpenapiClient::BanksGet200ResponseAllOfDataInnerBranchesInner](docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md)
  - [OpenapiClient::OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [OpenapiClient::OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [OpenapiClient::OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)

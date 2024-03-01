@@ -11,7 +11,6 @@ configuration.go
 docs/BankAPI.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
-docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -64,7 +63,6 @@ go.mod
 go.sum
 model__banks_get_200_response.go
 model__banks_get_200_response_all_of_data_inner.go
-model__banks_get_200_response_all_of_data_inner_branches_inner.go
 model__payment_accounts_get_200_response.go
 model__payment_accounts_post_200_response.go
 model__payouts__id__get_200_response.go

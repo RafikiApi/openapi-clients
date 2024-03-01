@@ -5,7 +5,6 @@ appveyor.yml
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
-docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -75,7 +74,6 @@ src/rafikigen/Client/RetryConfiguration.cs
 src/rafikigen/Model/AbstractOpenAPISchema.cs
 src/rafikigen/Model/BanksGet200Response.cs
 src/rafikigen/Model/BanksGet200ResponseAllOfDataInner.cs
-src/rafikigen/Model/BanksGet200ResponseAllOfDataInnerBranchesInner.cs
 src/rafikigen/Model/OpenapiPaymentAccountGetOrCreateRequest.cs
 src/rafikigen/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.cs
 src/rafikigen/Model/OpenapiPaymentAccountGetOrCreateRequestHolder.cs

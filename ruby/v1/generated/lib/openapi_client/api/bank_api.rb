@@ -20,7 +20,7 @@ module OpenapiClient
       @api_client = api_client
     end
     # List
-    # Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+    # Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
     # @param [Hash] opts the optional parameters
     # @return [BanksGet200Response]
     def banks_get(opts = {})
@@ -29,7 +29,7 @@ module OpenapiClient
     end
 
     # List
-    # Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+    # Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BanksGet200Response, Integer, Hash)>] BanksGet200Response data, response status code and response headers
     def banks_get_with_http_info(opts = {})

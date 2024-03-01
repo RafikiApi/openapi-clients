@@ -2,7 +2,6 @@ import localVarRequest from 'request';
 
 export * from './banksGet200Response';
 export * from './banksGet200ResponseAllOfDataInner';
-export * from './banksGet200ResponseAllOfDataInnerBranchesInner';
 export * from './openapiPaymentAccountGetOrCreateRequest';
 export * from './openapiPaymentAccountGetOrCreateRequestBankAccount';
 export * from './openapiPaymentAccountGetOrCreateRequestHolder';
@@ -63,7 +62,6 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 import { BanksGet200Response } from './banksGet200Response';
 import { BanksGet200ResponseAllOfDataInner } from './banksGet200ResponseAllOfDataInner';
-import { BanksGet200ResponseAllOfDataInnerBranchesInner } from './banksGet200ResponseAllOfDataInnerBranchesInner';
 import { OpenapiPaymentAccountGetOrCreateRequest } from './openapiPaymentAccountGetOrCreateRequest';
 import { OpenapiPaymentAccountGetOrCreateRequestBankAccount } from './openapiPaymentAccountGetOrCreateRequestBankAccount';
 import { OpenapiPaymentAccountGetOrCreateRequestHolder } from './openapiPaymentAccountGetOrCreateRequestHolder';
@@ -137,7 +135,6 @@ let enumsMap: {[index: string]: any} = {
 let typeMap: {[index: string]: any} = {
     "BanksGet200Response": BanksGet200Response,
     "BanksGet200ResponseAllOfDataInner": BanksGet200ResponseAllOfDataInner,
-    "BanksGet200ResponseAllOfDataInnerBranchesInner": BanksGet200ResponseAllOfDataInnerBranchesInner,
     "OpenapiPaymentAccountGetOrCreateRequest": OpenapiPaymentAccountGetOrCreateRequest,
     "OpenapiPaymentAccountGetOrCreateRequestBankAccount": OpenapiPaymentAccountGetOrCreateRequestBankAccount,
     "OpenapiPaymentAccountGetOrCreateRequestHolder": OpenapiPaymentAccountGetOrCreateRequestHolder,

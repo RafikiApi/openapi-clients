@@ -35,12 +35,10 @@ namespace rafikigen.Model
         /// Initializes a new instance of the <see cref="OpenapiPaymentAccountGetOrCreateRequestBankAccount" /> class.
         /// </summary>
         /// <param name="bankId">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt;  The bank identifier representing the bank associated with the payment account.</param>
-        /// <param name="branchId">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt; &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if the bank spans across multiple branches&lt;/span&gt;  The branch identifier representing the branch associated with the payment account.</param>
         /// <param name="number">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt;  The actual bank account number (alphanum)..</param>
-        public OpenapiPaymentAccountGetOrCreateRequestBankAccount(string bankId = default(string), string branchId = default(string), string number = default(string))
+        public OpenapiPaymentAccountGetOrCreateRequestBankAccount(string bankId = default(string), string number = default(string))
         {
             this.BankId = bankId;
-            this.BranchId = branchId;
             this.Number = number;
         }
 
@@ -51,14 +49,6 @@ namespace rafikigen.Model
         /// <example>bnk-xxx</example>
         [DataMember(Name = "bank_id", EmitDefaultValue = false)]
         public string BankId { get; set; }
-
-        /// <summary>
-        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt; &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if the bank spans across multiple branches&lt;/span&gt;  The branch identifier representing the branch associated with the payment account
-        /// </summary>
-        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt; &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if the bank spans across multiple branches&lt;/span&gt;  The branch identifier representing the branch associated with the payment account</value>
-        /// <example>brn-xxx</example>
-        [DataMember(Name = "branch_id", EmitDefaultValue = false)]
-        public string BranchId { get; set; }
 
         /// <summary>
         /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt;  The actual bank account number (alphanum).
@@ -77,7 +67,6 @@ namespace rafikigen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class OpenapiPaymentAccountGetOrCreateRequestBankAccount {\n");
             sb.Append("  BankId: ").Append(BankId).Append("\n");
-            sb.Append("  BranchId: ").Append(BranchId).Append("\n");
             sb.Append("  Number: ").Append(Number).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -120,11 +109,6 @@ namespace rafikigen.Model
                     this.BankId.Equals(input.BankId))
                 ) && 
                 (
-                    this.BranchId == input.BranchId ||
-                    (this.BranchId != null &&
-                    this.BranchId.Equals(input.BranchId))
-                ) && 
-                (
                     this.Number == input.Number ||
                     (this.Number != null &&
                     this.Number.Equals(input.Number))
@@ -143,10 +127,6 @@ namespace rafikigen.Model
                 if (this.BankId != null)
                 {
                     hashCode = (hashCode * 59) + this.BankId.GetHashCode();
-                }
-                if (this.BranchId != null)
-                {
-                    hashCode = (hashCode * 59) + this.BranchId.GetHashCode();
                 }
                 if (this.Number != null)
                 {

@@ -26,9 +26,8 @@ class OpenapiPaymentAccountGetOrCreateRequestBankAccount(BaseModel):
     OpenapiPaymentAccountGetOrCreateRequestBankAccount
     """
     bank_id: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The bank identifier representing the bank associated with the payment account")
-    branch_id: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account")
     number: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).")
-    __properties = ["bank_id", "branch_id", "number"]
+    __properties = ["bank_id", "number"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +66,6 @@ class OpenapiPaymentAccountGetOrCreateRequestBankAccount(BaseModel):
 
         _obj = OpenapiPaymentAccountGetOrCreateRequestBankAccount.parse_obj({
             "bank_id": obj.get("bank_id"),
-            "branch_id": obj.get("branch_id"),
             "number": obj.get("number")
         })
         return _obj

@@ -15,8 +15,6 @@
 pub struct OpenapiPaymentAccountGetOrCreateResponseBankAccount {
     #[serde(rename = "bank_id", skip_serializing_if = "Option::is_none")]
     pub bank_id: Option<String>,
-    #[serde(rename = "branch_id", skip_serializing_if = "Option::is_none")]
-    pub branch_id: Option<String>,
     #[serde(rename = "number", skip_serializing_if = "Option::is_none")]
     pub number: Option<String>,
 }
@@ -25,7 +23,6 @@ impl OpenapiPaymentAccountGetOrCreateResponseBankAccount {
     pub fn new() -> OpenapiPaymentAccountGetOrCreateResponseBankAccount {
         OpenapiPaymentAccountGetOrCreateResponseBankAccount {
             bank_id: None,
-            branch_id: None,
             number: None,
         }
     }

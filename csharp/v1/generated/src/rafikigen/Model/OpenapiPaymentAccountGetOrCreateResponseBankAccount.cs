@@ -35,12 +35,10 @@ namespace rafikigen.Model
         /// Initializes a new instance of the <see cref="OpenapiPaymentAccountGetOrCreateResponseBankAccount" /> class.
         /// </summary>
         /// <param name="bankId">bankId.</param>
-        /// <param name="branchId">branchId.</param>
         /// <param name="number">number.</param>
-        public OpenapiPaymentAccountGetOrCreateResponseBankAccount(string bankId = default(string), string branchId = default(string), string number = default(string))
+        public OpenapiPaymentAccountGetOrCreateResponseBankAccount(string bankId = default(string), string number = default(string))
         {
             this.BankId = bankId;
-            this.BranchId = branchId;
             this.Number = number;
         }
 
@@ -50,13 +48,6 @@ namespace rafikigen.Model
         /// <example>bnk-xxx</example>
         [DataMember(Name = "bank_id", EmitDefaultValue = false)]
         public string BankId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BranchId
-        /// </summary>
-        /// <example>brn-xxx</example>
-        [DataMember(Name = "branch_id", EmitDefaultValue = false)]
-        public string BranchId { get; set; }
 
         /// <summary>
         /// Gets or Sets Number
@@ -73,7 +64,6 @@ namespace rafikigen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class OpenapiPaymentAccountGetOrCreateResponseBankAccount {\n");
             sb.Append("  BankId: ").Append(BankId).Append("\n");
-            sb.Append("  BranchId: ").Append(BranchId).Append("\n");
             sb.Append("  Number: ").Append(Number).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -116,11 +106,6 @@ namespace rafikigen.Model
                     this.BankId.Equals(input.BankId))
                 ) && 
                 (
-                    this.BranchId == input.BranchId ||
-                    (this.BranchId != null &&
-                    this.BranchId.Equals(input.BranchId))
-                ) && 
-                (
                     this.Number == input.Number ||
                     (this.Number != null &&
                     this.Number.Equals(input.Number))
@@ -139,10 +124,6 @@ namespace rafikigen.Model
                 if (this.BankId != null)
                 {
                     hashCode = (hashCode * 59) + this.BankId.GetHashCode();
-                }
-                if (this.BranchId != null)
-                {
-                    hashCode = (hashCode * 59) + this.BranchId.GetHashCode();
                 }
                 if (this.Number != null)
                 {

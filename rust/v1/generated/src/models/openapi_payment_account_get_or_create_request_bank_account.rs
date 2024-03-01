@@ -16,9 +16,6 @@ pub struct OpenapiPaymentAccountGetOrCreateRequestBankAccount {
     /// <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The bank identifier representing the bank associated with the payment account
     #[serde(rename = "bank_id", skip_serializing_if = "Option::is_none")]
     pub bank_id: Option<String>,
-    /// <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account
-    #[serde(rename = "branch_id", skip_serializing_if = "Option::is_none")]
-    pub branch_id: Option<String>,
     /// <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).
     #[serde(rename = "number", skip_serializing_if = "Option::is_none")]
     pub number: Option<String>,
@@ -28,7 +25,6 @@ impl OpenapiPaymentAccountGetOrCreateRequestBankAccount {
     pub fn new() -> OpenapiPaymentAccountGetOrCreateRequestBankAccount {
         OpenapiPaymentAccountGetOrCreateRequestBankAccount {
             bank_id: None,
-            branch_id: None,
             number: None,
         }
     }

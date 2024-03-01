@@ -20,10 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.openapitools.client.model.BanksGet200ResponseAllOfDataInnerBranchesInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,12 +49,8 @@ import invalidPackageName.JSON;
 /**
  * BanksGet200ResponseAllOfDataInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-27T15:32:35.482757Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-01T09:18:21.848349Z[Etc/UTC]")
 public class BanksGet200ResponseAllOfDataInner {
-  public static final String SERIALIZED_NAME_BRANCHES = "branches";
-  @SerializedName(SERIALIZED_NAME_BRANCHES)
-  private List<BanksGet200ResponseAllOfDataInnerBranchesInner> branches;
-
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   private String country;
@@ -72,35 +65,6 @@ public class BanksGet200ResponseAllOfDataInner {
 
   public BanksGet200ResponseAllOfDataInner() {
   }
-
-  public BanksGet200ResponseAllOfDataInner branches(List<BanksGet200ResponseAllOfDataInnerBranchesInner> branches) {
-    
-    this.branches = branches;
-    return this;
-  }
-
-  public BanksGet200ResponseAllOfDataInner addBranchesItem(BanksGet200ResponseAllOfDataInnerBranchesInner branchesItem) {
-    if (this.branches == null) {
-      this.branches = new ArrayList<>();
-    }
-    this.branches.add(branchesItem);
-    return this;
-  }
-
-   /**
-   * If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-   * @return branches
-  **/
-  @javax.annotation.Nullable
-  public List<BanksGet200ResponseAllOfDataInnerBranchesInner> getBranches() {
-    return branches;
-  }
-
-
-  public void setBranches(List<BanksGet200ResponseAllOfDataInnerBranchesInner> branches) {
-    this.branches = branches;
-  }
-
 
   public BanksGet200ResponseAllOfDataInner country(String country) {
     
@@ -175,22 +139,20 @@ public class BanksGet200ResponseAllOfDataInner {
       return false;
     }
     BanksGet200ResponseAllOfDataInner banksGet200ResponseAllOfDataInner = (BanksGet200ResponseAllOfDataInner) o;
-    return Objects.equals(this.branches, banksGet200ResponseAllOfDataInner.branches) &&
-        Objects.equals(this.country, banksGet200ResponseAllOfDataInner.country) &&
+    return Objects.equals(this.country, banksGet200ResponseAllOfDataInner.country) &&
         Objects.equals(this.id, banksGet200ResponseAllOfDataInner.id) &&
         Objects.equals(this.name, banksGet200ResponseAllOfDataInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(branches, country, id, name);
+    return Objects.hash(country, id, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BanksGet200ResponseAllOfDataInner {\n");
-    sb.append("    branches: ").append(toIndentedString(branches)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -216,7 +178,6 @@ public class BanksGet200ResponseAllOfDataInner {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("branches");
     openapiFields.add("country");
     openapiFields.add("id");
     openapiFields.add("name");
@@ -246,20 +207,6 @@ public class BanksGet200ResponseAllOfDataInner {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("branches") != null && !jsonObj.get("branches").isJsonNull()) {
-        JsonArray jsonArraybranches = jsonObj.getAsJsonArray("branches");
-        if (jsonArraybranches != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("branches").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `branches` to be an array in the JSON string but got `%s`", jsonObj.get("branches").toString()));
-          }
-
-          // validate the optional field `branches` (array)
-          for (int i = 0; i < jsonArraybranches.size(); i++) {
-            BanksGet200ResponseAllOfDataInnerBranchesInner.validateJsonElement(jsonArraybranches.get(i));
-          };
-        }
-      }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }

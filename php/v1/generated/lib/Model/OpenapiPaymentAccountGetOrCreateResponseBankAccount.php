@@ -58,7 +58,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
       */
     protected static $openAPITypes = [
         'bank_id' => 'string',
-        'branch_id' => 'string',
         'number' => 'string'
     ];
 
@@ -71,7 +70,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
       */
     protected static $openAPIFormats = [
         'bank_id' => 'ksuid',
-        'branch_id' => 'ksuid',
         'number' => 'alphanum'
     ];
 
@@ -82,7 +80,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
       */
     protected static array $openAPINullables = [
         'bank_id' => false,
-		'branch_id' => false,
 		'number' => false
     ];
 
@@ -173,7 +170,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
      */
     protected static $attributeMap = [
         'bank_id' => 'bank_id',
-        'branch_id' => 'branch_id',
         'number' => 'number'
     ];
 
@@ -184,7 +180,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
      */
     protected static $setters = [
         'bank_id' => 'setBankId',
-        'branch_id' => 'setBranchId',
         'number' => 'setNumber'
     ];
 
@@ -195,7 +190,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
      */
     protected static $getters = [
         'bank_id' => 'getBankId',
-        'branch_id' => 'getBranchId',
         'number' => 'getNumber'
     ];
 
@@ -257,7 +251,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
     public function __construct(array $data = null)
     {
         $this->setIfExists('bank_id', $data ?? [], null);
-        $this->setIfExists('branch_id', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
     }
 
@@ -326,33 +319,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount implements ModelInterf
             throw new \InvalidArgumentException('non-nullable bank_id cannot be null');
         }
         $this->container['bank_id'] = $bank_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets branch_id
-     *
-     * @return string|null
-     */
-    public function getBranchId()
-    {
-        return $this->container['branch_id'];
-    }
-
-    /**
-     * Sets branch_id
-     *
-     * @param string|null $branch_id branch_id
-     *
-     * @return self
-     */
-    public function setBranchId($branch_id)
-    {
-        if (is_null($branch_id)) {
-            throw new \InvalidArgumentException('non-nullable branch_id cannot be null');
-        }
-        $this->container['branch_id'] = $branch_id;
 
         return $this;
     }

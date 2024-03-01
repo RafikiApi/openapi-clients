@@ -13,9 +13,6 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BanksGet200ResponseAllOfDataInner {
-    /// If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-    #[serde(rename = "branches", skip_serializing_if = "Option::is_none")]
-    pub branches: Option<Vec<crate::models::BanksGet200ResponseAllOfDataInnerBranchesInner>>,
     /// The ISO 3166 alpha-2 country code in which the bank operates.
     #[serde(rename = "country", skip_serializing_if = "Option::is_none")]
     pub country: Option<String>,
@@ -28,7 +25,6 @@ pub struct BanksGet200ResponseAllOfDataInner {
 impl BanksGet200ResponseAllOfDataInner {
     pub fn new() -> BanksGet200ResponseAllOfDataInner {
         BanksGet200ResponseAllOfDataInner {
-            branches: None,
             country: None,
             id: None,
             name: None,

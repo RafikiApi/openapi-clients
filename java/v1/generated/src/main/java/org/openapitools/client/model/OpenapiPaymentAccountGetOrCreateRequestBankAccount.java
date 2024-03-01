@@ -49,15 +49,11 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPaymentAccountGetOrCreateRequestBankAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-27T15:32:35.482757Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-01T09:18:21.848349Z[Etc/UTC]")
 public class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
   public static final String SERIALIZED_NAME_BANK_ID = "bank_id";
   @SerializedName(SERIALIZED_NAME_BANK_ID)
   private String bankId;
-
-  public static final String SERIALIZED_NAME_BRANCH_ID = "branch_id";
-  @SerializedName(SERIALIZED_NAME_BRANCH_ID)
-  private String branchId;
 
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
@@ -84,27 +80,6 @@ public class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
 
   public void setBankId(String bankId) {
     this.bankId = bankId;
-  }
-
-
-  public OpenapiPaymentAccountGetOrCreateRequestBankAccount branchId(String branchId) {
-    
-    this.branchId = branchId;
-    return this;
-  }
-
-   /**
-   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required with type BANK_ACCOUNT&lt;/span&gt; &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if the bank spans across multiple branches&lt;/span&gt;  The branch identifier representing the branch associated with the payment account
-   * @return branchId
-  **/
-  @javax.annotation.Nullable
-  public String getBranchId() {
-    return branchId;
-  }
-
-
-  public void setBranchId(String branchId) {
-    this.branchId = branchId;
   }
 
 
@@ -140,13 +115,12 @@ public class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
     }
     OpenapiPaymentAccountGetOrCreateRequestBankAccount openapiPaymentAccountGetOrCreateRequestBankAccount = (OpenapiPaymentAccountGetOrCreateRequestBankAccount) o;
     return Objects.equals(this.bankId, openapiPaymentAccountGetOrCreateRequestBankAccount.bankId) &&
-        Objects.equals(this.branchId, openapiPaymentAccountGetOrCreateRequestBankAccount.branchId) &&
         Objects.equals(this.number, openapiPaymentAccountGetOrCreateRequestBankAccount.number);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankId, branchId, number);
+    return Objects.hash(bankId, number);
   }
 
   @Override
@@ -154,7 +128,6 @@ public class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
     StringBuilder sb = new StringBuilder();
     sb.append("class OpenapiPaymentAccountGetOrCreateRequestBankAccount {\n");
     sb.append("    bankId: ").append(toIndentedString(bankId)).append("\n");
-    sb.append("    branchId: ").append(toIndentedString(branchId)).append("\n");
     sb.append("    number: ").append(toIndentedString(number)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -179,7 +152,6 @@ public class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("bank_id");
-    openapiFields.add("branch_id");
     openapiFields.add("number");
 
     // a set of required properties/fields (JSON key names)
@@ -209,9 +181,6 @@ public class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("bank_id") != null && !jsonObj.get("bank_id").isJsonNull()) && !jsonObj.get("bank_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bank_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_id").toString()));
-      }
-      if ((jsonObj.get("branch_id") != null && !jsonObj.get("branch_id").isJsonNull()) && !jsonObj.get("branch_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `branch_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("branch_id").toString()));
       }
       if ((jsonObj.get("number") != null && !jsonObj.get("number").isJsonNull()) && !jsonObj.get("number").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("number").toString()));

@@ -21,8 +21,6 @@ var _ MappedNullable = &OpenapiPaymentAccountGetOrCreateRequestBankAccount{}
 type OpenapiPaymentAccountGetOrCreateRequestBankAccount struct {
 	// <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The bank identifier representing the bank associated with the payment account
 	BankId *string `json:"bank_id,omitempty"`
-	// <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account
-	BranchId *string `json:"branch_id,omitempty"`
 	// <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).
 	Number *string `json:"number,omitempty"`
 }
@@ -76,38 +74,6 @@ func (o *OpenapiPaymentAccountGetOrCreateRequestBankAccount) SetBankId(v string)
 	o.BankId = &v
 }
 
-// GetBranchId returns the BranchId field value if set, zero value otherwise.
-func (o *OpenapiPaymentAccountGetOrCreateRequestBankAccount) GetBranchId() string {
-	if o == nil || IsNil(o.BranchId) {
-		var ret string
-		return ret
-	}
-	return *o.BranchId
-}
-
-// GetBranchIdOk returns a tuple with the BranchId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenapiPaymentAccountGetOrCreateRequestBankAccount) GetBranchIdOk() (*string, bool) {
-	if o == nil || IsNil(o.BranchId) {
-		return nil, false
-	}
-	return o.BranchId, true
-}
-
-// HasBranchId returns a boolean if a field has been set.
-func (o *OpenapiPaymentAccountGetOrCreateRequestBankAccount) HasBranchId() bool {
-	if o != nil && !IsNil(o.BranchId) {
-		return true
-	}
-
-	return false
-}
-
-// SetBranchId gets a reference to the given string and assigns it to the BranchId field.
-func (o *OpenapiPaymentAccountGetOrCreateRequestBankAccount) SetBranchId(v string) {
-	o.BranchId = &v
-}
-
 // GetNumber returns the Number field value if set, zero value otherwise.
 func (o *OpenapiPaymentAccountGetOrCreateRequestBankAccount) GetNumber() string {
 	if o == nil || IsNil(o.Number) {
@@ -152,9 +118,6 @@ func (o OpenapiPaymentAccountGetOrCreateRequestBankAccount) ToMap() (map[string]
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BankId) {
 		toSerialize["bank_id"] = o.BankId
-	}
-	if !IsNil(o.BranchId) {
-		toSerialize["branch_id"] = o.BranchId
 	}
 	if !IsNil(o.Number) {
 		toSerialize["number"] = o.Number
