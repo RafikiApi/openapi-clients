@@ -3,7 +3,6 @@ build.gradle
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
-docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -79,7 +78,6 @@ src/main/kotlin/rafikigen/infrastructure/URIAdapter.kt
 src/main/kotlin/rafikigen/infrastructure/UUIDAdapter.kt
 src/main/kotlin/rafikigen/models/BanksGet200Response.kt
 src/main/kotlin/rafikigen/models/BanksGet200ResponseAllOfDataInner.kt
-src/main/kotlin/rafikigen/models/BanksGet200ResponseAllOfDataInnerBranchesInner.kt
 src/main/kotlin/rafikigen/models/OpenapiPaymentAccountGetOrCreateRequest.kt
 src/main/kotlin/rafikigen/models/OpenapiPaymentAccountGetOrCreateRequestBankAccount.kt
 src/main/kotlin/rafikigen/models/OpenapiPaymentAccountGetOrCreateRequestHolder.kt

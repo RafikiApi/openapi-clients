@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import BanksGet200ResponseAllOfDataInnerBranchesInner from './BanksGet200ResponseAllOfDataInnerBranchesInner';
 
 /**
  * The BanksGet200ResponseAllOfDataInner model module.
@@ -48,9 +47,6 @@ class BanksGet200ResponseAllOfDataInner {
         if (data) {
             obj = obj || new BanksGet200ResponseAllOfDataInner();
 
-            if (data.hasOwnProperty('branches')) {
-                obj['branches'] = ApiClient.convertToType(data['branches'], [BanksGet200ResponseAllOfDataInnerBranchesInner]);
-            }
             if (data.hasOwnProperty('country')) {
                 obj['country'] = ApiClient.convertToType(data['country'], 'String');
             }
@@ -70,16 +66,6 @@ class BanksGet200ResponseAllOfDataInner {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>BanksGet200ResponseAllOfDataInner</code>.
      */
     static validateJSON(data) {
-        if (data['branches']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['branches'])) {
-                throw new Error("Expected the field `branches` to be an array in the JSON data but got " + data['branches']);
-            }
-            // validate the optional field `branches` (array)
-            for (const item of data['branches']) {
-                BanksGet200ResponseAllOfDataInnerBranchesInner.validateJSON(item);
-            };
-        }
         // ensure the json data is a string
         if (data['country'] && !(typeof data['country'] === 'string' || data['country'] instanceof String)) {
             throw new Error("Expected the field `country` to be a primitive type in the JSON string but got " + data['country']);
@@ -100,12 +86,6 @@ class BanksGet200ResponseAllOfDataInner {
 }
 
 
-
-/**
- * If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
- * @member {Array.<module:model/BanksGet200ResponseAllOfDataInnerBranchesInner>} branches
- */
-BanksGet200ResponseAllOfDataInner.prototype['branches'] = undefined;
 
 /**
  * The ISO 3166 alpha-2 country code in which the bank operates.

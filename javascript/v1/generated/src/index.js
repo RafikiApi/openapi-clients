@@ -15,7 +15,6 @@
 import ApiClient from './ApiClient';
 import BanksGet200Response from './model/BanksGet200Response';
 import BanksGet200ResponseAllOfDataInner from './model/BanksGet200ResponseAllOfDataInner';
-import BanksGet200ResponseAllOfDataInnerBranchesInner from './model/BanksGet200ResponseAllOfDataInnerBranchesInner';
 import OpenapiPaymentAccountGetOrCreateRequest from './model/OpenapiPaymentAccountGetOrCreateRequest';
 import OpenapiPaymentAccountGetOrCreateRequestBankAccount from './model/OpenapiPaymentAccountGetOrCreateRequestBankAccount';
 import OpenapiPaymentAccountGetOrCreateRequestHolder from './model/OpenapiPaymentAccountGetOrCreateRequestHolder';
@@ -115,12 +114,6 @@ export {
      * @property {module:model/BanksGet200ResponseAllOfDataInner}
      */
     BanksGet200ResponseAllOfDataInner,
-
-    /**
-     * The BanksGet200ResponseAllOfDataInnerBranchesInner model constructor.
-     * @property {module:model/BanksGet200ResponseAllOfDataInnerBranchesInner}
-     */
-    BanksGet200ResponseAllOfDataInnerBranchesInner,
 
     /**
      * The OpenapiPaymentAccountGetOrCreateRequest model constructor.

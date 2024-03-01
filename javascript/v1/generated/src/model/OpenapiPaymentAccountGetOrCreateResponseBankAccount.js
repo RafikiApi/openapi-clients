@@ -50,9 +50,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount {
             if (data.hasOwnProperty('bank_id')) {
                 obj['bank_id'] = ApiClient.convertToType(data['bank_id'], 'String');
             }
-            if (data.hasOwnProperty('branch_id')) {
-                obj['branch_id'] = ApiClient.convertToType(data['branch_id'], 'String');
-            }
             if (data.hasOwnProperty('number')) {
                 obj['number'] = ApiClient.convertToType(data['number'], 'String');
             }
@@ -71,10 +68,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount {
             throw new Error("Expected the field `bank_id` to be a primitive type in the JSON string but got " + data['bank_id']);
         }
         // ensure the json data is a string
-        if (data['branch_id'] && !(typeof data['branch_id'] === 'string' || data['branch_id'] instanceof String)) {
-            throw new Error("Expected the field `branch_id` to be a primitive type in the JSON string but got " + data['branch_id']);
-        }
-        // ensure the json data is a string
         if (data['number'] && !(typeof data['number'] === 'string' || data['number'] instanceof String)) {
             throw new Error("Expected the field `number` to be a primitive type in the JSON string but got " + data['number']);
         }
@@ -91,11 +84,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount {
  * @member {String} bank_id
  */
 OpenapiPaymentAccountGetOrCreateResponseBankAccount.prototype['bank_id'] = undefined;
-
-/**
- * @member {String} branch_id
- */
-OpenapiPaymentAccountGetOrCreateResponseBankAccount.prototype['branch_id'] = undefined;
 
 /**
  * @member {String} number

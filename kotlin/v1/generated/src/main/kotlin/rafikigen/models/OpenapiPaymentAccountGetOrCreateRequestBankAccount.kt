@@ -23,7 +23,6 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param bankId <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The bank identifier representing the bank associated with the payment account
- * @param branchId <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account
  * @param number <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).
  */
 
@@ -33,10 +32,6 @@ data class OpenapiPaymentAccountGetOrCreateRequestBankAccount (
     /* <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The bank identifier representing the bank associated with the payment account */
     @Json(name = "bank_id")
     val bankId: kotlin.String? = null,
-
-    /* <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account */
-    @Json(name = "branch_id")
-    val branchId: kotlin.String? = null,
 
     /* <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum). */
     @Json(name = "number")

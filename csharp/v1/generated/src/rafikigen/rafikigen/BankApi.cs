@@ -30,7 +30,7 @@ namespace rafikigen.rafikigen
         /// List
         /// </summary>
         /// <remarks>
-        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -41,7 +41,7 @@ namespace rafikigen.rafikigen
         /// List
         /// </summary>
         /// <remarks>
-        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -60,7 +60,7 @@ namespace rafikigen.rafikigen
         /// List
         /// </summary>
         /// <remarks>
-        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -72,7 +72,7 @@ namespace rafikigen.rafikigen
         /// List
         /// </summary>
         /// <remarks>
-        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </remarks>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -200,7 +200,7 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -212,7 +212,7 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -266,7 +266,7 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -279,7 +279,7 @@ namespace rafikigen.rafikigen
         }
 
         /// <summary>
-        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        /// List Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
         /// </summary>
         /// <exception cref="rafikigen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>

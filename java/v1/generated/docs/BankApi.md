@@ -13,7 +13,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 
 List
 
-Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+Within the scope of this API, the \&quot;Bank\&quot; resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
 
 ### Example
 ```java

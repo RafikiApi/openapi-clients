@@ -138,7 +138,6 @@ Class | Method | HTTP request | Description
 
  - [Resources.BanksGet200Response](docs/BanksGet200Response.md)
  - [Resources.BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
- - [Resources.BanksGet200ResponseAllOfDataInnerBranchesInner](docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)

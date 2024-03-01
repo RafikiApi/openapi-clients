@@ -15,9 +15,6 @@ require 'time'
 
 module OpenapiClient
   class BanksGet200ResponseAllOfDataInner
-    # If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-    attr_accessor :branches
-
     # The ISO 3166 alpha-2 country code in which the bank operates.
     attr_accessor :country
 
@@ -28,7 +25,6 @@ module OpenapiClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'branches' => :'branches',
         :'country' => :'country',
         :'id' => :'id',
         :'name' => :'name'
@@ -43,7 +39,6 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'branches' => :'Array<BanksGet200ResponseAllOfDataInnerBranchesInner>',
         :'country' => :'String',
         :'id' => :'String',
         :'name' => :'String'
@@ -70,12 +65,6 @@ module OpenapiClient
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'branches')
-        if (value = attributes[:'branches']).is_a?(Array)
-          self.branches = value
-        end
-      end
 
       if attributes.key?(:'country')
         self.country = attributes[:'country']
@@ -110,7 +99,6 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          branches == o.branches &&
           country == o.country &&
           id == o.id &&
           name == o.name
@@ -125,7 +113,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [branches, country, id, name].hash
+      [country, id, name].hash
     end
 
     # Builds the object from hash

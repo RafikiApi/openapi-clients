@@ -2,8 +2,6 @@ pub mod _banks_get_200_response;
 pub use self::_banks_get_200_response::BanksGet200Response;
 pub mod _banks_get_200_response_all_of_data_inner;
 pub use self::_banks_get_200_response_all_of_data_inner::BanksGet200ResponseAllOfDataInner;
-pub mod _banks_get_200_response_all_of_data_inner_branches_inner;
-pub use self::_banks_get_200_response_all_of_data_inner_branches_inner::BanksGet200ResponseAllOfDataInnerBranchesInner;
 pub mod openapi_payment_account_get_or_create_request_bank_account;
 pub use self::openapi_payment_account_get_or_create_request_bank_account::OpenapiPaymentAccountGetOrCreateRequestBankAccount;
 pub mod openapi_payment_account_get_or_create_request_holder;

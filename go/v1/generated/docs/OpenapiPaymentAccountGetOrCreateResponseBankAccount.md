@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BankId** | Pointer to **string** |  | [optional] 
-**BranchId** | Pointer to **string** |  | [optional] 
 **Number** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -51,31 +50,6 @@ SetBankId sets BankId field to given value.
 `func (o *OpenapiPaymentAccountGetOrCreateResponseBankAccount) HasBankId() bool`
 
 HasBankId returns a boolean if a field has been set.
-
-### GetBranchId
-
-`func (o *OpenapiPaymentAccountGetOrCreateResponseBankAccount) GetBranchId() string`
-
-GetBranchId returns the BranchId field if non-nil, zero value otherwise.
-
-### GetBranchIdOk
-
-`func (o *OpenapiPaymentAccountGetOrCreateResponseBankAccount) GetBranchIdOk() (*string, bool)`
-
-GetBranchIdOk returns a tuple with the BranchId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBranchId
-
-`func (o *OpenapiPaymentAccountGetOrCreateResponseBankAccount) SetBranchId(v string)`
-
-SetBranchId sets BranchId field to given value.
-
-### HasBranchId
-
-`func (o *OpenapiPaymentAccountGetOrCreateResponseBankAccount) HasBranchId() bool`
-
-HasBranchId returns a boolean if a field has been set.
 
 ### GetNumber
 

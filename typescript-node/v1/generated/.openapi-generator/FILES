@@ -3,7 +3,6 @@ api.ts
 git_push.sh
 model/banksGet200Response.ts
 model/banksGet200ResponseAllOfDataInner.ts
-model/banksGet200ResponseAllOfDataInnerBranchesInner.ts
 model/models.ts
 model/openapiPaymentAccountGetOrCreateRequest.ts
 model/openapiPaymentAccountGetOrCreateRequestBankAccount.ts

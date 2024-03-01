@@ -45,7 +45,7 @@ export default class BankApi {
 
     /**
      * List
-     * Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+     * Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
      * @param {module:rafikigen/BankApi~banksGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/BanksGet200Response}
      */

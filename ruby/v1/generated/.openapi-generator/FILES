@@ -9,7 +9,6 @@ Rakefile
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
-docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -68,7 +67,6 @@ lib/openapi_client/api_error.rb
 lib/openapi_client/configuration.rb
 lib/openapi_client/models/banks_get200_response.rb
 lib/openapi_client/models/banks_get200_response_all_of_data_inner.rb
-lib/openapi_client/models/banks_get200_response_all_of_data_inner_branches_inner.rb
 lib/openapi_client/models/openapi_payment_account_get_or_create_request.rb
 lib/openapi_client/models/openapi_payment_account_get_or_create_request_bank_account.rb
 lib/openapi_client/models/openapi_payment_account_get_or_create_request_holder.rb

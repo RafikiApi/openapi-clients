@@ -50,9 +50,6 @@ class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
             if (data.hasOwnProperty('bank_id')) {
                 obj['bank_id'] = ApiClient.convertToType(data['bank_id'], 'String');
             }
-            if (data.hasOwnProperty('branch_id')) {
-                obj['branch_id'] = ApiClient.convertToType(data['branch_id'], 'String');
-            }
             if (data.hasOwnProperty('number')) {
                 obj['number'] = ApiClient.convertToType(data['number'], 'String');
             }
@@ -69,10 +66,6 @@ class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
         // ensure the json data is a string
         if (data['bank_id'] && !(typeof data['bank_id'] === 'string' || data['bank_id'] instanceof String)) {
             throw new Error("Expected the field `bank_id` to be a primitive type in the JSON string but got " + data['bank_id']);
-        }
-        // ensure the json data is a string
-        if (data['branch_id'] && !(typeof data['branch_id'] === 'string' || data['branch_id'] instanceof String)) {
-            throw new Error("Expected the field `branch_id` to be a primitive type in the JSON string but got " + data['branch_id']);
         }
         // ensure the json data is a string
         if (data['number'] && !(typeof data['number'] === 'string' || data['number'] instanceof String)) {
@@ -92,12 +85,6 @@ class OpenapiPaymentAccountGetOrCreateRequestBankAccount {
  * @member {String} bank_id
  */
 OpenapiPaymentAccountGetOrCreateRequestBankAccount.prototype['bank_id'] = undefined;
-
-/**
- * <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account
- * @member {String} branch_id
- */
-OpenapiPaymentAccountGetOrCreateRequestBankAccount.prototype['branch_id'] = undefined;
 
 /**
  * <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).

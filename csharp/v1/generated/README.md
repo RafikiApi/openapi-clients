@@ -131,7 +131,6 @@ Class | Method | HTTP request | Description
 
  - [Model.BanksGet200Response](docs/BanksGet200Response.md)
  - [Model.BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
- - [Model.BanksGet200ResponseAllOfDataInnerBranchesInner](docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md)
  - [Model.OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [Model.OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [Model.OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)

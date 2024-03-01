@@ -18,9 +18,6 @@ module OpenapiClient
     # <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The bank identifier representing the bank associated with the payment account
     attr_accessor :bank_id
 
-    # <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span> <span style=\"color:#e95f6a;\">required if the bank spans across multiple branches</span>  The branch identifier representing the branch associated with the payment account
-    attr_accessor :branch_id
-
     # <span style=\"color:#e95f6a;\">required with type BANK_ACCOUNT</span>  The actual bank account number (alphanum).
     attr_accessor :number
 
@@ -28,7 +25,6 @@ module OpenapiClient
     def self.attribute_map
       {
         :'bank_id' => :'bank_id',
-        :'branch_id' => :'branch_id',
         :'number' => :'number'
       }
     end
@@ -42,7 +38,6 @@ module OpenapiClient
     def self.openapi_types
       {
         :'bank_id' => :'String',
-        :'branch_id' => :'String',
         :'number' => :'String'
       }
     end
@@ -72,10 +67,6 @@ module OpenapiClient
         self.bank_id = attributes[:'bank_id']
       end
 
-      if attributes.key?(:'branch_id')
-        self.branch_id = attributes[:'branch_id']
-      end
-
       if attributes.key?(:'number')
         self.number = attributes[:'number']
       end
@@ -102,7 +93,6 @@ module OpenapiClient
       return true if self.equal?(o)
       self.class == o.class &&
           bank_id == o.bank_id &&
-          branch_id == o.branch_id &&
           number == o.number
     end
 
@@ -115,7 +105,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bank_id, branch_id, number].hash
+      [bank_id, number].hash
     end
 
     # Builds the object from hash

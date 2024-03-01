@@ -23,7 +23,6 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param bankId 
- * @param branchId 
  * @param number 
  */
 
@@ -32,9 +31,6 @@ data class OpenapiPaymentAccountGetOrCreateResponseBankAccount (
 
     @Json(name = "bank_id")
     val bankId: kotlin.String? = null,
-
-    @Json(name = "branch_id")
-    val branchId: kotlin.String? = null,
 
     @Json(name = "number")
     val number: kotlin.String? = null

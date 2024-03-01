@@ -14,7 +14,6 @@ import { RequestFile } from './models';
 
 export class OpenapiPaymentAccountGetOrCreateResponseBankAccount {
     'bankId'?: string;
-    'branchId'?: string;
     'number'?: string;
 
     static discriminator: string | undefined = undefined;
@@ -23,11 +22,6 @@ export class OpenapiPaymentAccountGetOrCreateResponseBankAccount {
         {
             "name": "bankId",
             "baseName": "bank_id",
-            "type": "string"
-        },
-        {
-            "name": "branchId",
-            "baseName": "branch_id",
             "type": "string"
         },
         {

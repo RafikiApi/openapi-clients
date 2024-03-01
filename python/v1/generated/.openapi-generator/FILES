@@ -6,7 +6,6 @@ README.md
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
-docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -64,7 +63,6 @@ rafikigen/exceptions.py
 rafikigen/models/__init__.py
 rafikigen/models/banks_get200_response.py
 rafikigen/models/banks_get200_response_all_of_data_inner.py
-rafikigen/models/banks_get200_response_all_of_data_inner_branches_inner.py
 rafikigen/models/openapi_payment_account_get_or_create_request.py
 rafikigen/models/openapi_payment_account_get_or_create_request_bank_account.py
 rafikigen/models/openapi_payment_account_get_or_create_request_holder.py

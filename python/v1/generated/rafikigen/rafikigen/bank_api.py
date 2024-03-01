@@ -44,7 +44,7 @@ class BankApi:
     def banks_get(self, **kwargs) -> BanksGet200Response:  # noqa: E501
         """List  # noqa: E501
 
-        Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.  # noqa: E501
+        Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -72,7 +72,7 @@ class BankApi:
     def banks_get_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """List  # noqa: E501
 
-        Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.  # noqa: E501
+        Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

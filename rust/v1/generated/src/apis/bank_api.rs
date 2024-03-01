@@ -24,7 +24,7 @@ pub enum BanksGetError {
 }
 
 
-/// Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+/// Within the scope of this API, the \"Bank\" resource serves the purpose of identifying the financial institutions that own payment accounts.  This endpoint enables you to retrieve the list of banks provided by our API. 
 pub async fn banks_get(configuration: &configuration::Configuration, ) -> Result<crate::models::BanksGet200Response, Error<BanksGetError>> {
     let local_var_configuration = configuration;
 

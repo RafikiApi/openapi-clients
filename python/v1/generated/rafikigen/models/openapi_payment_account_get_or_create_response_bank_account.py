@@ -26,9 +26,8 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount(BaseModel):
     OpenapiPaymentAccountGetOrCreateResponseBankAccount
     """
     bank_id: Optional[StrictStr] = None
-    branch_id: Optional[StrictStr] = None
     number: Optional[StrictStr] = None
-    __properties = ["bank_id", "branch_id", "number"]
+    __properties = ["bank_id", "number"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +66,6 @@ class OpenapiPaymentAccountGetOrCreateResponseBankAccount(BaseModel):
 
         _obj = OpenapiPaymentAccountGetOrCreateResponseBankAccount.parse_obj({
             "bank_id": obj.get("bank_id"),
-            "branch_id": obj.get("branch_id"),
             "number": obj.get("number")
         })
         return _obj

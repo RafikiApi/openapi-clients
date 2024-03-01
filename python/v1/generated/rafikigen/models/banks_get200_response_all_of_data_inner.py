@@ -18,19 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
-from rafikigen.models.banks_get200_response_all_of_data_inner_branches_inner import BanksGet200ResponseAllOfDataInnerBranchesInner
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 
 class BanksGet200ResponseAllOfDataInner(BaseModel):
     """
     BanksGet200ResponseAllOfDataInner
     """
-    branches: Optional[conlist(BanksGet200ResponseAllOfDataInnerBranchesInner)] = Field(None, description="If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.")
     country: Optional[StrictStr] = Field(None, description="The ISO 3166 alpha-2 country code in which the bank operates.")
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
-    __properties = ["branches", "country", "id", "name"]
+    __properties = ["country", "id", "name"]
 
     class Config:
         """Pydantic configuration"""
@@ -56,13 +54,6 @@ class BanksGet200ResponseAllOfDataInner(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in branches (list)
-        _items = []
-        if self.branches:
-            for _item in self.branches:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['branches'] = _items
         return _dict
 
     @classmethod
@@ -75,7 +66,6 @@ class BanksGet200ResponseAllOfDataInner(BaseModel):
             return BanksGet200ResponseAllOfDataInner.parse_obj(obj)
 
         _obj = BanksGet200ResponseAllOfDataInner.parse_obj({
-            "branches": [BanksGet200ResponseAllOfDataInnerBranchesInner.from_dict(_item) for _item in obj.get("branches")] if obj.get("branches") is not None else None,
             "country": obj.get("country"),
             "id": obj.get("id"),
             "name": obj.get("name")

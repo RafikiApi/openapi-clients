@@ -19,8 +19,6 @@ var _ MappedNullable = &BanksGet200ResponseAllOfDataInner{}
 
 // BanksGet200ResponseAllOfDataInner struct for BanksGet200ResponseAllOfDataInner
 type BanksGet200ResponseAllOfDataInner struct {
-	// If the bank operates across multiple branches within a country, this property will be included, listing all the branches available from the bank.
-	Branches []BanksGet200ResponseAllOfDataInnerBranchesInner `json:"branches,omitempty"`
 	// The ISO 3166 alpha-2 country code in which the bank operates.
 	Country *string `json:"country,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -42,38 +40,6 @@ func NewBanksGet200ResponseAllOfDataInner() *BanksGet200ResponseAllOfDataInner {
 func NewBanksGet200ResponseAllOfDataInnerWithDefaults() *BanksGet200ResponseAllOfDataInner {
 	this := BanksGet200ResponseAllOfDataInner{}
 	return &this
-}
-
-// GetBranches returns the Branches field value if set, zero value otherwise.
-func (o *BanksGet200ResponseAllOfDataInner) GetBranches() []BanksGet200ResponseAllOfDataInnerBranchesInner {
-	if o == nil || IsNil(o.Branches) {
-		var ret []BanksGet200ResponseAllOfDataInnerBranchesInner
-		return ret
-	}
-	return o.Branches
-}
-
-// GetBranchesOk returns a tuple with the Branches field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BanksGet200ResponseAllOfDataInner) GetBranchesOk() ([]BanksGet200ResponseAllOfDataInnerBranchesInner, bool) {
-	if o == nil || IsNil(o.Branches) {
-		return nil, false
-	}
-	return o.Branches, true
-}
-
-// HasBranches returns a boolean if a field has been set.
-func (o *BanksGet200ResponseAllOfDataInner) HasBranches() bool {
-	if o != nil && !IsNil(o.Branches) {
-		return true
-	}
-
-	return false
-}
-
-// SetBranches gets a reference to the given []BanksGet200ResponseAllOfDataInnerBranchesInner and assigns it to the Branches field.
-func (o *BanksGet200ResponseAllOfDataInner) SetBranches(v []BanksGet200ResponseAllOfDataInnerBranchesInner) {
-	o.Branches = v
 }
 
 // GetCountry returns the Country field value if set, zero value otherwise.
@@ -182,9 +148,6 @@ func (o BanksGet200ResponseAllOfDataInner) MarshalJSON() ([]byte, error) {
 
 func (o BanksGet200ResponseAllOfDataInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Branches) {
-		toSerialize["branches"] = o.Branches
-	}
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}

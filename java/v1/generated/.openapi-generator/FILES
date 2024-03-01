@@ -8,7 +8,6 @@ build.sbt
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
-docs/BanksGet200ResponseAllOfDataInnerBranchesInner.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -85,7 +84,6 @@ src/main/java/invalidPackageName/auth/HttpBearerAuth.java
 src/main/java/org/openapitools/client/model/AbstractOpenApiSchema.java
 src/main/java/org/openapitools/client/model/BanksGet200Response.java
 src/main/java/org/openapitools/client/model/BanksGet200ResponseAllOfDataInner.java
-src/main/java/org/openapitools/client/model/BanksGet200ResponseAllOfDataInnerBranchesInner.java
 src/main/java/org/openapitools/client/model/OpenapiPaymentAccountGetOrCreateRequest.java
 src/main/java/org/openapitools/client/model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.java
 src/main/java/org/openapitools/client/model/OpenapiPaymentAccountGetOrCreateRequestHolder.java

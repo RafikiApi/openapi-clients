@@ -19,7 +19,6 @@ require 'openapi_client/configuration'
 # Models
 require 'openapi_client/models/banks_get200_response'
 require 'openapi_client/models/banks_get200_response_all_of_data_inner'
-require 'openapi_client/models/banks_get200_response_all_of_data_inner_branches_inner'
 require 'openapi_client/models/openapi_payment_account_get_or_create_request'
 require 'openapi_client/models/openapi_payment_account_get_or_create_request_bank_account'
 require 'openapi_client/models/openapi_payment_account_get_or_create_request_holder'

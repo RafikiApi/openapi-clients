@@ -8,10 +8,10 @@ servers:
 paths:
   /banks:
     get:
-      description: |-
+      description: |
         Within the scope of this API, the "Bank" resource serves the purpose of identifying the financial institutions that own payment accounts.
 
-        This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+        This endpoint enables you to retrieve the list of banks provided by our API.
       responses:
         "200":
           content:
@@ -94,16 +94,16 @@ paths:
         The following table outlines the operators supported by our API for each specific country.
 
         | Country | Operators                            |
-        |---------|--------------------------------------|
+        | ------- | ------------------------------------ |
         | KE      | SAFARICOM, AIRTEL                    |
         | TZ      | VODACOM, AIRTEL, TIGO, HALOTEL, TTCL |
         | RW      | AIRTEL, MTN                          |
 
         ### Bank account
 
-        The "bank account" type is designated for conventional accounts registered with bank institutions, such as "Equity Bank." It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.
+        The "bank account" type is designated for conventional accounts registered with bank institutions, such as "Equity Bank." It comprises an account number and the associated bank ID, where accounts are registered.
 
-        We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches.
+        We provide support for numerous banks in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks.
       requestBody:
         content:
           application/json:
@@ -768,25 +768,8 @@ components:
           example: "wallet '{wlt-xxx}' doesn't have enough balance"
           type: string
       type: object
-    _banks_get_200_response_allOf_data_inner_branches_inner:
-      properties:
-        id:
-          example: brn-xxx
-          format: ksuid
-          type: string
-        name:
-          example: Mbeya
-          type: string
-      type: object
     _banks_get_200_response_allOf_data_inner:
       properties:
-        branches:
-          description: "If the bank operates across multiple branches within a country,\
-            \ this property will be included, listing all the branches available from\
-            \ the bank."
-          items:
-            $ref: '#/components/schemas/_banks_get_200_response_allOf_data_inner_branches_inner'
-          type: array
         country:
           description: The ISO 3166 alpha-2 country code in which the bank operates.
           example: TZ
@@ -890,15 +873,6 @@ components:
           example: bnk-xxx
           format: ksuid
           type: string
-        branch_id:
-          description: |-
-            <span style="color:#e95f6a;">required with type BANK_ACCOUNT</span>
-            <span style="color:#e95f6a;">required if the bank spans across multiple branches</span>
-
-            The branch identifier representing the branch associated with the payment account
-          example: brn-xxx
-          format: ksuid
-          type: string
         number:
           description: |-
             <span style="color:#e95f6a;">required with type BANK_ACCOUNT</span>
@@ -963,10 +937,6 @@ components:
       properties:
         bank_id:
           example: bnk-xxx
-          format: ksuid
-          type: string
-        branch_id:
-          example: brn-xxx
           format: ksuid
           type: string
         number:
