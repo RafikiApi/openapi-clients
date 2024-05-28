@@ -30,6 +30,86 @@ paths:
       summary: List
       tags:
       - Bank
+  /lookups/{accountNumber}:
+    get:
+      description: |
+        The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.
+
+        This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.
+
+        ### Account not found
+
+        While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.
+
+        In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.
+
+        ### Supported countries/account types
+
+        |  Country  | Mobile Money | Bank Account |
+        |:---------:|:------------:|:------------:|
+        |🇳🇬 Nigeria |      ❌      |      ✅      |
+      parameters:
+      - description: The payment account type to lookup for
+        explode: true
+        in: query
+        name: payment_account_type
+        required: true
+        schema:
+          enum:
+          - MOBILE_MONEY
+          - BANK_ACCOUNT
+          type: string
+        style: form
+      - description: "If payment_account_type is BANK_ACCOUNT, this will be a mandatory\
+          \ field representing the bank id (bnk-xxx) used to identify which bank the\
+          \ account number belongs to"
+        explode: true
+        in: query
+        name: bank_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The account number, that is either the mobile money number or\
+          \ bank account number"
+        explode: false
+        in: path
+        name: accountNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_lookups__accountNumber__get_200_response'
+          description: The found looked up account number information
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyLookupAccountNotFound'
+          description: The provided account identifier is unregistered / couldn't
+            be found
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyValidationFailed'
+          description: "Validation failed, e.g. missing payment_account_type"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
+          description: Internal server error
+      security:
+      - Bearer: []
+      summary: Get
+      tags:
+      - Lookup
   /payment-accounts:
     get:
       description: |
@@ -284,7 +364,7 @@ paths:
         \                    <th>Max</th>\n>                         </tr>\n>    \
         \                 </thead>\n>                     <tbody>\n>             \
         \            <tr>\n>                             <td>140 KES</td>\n>     \
-        \                        <td>500,000 KES</td>\n>                         </tr>\n\
+        \                        <td>250,000 KES</td>\n>                         </tr>\n\
         >                     </tbody>\n>                 </table>\n>            \
         \ </td>\n>         </tr>\n>         <tr>\n>             <td>sender.type</td>\n\
         >             <td>Required</td> <!-- Kenya -->\n>         </tr>\n>       \
@@ -528,6 +608,11 @@ paths:
       - Wallet
 components:
   schemas:
+    openapi.LookupGetResponse:
+      properties:
+        holder:
+          $ref: '#/components/schemas/openapi_LookupGetResponse_holder'
+      type: object
     openapi.PaymentAccountGetOrCreateRequest:
       properties:
         bank_account:
@@ -716,6 +801,19 @@ components:
           example: An internal error has occurred.
           type: string
       type: object
+    openapi.ResponseBodyLookupAccountNotFound:
+      properties:
+        code:
+          description: '`LOOKUP_ACCOUNT_NOT_FOUND`'
+          example: LOOKUP_ACCOUNT_NOT_FOUND
+          type: string
+        message:
+          description: "E.g. \"Invalid bank account number, or, syntactically valid,\
+            \ but not registered with any banking entity\""
+          example: "the provided account identifier {'xxxxxxxxx'} couldn't be looked\
+            \ up"
+          type: string
+      type: object
     openapi.ResponseBodyNotFound:
       properties:
         code:
@@ -791,6 +889,13 @@ components:
               $ref: '#/components/schemas/_banks_get_200_response_allOf_data_inner'
             type: array
         type: object
+    _lookups__accountNumber__get_200_response:
+      allOf:
+      - $ref: '#/components/schemas/openapi.ResponseBodySuccessNoMeta'
+      - properties:
+          data:
+            $ref: '#/components/schemas/openapi.LookupGetResponse'
+        type: object
     _payment_accounts_get_200_response:
       allOf:
       - $ref: '#/components/schemas/openapi.ResponseBodySuccessCollection'
@@ -863,6 +968,15 @@ components:
               $ref: '#/components/schemas/_wallets_get_200_response_allOf_data_inner'
             type: array
         type: object
+    openapi_LookupGetResponse_holder:
+      properties:
+        name:
+          description: The payment account owner's registered full name at the banking
+            entity
+          example: Mario Rossi
+          type: string
+      type: object
+      x-order: "1"
     openapi_PaymentAccountGetOrCreateRequest_bank_account:
       properties:
         bank_id:
@@ -1261,4 +1375,3 @@ components:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true

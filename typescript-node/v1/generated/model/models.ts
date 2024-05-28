@@ -2,6 +2,9 @@ import localVarRequest from 'request';
 
 export * from './banksGet200Response';
 export * from './banksGet200ResponseAllOfDataInner';
+export * from './lookupsAccountNumberGet200Response';
+export * from './openapiLookupGetResponse';
+export * from './openapiLookupGetResponseHolder';
 export * from './openapiPaymentAccountGetOrCreateRequest';
 export * from './openapiPaymentAccountGetOrCreateRequestBankAccount';
 export * from './openapiPaymentAccountGetOrCreateRequestHolder';
@@ -32,6 +35,7 @@ export * from './openapiPayoutListResponseMetaPaging';
 export * from './openapiPayoutListResponseMetaPagingCursors';
 export * from './openapiResponseBodyIdempotencyConflict';
 export * from './openapiResponseBodyInternalServerError';
+export * from './openapiResponseBodyLookupAccountNotFound';
 export * from './openapiResponseBodyNotFound';
 export * from './openapiResponseBodySuccessCollection';
 export * from './openapiResponseBodySuccessCollectionNoMeta';
@@ -62,6 +66,9 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 import { BanksGet200Response } from './banksGet200Response';
 import { BanksGet200ResponseAllOfDataInner } from './banksGet200ResponseAllOfDataInner';
+import { LookupsAccountNumberGet200Response } from './lookupsAccountNumberGet200Response';
+import { OpenapiLookupGetResponse } from './openapiLookupGetResponse';
+import { OpenapiLookupGetResponseHolder } from './openapiLookupGetResponseHolder';
 import { OpenapiPaymentAccountGetOrCreateRequest } from './openapiPaymentAccountGetOrCreateRequest';
 import { OpenapiPaymentAccountGetOrCreateRequestBankAccount } from './openapiPaymentAccountGetOrCreateRequestBankAccount';
 import { OpenapiPaymentAccountGetOrCreateRequestHolder } from './openapiPaymentAccountGetOrCreateRequestHolder';
@@ -92,6 +99,7 @@ import { OpenapiPayoutListResponseMetaPaging } from './openapiPayoutListResponse
 import { OpenapiPayoutListResponseMetaPagingCursors } from './openapiPayoutListResponseMetaPagingCursors';
 import { OpenapiResponseBodyIdempotencyConflict } from './openapiResponseBodyIdempotencyConflict';
 import { OpenapiResponseBodyInternalServerError } from './openapiResponseBodyInternalServerError';
+import { OpenapiResponseBodyLookupAccountNotFound } from './openapiResponseBodyLookupAccountNotFound';
 import { OpenapiResponseBodyNotFound } from './openapiResponseBodyNotFound';
 import { OpenapiResponseBodySuccessCollection } from './openapiResponseBodySuccessCollection';
 import { OpenapiResponseBodySuccessCollectionNoMeta } from './openapiResponseBodySuccessCollectionNoMeta';
@@ -135,6 +143,9 @@ let enumsMap: {[index: string]: any} = {
 let typeMap: {[index: string]: any} = {
     "BanksGet200Response": BanksGet200Response,
     "BanksGet200ResponseAllOfDataInner": BanksGet200ResponseAllOfDataInner,
+    "LookupsAccountNumberGet200Response": LookupsAccountNumberGet200Response,
+    "OpenapiLookupGetResponse": OpenapiLookupGetResponse,
+    "OpenapiLookupGetResponseHolder": OpenapiLookupGetResponseHolder,
     "OpenapiPaymentAccountGetOrCreateRequest": OpenapiPaymentAccountGetOrCreateRequest,
     "OpenapiPaymentAccountGetOrCreateRequestBankAccount": OpenapiPaymentAccountGetOrCreateRequestBankAccount,
     "OpenapiPaymentAccountGetOrCreateRequestHolder": OpenapiPaymentAccountGetOrCreateRequestHolder,
@@ -165,6 +176,7 @@ let typeMap: {[index: string]: any} = {
     "OpenapiPayoutListResponseMetaPagingCursors": OpenapiPayoutListResponseMetaPagingCursors,
     "OpenapiResponseBodyIdempotencyConflict": OpenapiResponseBodyIdempotencyConflict,
     "OpenapiResponseBodyInternalServerError": OpenapiResponseBodyInternalServerError,
+    "OpenapiResponseBodyLookupAccountNotFound": OpenapiResponseBodyLookupAccountNotFound,
     "OpenapiResponseBodyNotFound": OpenapiResponseBodyNotFound,
     "OpenapiResponseBodySuccessCollection": OpenapiResponseBodySuccessCollection,
     "OpenapiResponseBodySuccessCollectionNoMeta": OpenapiResponseBodySuccessCollectionNoMeta,

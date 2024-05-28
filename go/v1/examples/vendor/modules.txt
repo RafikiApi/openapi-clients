@@ -1,0 +1,6 @@
+# github.com/RafikiApi/openapi-clients/go/v1/generated v0.0.0-20231027135953-5f96a6065756
+## explicit; go 1.18
+github.com/RafikiApi/openapi-clients/go/v1/generated
+# github.com/google/uuid v1.3.1
+## explicit
+github.com/google/uuid

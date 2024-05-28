@@ -3,7 +3,10 @@ api.ts
 git_push.sh
 model/banksGet200Response.ts
 model/banksGet200ResponseAllOfDataInner.ts
+model/lookupsAccountNumberGet200Response.ts
 model/models.ts
+model/openapiLookupGetResponse.ts
+model/openapiLookupGetResponseHolder.ts
 model/openapiPaymentAccountGetOrCreateRequest.ts
 model/openapiPaymentAccountGetOrCreateRequestBankAccount.ts
 model/openapiPaymentAccountGetOrCreateRequestHolder.ts
@@ -34,6 +37,7 @@ model/openapiPayoutListResponseMetaPaging.ts
 model/openapiPayoutListResponseMetaPagingCursors.ts
 model/openapiResponseBodyIdempotencyConflict.ts
 model/openapiResponseBodyInternalServerError.ts
+model/openapiResponseBodyLookupAccountNotFound.ts
 model/openapiResponseBodyNotFound.ts
 model/openapiResponseBodySuccessCollection.ts
 model/openapiResponseBodySuccessCollectionNoMeta.ts
@@ -50,6 +54,7 @@ model/walletsGet200Response.ts
 model/walletsGet200ResponseAllOfDataInner.ts
 rafikigen/apis.ts
 rafikigen/bankApi.ts
+rafikigen/lookupApi.ts
 rafikigen/paymentAccountApi.ts
 rafikigen/payoutApi.ts
 rafikigen/walletApi.ts

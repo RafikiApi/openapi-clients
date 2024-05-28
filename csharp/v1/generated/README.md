@@ -118,6 +118,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankApi* | [**BanksGet**](docs/BankApi.md#banksget) | **GET** /banks | List
+*LookupApi* | [**LookupsAccountNumberGet**](docs/LookupApi.md#lookupsaccountnumberget) | **GET** /lookups/{accountNumber} | Get
 *PaymentAccountApi* | [**PaymentAccountsGet**](docs/PaymentAccountApi.md#paymentaccountsget) | **GET** /payment-accounts | List
 *PaymentAccountApi* | [**PaymentAccountsPost**](docs/PaymentAccountApi.md#paymentaccountspost) | **POST** /payment-accounts | Get or create
 *PayoutApi* | [**PayoutsGet**](docs/PayoutApi.md#payoutsget) | **GET** /payouts | List
@@ -131,6 +132,9 @@ Class | Method | HTTP request | Description
 
  - [Model.BanksGet200Response](docs/BanksGet200Response.md)
  - [Model.BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
+ - [Model.LookupsAccountNumberGet200Response](docs/LookupsAccountNumberGet200Response.md)
+ - [Model.OpenapiLookupGetResponse](docs/OpenapiLookupGetResponse.md)
+ - [Model.OpenapiLookupGetResponseHolder](docs/OpenapiLookupGetResponseHolder.md)
  - [Model.OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [Model.OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [Model.OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)
@@ -161,6 +165,7 @@ Class | Method | HTTP request | Description
  - [Model.OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
  - [Model.OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
  - [Model.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [Model.OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [Model.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
  - [Model.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [Model.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)

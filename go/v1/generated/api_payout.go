@@ -481,7 +481,7 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >                     <tbody>
 >                         <tr>
 >                             <td>140 KES</td>
->                             <td>500,000 KES</td>
+>                             <td>250,000 KES</td>
 >                         </tr>
 >                     </tbody>
 >                 </table>

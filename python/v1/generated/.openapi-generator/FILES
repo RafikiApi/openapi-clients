@@ -6,6 +6,10 @@ README.md
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupApi.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponse.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -36,6 +40,7 @@ docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
+docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -63,6 +68,9 @@ rafikigen/exceptions.py
 rafikigen/models/__init__.py
 rafikigen/models/banks_get200_response.py
 rafikigen/models/banks_get200_response_all_of_data_inner.py
+rafikigen/models/lookups_account_number_get200_response.py
+rafikigen/models/openapi_lookup_get_response.py
+rafikigen/models/openapi_lookup_get_response_holder.py
 rafikigen/models/openapi_payment_account_get_or_create_request.py
 rafikigen/models/openapi_payment_account_get_or_create_request_bank_account.py
 rafikigen/models/openapi_payment_account_get_or_create_request_holder.py
@@ -93,6 +101,7 @@ rafikigen/models/openapi_payout_list_response_meta_paging.py
 rafikigen/models/openapi_payout_list_response_meta_paging_cursors.py
 rafikigen/models/openapi_response_body_idempotency_conflict.py
 rafikigen/models/openapi_response_body_internal_server_error.py
+rafikigen/models/openapi_response_body_lookup_account_not_found.py
 rafikigen/models/openapi_response_body_not_found.py
 rafikigen/models/openapi_response_body_success_collection.py
 rafikigen/models/openapi_response_body_success_collection_no_meta.py
@@ -110,6 +119,7 @@ rafikigen/models/wallets_get200_response_all_of_data_inner.py
 rafikigen/py.typed
 rafikigen/rafikigen/__init__.py
 rafikigen/rafikigen/bank_api.py
+rafikigen/rafikigen/lookup_api.py
 rafikigen/rafikigen/payment_account_api.py
 rafikigen/rafikigen/payout_api.py
 rafikigen/rafikigen/wallet_api.py
@@ -119,4 +129,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_lookup_api.py
+test/test_lookups_account_number_get200_response.py
+test/test_openapi_lookup_get_response.py
+test/test_openapi_lookup_get_response_holder.py
+test/test_openapi_response_body_lookup_account_not_found.py
 tox.ini

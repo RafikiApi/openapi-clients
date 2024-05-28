@@ -126,6 +126,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *Resources.BankApi* | [**banksGet**](docs/BankApi.md#banksGet) | **GET** /banks | List
+*Resources.LookupApi* | [**lookupsAccountNumberGet**](docs/LookupApi.md#lookupsAccountNumberGet) | **GET** /lookups/{accountNumber} | Get
 *Resources.PaymentAccountApi* | [**paymentAccountsGet**](docs/PaymentAccountApi.md#paymentAccountsGet) | **GET** /payment-accounts | List
 *Resources.PaymentAccountApi* | [**paymentAccountsPost**](docs/PaymentAccountApi.md#paymentAccountsPost) | **POST** /payment-accounts | Get or create
 *Resources.PayoutApi* | [**payoutsGet**](docs/PayoutApi.md#payoutsGet) | **GET** /payouts | List
@@ -138,6 +139,9 @@ Class | Method | HTTP request | Description
 
  - [Resources.BanksGet200Response](docs/BanksGet200Response.md)
  - [Resources.BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
+ - [Resources.LookupsAccountNumberGet200Response](docs/LookupsAccountNumberGet200Response.md)
+ - [Resources.OpenapiLookupGetResponse](docs/OpenapiLookupGetResponse.md)
+ - [Resources.OpenapiLookupGetResponseHolder](docs/OpenapiLookupGetResponseHolder.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [Resources.OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)
@@ -168,6 +172,7 @@ Class | Method | HTTP request | Description
  - [Resources.OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
  - [Resources.OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
  - [Resources.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [Resources.OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [Resources.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
  - [Resources.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [Resources.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)

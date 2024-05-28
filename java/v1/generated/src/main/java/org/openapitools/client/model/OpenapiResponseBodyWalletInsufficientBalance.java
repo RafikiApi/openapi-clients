@@ -49,7 +49,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiResponseBodyWalletInsufficientBalance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-01T09:18:21.848349Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-28T13:24:05.956985Z[Etc/UTC]")
 public class OpenapiResponseBodyWalletInsufficientBalance {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

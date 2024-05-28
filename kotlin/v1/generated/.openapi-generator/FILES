@@ -3,6 +3,10 @@ build.gradle
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupApi.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponse.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -33,6 +37,7 @@ docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
+docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -56,6 +61,7 @@ gradlew
 gradlew.bat
 settings.gradle
 src/main/kotlin/rafikigen/BankApi.kt
+src/main/kotlin/rafikigen/LookupApi.kt
 src/main/kotlin/rafikigen/PaymentAccountApi.kt
 src/main/kotlin/rafikigen/PayoutApi.kt
 src/main/kotlin/rafikigen/WalletApi.kt
@@ -78,6 +84,9 @@ src/main/kotlin/rafikigen/infrastructure/URIAdapter.kt
 src/main/kotlin/rafikigen/infrastructure/UUIDAdapter.kt
 src/main/kotlin/rafikigen/models/BanksGet200Response.kt
 src/main/kotlin/rafikigen/models/BanksGet200ResponseAllOfDataInner.kt
+src/main/kotlin/rafikigen/models/LookupsAccountNumberGet200Response.kt
+src/main/kotlin/rafikigen/models/OpenapiLookupGetResponse.kt
+src/main/kotlin/rafikigen/models/OpenapiLookupGetResponseHolder.kt
 src/main/kotlin/rafikigen/models/OpenapiPaymentAccountGetOrCreateRequest.kt
 src/main/kotlin/rafikigen/models/OpenapiPaymentAccountGetOrCreateRequestBankAccount.kt
 src/main/kotlin/rafikigen/models/OpenapiPaymentAccountGetOrCreateRequestHolder.kt
@@ -108,6 +117,7 @@ src/main/kotlin/rafikigen/models/OpenapiPayoutListResponseMetaPaging.kt
 src/main/kotlin/rafikigen/models/OpenapiPayoutListResponseMetaPagingCursors.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodyIdempotencyConflict.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodyInternalServerError.kt
+src/main/kotlin/rafikigen/models/OpenapiResponseBodyLookupAccountNotFound.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodyNotFound.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodySuccessCollection.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodySuccessCollectionNoMeta.kt

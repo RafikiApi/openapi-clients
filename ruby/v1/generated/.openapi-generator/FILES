@@ -9,6 +9,10 @@ Rakefile
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupApi.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponse.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -39,6 +43,7 @@ docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
+docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -59,6 +64,7 @@ docs/WalletsGet200ResponseAllOfDataInner.md
 git_push.sh
 lib/openapi_client.rb
 lib/openapi_client/api/bank_api.rb
+lib/openapi_client/api/lookup_api.rb
 lib/openapi_client/api/payment_account_api.rb
 lib/openapi_client/api/payout_api.rb
 lib/openapi_client/api/wallet_api.rb
@@ -67,6 +73,9 @@ lib/openapi_client/api_error.rb
 lib/openapi_client/configuration.rb
 lib/openapi_client/models/banks_get200_response.rb
 lib/openapi_client/models/banks_get200_response_all_of_data_inner.rb
+lib/openapi_client/models/lookups_account_number_get200_response.rb
+lib/openapi_client/models/openapi_lookup_get_response.rb
+lib/openapi_client/models/openapi_lookup_get_response_holder.rb
 lib/openapi_client/models/openapi_payment_account_get_or_create_request.rb
 lib/openapi_client/models/openapi_payment_account_get_or_create_request_bank_account.rb
 lib/openapi_client/models/openapi_payment_account_get_or_create_request_holder.rb
@@ -97,6 +106,7 @@ lib/openapi_client/models/openapi_payout_list_response_meta_paging.rb
 lib/openapi_client/models/openapi_payout_list_response_meta_paging_cursors.rb
 lib/openapi_client/models/openapi_response_body_idempotency_conflict.rb
 lib/openapi_client/models/openapi_response_body_internal_server_error.rb
+lib/openapi_client/models/openapi_response_body_lookup_account_not_found.rb
 lib/openapi_client/models/openapi_response_body_not_found.rb
 lib/openapi_client/models/openapi_response_body_success_collection.rb
 lib/openapi_client/models/openapi_response_body_success_collection_no_meta.rb
@@ -113,6 +123,11 @@ lib/openapi_client/models/wallets_get200_response.rb
 lib/openapi_client/models/wallets_get200_response_all_of_data_inner.rb
 lib/openapi_client/version.rb
 openapi_client.gemspec
+spec/api/lookup_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/lookups_account_number_get200_response_spec.rb
+spec/models/openapi_lookup_get_response_holder_spec.rb
+spec/models/openapi_lookup_get_response_spec.rb
+spec/models/openapi_response_body_lookup_account_not_found_spec.rb
 spec/spec_helper.rb

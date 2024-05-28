@@ -26,6 +26,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankApi* | [**banks_get**](docs/BankApi.md#banks_get) | **GET** /banks | List
+*LookupApi* | [**lookups_account_number_get**](docs/LookupApi.md#lookups_account_number_get) | **GET** /lookups/{accountNumber} | Get
 *PaymentAccountApi* | [**payment_accounts_get**](docs/PaymentAccountApi.md#payment_accounts_get) | **GET** /payment-accounts | List
 *PaymentAccountApi* | [**payment_accounts_post**](docs/PaymentAccountApi.md#payment_accounts_post) | **POST** /payment-accounts | Get or create
 *PayoutApi* | [**payouts_get**](docs/PayoutApi.md#payouts_get) | **GET** /payouts | List
@@ -38,6 +39,8 @@ Class | Method | HTTP request | Description
 
  - [BanksGet200Response](docs/BanksGet200Response.md)
  - [BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
+ - [LookupsAccountNumberGet200Response](docs/LookupsAccountNumberGet200Response.md)
+ - [OpenapiLookupGetResponseHolder](docs/OpenapiLookupGetResponseHolder.md)
  - [OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)
  - [OpenapiPaymentAccountGetOrCreateRequestMobileMoney](docs/OpenapiPaymentAccountGetOrCreateRequestMobileMoney.md)
@@ -59,6 +62,7 @@ Class | Method | HTTP request | Description
  - [OpenapiPayoutCreateResponseState](docs/OpenapiPayoutCreateResponseState.md)
  - [OpenapiPayoutListResponseMetaPaging](docs/OpenapiPayoutListResponseMetaPaging.md)
  - [OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
+ - [OpenapiPeriodLookupGetResponse](docs/OpenapiPeriodLookupGetResponse.md)
  - [OpenapiPeriodPaymentAccountGetOrCreateRequest](docs/OpenapiPeriodPaymentAccountGetOrCreateRequest.md)
  - [OpenapiPeriodPaymentAccountGetOrCreateResponse](docs/OpenapiPeriodPaymentAccountGetOrCreateResponse.md)
  - [OpenapiPeriodPaymentAccountListResponseMeta](docs/OpenapiPeriodPaymentAccountListResponseMeta.md)
@@ -68,6 +72,7 @@ Class | Method | HTTP request | Description
  - [OpenapiPeriodPayoutListResponseMeta](docs/OpenapiPeriodPayoutListResponseMeta.md)
  - [OpenapiPeriodResponseBodyIdempotencyConflict](docs/OpenapiPeriodResponseBodyIdempotencyConflict.md)
  - [OpenapiPeriodResponseBodyInternalServerError](docs/OpenapiPeriodResponseBodyInternalServerError.md)
+ - [OpenapiPeriodResponseBodyLookupAccountNotFound](docs/OpenapiPeriodResponseBodyLookupAccountNotFound.md)
  - [OpenapiPeriodResponseBodyNotFound](docs/OpenapiPeriodResponseBodyNotFound.md)
  - [OpenapiPeriodResponseBodySuccessCollection](docs/OpenapiPeriodResponseBodySuccessCollection.md)
  - [OpenapiPeriodResponseBodySuccessCollectionNoMeta](docs/OpenapiPeriodResponseBodySuccessCollectionNoMeta.md)

@@ -15,6 +15,9 @@
 import ApiClient from './ApiClient';
 import BanksGet200Response from './model/BanksGet200Response';
 import BanksGet200ResponseAllOfDataInner from './model/BanksGet200ResponseAllOfDataInner';
+import LookupsAccountNumberGet200Response from './model/LookupsAccountNumberGet200Response';
+import OpenapiLookupGetResponse from './model/OpenapiLookupGetResponse';
+import OpenapiLookupGetResponseHolder from './model/OpenapiLookupGetResponseHolder';
 import OpenapiPaymentAccountGetOrCreateRequest from './model/OpenapiPaymentAccountGetOrCreateRequest';
 import OpenapiPaymentAccountGetOrCreateRequestBankAccount from './model/OpenapiPaymentAccountGetOrCreateRequestBankAccount';
 import OpenapiPaymentAccountGetOrCreateRequestHolder from './model/OpenapiPaymentAccountGetOrCreateRequestHolder';
@@ -45,6 +48,7 @@ import OpenapiPayoutListResponseMetaPaging from './model/OpenapiPayoutListRespon
 import OpenapiPayoutListResponseMetaPagingCursors from './model/OpenapiPayoutListResponseMetaPagingCursors';
 import OpenapiResponseBodyIdempotencyConflict from './model/OpenapiResponseBodyIdempotencyConflict';
 import OpenapiResponseBodyInternalServerError from './model/OpenapiResponseBodyInternalServerError';
+import OpenapiResponseBodyLookupAccountNotFound from './model/OpenapiResponseBodyLookupAccountNotFound';
 import OpenapiResponseBodyNotFound from './model/OpenapiResponseBodyNotFound';
 import OpenapiResponseBodySuccessCollection from './model/OpenapiResponseBodySuccessCollection';
 import OpenapiResponseBodySuccessCollectionNoMeta from './model/OpenapiResponseBodySuccessCollectionNoMeta';
@@ -60,6 +64,7 @@ import PayoutsPost202Response from './model/PayoutsPost202Response';
 import WalletsGet200Response from './model/WalletsGet200Response';
 import WalletsGet200ResponseAllOfDataInner from './model/WalletsGet200ResponseAllOfDataInner';
 import BankApi from './rafikigen/BankApi';
+import LookupApi from './rafikigen/LookupApi';
 import PaymentAccountApi from './rafikigen/PaymentAccountApi';
 import PayoutApi from './rafikigen/PayoutApi';
 import WalletApi from './rafikigen/WalletApi';
@@ -114,6 +119,24 @@ export {
      * @property {module:model/BanksGet200ResponseAllOfDataInner}
      */
     BanksGet200ResponseAllOfDataInner,
+
+    /**
+     * The LookupsAccountNumberGet200Response model constructor.
+     * @property {module:model/LookupsAccountNumberGet200Response}
+     */
+    LookupsAccountNumberGet200Response,
+
+    /**
+     * The OpenapiLookupGetResponse model constructor.
+     * @property {module:model/OpenapiLookupGetResponse}
+     */
+    OpenapiLookupGetResponse,
+
+    /**
+     * The OpenapiLookupGetResponseHolder model constructor.
+     * @property {module:model/OpenapiLookupGetResponseHolder}
+     */
+    OpenapiLookupGetResponseHolder,
 
     /**
      * The OpenapiPaymentAccountGetOrCreateRequest model constructor.
@@ -296,6 +319,12 @@ export {
     OpenapiResponseBodyInternalServerError,
 
     /**
+     * The OpenapiResponseBodyLookupAccountNotFound model constructor.
+     * @property {module:model/OpenapiResponseBodyLookupAccountNotFound}
+     */
+    OpenapiResponseBodyLookupAccountNotFound,
+
+    /**
      * The OpenapiResponseBodyNotFound model constructor.
      * @property {module:model/OpenapiResponseBodyNotFound}
      */
@@ -384,6 +413,12 @@ export {
     * @property {module:rafikigen/BankApi}
     */
     BankApi,
+
+    /**
+    * The LookupApi service constructor.
+    * @property {module:rafikigen/LookupApi}
+    */
+    LookupApi,
 
     /**
     * The PaymentAccountApi service constructor.

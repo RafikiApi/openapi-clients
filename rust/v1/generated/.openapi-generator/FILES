@@ -5,6 +5,9 @@ README.md
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupApi.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequestMobileMoney.md
@@ -26,6 +29,7 @@ docs/OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.md
 docs/OpenapiPayoutCreateResponseState.md
 docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
+docs/OpenapiPeriodLookupGetResponse.md
 docs/OpenapiPeriodPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPeriodPaymentAccountGetOrCreateResponse.md
 docs/OpenapiPeriodPaymentAccountListResponseMeta.md
@@ -35,6 +39,7 @@ docs/OpenapiPeriodPayoutGetResponse.md
 docs/OpenapiPeriodPayoutListResponseMeta.md
 docs/OpenapiPeriodResponseBodyIdempotencyConflict.md
 docs/OpenapiPeriodResponseBodyInternalServerError.md
+docs/OpenapiPeriodResponseBodyLookupAccountNotFound.md
 docs/OpenapiPeriodResponseBodyNotFound.md
 docs/OpenapiPeriodResponseBodySuccessCollection.md
 docs/OpenapiPeriodResponseBodySuccessCollectionNoMeta.md
@@ -55,6 +60,7 @@ docs/WalletsGet200ResponseAllOfDataInner.md
 git_push.sh
 src/apis/bank_api.rs
 src/apis/configuration.rs
+src/apis/lookup_api.rs
 src/apis/mod.rs
 src/apis/payment_account_api.rs
 src/apis/payout_api.rs
@@ -62,6 +68,7 @@ src/apis/wallet_api.rs
 src/lib.rs
 src/models/_banks_get_200_response.rs
 src/models/_banks_get_200_response_all_of_data_inner.rs
+src/models/_lookups__account_number__get_200_response.rs
 src/models/_payment_accounts_get_200_response.rs
 src/models/_payment_accounts_post_200_response.rs
 src/models/_payouts__id__get_200_response.rs
@@ -70,6 +77,7 @@ src/models/_payouts_post_202_response.rs
 src/models/_wallets_get_200_response.rs
 src/models/_wallets_get_200_response_all_of_data_inner.rs
 src/models/mod.rs
+src/models/openapi_lookup_get_response_holder.rs
 src/models/openapi_payment_account_get_or_create_request_bank_account.rs
 src/models/openapi_payment_account_get_or_create_request_holder.rs
 src/models/openapi_payment_account_get_or_create_request_mobile_money.rs
@@ -91,6 +99,7 @@ src/models/openapi_payout_create_response_sender_individual_identity_document.rs
 src/models/openapi_payout_create_response_state.rs
 src/models/openapi_payout_list_response_meta_paging.rs
 src/models/openapi_payout_list_response_meta_paging_cursors.rs
+src/models/openapi_period_lookup_get_response.rs
 src/models/openapi_period_payment_account_get_or_create_request.rs
 src/models/openapi_period_payment_account_get_or_create_response.rs
 src/models/openapi_period_payment_account_list_response_meta.rs
@@ -100,6 +109,7 @@ src/models/openapi_period_payout_get_response.rs
 src/models/openapi_period_payout_list_response_meta.rs
 src/models/openapi_period_response_body_idempotency_conflict.rs
 src/models/openapi_period_response_body_internal_server_error.rs
+src/models/openapi_period_response_body_lookup_account_not_found.rs
 src/models/openapi_period_response_body_not_found.rs
 src/models/openapi_period_response_body_success_collection.rs
 src/models/openapi_period_response_body_success_collection_no_meta.rs

@@ -1,5 +1,7 @@
 export * from './bankApi';
 import { BankApi } from './bankApi';
+export * from './lookupApi';
+import { LookupApi } from './lookupApi';
 export * from './paymentAccountApi';
 import { PaymentAccountApi } from './paymentAccountApi';
 export * from './payoutApi';
@@ -17,4 +19,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [BankApi, PaymentAccountApi, PayoutApi, WalletApi];
+export const APIS = [BankApi, LookupApi, PaymentAccountApi, PayoutApi, WalletApi];

@@ -5,6 +5,10 @@ README.md
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupApi.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponse.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -35,6 +39,7 @@ docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
+docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -59,6 +64,9 @@ src/ApiClient.js
 src/index.js
 src/model/BanksGet200Response.js
 src/model/BanksGet200ResponseAllOfDataInner.js
+src/model/LookupsAccountNumberGet200Response.js
+src/model/OpenapiLookupGetResponse.js
+src/model/OpenapiLookupGetResponseHolder.js
 src/model/OpenapiPaymentAccountGetOrCreateRequest.js
 src/model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.js
 src/model/OpenapiPaymentAccountGetOrCreateRequestHolder.js
@@ -89,6 +97,7 @@ src/model/OpenapiPayoutListResponseMetaPaging.js
 src/model/OpenapiPayoutListResponseMetaPagingCursors.js
 src/model/OpenapiResponseBodyIdempotencyConflict.js
 src/model/OpenapiResponseBodyInternalServerError.js
+src/model/OpenapiResponseBodyLookupAccountNotFound.js
 src/model/OpenapiResponseBodyNotFound.js
 src/model/OpenapiResponseBodySuccessCollection.js
 src/model/OpenapiResponseBodySuccessCollectionNoMeta.js
@@ -104,6 +113,12 @@ src/model/PayoutsPost202Response.js
 src/model/WalletsGet200Response.js
 src/model/WalletsGet200ResponseAllOfDataInner.js
 src/rafikigen/BankApi.js
+src/rafikigen/LookupApi.js
 src/rafikigen/PaymentAccountApi.js
 src/rafikigen/PayoutApi.js
 src/rafikigen/WalletApi.js
+test/api/LookupApi.spec.js
+test/model/LookupsAccountNumberGet200Response.spec.js
+test/model/OpenapiLookupGetResponse.spec.js
+test/model/OpenapiLookupGetResponseHolder.spec.js
+test/model/OpenapiResponseBodyLookupAccountNotFound.spec.js

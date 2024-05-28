@@ -78,6 +78,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankAPI* | [**BanksGet**](docs/BankAPI.md#banksget) | **Get** /banks | List
+*LookupAPI* | [**LookupsAccountNumberGet**](docs/LookupAPI.md#lookupsaccountnumberget) | **Get** /lookups/{accountNumber} | Get
 *PaymentAccountAPI* | [**PaymentAccountsGet**](docs/PaymentAccountAPI.md#paymentaccountsget) | **Get** /payment-accounts | List
 *PaymentAccountAPI* | [**PaymentAccountsPost**](docs/PaymentAccountAPI.md#paymentaccountspost) | **Post** /payment-accounts | Get or create
 *PayoutAPI* | [**PayoutsGet**](docs/PayoutAPI.md#payoutsget) | **Get** /payouts | List
@@ -90,6 +91,9 @@ Class | Method | HTTP request | Description
 
  - [BanksGet200Response](docs/BanksGet200Response.md)
  - [BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
+ - [LookupsAccountNumberGet200Response](docs/LookupsAccountNumberGet200Response.md)
+ - [OpenapiLookupGetResponse](docs/OpenapiLookupGetResponse.md)
+ - [OpenapiLookupGetResponseHolder](docs/OpenapiLookupGetResponseHolder.md)
  - [OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)
@@ -120,6 +124,7 @@ Class | Method | HTTP request | Description
  - [OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
  - [OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
  - [OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
  - [OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)

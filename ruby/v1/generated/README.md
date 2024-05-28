@@ -83,6 +83,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *OpenapiClient::BankApi* | [**banks_get**](docs/BankApi.md#banks_get) | **GET** /banks | List
+*OpenapiClient::LookupApi* | [**lookups_account_number_get**](docs/LookupApi.md#lookups_account_number_get) | **GET** /lookups/{accountNumber} | Get
 *OpenapiClient::PaymentAccountApi* | [**payment_accounts_get**](docs/PaymentAccountApi.md#payment_accounts_get) | **GET** /payment-accounts | List
 *OpenapiClient::PaymentAccountApi* | [**payment_accounts_post**](docs/PaymentAccountApi.md#payment_accounts_post) | **POST** /payment-accounts | Get or create
 *OpenapiClient::PayoutApi* | [**payouts_get**](docs/PayoutApi.md#payouts_get) | **GET** /payouts | List
@@ -95,6 +96,9 @@ Class | Method | HTTP request | Description
 
  - [OpenapiClient::BanksGet200Response](docs/BanksGet200Response.md)
  - [OpenapiClient::BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
+ - [OpenapiClient::LookupsAccountNumberGet200Response](docs/LookupsAccountNumberGet200Response.md)
+ - [OpenapiClient::OpenapiLookupGetResponse](docs/OpenapiLookupGetResponse.md)
+ - [OpenapiClient::OpenapiLookupGetResponseHolder](docs/OpenapiLookupGetResponseHolder.md)
  - [OpenapiClient::OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [OpenapiClient::OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [OpenapiClient::OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)
@@ -125,6 +129,7 @@ Class | Method | HTTP request | Description
  - [OpenapiClient::OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
  - [OpenapiClient::OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
  - [OpenapiClient::OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [OpenapiClient::OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [OpenapiClient::OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
  - [OpenapiClient::OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [OpenapiClient::OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)

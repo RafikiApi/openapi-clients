@@ -51,6 +51,8 @@ type APIClient struct {
 
 	BankAPI *BankAPIService
 
+	LookupAPI *LookupAPIService
+
 	PaymentAccountAPI *PaymentAccountAPIService
 
 	PayoutAPI *PayoutAPIService
@@ -75,6 +77,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.BankAPI = (*BankAPIService)(&c.common)
+	c.LookupAPI = (*LookupAPIService)(&c.common)
 	c.PaymentAccountAPI = (*PaymentAccountAPIService)(&c.common)
 	c.PayoutAPI = (*PayoutAPIService)(&c.common)
 	c.WalletAPI = (*WalletAPIService)(&c.common)

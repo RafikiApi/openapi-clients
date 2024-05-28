@@ -45,6 +45,7 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BankApi* | [**banksGet**](docs/BankApi.md#banksget) | **GET** /banks | List
+*LookupApi* | [**lookupsAccountNumberGet**](docs/LookupApi.md#lookupsaccountnumberget) | **GET** /lookups/{accountNumber} | Get
 *PaymentAccountApi* | [**paymentAccountsGet**](docs/PaymentAccountApi.md#paymentaccountsget) | **GET** /payment-accounts | List
 *PaymentAccountApi* | [**paymentAccountsPost**](docs/PaymentAccountApi.md#paymentaccountspost) | **POST** /payment-accounts | Get or create
 *PayoutApi* | [**payoutsGet**](docs/PayoutApi.md#payoutsget) | **GET** /payouts | List
@@ -58,6 +59,9 @@ Class | Method | HTTP request | Description
 
  - [rafikigen.models.BanksGet200Response](docs/BanksGet200Response.md)
  - [rafikigen.models.BanksGet200ResponseAllOfDataInner](docs/BanksGet200ResponseAllOfDataInner.md)
+ - [rafikigen.models.LookupsAccountNumberGet200Response](docs/LookupsAccountNumberGet200Response.md)
+ - [rafikigen.models.OpenapiLookupGetResponse](docs/OpenapiLookupGetResponse.md)
+ - [rafikigen.models.OpenapiLookupGetResponseHolder](docs/OpenapiLookupGetResponseHolder.md)
  - [rafikigen.models.OpenapiPaymentAccountGetOrCreateRequest](docs/OpenapiPaymentAccountGetOrCreateRequest.md)
  - [rafikigen.models.OpenapiPaymentAccountGetOrCreateRequestBankAccount](docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md)
  - [rafikigen.models.OpenapiPaymentAccountGetOrCreateRequestHolder](docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md)
@@ -88,6 +92,7 @@ Class | Method | HTTP request | Description
  - [rafikigen.models.OpenapiPayoutListResponseMetaPagingCursors](docs/OpenapiPayoutListResponseMetaPagingCursors.md)
  - [rafikigen.models.OpenapiResponseBodyIdempotencyConflict](docs/OpenapiResponseBodyIdempotencyConflict.md)
  - [rafikigen.models.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
+ - [rafikigen.models.OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [rafikigen.models.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
  - [rafikigen.models.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [rafikigen.models.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)

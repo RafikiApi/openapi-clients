@@ -5,6 +5,10 @@ appveyor.yml
 docs/BankApi.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupApi.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponse.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -35,6 +39,7 @@ docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
+docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -54,7 +59,12 @@ docs/WalletsGet200Response.md
 docs/WalletsGet200ResponseAllOfDataInner.md
 git_push.sh
 rafikigen.sln
+src/rafikigen.Test/Model/LookupsAccountNumberGet200ResponseTests.cs
+src/rafikigen.Test/Model/OpenapiLookupGetResponseHolderTests.cs
+src/rafikigen.Test/Model/OpenapiLookupGetResponseTests.cs
+src/rafikigen.Test/Model/OpenapiResponseBodyLookupAccountNotFoundTests.cs
 src/rafikigen.Test/rafikigen.Test.csproj
+src/rafikigen.Test/rafikigen/LookupApiTests.cs
 src/rafikigen/Client/ApiClient.cs
 src/rafikigen/Client/ApiException.cs
 src/rafikigen/Client/ApiResponse.cs
@@ -74,6 +84,9 @@ src/rafikigen/Client/RetryConfiguration.cs
 src/rafikigen/Model/AbstractOpenAPISchema.cs
 src/rafikigen/Model/BanksGet200Response.cs
 src/rafikigen/Model/BanksGet200ResponseAllOfDataInner.cs
+src/rafikigen/Model/LookupsAccountNumberGet200Response.cs
+src/rafikigen/Model/OpenapiLookupGetResponse.cs
+src/rafikigen/Model/OpenapiLookupGetResponseHolder.cs
 src/rafikigen/Model/OpenapiPaymentAccountGetOrCreateRequest.cs
 src/rafikigen/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.cs
 src/rafikigen/Model/OpenapiPaymentAccountGetOrCreateRequestHolder.cs
@@ -104,6 +117,7 @@ src/rafikigen/Model/OpenapiPayoutListResponseMetaPaging.cs
 src/rafikigen/Model/OpenapiPayoutListResponseMetaPagingCursors.cs
 src/rafikigen/Model/OpenapiResponseBodyIdempotencyConflict.cs
 src/rafikigen/Model/OpenapiResponseBodyInternalServerError.cs
+src/rafikigen/Model/OpenapiResponseBodyLookupAccountNotFound.cs
 src/rafikigen/Model/OpenapiResponseBodyNotFound.cs
 src/rafikigen/Model/OpenapiResponseBodySuccessCollection.cs
 src/rafikigen/Model/OpenapiResponseBodySuccessCollectionNoMeta.cs
@@ -120,6 +134,7 @@ src/rafikigen/Model/WalletsGet200Response.cs
 src/rafikigen/Model/WalletsGet200ResponseAllOfDataInner.cs
 src/rafikigen/rafikigen.csproj
 src/rafikigen/rafikigen/BankApi.cs
+src/rafikigen/rafikigen/LookupApi.cs
 src/rafikigen/rafikigen/PaymentAccountApi.cs
 src/rafikigen/rafikigen/PayoutApi.cs
 src/rafikigen/rafikigen/WalletApi.cs

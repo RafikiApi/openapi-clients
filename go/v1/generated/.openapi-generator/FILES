@@ -3,6 +3,7 @@
 README.md
 api/openapi.yaml
 api_bank.go
+api_lookup.go
 api_payment_account.go
 api_payout.go
 api_wallet.go
@@ -11,6 +12,10 @@ configuration.go
 docs/BankAPI.md
 docs/BanksGet200Response.md
 docs/BanksGet200ResponseAllOfDataInner.md
+docs/LookupAPI.md
+docs/LookupsAccountNumberGet200Response.md
+docs/OpenapiLookupGetResponse.md
+docs/OpenapiLookupGetResponseHolder.md
 docs/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -41,6 +46,7 @@ docs/OpenapiPayoutListResponseMetaPaging.md
 docs/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
+docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -63,6 +69,7 @@ go.mod
 go.sum
 model__banks_get_200_response.go
 model__banks_get_200_response_all_of_data_inner.go
+model__lookups__account_number__get_200_response.go
 model__payment_accounts_get_200_response.go
 model__payment_accounts_post_200_response.go
 model__payouts__id__get_200_response.go
@@ -70,6 +77,8 @@ model__payouts_get_200_response.go
 model__payouts_post_202_response.go
 model__wallets_get_200_response.go
 model__wallets_get_200_response_all_of_data_inner.go
+model_openapi_lookup_get_response.go
+model_openapi_lookup_get_response_holder.go
 model_openapi_payment_account_get_or_create_request.go
 model_openapi_payment_account_get_or_create_request_bank_account.go
 model_openapi_payment_account_get_or_create_request_holder.go
@@ -100,6 +109,7 @@ model_openapi_payout_list_response_meta_paging.go
 model_openapi_payout_list_response_meta_paging_cursors.go
 model_openapi_response_body_idempotency_conflict.go
 model_openapi_response_body_internal_server_error.go
+model_openapi_response_body_lookup_account_not_found.go
 model_openapi_response_body_not_found.go
 model_openapi_response_body_success_collection.go
 model_openapi_response_body_success_collection_no_meta.go
@@ -108,4 +118,5 @@ model_openapi_response_body_validation_failed.go
 model_openapi_response_body_validation_failed_errors.go
 model_openapi_response_body_wallet_insufficient_balance.go
 response.go
+test/api_lookup_test.go
 utils.go

@@ -4,11 +4,15 @@
 README.md
 composer.json
 docs/Api/BankApi.md
+docs/Api/LookupApi.md
 docs/Api/PaymentAccountApi.md
 docs/Api/PayoutApi.md
 docs/Api/WalletApi.md
 docs/Model/BanksGet200Response.md
 docs/Model/BanksGet200ResponseAllOfDataInner.md
+docs/Model/LookupsAccountNumberGet200Response.md
+docs/Model/OpenapiLookupGetResponse.md
+docs/Model/OpenapiLookupGetResponseHolder.md
 docs/Model/OpenapiPaymentAccountGetOrCreateRequest.md
 docs/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.md
 docs/Model/OpenapiPaymentAccountGetOrCreateRequestHolder.md
@@ -39,6 +43,7 @@ docs/Model/OpenapiPayoutListResponseMetaPaging.md
 docs/Model/OpenapiPayoutListResponseMetaPagingCursors.md
 docs/Model/OpenapiResponseBodyIdempotencyConflict.md
 docs/Model/OpenapiResponseBodyInternalServerError.md
+docs/Model/OpenapiResponseBodyLookupAccountNotFound.md
 docs/Model/OpenapiResponseBodyNotFound.md
 docs/Model/OpenapiResponseBodySuccessCollection.md
 docs/Model/OpenapiResponseBodySuccessCollectionNoMeta.md
@@ -59,7 +64,10 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/BanksGet200Response.php
 lib/Model/BanksGet200ResponseAllOfDataInner.php
+lib/Model/LookupsAccountNumberGet200Response.php
 lib/Model/ModelInterface.php
+lib/Model/OpenapiLookupGetResponse.php
+lib/Model/OpenapiLookupGetResponseHolder.php
 lib/Model/OpenapiPaymentAccountGetOrCreateRequest.php
 lib/Model/OpenapiPaymentAccountGetOrCreateRequestBankAccount.php
 lib/Model/OpenapiPaymentAccountGetOrCreateRequestHolder.php
@@ -90,6 +98,7 @@ lib/Model/OpenapiPayoutListResponseMetaPaging.php
 lib/Model/OpenapiPayoutListResponseMetaPagingCursors.php
 lib/Model/OpenapiResponseBodyIdempotencyConflict.php
 lib/Model/OpenapiResponseBodyInternalServerError.php
+lib/Model/OpenapiResponseBodyLookupAccountNotFound.php
 lib/Model/OpenapiResponseBodyNotFound.php
 lib/Model/OpenapiResponseBodySuccessCollection.php
 lib/Model/OpenapiResponseBodySuccessCollectionNoMeta.php
@@ -106,7 +115,13 @@ lib/Model/WalletsGet200Response.php
 lib/Model/WalletsGet200ResponseAllOfDataInner.php
 lib/ObjectSerializer.php
 lib/rafikigen/BankApi.php
+lib/rafikigen/LookupApi.php
 lib/rafikigen/PaymentAccountApi.php
 lib/rafikigen/PayoutApi.php
 lib/rafikigen/WalletApi.php
 phpunit.xml.dist
+test/Api/LookupApiTest.php
+test/Model/LookupsAccountNumberGet200ResponseTest.php
+test/Model/OpenapiLookupGetResponseHolderTest.php
+test/Model/OpenapiLookupGetResponseTest.php
+test/Model/OpenapiResponseBodyLookupAccountNotFoundTest.php
