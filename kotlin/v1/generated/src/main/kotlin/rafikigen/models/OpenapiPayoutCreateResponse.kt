@@ -30,6 +30,7 @@ import com.squareup.moshi.JsonClass
  * @param customId 
  * @param id The payout unique identifier
  * @param paymentAccountId The recipient payment account receiving funds
+ * @param purpose 
  * @param sender 
  * @param state 
  * @param walletId The wallet ID from which the money will disburse
@@ -55,6 +56,9 @@ data class OpenapiPayoutCreateResponse (
     @Json(name = "payment_account_id")
     val paymentAccountId: kotlin.String? = null,
 
+    @Json(name = "purpose")
+    val purpose: OpenapiPayoutCreateResponse.Purpose? = null,
+
     @Json(name = "sender")
     val sender: OpenapiPayoutCreateResponseSender? = null,
 
@@ -65,5 +69,28 @@ data class OpenapiPayoutCreateResponse (
     @Json(name = "wallet_id")
     val walletId: kotlin.String? = null
 
-)
+) {
+
+    /**
+     * 
+     *
+     * Values: gOODSPURCHASE,sERVICESPAYMENT,iNVOICEPAYMENT,lOANREPAYMENT,bILLSPAYMENT,sALARYANDWAGES,p2PTRANSFER,rEMITTANCE,dONATION,gRANTSANDSCHOLARSHIPS,tRAVELANDACCOMMODATION,tAXPAYMENT,iNSURANCEPREMIUM
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Purpose(val value: kotlin.String) {
+        @Json(name = "GOODS_PURCHASE") gOODSPURCHASE("GOODS_PURCHASE"),
+        @Json(name = "SERVICES_PAYMENT") sERVICESPAYMENT("SERVICES_PAYMENT"),
+        @Json(name = "INVOICE_PAYMENT") iNVOICEPAYMENT("INVOICE_PAYMENT"),
+        @Json(name = "LOAN_REPAYMENT") lOANREPAYMENT("LOAN_REPAYMENT"),
+        @Json(name = "BILLS_PAYMENT") bILLSPAYMENT("BILLS_PAYMENT"),
+        @Json(name = "SALARY_AND_WAGES") sALARYANDWAGES("SALARY_AND_WAGES"),
+        @Json(name = "P2P_TRANSFER") p2PTRANSFER("P2P_TRANSFER"),
+        @Json(name = "REMITTANCE") rEMITTANCE("REMITTANCE"),
+        @Json(name = "DONATION") dONATION("DONATION"),
+        @Json(name = "GRANTS_AND_SCHOLARSHIPS") gRANTSANDSCHOLARSHIPS("GRANTS_AND_SCHOLARSHIPS"),
+        @Json(name = "TRAVEL_AND_ACCOMMODATION") tRAVELANDACCOMMODATION("TRAVEL_AND_ACCOMMODATION"),
+        @Json(name = "TAX_PAYMENT") tAXPAYMENT("TAX_PAYMENT"),
+        @Json(name = "INSURANCE_PREMIUM") iNSURANCEPREMIUM("INSURANCE_PREMIUM");
+    }
+}
 

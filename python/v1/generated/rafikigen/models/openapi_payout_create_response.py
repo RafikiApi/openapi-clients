@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, validator
 from rafikigen.models.openapi_payout_create_response_amount import OpenapiPayoutCreateResponseAmount
 from rafikigen.models.openapi_payout_create_response_sender import OpenapiPayoutCreateResponseSender
 from rafikigen.models.openapi_payout_create_response_state import OpenapiPayoutCreateResponseState
@@ -33,10 +33,21 @@ class OpenapiPayoutCreateResponse(BaseModel):
     custom_id: Optional[StrictStr] = None
     id: Optional[StrictStr] = Field(None, description="The payout unique identifier")
     payment_account_id: Optional[StrictStr] = Field(None, description="The recipient payment account receiving funds")
+    purpose: Optional[StrictStr] = None
     sender: Optional[OpenapiPayoutCreateResponseSender] = None
     state: Optional[OpenapiPayoutCreateResponseState] = None
     wallet_id: Optional[StrictStr] = Field(None, description="The wallet ID from which the money will disburse")
-    __properties = ["amount", "created_at", "custom_id", "id", "payment_account_id", "sender", "state", "wallet_id"]
+    __properties = ["amount", "created_at", "custom_id", "id", "payment_account_id", "purpose", "sender", "state", "wallet_id"]
+
+    @validator('purpose')
+    def purpose_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('GOODS_PURCHASE', 'SERVICES_PAYMENT', 'INVOICE_PAYMENT', 'LOAN_REPAYMENT', 'BILLS_PAYMENT', 'SALARY_AND_WAGES', 'P2P_TRANSFER', 'REMITTANCE', 'DONATION', 'GRANTS_AND_SCHOLARSHIPS', 'TRAVEL_AND_ACCOMMODATION', 'TAX_PAYMENT', 'INSURANCE_PREMIUM'):
+            raise ValueError("must be one of enum values ('GOODS_PURCHASE', 'SERVICES_PAYMENT', 'INVOICE_PAYMENT', 'LOAN_REPAYMENT', 'BILLS_PAYMENT', 'SALARY_AND_WAGES', 'P2P_TRANSFER', 'REMITTANCE', 'DONATION', 'GRANTS_AND_SCHOLARSHIPS', 'TRAVEL_AND_ACCOMMODATION', 'TAX_PAYMENT', 'INSURANCE_PREMIUM')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -88,6 +99,7 @@ class OpenapiPayoutCreateResponse(BaseModel):
             "custom_id": obj.get("custom_id"),
             "id": obj.get("id"),
             "payment_account_id": obj.get("payment_account_id"),
+            "purpose": obj.get("purpose"),
             "sender": OpenapiPayoutCreateResponseSender.from_dict(obj.get("sender")) if obj.get("sender") is not None else None,
             "state": OpenapiPayoutCreateResponseState.from_dict(obj.get("state")) if obj.get("state") is not None else None,
             "wallet_id": obj.get("wallet_id")

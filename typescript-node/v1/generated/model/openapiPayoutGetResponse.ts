@@ -27,6 +27,7 @@ export class OpenapiPayoutGetResponse {
     * The recipient payment account receiving funds
     */
     'paymentAccountId'?: string;
+    'purpose'?: OpenapiPayoutGetResponse.PurposeEnum;
     /**
     * The reference provided by the recipient account\'s actual bank or telco on a successful payout.  > ⚠️ > It\'s important to be aware that this information might not be accessible for every payout. If there\'s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
     */
@@ -67,6 +68,11 @@ export class OpenapiPayoutGetResponse {
             "type": "string"
         },
         {
+            "name": "purpose",
+            "baseName": "purpose",
+            "type": "OpenapiPayoutGetResponse.PurposeEnum"
+        },
+        {
             "name": "receipt",
             "baseName": "receipt",
             "type": "string"
@@ -92,3 +98,20 @@ export class OpenapiPayoutGetResponse {
     }
 }
 
+export namespace OpenapiPayoutGetResponse {
+    export enum PurposeEnum {
+        GoodsPurchase = <any> 'GOODS_PURCHASE',
+        ServicesPayment = <any> 'SERVICES_PAYMENT',
+        InvoicePayment = <any> 'INVOICE_PAYMENT',
+        LoanRepayment = <any> 'LOAN_REPAYMENT',
+        BillsPayment = <any> 'BILLS_PAYMENT',
+        SalaryAndWages = <any> 'SALARY_AND_WAGES',
+        P2PTransfer = <any> 'P2P_TRANSFER',
+        Remittance = <any> 'REMITTANCE',
+        Donation = <any> 'DONATION',
+        GrantsAndScholarships = <any> 'GRANTS_AND_SCHOLARSHIPS',
+        TravelAndAccommodation = <any> 'TRAVEL_AND_ACCOMMODATION',
+        TaxPayment = <any> 'TAX_PAYMENT',
+        InsurancePremium = <any> 'INSURANCE_PREMIUM'
+    }
+}

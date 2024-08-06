@@ -129,9 +129,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_lookup_api.py
-test/test_lookups_account_number_get200_response.py
-test/test_openapi_lookup_get_response.py
-test/test_openapi_lookup_get_response_holder.py
-test/test_openapi_response_body_lookup_account_not_found.py
 tox.ini

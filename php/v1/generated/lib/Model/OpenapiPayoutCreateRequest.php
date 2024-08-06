@@ -61,6 +61,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'custom_id' => 'string',
         'payment_account' => '\OpenAPI\Client\Model\OpenapiPaymentAccountGetOrCreateRequest',
         'payment_account_id' => 'string',
+        'purpose' => 'string',
         'sender' => '\OpenAPI\Client\Model\OpenapiPayoutCreateRequestSender',
         'wallet_id' => 'string'
     ];
@@ -77,6 +78,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'custom_id' => '[a-zA-Z0-9-_]{1,64}',
         'payment_account' => null,
         'payment_account_id' => null,
+        'purpose' => null,
         'sender' => null,
         'wallet_id' => null
     ];
@@ -91,6 +93,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
 		'custom_id' => false,
 		'payment_account' => false,
 		'payment_account_id' => false,
+		'purpose' => false,
 		'sender' => false,
 		'wallet_id' => false
     ];
@@ -185,6 +188,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'custom_id' => 'custom_id',
         'payment_account' => 'payment_account',
         'payment_account_id' => 'payment_account_id',
+        'purpose' => 'purpose',
         'sender' => 'sender',
         'wallet_id' => 'wallet_id'
     ];
@@ -199,6 +203,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'custom_id' => 'setCustomId',
         'payment_account' => 'setPaymentAccount',
         'payment_account_id' => 'setPaymentAccountId',
+        'purpose' => 'setPurpose',
         'sender' => 'setSender',
         'wallet_id' => 'setWalletId'
     ];
@@ -213,6 +218,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'custom_id' => 'getCustomId',
         'payment_account' => 'getPaymentAccount',
         'payment_account_id' => 'getPaymentAccountId',
+        'purpose' => 'getPurpose',
         'sender' => 'getSender',
         'wallet_id' => 'getWalletId'
     ];
@@ -258,6 +264,43 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const PURPOSE_GOODS_PURCHASE = 'GOODS_PURCHASE';
+    public const PURPOSE_SERVICES_PAYMENT = 'SERVICES_PAYMENT';
+    public const PURPOSE_INVOICE_PAYMENT = 'INVOICE_PAYMENT';
+    public const PURPOSE_LOAN_REPAYMENT = 'LOAN_REPAYMENT';
+    public const PURPOSE_BILLS_PAYMENT = 'BILLS_PAYMENT';
+    public const PURPOSE_SALARY_AND_WAGES = 'SALARY_AND_WAGES';
+    public const PURPOSE_P2_P_TRANSFER = 'P2P_TRANSFER';
+    public const PURPOSE_REMITTANCE = 'REMITTANCE';
+    public const PURPOSE_DONATION = 'DONATION';
+    public const PURPOSE_GRANTS_AND_SCHOLARSHIPS = 'GRANTS_AND_SCHOLARSHIPS';
+    public const PURPOSE_TRAVEL_AND_ACCOMMODATION = 'TRAVEL_AND_ACCOMMODATION';
+    public const PURPOSE_TAX_PAYMENT = 'TAX_PAYMENT';
+    public const PURPOSE_INSURANCE_PREMIUM = 'INSURANCE_PREMIUM';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPurposeAllowableValues()
+    {
+        return [
+            self::PURPOSE_GOODS_PURCHASE,
+            self::PURPOSE_SERVICES_PAYMENT,
+            self::PURPOSE_INVOICE_PAYMENT,
+            self::PURPOSE_LOAN_REPAYMENT,
+            self::PURPOSE_BILLS_PAYMENT,
+            self::PURPOSE_SALARY_AND_WAGES,
+            self::PURPOSE_P2_P_TRANSFER,
+            self::PURPOSE_REMITTANCE,
+            self::PURPOSE_DONATION,
+            self::PURPOSE_GRANTS_AND_SCHOLARSHIPS,
+            self::PURPOSE_TRAVEL_AND_ACCOMMODATION,
+            self::PURPOSE_TAX_PAYMENT,
+            self::PURPOSE_INSURANCE_PREMIUM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -278,6 +321,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('custom_id', $data ?? [], null);
         $this->setIfExists('payment_account', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
+        $this->setIfExists('purpose', $data ?? [], null);
         $this->setIfExists('sender', $data ?? [], null);
         $this->setIfExists('wallet_id', $data ?? [], null);
     }
@@ -308,6 +352,15 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPurposeAllowableValues();
+        if (!is_null($this->container['purpose']) && !in_array($this->container['purpose'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'purpose', must be one of '%s'",
+                $this->container['purpose'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -428,6 +481,43 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable payment_account_id cannot be null');
         }
         $this->container['payment_account_id'] = $payment_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets purpose
+     *
+     * @return string|null
+     */
+    public function getPurpose()
+    {
+        return $this->container['purpose'];
+    }
+
+    /**
+     * Sets purpose
+     *
+     * @param string|null $purpose <span style=\"color:#e95f6a;\">required if payment_account country is GH,UG,EG,CI,SN or CM</span>  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  <ul> <li><code>GOODS_PURCHASE</code>: Payments made for buying physical or digital goods.</li> <li><code>SERVICES_PAYMENT</code>: Payments made for services rendered, including professional services, consulting, and freelance work.</li> <li><code>INVOICE_PAYMENT</code>: Payments made to settle invoices issued for goods or services.</li> <li><code>LOAN_REPAYMENT</code>: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.</li> <li><code>BILLS_PAYMENT</code>: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.</li> <li><code>SALARY_AND_WAGES</code>: Disbursements made to employees for their salaries and wages.</li> <li><code>P2P_TRANSFER</code>: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>REMITTANCE</code>: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>DONATION</code>: Payments made to charitable organizations or causes.</li> <li><code>GRANTS_AND_SCHOLARSHIPS</code>: Payments distributed as grants, scholarships, or other forms of financial aid.</li> <li><code>TRAVEL_AND_ACCOMMODATION</code>: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.</li> <li><code>TAX_PAYMENT</code>: Payments made for settling taxes and duties.</li> <li><code>INSURANCE_PREMIUM</code>: Payments made towards insurance policies, including health, auto, and life insurance.</li> </ul>
+     *
+     * @return self
+     */
+    public function setPurpose($purpose)
+    {
+        if (is_null($purpose)) {
+            throw new \InvalidArgumentException('non-nullable purpose cannot be null');
+        }
+        $allowedValues = $this->getPurposeAllowableValues();
+        if (!in_array($purpose, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'purpose', must be one of '%s'",
+                    $purpose,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['purpose'] = $purpose;
 
         return $this;
     }

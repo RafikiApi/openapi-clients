@@ -25,6 +25,8 @@ pub struct OpenapiPeriodPayoutGetResponse {
     /// The recipient payment account receiving funds
     #[serde(rename = "payment_account_id", skip_serializing_if = "Option::is_none")]
     pub payment_account_id: Option<String>,
+    #[serde(rename = "purpose", skip_serializing_if = "Option::is_none")]
+    pub purpose: Option<Purpose>,
     /// The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
     #[serde(rename = "receipt", skip_serializing_if = "Option::is_none")]
     pub receipt: Option<String>,
@@ -45,6 +47,7 @@ impl OpenapiPeriodPayoutGetResponse {
             custom_id: None,
             id: None,
             payment_account_id: None,
+            purpose: None,
             receipt: None,
             sender: None,
             state: None,
@@ -53,4 +56,40 @@ impl OpenapiPeriodPayoutGetResponse {
     }
 }
 
+/// 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Purpose {
+    #[serde(rename = "GOODS_PURCHASE")]
+    GoodsPurchase,
+    #[serde(rename = "SERVICES_PAYMENT")]
+    ServicesPayment,
+    #[serde(rename = "INVOICE_PAYMENT")]
+    InvoicePayment,
+    #[serde(rename = "LOAN_REPAYMENT")]
+    LoanRepayment,
+    #[serde(rename = "BILLS_PAYMENT")]
+    BillsPayment,
+    #[serde(rename = "SALARY_AND_WAGES")]
+    SalaryAndWages,
+    #[serde(rename = "P2P_TRANSFER")]
+    P2PTransfer,
+    #[serde(rename = "REMITTANCE")]
+    Remittance,
+    #[serde(rename = "DONATION")]
+    Donation,
+    #[serde(rename = "GRANTS_AND_SCHOLARSHIPS")]
+    GrantsAndScholarships,
+    #[serde(rename = "TRAVEL_AND_ACCOMMODATION")]
+    TravelAndAccommodation,
+    #[serde(rename = "TAX_PAYMENT")]
+    TaxPayment,
+    #[serde(rename = "INSURANCE_PREMIUM")]
+    InsurancePremium,
+}
+
+impl Default for Purpose {
+    fn default() -> Purpose {
+        Self::GoodsPurchase
+    }
+}
 

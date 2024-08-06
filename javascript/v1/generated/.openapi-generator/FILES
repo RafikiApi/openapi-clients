@@ -117,8 +117,3 @@ src/rafikigen/LookupApi.js
 src/rafikigen/PaymentAccountApi.js
 src/rafikigen/PayoutApi.js
 src/rafikigen/WalletApi.js
-test/api/LookupApi.spec.js
-test/model/LookupsAccountNumberGet200Response.spec.js
-test/model/OpenapiLookupGetResponse.spec.js
-test/model/OpenapiLookupGetResponseHolder.spec.js
-test/model/OpenapiResponseBodyLookupAccountNotFound.spec.js

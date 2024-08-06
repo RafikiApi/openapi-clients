@@ -52,7 +52,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutGetResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-28T13:24:05.956985Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-06T15:34:03.279613Z[Etc/UTC]")
 public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -73,6 +73,79 @@ public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT_ID = "payment_account_id";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT_ID)
   private String paymentAccountId;
+
+  /**
+   * Gets or Sets purpose
+   */
+  @JsonAdapter(PurposeEnum.Adapter.class)
+  public enum PurposeEnum {
+    GOODS_PURCHASE("GOODS_PURCHASE"),
+    
+    SERVICES_PAYMENT("SERVICES_PAYMENT"),
+    
+    INVOICE_PAYMENT("INVOICE_PAYMENT"),
+    
+    LOAN_REPAYMENT("LOAN_REPAYMENT"),
+    
+    BILLS_PAYMENT("BILLS_PAYMENT"),
+    
+    SALARY_AND_WAGES("SALARY_AND_WAGES"),
+    
+    P2P_TRANSFER("P2P_TRANSFER"),
+    
+    REMITTANCE("REMITTANCE"),
+    
+    DONATION("DONATION"),
+    
+    GRANTS_AND_SCHOLARSHIPS("GRANTS_AND_SCHOLARSHIPS"),
+    
+    TRAVEL_AND_ACCOMMODATION("TRAVEL_AND_ACCOMMODATION"),
+    
+    TAX_PAYMENT("TAX_PAYMENT"),
+    
+    INSURANCE_PREMIUM("INSURANCE_PREMIUM");
+
+    private String value;
+
+    PurposeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PurposeEnum fromValue(String value) {
+      for (PurposeEnum b : PurposeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PurposeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PurposeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PurposeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PurposeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
+  @SerializedName(SERIALIZED_NAME_PURPOSE)
+  private PurposeEnum purpose;
 
   public static final String SERIALIZED_NAME_RECEIPT = "receipt";
   @SerializedName(SERIALIZED_NAME_RECEIPT)
@@ -198,6 +271,27 @@ public class OpenapiPayoutGetResponse {
   }
 
 
+  public OpenapiPayoutGetResponse purpose(PurposeEnum purpose) {
+    
+    this.purpose = purpose;
+    return this;
+  }
+
+   /**
+   * Get purpose
+   * @return purpose
+  **/
+  @javax.annotation.Nullable
+  public PurposeEnum getPurpose() {
+    return purpose;
+  }
+
+
+  public void setPurpose(PurposeEnum purpose) {
+    this.purpose = purpose;
+  }
+
+
   public OpenapiPayoutGetResponse receipt(String receipt) {
     
     this.receipt = receipt;
@@ -297,6 +391,7 @@ public class OpenapiPayoutGetResponse {
         Objects.equals(this.customId, openapiPayoutGetResponse.customId) &&
         Objects.equals(this.id, openapiPayoutGetResponse.id) &&
         Objects.equals(this.paymentAccountId, openapiPayoutGetResponse.paymentAccountId) &&
+        Objects.equals(this.purpose, openapiPayoutGetResponse.purpose) &&
         Objects.equals(this.receipt, openapiPayoutGetResponse.receipt) &&
         Objects.equals(this.sender, openapiPayoutGetResponse.sender) &&
         Objects.equals(this.state, openapiPayoutGetResponse.state) &&
@@ -305,7 +400,7 @@ public class OpenapiPayoutGetResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, createdAt, customId, id, paymentAccountId, receipt, sender, state, walletId);
+    return Objects.hash(amount, createdAt, customId, id, paymentAccountId, purpose, receipt, sender, state, walletId);
   }
 
   @Override
@@ -317,6 +412,7 @@ public class OpenapiPayoutGetResponse {
     sb.append("    customId: ").append(toIndentedString(customId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentAccountId: ").append(toIndentedString(paymentAccountId)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    receipt: ").append(toIndentedString(receipt)).append("\n");
     sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
@@ -348,6 +444,7 @@ public class OpenapiPayoutGetResponse {
     openapiFields.add("custom_id");
     openapiFields.add("id");
     openapiFields.add("payment_account_id");
+    openapiFields.add("purpose");
     openapiFields.add("receipt");
     openapiFields.add("sender");
     openapiFields.add("state");
@@ -393,6 +490,9 @@ public class OpenapiPayoutGetResponse {
       }
       if ((jsonObj.get("payment_account_id") != null && !jsonObj.get("payment_account_id").isJsonNull()) && !jsonObj.get("payment_account_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payment_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_account_id").toString()));
+      }
+      if ((jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonNull()) && !jsonObj.get("purpose").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
       }
       if ((jsonObj.get("receipt") != null && !jsonObj.get("receipt").isJsonNull()) && !jsonObj.get("receipt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `receipt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("receipt").toString()));

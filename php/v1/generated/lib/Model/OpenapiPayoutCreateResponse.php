@@ -62,6 +62,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         'custom_id' => 'string',
         'id' => 'string',
         'payment_account_id' => 'string',
+        'purpose' => 'string',
         'sender' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseSender',
         'state' => '\OpenAPI\Client\Model\OpenapiPayoutCreateResponseState',
         'wallet_id' => 'string'
@@ -80,6 +81,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         'custom_id' => '[a-zA-Z0-9-_]{1,64}',
         'id' => null,
         'payment_account_id' => null,
+        'purpose' => null,
         'sender' => null,
         'state' => null,
         'wallet_id' => null
@@ -96,6 +98,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
 		'custom_id' => false,
 		'id' => false,
 		'payment_account_id' => false,
+		'purpose' => false,
 		'sender' => false,
 		'state' => false,
 		'wallet_id' => false
@@ -192,6 +195,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         'custom_id' => 'custom_id',
         'id' => 'id',
         'payment_account_id' => 'payment_account_id',
+        'purpose' => 'purpose',
         'sender' => 'sender',
         'state' => 'state',
         'wallet_id' => 'wallet_id'
@@ -208,6 +212,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         'custom_id' => 'setCustomId',
         'id' => 'setId',
         'payment_account_id' => 'setPaymentAccountId',
+        'purpose' => 'setPurpose',
         'sender' => 'setSender',
         'state' => 'setState',
         'wallet_id' => 'setWalletId'
@@ -224,6 +229,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         'custom_id' => 'getCustomId',
         'id' => 'getId',
         'payment_account_id' => 'getPaymentAccountId',
+        'purpose' => 'getPurpose',
         'sender' => 'getSender',
         'state' => 'getState',
         'wallet_id' => 'getWalletId'
@@ -270,6 +276,43 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const PURPOSE_GOODS_PURCHASE = 'GOODS_PURCHASE';
+    public const PURPOSE_SERVICES_PAYMENT = 'SERVICES_PAYMENT';
+    public const PURPOSE_INVOICE_PAYMENT = 'INVOICE_PAYMENT';
+    public const PURPOSE_LOAN_REPAYMENT = 'LOAN_REPAYMENT';
+    public const PURPOSE_BILLS_PAYMENT = 'BILLS_PAYMENT';
+    public const PURPOSE_SALARY_AND_WAGES = 'SALARY_AND_WAGES';
+    public const PURPOSE_P2_P_TRANSFER = 'P2P_TRANSFER';
+    public const PURPOSE_REMITTANCE = 'REMITTANCE';
+    public const PURPOSE_DONATION = 'DONATION';
+    public const PURPOSE_GRANTS_AND_SCHOLARSHIPS = 'GRANTS_AND_SCHOLARSHIPS';
+    public const PURPOSE_TRAVEL_AND_ACCOMMODATION = 'TRAVEL_AND_ACCOMMODATION';
+    public const PURPOSE_TAX_PAYMENT = 'TAX_PAYMENT';
+    public const PURPOSE_INSURANCE_PREMIUM = 'INSURANCE_PREMIUM';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPurposeAllowableValues()
+    {
+        return [
+            self::PURPOSE_GOODS_PURCHASE,
+            self::PURPOSE_SERVICES_PAYMENT,
+            self::PURPOSE_INVOICE_PAYMENT,
+            self::PURPOSE_LOAN_REPAYMENT,
+            self::PURPOSE_BILLS_PAYMENT,
+            self::PURPOSE_SALARY_AND_WAGES,
+            self::PURPOSE_P2_P_TRANSFER,
+            self::PURPOSE_REMITTANCE,
+            self::PURPOSE_DONATION,
+            self::PURPOSE_GRANTS_AND_SCHOLARSHIPS,
+            self::PURPOSE_TRAVEL_AND_ACCOMMODATION,
+            self::PURPOSE_TAX_PAYMENT,
+            self::PURPOSE_INSURANCE_PREMIUM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -291,6 +334,7 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('custom_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
+        $this->setIfExists('purpose', $data ?? [], null);
         $this->setIfExists('sender', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('wallet_id', $data ?? [], null);
@@ -322,6 +366,15 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPurposeAllowableValues();
+        if (!is_null($this->container['purpose']) && !in_array($this->container['purpose'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'purpose', must be one of '%s'",
+                $this->container['purpose'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -469,6 +522,43 @@ class OpenapiPayoutCreateResponse implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable payment_account_id cannot be null');
         }
         $this->container['payment_account_id'] = $payment_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets purpose
+     *
+     * @return string|null
+     */
+    public function getPurpose()
+    {
+        return $this->container['purpose'];
+    }
+
+    /**
+     * Sets purpose
+     *
+     * @param string|null $purpose purpose
+     *
+     * @return self
+     */
+    public function setPurpose($purpose)
+    {
+        if (is_null($purpose)) {
+            throw new \InvalidArgumentException('non-nullable purpose cannot be null');
+        }
+        $allowedValues = $this->getPurposeAllowableValues();
+        if (!in_array($purpose, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'purpose', must be one of '%s'",
+                    $purpose,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['purpose'] = $purpose;
 
         return $this;
     }

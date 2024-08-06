@@ -59,12 +59,7 @@ docs/WalletsGet200Response.md
 docs/WalletsGet200ResponseAllOfDataInner.md
 git_push.sh
 rafikigen.sln
-src/rafikigen.Test/Model/LookupsAccountNumberGet200ResponseTests.cs
-src/rafikigen.Test/Model/OpenapiLookupGetResponseHolderTests.cs
-src/rafikigen.Test/Model/OpenapiLookupGetResponseTests.cs
-src/rafikigen.Test/Model/OpenapiResponseBodyLookupAccountNotFoundTests.cs
 src/rafikigen.Test/rafikigen.Test.csproj
-src/rafikigen.Test/rafikigen/LookupApiTests.cs
 src/rafikigen/Client/ApiClient.cs
 src/rafikigen/Client/ApiException.cs
 src/rafikigen/Client/ApiResponse.cs

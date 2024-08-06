@@ -9,6 +9,7 @@
 | **custom_id** | **String** |  | [optional] |
 | **id** | **String** | The payout unique identifier | [optional] |
 | **payment_account_id** | **String** | The recipient payment account receiving funds | [optional] |
+| **purpose** | **String** |  | [optional] |
 | **sender** | [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional] |
 | **state** | [**OpenapiPayoutCreateResponseState**](OpenapiPayoutCreateResponseState.md) |  | [optional] |
 | **wallet_id** | **String** | The wallet ID from which the money will disburse | [optional] |
@@ -24,6 +25,7 @@ instance = OpenapiClient::OpenapiPayoutCreateResponse.new(
   custom_id: custom-id-xxx,
   id: pyt-xxx,
   payment_account_id: pac-xxx,
+  purpose: REMITTANCE,
   sender: null,
   state: null,
   wallet_id: wlt-xxx

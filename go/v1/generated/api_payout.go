@@ -452,9 +452,200 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >
 >  </details>
 
-> ⚠️ Compliance requirements
+> 📘 Payout amount limits
 >
-> Depending on the country and/or bank you plan to disburse money to, there are specific compliance and regulatory requirements that must be adhered to. For example, some countries might necessitate more comprehensive sender details or impose limits on minimum/maximum payout amounts.
+> Depending on the payment account type and destination currency, different transactions amount limits apply.
+> <br>
+> Such limits might be enforced for compliance reasons or mandated by the banking authority that owns the payment account or the country in which the account resides.
+> <br>
+> <details>
+> <summary>Per transaction limits</summary>
+> <br>
+> <table>
+>     <thead>
+>         <th>Country</th>
+>         <th>Minimum</th>
+>         <th>Maximum</th>
+>    </thead>
+>    <tbody>
+>          <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇰🇪 Kenya</td>
+>             <td>KSh 140</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Bank Account</th>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>KSh 950,000</td>
+>                             <td>KSh 250,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇹🇿 Tanzania</td>
+>             <td>TSh 2,500</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Bank Account</th>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>TSh 20,000,000</td>
+>                             <td>TSh 5,000,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇷🇼 Rwanda</td>
+>             <td>R&#x20A3; 500</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td style="text-align: center; vertical-align: middle;">
+>                                 <strong>MTN</strong> R&#x20A3; 2,000,000 <br>
+>                                 <strong>Airtel</strong> R&#x20A3; 500,000 <br>
+>                             </td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇳🇬 Nigeria</td>
+>             <td>&#x20A6; 100</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Bank Account</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>&#x20A6; 50,000,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇬🇭 Ghana</td>
+>             <td>&#8373; 10</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Bank Account</th>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>&#8373; 50,000</td>
+>                             <td>&#8373; 15,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇺🇬 Uganda</td>
+>             <td>USh 5,000</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Bank Account</th>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>USh 5,000,000</td>
+>                             <td>USh 5,000,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇪🇬 Egypt</td>
+>             <td>&pound; 200</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Bank Account</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>&pound; 300,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇸🇳 Senegal</td>
+>             <td>XOF 2,000</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>XOF 1,500,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇨🇮 C&ocirc;te d'Ivoire</td>
+>             <td>XOF 2,000</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>XOF 1,500,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>         <tr style="text-align: center; vertical-align: middle;">
+>             <td>🇨🇲 Cameroon</td>
+>             <td>XAF 500</td>
+>             <td>
+>                 <table>
+>                     <thead>
+>                         <th>Mobile Money</th>
+>                     </thead>
+>                     <tbody>
+>                         <tr>
+>                             <td>XAF 1,000,000</td>
+>                         </tr>
+>                     </tbody>
+>                 </table>
+>             </td>
+>         </tr>
+>     </tbody>
+> </table>
+> </details>
+
+> ⚠️ Sender requirements
+>
+> Some countries might necessitate different and more comprehensive sender details.
 > <br>
 > We understand that navigating these varying rules for different countries can be complex, considering the multitude of combinations possible. To simplify this process, you can detail the requirements for each country listed below.
 > <br>
@@ -465,28 +656,10 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >     <thead>
 >         <tr>
 >             <th>Field</th>
+>             <th>Requirements</th>
 >         </tr>
 >     </thead>
 >     <tbody>
->         <tr>
->             <td>amount.value</td>
->             <td>
->                 <table>
->                     <thead>
->                          <tr>
->                             <th>Min</th>
->                             <th>Max</th>
->                         </tr>
->                     </thead>
->                     <tbody>
->                         <tr>
->                             <td>140 KES</td>
->                             <td>250,000 KES</td>
->                         </tr>
->                     </tbody>
->                 </table>
->             </td>
->         </tr>
 >         <tr>
 >             <td>sender.type</td>
 >             <td>Required</td> <!-- Kenya -->
@@ -524,6 +697,10 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Kenya -->
 >         </tr>
 >         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>-</td> <!-- Kenya -->
+>         </tr>
+>         <tr>
 >             <td>sender.individual.identity_document.country</td>
 >             <td>-</td> <!-- Kenya -->
 >         </tr>
@@ -543,35 +720,17 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 > </table>
 > <br>
 > </details>
-> 
+>
 > <details>
 > <summary>🇳🇬 Nigeria</summary>
 > <table>
 >     <thead>
 >         <tr>
 >             <th>Field</th>
+>             <th>Requirements</th>
 >         </tr>
 >     </thead>
 >     <tbody>
->         <tr>
->             <td>amount.value</td>
->             <td>
->                 <table>
->                     <thead>
->                          <tr>
->                             <th>Min</th>
->                             <th>Max</th>
->                         </tr>
->                     </thead>
->                     <tbody>
->                         <tr>
->                             <td>100 NGN</td>
->                             <td> - </td> <!-- TODO -->
->                         </tr>
->                     </tbody>
->                 </table>
->             </td> <!-- Nigeria -->
->         </tr>
 >         <tr>
 >             <td>sender.type</td>
 >             <td>Required</td> <!-- Nigeria -->
@@ -609,6 +768,10 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->
 >         </tr>
 >         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->
+>         </tr>
+>         <tr>
 >             <td>sender.individual.identity_document.country</td>
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Nigeria -->
 >         </tr>
@@ -628,35 +791,17 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 > </table>
 > <br>
 > </details>
-> 
+>
 > <details>
 > <summary>🇹🇿 Tanzania</summary>
 > <table>
 >     <thead>
 >         <tr>
 >             <th>Field</th>
+>             <th>Requirements</th>
 >         </tr>
 >     </thead>
 >     <tbody>
->         <tr>
->             <td>amount.value</td>
->             <td>
->                 <table>
->                     <thead>
->                          <tr>
->                             <th>Min</th>
->                             <th>Max</th>
->                         </tr>
->                     </thead>
->                     <tbody>
->                         <tr>
->                             <td>2,500 TZS</td>
->                             <td>1,000,000 TZS</td>
->                         </tr>
->                     </tbody>
->                 </table>
->             </td> <!-- Tanzania -->
->         </tr>
 >         <tr>
 >             <td>sender.type</td>
 >             <td>Required</td> <!-- Tanzania -->
@@ -694,6 +839,10 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->
 >         </tr>
 >         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->
+>         </tr>
+>         <tr>
 >             <td>sender.individual.identity_document.country</td>
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Tanzania -->
 >         </tr>
@@ -713,35 +862,17 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 > </table>
 > <br>
 > </details>
-> 
+>
 > <details>
 > <summary>🇷🇼 Rwanda</summary>
 > <table>
 >     <thead>
 >         <tr>
 >             <th>Field</th>
+>             <th>Requirements</th>
 >         </tr>
 >     </thead>
 >     <tbody>
->         <tr>
->             <td>amount.value</td>
->             <td>
->                 <table>
->                     <thead>
->                         <tr>
->                             <th>Min</th>
->                             <th>Max</th>
->                         </tr>
->                     </thead>
->                     <tbody>
->                         <tr>
->                             <td>500 RWF</td>
->                             <td>-</td>
->                         </tr>
->                     </tbody>
->                 </table>
->             </td> <!-- Rwanda -->
->         </tr>
 >         <tr>
 >             <td>sender.type</td>
 >             <td>Required</td> <!-- Rwanda -->
@@ -779,6 +910,10 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->
 >         </tr>
 >         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->
+>         </tr>
+>         <tr>
 >             <td>sender.individual.identity_document.country</td>
 >             <td>Required (with type INDIVIDUAL)</td> <!-- Rwanda -->
 >         </tr>
@@ -798,6 +933,433 @@ Regardless of your specific use case, this endpoint has you covered, offering a 
 > </table>
 > <br>
 > </details>
+>
+> <details>
+> <summary>🇬🇭 Ghana</summary>
+> <table>
+>     <thead>
+>         <tr>
+>             <th>Field</th>
+>             <th>Requirements</th>
+>         </tr>
+>     </thead>
+>     <tbody>
+>         <tr>
+>             <td>sender.type</td>
+>             <td>Required</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.name</td>
+>             <td>Required</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line1</td>
+>             <td>Required</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line2</td>
+>             <td>-</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line3</td>
+>             <td>-</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.city</td>
+>             <td>Required</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.postal_code</td>
+>             <td>Required</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.country</td>
+>             <td>Required</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.dob</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.country</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.number</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.issued_on</td>
+>             <td>-</td> <!-- Ghana -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.expires_on</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Ghana -->
+>         </tr>
+>     </tbody>
+> </table>
+> <br>
+> </details>
+>
+> <details>
+> <summary>🇺🇬 Uganda</summary>
+> <table>
+>     <thead>
+>         <tr>
+>             <th>Field</th>
+>             <th>Requirements</th>
+>         </tr>
+>     </thead>
+>     <tbody>
+>         <tr>
+>             <td>sender.type</td>
+>             <td>Required</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.name</td>
+>             <td>Required</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line1</td>
+>             <td>Required</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line2</td>
+>             <td>-</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line3</td>
+>             <td>-</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.city</td>
+>             <td>Required</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.postal_code</td>
+>             <td>Required</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.country</td>
+>             <td>Required</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.dob</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.country</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.number</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.issued_on</td>
+>             <td>-</td> <!-- Uganda -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.expires_on</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Uganda -->
+>         </tr>
+>     </tbody>
+> </table>
+> <br>
+> </details>
+>
+> <details>
+> <summary>🇪🇬 Egypt</summary>
+> <table>
+>     <thead>
+>         <tr>
+>             <th>Field</th>
+>             <th>Requirements</th>
+>         </tr>
+>     </thead>
+>     <tbody>
+>         <tr>
+>             <td>sender.type</td>
+>             <td>Required</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.name</td>
+>             <td>Required</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line1</td>
+>             <td>Required</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line2</td>
+>             <td>-</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line3</td>
+>             <td>-</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.city</td>
+>             <td>Required</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.postal_code</td>
+>             <td>Required</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.country</td>
+>             <td>Required</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.dob</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.country</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.number</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.issued_on</td>
+>             <td>-</td> <!-- Egypt -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.expires_on</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Egypt -->
+>         </tr>
+>     </tbody>
+> </table>
+> <br>
+> </details>
+>
+> <details>
+> <summary>🇸🇳 Senegal</summary>
+> <table>
+>     <thead>
+>         <tr>
+>             <th>Field</th>
+>             <th>Requirements</th>
+>         </tr>
+>     </thead>
+>     <tbody>
+>         <tr>
+>             <td>sender.type</td>
+>             <td>Required</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.name</td>
+>             <td>Required</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line1</td>
+>             <td>Required</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line2</td>
+>             <td>-</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line3</td>
+>             <td>-</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.city</td>
+>             <td>Required</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.postal_code</td>
+>             <td>Required</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.country</td>
+>             <td>Required</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.dob</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.country</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.number</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.issued_on</td>
+>             <td>-</td> <!-- Senegal -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.expires_on</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Senegal -->
+>         </tr>
+>     </tbody>
+> </table>
+> <br>
+> </details>
+>
+> <details>
+> <summary>🇨🇮 C&ocirc;te d'Ivoire</summary>
+> <table>
+>     <thead>
+>         <tr>
+>             <th>Field</th>
+>             <th>Requirements</th>
+>         </tr>
+>     </thead>
+>     <tbody>
+>         <tr>
+>             <td>sender.type</td>
+>             <td>Required</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.name</td>
+>             <td>Required</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line1</td>
+>             <td>Required</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line2</td>
+>             <td>-</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line3</td>
+>             <td>-</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.city</td>
+>             <td>Required</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.postal_code</td>
+>             <td>Required</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.country</td>
+>             <td>Required</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.dob</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.country</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.number</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.issued_on</td>
+>             <td>-</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.expires_on</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Côte d'Ivoire -->
+>         </tr>
+>     </tbody>
+> </table>
+> <br>
+> </details>
+>
+> <details>
+> <summary>🇨🇲 Cameroon</summary>
+> <table>
+>     <thead>
+>         <tr>
+>             <th>Field</th>
+>             <th>Requirements</th>
+>         </tr>
+>     </thead>
+>     <tbody>
+>         <tr>
+>             <td>sender.type</td>
+>             <td>Required</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.name</td>
+>             <td>Required</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line1</td>
+>             <td>Required</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line2</td>
+>             <td>-</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.line3</td>
+>             <td>-</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.city</td>
+>             <td>Required</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.postal_code</td>
+>             <td>Required</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.address.country</td>
+>             <td>Required</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.dob</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.type</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.country</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.number</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.issued_on</td>
+>             <td>-</td> <!-- Cameroon -->
+>         </tr>
+>         <tr>
+>             <td>sender.individual.identity_document.expires_on</td>
+>             <td>Required (with type INDIVIDUAL)</td> <!-- Cameroon -->
+>         </tr>
+>     </tbody>
+> </table>
+> <br>
+> </details>
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPayoutsPostRequest

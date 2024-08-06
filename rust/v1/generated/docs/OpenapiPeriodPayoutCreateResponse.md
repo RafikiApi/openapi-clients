@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **custom_id** | Option<**String**> |  | [optional]
 **id** | Option<**String**> | The payout unique identifier | [optional]
 **payment_account_id** | Option<**String**> | The recipient payment account receiving funds | [optional]
+**purpose** | Option<**String**> |  | [optional]
 **sender** | Option<[**crate::models::OpenapiPayoutCreateResponseSender**](openapi_PayoutCreateResponse_sender.md)> |  | [optional]
 **state** | Option<[**crate::models::OpenapiPayoutCreateResponseState**](openapi_PayoutCreateResponse_state.md)> |  | [optional]
 **wallet_id** | Option<**String**> | The wallet ID from which the money will disburse | [optional]

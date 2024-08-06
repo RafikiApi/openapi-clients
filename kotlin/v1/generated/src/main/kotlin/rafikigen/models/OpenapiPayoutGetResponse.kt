@@ -30,6 +30,7 @@ import com.squareup.moshi.JsonClass
  * @param customId 
  * @param id The payout unique identifier
  * @param paymentAccountId The recipient payment account receiving funds
+ * @param purpose 
  * @param receipt The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
  * @param sender 
  * @param state 
@@ -56,6 +57,9 @@ data class OpenapiPayoutGetResponse (
     @Json(name = "payment_account_id")
     val paymentAccountId: kotlin.String? = null,
 
+    @Json(name = "purpose")
+    val purpose: OpenapiPayoutGetResponse.Purpose? = null,
+
     /* The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property. */
     @Json(name = "receipt")
     val receipt: kotlin.String? = null,
@@ -70,5 +74,28 @@ data class OpenapiPayoutGetResponse (
     @Json(name = "wallet_id")
     val walletId: kotlin.String? = null
 
-)
+) {
+
+    /**
+     * 
+     *
+     * Values: gOODSPURCHASE,sERVICESPAYMENT,iNVOICEPAYMENT,lOANREPAYMENT,bILLSPAYMENT,sALARYANDWAGES,p2PTRANSFER,rEMITTANCE,dONATION,gRANTSANDSCHOLARSHIPS,tRAVELANDACCOMMODATION,tAXPAYMENT,iNSURANCEPREMIUM
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Purpose(val value: kotlin.String) {
+        @Json(name = "GOODS_PURCHASE") gOODSPURCHASE("GOODS_PURCHASE"),
+        @Json(name = "SERVICES_PAYMENT") sERVICESPAYMENT("SERVICES_PAYMENT"),
+        @Json(name = "INVOICE_PAYMENT") iNVOICEPAYMENT("INVOICE_PAYMENT"),
+        @Json(name = "LOAN_REPAYMENT") lOANREPAYMENT("LOAN_REPAYMENT"),
+        @Json(name = "BILLS_PAYMENT") bILLSPAYMENT("BILLS_PAYMENT"),
+        @Json(name = "SALARY_AND_WAGES") sALARYANDWAGES("SALARY_AND_WAGES"),
+        @Json(name = "P2P_TRANSFER") p2PTRANSFER("P2P_TRANSFER"),
+        @Json(name = "REMITTANCE") rEMITTANCE("REMITTANCE"),
+        @Json(name = "DONATION") dONATION("DONATION"),
+        @Json(name = "GRANTS_AND_SCHOLARSHIPS") gRANTSANDSCHOLARSHIPS("GRANTS_AND_SCHOLARSHIPS"),
+        @Json(name = "TRAVEL_AND_ACCOMMODATION") tRAVELANDACCOMMODATION("TRAVEL_AND_ACCOMMODATION"),
+        @Json(name = "TAX_PAYMENT") tAXPAYMENT("TAX_PAYMENT"),
+        @Json(name = "INSURANCE_PREMIUM") iNSURANCEPREMIUM("INSURANCE_PREMIUM");
+    }
+}
 

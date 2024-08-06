@@ -25,10 +25,35 @@ module OpenapiClient
     # <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
     attr_accessor :payment_account_id
 
+    # <span style=\"color:#e95f6a;\">required if payment_account country is GH,UG,EG,CI,SN or CM</span>  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  <ul> <li><code>GOODS_PURCHASE</code>: Payments made for buying physical or digital goods.</li> <li><code>SERVICES_PAYMENT</code>: Payments made for services rendered, including professional services, consulting, and freelance work.</li> <li><code>INVOICE_PAYMENT</code>: Payments made to settle invoices issued for goods or services.</li> <li><code>LOAN_REPAYMENT</code>: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.</li> <li><code>BILLS_PAYMENT</code>: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.</li> <li><code>SALARY_AND_WAGES</code>: Disbursements made to employees for their salaries and wages.</li> <li><code>P2P_TRANSFER</code>: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>REMITTANCE</code>: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>DONATION</code>: Payments made to charitable organizations or causes.</li> <li><code>GRANTS_AND_SCHOLARSHIPS</code>: Payments distributed as grants, scholarships, or other forms of financial aid.</li> <li><code>TRAVEL_AND_ACCOMMODATION</code>: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.</li> <li><code>TAX_PAYMENT</code>: Payments made for settling taxes and duties.</li> <li><code>INSURANCE_PREMIUM</code>: Payments made towards insurance policies, including health, auto, and life insurance.</li> </ul>
+    attr_accessor :purpose
+
     attr_accessor :sender
 
     # The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount.
     attr_accessor :wallet_id
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -37,6 +62,7 @@ module OpenapiClient
         :'custom_id' => :'custom_id',
         :'payment_account' => :'payment_account',
         :'payment_account_id' => :'payment_account_id',
+        :'purpose' => :'purpose',
         :'sender' => :'sender',
         :'wallet_id' => :'wallet_id'
       }
@@ -54,6 +80,7 @@ module OpenapiClient
         :'custom_id' => :'String',
         :'payment_account' => :'OpenapiPaymentAccountGetOrCreateRequest',
         :'payment_account_id' => :'String',
+        :'purpose' => :'String',
         :'sender' => :'OpenapiPayoutCreateRequestSender',
         :'wallet_id' => :'String'
       }
@@ -96,6 +123,10 @@ module OpenapiClient
         self.payment_account_id = attributes[:'payment_account_id']
       end
 
+      if attributes.key?(:'purpose')
+        self.purpose = attributes[:'purpose']
+      end
+
       if attributes.key?(:'sender')
         self.sender = attributes[:'sender']
       end
@@ -117,7 +148,19 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      purpose_validator = EnumAttributeValidator.new('String', ["GOODS_PURCHASE", "SERVICES_PAYMENT", "INVOICE_PAYMENT", "LOAN_REPAYMENT", "BILLS_PAYMENT", "SALARY_AND_WAGES", "P2P_TRANSFER", "REMITTANCE", "DONATION", "GRANTS_AND_SCHOLARSHIPS", "TRAVEL_AND_ACCOMMODATION", "TAX_PAYMENT", "INSURANCE_PREMIUM"])
+      return false unless purpose_validator.valid?(@purpose)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] purpose Object to be assigned
+    def purpose=(purpose)
+      validator = EnumAttributeValidator.new('String', ["GOODS_PURCHASE", "SERVICES_PAYMENT", "INVOICE_PAYMENT", "LOAN_REPAYMENT", "BILLS_PAYMENT", "SALARY_AND_WAGES", "P2P_TRANSFER", "REMITTANCE", "DONATION", "GRANTS_AND_SCHOLARSHIPS", "TRAVEL_AND_ACCOMMODATION", "TAX_PAYMENT", "INSURANCE_PREMIUM"])
+      unless validator.valid?(purpose)
+        fail ArgumentError, "invalid value for \"purpose\", must be one of #{validator.allowable_values}."
+      end
+      @purpose = purpose
     end
 
     # Checks equality by comparing each attribute.
@@ -129,6 +172,7 @@ module OpenapiClient
           custom_id == o.custom_id &&
           payment_account == o.payment_account &&
           payment_account_id == o.payment_account_id &&
+          purpose == o.purpose &&
           sender == o.sender &&
           wallet_id == o.wallet_id
     end
@@ -142,7 +186,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, custom_id, payment_account, payment_account_id, sender, wallet_id].hash
+      [amount, custom_id, payment_account, payment_account_id, purpose, sender, wallet_id].hash
     end
 
     # Builds the object from hash
