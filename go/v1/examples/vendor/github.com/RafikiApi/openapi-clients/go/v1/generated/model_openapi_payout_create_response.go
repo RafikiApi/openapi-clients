@@ -21,10 +21,12 @@ var _ MappedNullable = &OpenapiPayoutCreateResponse{}
 type OpenapiPayoutCreateResponse struct {
 	Amount *OpenapiPayoutCreateResponseAmount `json:"amount,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
+	CustomId *string `json:"custom_id,omitempty"`
 	// The payout unique identifier
 	Id *string `json:"id,omitempty"`
 	// The recipient payment account receiving funds
 	PaymentAccountId *string `json:"payment_account_id,omitempty"`
+	Purpose *string `json:"purpose,omitempty"`
 	Sender *OpenapiPayoutCreateResponseSender `json:"sender,omitempty"`
 	State *OpenapiPayoutCreateResponseState `json:"state,omitempty"`
 	// The wallet ID from which the money will disburse
@@ -112,6 +114,38 @@ func (o *OpenapiPayoutCreateResponse) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
+// GetCustomId returns the CustomId field value if set, zero value otherwise.
+func (o *OpenapiPayoutCreateResponse) GetCustomId() string {
+	if o == nil || IsNil(o.CustomId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomId
+}
+
+// GetCustomIdOk returns a tuple with the CustomId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutCreateResponse) GetCustomIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomId) {
+		return nil, false
+	}
+	return o.CustomId, true
+}
+
+// HasCustomId returns a boolean if a field has been set.
+func (o *OpenapiPayoutCreateResponse) HasCustomId() bool {
+	if o != nil && !IsNil(o.CustomId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomId gets a reference to the given string and assigns it to the CustomId field.
+func (o *OpenapiPayoutCreateResponse) SetCustomId(v string) {
+	o.CustomId = &v
+}
+
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *OpenapiPayoutCreateResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -174,6 +208,38 @@ func (o *OpenapiPayoutCreateResponse) HasPaymentAccountId() bool {
 // SetPaymentAccountId gets a reference to the given string and assigns it to the PaymentAccountId field.
 func (o *OpenapiPayoutCreateResponse) SetPaymentAccountId(v string) {
 	o.PaymentAccountId = &v
+}
+
+// GetPurpose returns the Purpose field value if set, zero value otherwise.
+func (o *OpenapiPayoutCreateResponse) GetPurpose() string {
+	if o == nil || IsNil(o.Purpose) {
+		var ret string
+		return ret
+	}
+	return *o.Purpose
+}
+
+// GetPurposeOk returns a tuple with the Purpose field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutCreateResponse) GetPurposeOk() (*string, bool) {
+	if o == nil || IsNil(o.Purpose) {
+		return nil, false
+	}
+	return o.Purpose, true
+}
+
+// HasPurpose returns a boolean if a field has been set.
+func (o *OpenapiPayoutCreateResponse) HasPurpose() bool {
+	if o != nil && !IsNil(o.Purpose) {
+		return true
+	}
+
+	return false
+}
+
+// SetPurpose gets a reference to the given string and assigns it to the Purpose field.
+func (o *OpenapiPayoutCreateResponse) SetPurpose(v string) {
+	o.Purpose = &v
 }
 
 // GetSender returns the Sender field value if set, zero value otherwise.
@@ -288,11 +354,17 @@ func (o OpenapiPayoutCreateResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
+	if !IsNil(o.CustomId) {
+		toSerialize["custom_id"] = o.CustomId
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.PaymentAccountId) {
 		toSerialize["payment_account_id"] = o.PaymentAccountId
+	}
+	if !IsNil(o.Purpose) {
+		toSerialize["purpose"] = o.Purpose
 	}
 	if !IsNil(o.Sender) {
 		toSerialize["sender"] = o.Sender

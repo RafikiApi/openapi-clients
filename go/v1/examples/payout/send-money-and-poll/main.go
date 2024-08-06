@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	client "github.com/RafikiApi/openapi-clients/go/v1/generated"
-	"github.com/google/uuid"
 	"log"
 	"os"
 	"strings"
 	"time"
+
+	client "github.com/RafikiApi/openapi-clients/go/v1/generated"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -68,6 +69,8 @@ func main() {
 					Line1:      client.PtrString("Piazza Del Colosseo"),
 				},
 			},
+			CustomId: client.PtrString(uuid.NewString()),
+			Purpose:  client.PtrString("REMITTANCE"),
 		})
 
 	pyt, _, err := c.PayoutAPI.PayoutsPostExecute(req)

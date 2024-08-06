@@ -27,7 +27,7 @@ type OpenapiPayoutCreateRequestSenderIndividualIdentityDocument struct {
 	IssuedOn *string `json:"issued_on,omitempty"`
 	// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>
 	Number *string `json:"number,omitempty"`
-	// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`
+	// <span style=\"color:#e95f6a;\">required if identity_document is provided</span>  One of `PASSPORT`, `DRIVING_LICENCE`, `NATIONAL_ID_CARD`, `RESIDENCE_PERMIT`
 	Type *string `json:"type,omitempty"`
 }
 

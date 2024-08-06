@@ -210,15 +210,17 @@ The "mobile money" type refers to accounts registered with telecom companies (a.
 
 The following table outlines the operators supported by our API for each specific country.
 
-| Country | Operators         |
-|---------|-------------------|
-| KE      | SAFARICOM, AIRTEL |
+| Country | Operators                            |
+| ------- | ------------------------------------ |
+| KE      | SAFARICOM, AIRTEL                    |
+| TZ      | VODACOM, AIRTEL, TIGO, HALOTEL, TTCL |
+| RW      | AIRTEL, MTN                          |
 
 ### Bank account
 
-The "bank account" type is designated for conventional accounts registered with bank institutions, such as "Equity Bank." It comprises an account number and the associated bank ID, where accounts are registered. Additionally, for banks with multiple branches in a country, a branch ID may be required to accurately identify and route payments.
+The "bank account" type is designated for conventional accounts registered with bank institutions, such as "Equity Bank." It comprises an account number and the associated bank ID, where accounts are registered.
 
-We provide support for numerous banks and branches in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks along with their branches.
+We provide support for numerous banks in each country. Documenting each of them here would be impractical. Therefore, we recommend utilizing the dedicated [/v1/banks](get_banks) endpoint to access the most current and accurate list of banks.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
