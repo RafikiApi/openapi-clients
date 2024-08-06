@@ -32,20 +32,116 @@ namespace rafikigen.Model
     public partial class OpenapiPayoutCreateRequest : IEquatable<OpenapiPayoutCreateRequest>, IValidatableObject
     {
         /// <summary>
+        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;
+        /// </summary>
+        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PurposeEnum
+        {
+            /// <summary>
+            /// Enum GOODSPURCHASE for value: GOODS_PURCHASE
+            /// </summary>
+            [EnumMember(Value = "GOODS_PURCHASE")]
+            GOODSPURCHASE = 1,
+
+            /// <summary>
+            /// Enum SERVICESPAYMENT for value: SERVICES_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "SERVICES_PAYMENT")]
+            SERVICESPAYMENT = 2,
+
+            /// <summary>
+            /// Enum INVOICEPAYMENT for value: INVOICE_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "INVOICE_PAYMENT")]
+            INVOICEPAYMENT = 3,
+
+            /// <summary>
+            /// Enum LOANREPAYMENT for value: LOAN_REPAYMENT
+            /// </summary>
+            [EnumMember(Value = "LOAN_REPAYMENT")]
+            LOANREPAYMENT = 4,
+
+            /// <summary>
+            /// Enum BILLSPAYMENT for value: BILLS_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "BILLS_PAYMENT")]
+            BILLSPAYMENT = 5,
+
+            /// <summary>
+            /// Enum SALARYANDWAGES for value: SALARY_AND_WAGES
+            /// </summary>
+            [EnumMember(Value = "SALARY_AND_WAGES")]
+            SALARYANDWAGES = 6,
+
+            /// <summary>
+            /// Enum P2PTRANSFER for value: P2P_TRANSFER
+            /// </summary>
+            [EnumMember(Value = "P2P_TRANSFER")]
+            P2PTRANSFER = 7,
+
+            /// <summary>
+            /// Enum REMITTANCE for value: REMITTANCE
+            /// </summary>
+            [EnumMember(Value = "REMITTANCE")]
+            REMITTANCE = 8,
+
+            /// <summary>
+            /// Enum DONATION for value: DONATION
+            /// </summary>
+            [EnumMember(Value = "DONATION")]
+            DONATION = 9,
+
+            /// <summary>
+            /// Enum GRANTSANDSCHOLARSHIPS for value: GRANTS_AND_SCHOLARSHIPS
+            /// </summary>
+            [EnumMember(Value = "GRANTS_AND_SCHOLARSHIPS")]
+            GRANTSANDSCHOLARSHIPS = 10,
+
+            /// <summary>
+            /// Enum TRAVELANDACCOMMODATION for value: TRAVEL_AND_ACCOMMODATION
+            /// </summary>
+            [EnumMember(Value = "TRAVEL_AND_ACCOMMODATION")]
+            TRAVELANDACCOMMODATION = 11,
+
+            /// <summary>
+            /// Enum TAXPAYMENT for value: TAX_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "TAX_PAYMENT")]
+            TAXPAYMENT = 12,
+
+            /// <summary>
+            /// Enum INSURANCEPREMIUM for value: INSURANCE_PREMIUM
+            /// </summary>
+            [EnumMember(Value = "INSURANCE_PREMIUM")]
+            INSURANCEPREMIUM = 13
+        }
+
+
+        /// <summary>
+        /// &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;
+        /// </summary>
+        /// <value>&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;</value>
+        /// <example>REMITTANCE</example>
+        [DataMember(Name = "purpose", EmitDefaultValue = false)]
+        public PurposeEnum? Purpose { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="OpenapiPayoutCreateRequest" /> class.
         /// </summary>
         /// <param name="amount">amount.</param>
         /// <param name="customId">An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;..</param>
         /// <param name="paymentAccount">paymentAccount.</param>
         /// <param name="paymentAccountId">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account is empty&lt;/span&gt;  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout..</param>
+        /// <param name="purpose">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;.</param>
         /// <param name="sender">sender.</param>
         /// <param name="walletId">The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount..</param>
-        public OpenapiPayoutCreateRequest(OpenapiPayoutCreateRequestAmount amount = default(OpenapiPayoutCreateRequestAmount), string customId = default(string), OpenapiPaymentAccountGetOrCreateRequest paymentAccount = default(OpenapiPaymentAccountGetOrCreateRequest), string paymentAccountId = default(string), OpenapiPayoutCreateRequestSender sender = default(OpenapiPayoutCreateRequestSender), string walletId = default(string))
+        public OpenapiPayoutCreateRequest(OpenapiPayoutCreateRequestAmount amount = default(OpenapiPayoutCreateRequestAmount), string customId = default(string), OpenapiPaymentAccountGetOrCreateRequest paymentAccount = default(OpenapiPaymentAccountGetOrCreateRequest), string paymentAccountId = default(string), PurposeEnum? purpose = default(PurposeEnum?), OpenapiPayoutCreateRequestSender sender = default(OpenapiPayoutCreateRequestSender), string walletId = default(string))
         {
             this.Amount = amount;
             this.CustomId = customId;
             this.PaymentAccount = paymentAccount;
             this.PaymentAccountId = paymentAccountId;
+            this.Purpose = purpose;
             this.Sender = sender;
             this.WalletId = walletId;
         }
@@ -104,6 +200,7 @@ namespace rafikigen.Model
             sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  PaymentAccount: ").Append(PaymentAccount).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
+            sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Sender: ").Append(Sender).Append("\n");
             sb.Append("  WalletId: ").Append(WalletId).Append("\n");
             sb.Append("}\n");
@@ -162,6 +259,10 @@ namespace rafikigen.Model
                     this.PaymentAccountId.Equals(input.PaymentAccountId))
                 ) && 
                 (
+                    this.Purpose == input.Purpose ||
+                    this.Purpose.Equals(input.Purpose)
+                ) && 
+                (
                     this.Sender == input.Sender ||
                     (this.Sender != null &&
                     this.Sender.Equals(input.Sender))
@@ -198,6 +299,7 @@ namespace rafikigen.Model
                 {
                     hashCode = (hashCode * 59) + this.PaymentAccountId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Purpose.GetHashCode();
                 if (this.Sender != null)
                 {
                     hashCode = (hashCode * 59) + this.Sender.GetHashCode();

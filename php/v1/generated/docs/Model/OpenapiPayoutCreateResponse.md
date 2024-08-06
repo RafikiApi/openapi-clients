@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **custom_id** | **string** |  | [optional]
 **id** | **string** | The payout unique identifier | [optional]
 **payment_account_id** | **string** | The recipient payment account receiving funds | [optional]
+**purpose** | **string** |  | [optional]
 **sender** | [**\OpenAPI\Client\Model\OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional]
 **state** | [**\OpenAPI\Client\Model\OpenapiPayoutCreateResponseState**](OpenapiPayoutCreateResponseState.md) |  | [optional]
 **wallet_id** | **string** | The wallet ID from which the money will disburse | [optional]

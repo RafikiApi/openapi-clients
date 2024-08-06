@@ -32,6 +32,98 @@ namespace rafikigen.Model
     public partial class OpenapiPayoutGetResponse : IEquatable<OpenapiPayoutGetResponse>, IValidatableObject
     {
         /// <summary>
+        /// Defines Purpose
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PurposeEnum
+        {
+            /// <summary>
+            /// Enum GOODSPURCHASE for value: GOODS_PURCHASE
+            /// </summary>
+            [EnumMember(Value = "GOODS_PURCHASE")]
+            GOODSPURCHASE = 1,
+
+            /// <summary>
+            /// Enum SERVICESPAYMENT for value: SERVICES_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "SERVICES_PAYMENT")]
+            SERVICESPAYMENT = 2,
+
+            /// <summary>
+            /// Enum INVOICEPAYMENT for value: INVOICE_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "INVOICE_PAYMENT")]
+            INVOICEPAYMENT = 3,
+
+            /// <summary>
+            /// Enum LOANREPAYMENT for value: LOAN_REPAYMENT
+            /// </summary>
+            [EnumMember(Value = "LOAN_REPAYMENT")]
+            LOANREPAYMENT = 4,
+
+            /// <summary>
+            /// Enum BILLSPAYMENT for value: BILLS_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "BILLS_PAYMENT")]
+            BILLSPAYMENT = 5,
+
+            /// <summary>
+            /// Enum SALARYANDWAGES for value: SALARY_AND_WAGES
+            /// </summary>
+            [EnumMember(Value = "SALARY_AND_WAGES")]
+            SALARYANDWAGES = 6,
+
+            /// <summary>
+            /// Enum P2PTRANSFER for value: P2P_TRANSFER
+            /// </summary>
+            [EnumMember(Value = "P2P_TRANSFER")]
+            P2PTRANSFER = 7,
+
+            /// <summary>
+            /// Enum REMITTANCE for value: REMITTANCE
+            /// </summary>
+            [EnumMember(Value = "REMITTANCE")]
+            REMITTANCE = 8,
+
+            /// <summary>
+            /// Enum DONATION for value: DONATION
+            /// </summary>
+            [EnumMember(Value = "DONATION")]
+            DONATION = 9,
+
+            /// <summary>
+            /// Enum GRANTSANDSCHOLARSHIPS for value: GRANTS_AND_SCHOLARSHIPS
+            /// </summary>
+            [EnumMember(Value = "GRANTS_AND_SCHOLARSHIPS")]
+            GRANTSANDSCHOLARSHIPS = 10,
+
+            /// <summary>
+            /// Enum TRAVELANDACCOMMODATION for value: TRAVEL_AND_ACCOMMODATION
+            /// </summary>
+            [EnumMember(Value = "TRAVEL_AND_ACCOMMODATION")]
+            TRAVELANDACCOMMODATION = 11,
+
+            /// <summary>
+            /// Enum TAXPAYMENT for value: TAX_PAYMENT
+            /// </summary>
+            [EnumMember(Value = "TAX_PAYMENT")]
+            TAXPAYMENT = 12,
+
+            /// <summary>
+            /// Enum INSURANCEPREMIUM for value: INSURANCE_PREMIUM
+            /// </summary>
+            [EnumMember(Value = "INSURANCE_PREMIUM")]
+            INSURANCEPREMIUM = 13
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Purpose
+        /// </summary>
+        /// <example>REMITTANCE</example>
+        [DataMember(Name = "purpose", EmitDefaultValue = false)]
+        public PurposeEnum? Purpose { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="OpenapiPayoutGetResponse" /> class.
         /// </summary>
         /// <param name="amount">amount.</param>
@@ -39,17 +131,19 @@ namespace rafikigen.Model
         /// <param name="customId">customId.</param>
         /// <param name="id">The payout unique identifier.</param>
         /// <param name="paymentAccountId">The recipient payment account receiving funds.</param>
+        /// <param name="purpose">purpose.</param>
         /// <param name="receipt">The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property..</param>
         /// <param name="sender">sender.</param>
         /// <param name="state">state.</param>
         /// <param name="walletId">The wallet ID from which the money will disburse.</param>
-        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string customId = default(string), string id = default(string), string paymentAccountId = default(string), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
+        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string customId = default(string), string id = default(string), string paymentAccountId = default(string), PurposeEnum? purpose = default(PurposeEnum?), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
         {
             this.Amount = amount;
             this.CreatedAt = createdAt;
             this.CustomId = customId;
             this.Id = id;
             this.PaymentAccountId = paymentAccountId;
+            this.Purpose = purpose;
             this.Receipt = receipt;
             this.Sender = sender;
             this.State = state;
@@ -133,6 +227,7 @@ namespace rafikigen.Model
             sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
+            sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Receipt: ").Append(Receipt).Append("\n");
             sb.Append("  Sender: ").Append(Sender).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
@@ -198,6 +293,10 @@ namespace rafikigen.Model
                     this.PaymentAccountId.Equals(input.PaymentAccountId))
                 ) && 
                 (
+                    this.Purpose == input.Purpose ||
+                    this.Purpose.Equals(input.Purpose)
+                ) && 
+                (
                     this.Receipt == input.Receipt ||
                     (this.Receipt != null &&
                     this.Receipt.Equals(input.Receipt))
@@ -248,6 +347,7 @@ namespace rafikigen.Model
                 {
                     hashCode = (hashCode * 59) + this.PaymentAccountId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Purpose.GetHashCode();
                 if (this.Receipt != null)
                 {
                     hashCode = (hashCode * 59) + this.Receipt.GetHashCode();

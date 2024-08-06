@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CustomId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** | The payout unique identifier | [optional] 
 **PaymentAccountId** | Pointer to **string** | The recipient payment account receiving funds | [optional] 
+**Purpose** | Pointer to **string** |  | [optional] 
 **Sender** | Pointer to [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional] 
 **State** | Pointer to [**OpenapiPayoutCreateResponseState**](OpenapiPayoutCreateResponseState.md) |  | [optional] 
 **WalletId** | Pointer to **string** | The wallet ID from which the money will disburse | [optional] 
@@ -156,6 +157,31 @@ SetPaymentAccountId sets PaymentAccountId field to given value.
 `func (o *OpenapiPayoutCreateResponse) HasPaymentAccountId() bool`
 
 HasPaymentAccountId returns a boolean if a field has been set.
+
+### GetPurpose
+
+`func (o *OpenapiPayoutCreateResponse) GetPurpose() string`
+
+GetPurpose returns the Purpose field if non-nil, zero value otherwise.
+
+### GetPurposeOk
+
+`func (o *OpenapiPayoutCreateResponse) GetPurposeOk() (*string, bool)`
+
+GetPurposeOk returns a tuple with the Purpose field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPurpose
+
+`func (o *OpenapiPayoutCreateResponse) SetPurpose(v string)`
+
+SetPurpose sets Purpose field to given value.
+
+### HasPurpose
+
+`func (o *OpenapiPayoutCreateResponse) HasPurpose() bool`
+
+HasPurpose returns a boolean if a field has been set.
 
 ### GetSender
 

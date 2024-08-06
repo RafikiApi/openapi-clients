@@ -62,6 +62,9 @@ class OpenapiPayoutCreateRequest {
             if (data.hasOwnProperty('payment_account_id')) {
                 obj['payment_account_id'] = ApiClient.convertToType(data['payment_account_id'], 'String');
             }
+            if (data.hasOwnProperty('purpose')) {
+                obj['purpose'] = ApiClient.convertToType(data['purpose'], 'String');
+            }
             if (data.hasOwnProperty('sender')) {
                 obj['sender'] = OpenapiPayoutCreateRequestSender.constructFromObject(data['sender']);
             }
@@ -93,6 +96,10 @@ class OpenapiPayoutCreateRequest {
         // ensure the json data is a string
         if (data['payment_account_id'] && !(typeof data['payment_account_id'] === 'string' || data['payment_account_id'] instanceof String)) {
             throw new Error("Expected the field `payment_account_id` to be a primitive type in the JSON string but got " + data['payment_account_id']);
+        }
+        // ensure the json data is a string
+        if (data['purpose'] && !(typeof data['purpose'] === 'string' || data['purpose'] instanceof String)) {
+            throw new Error("Expected the field `purpose` to be a primitive type in the JSON string but got " + data['purpose']);
         }
         // validate the optional field `sender`
         if (data['sender']) { // data not null
@@ -134,6 +141,12 @@ OpenapiPayoutCreateRequest.prototype['payment_account'] = undefined;
 OpenapiPayoutCreateRequest.prototype['payment_account_id'] = undefined;
 
 /**
+ * <span style=\"color:#e95f6a;\">required if payment_account country is GH,UG,EG,CI,SN or CM</span>  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  <ul> <li><code>GOODS_PURCHASE</code>: Payments made for buying physical or digital goods.</li> <li><code>SERVICES_PAYMENT</code>: Payments made for services rendered, including professional services, consulting, and freelance work.</li> <li><code>INVOICE_PAYMENT</code>: Payments made to settle invoices issued for goods or services.</li> <li><code>LOAN_REPAYMENT</code>: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.</li> <li><code>BILLS_PAYMENT</code>: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.</li> <li><code>SALARY_AND_WAGES</code>: Disbursements made to employees for their salaries and wages.</li> <li><code>P2P_TRANSFER</code>: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>REMITTANCE</code>: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>DONATION</code>: Payments made to charitable organizations or causes.</li> <li><code>GRANTS_AND_SCHOLARSHIPS</code>: Payments distributed as grants, scholarships, or other forms of financial aid.</li> <li><code>TRAVEL_AND_ACCOMMODATION</code>: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.</li> <li><code>TAX_PAYMENT</code>: Payments made for settling taxes and duties.</li> <li><code>INSURANCE_PREMIUM</code>: Payments made towards insurance policies, including health, auto, and life insurance.</li> </ul>
+ * @member {module:model/OpenapiPayoutCreateRequest.PurposeEnum} purpose
+ */
+OpenapiPayoutCreateRequest.prototype['purpose'] = undefined;
+
+/**
  * @member {module:model/OpenapiPayoutCreateRequestSender} sender
  */
 OpenapiPayoutCreateRequest.prototype['sender'] = undefined;
@@ -146,6 +159,93 @@ OpenapiPayoutCreateRequest.prototype['wallet_id'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>purpose</code> property.
+ * @enum {String}
+ * @readonly
+ */
+OpenapiPayoutCreateRequest['PurposeEnum'] = {
+
+    /**
+     * value: "GOODS_PURCHASE"
+     * @const
+     */
+    "GOODS_PURCHASE": "GOODS_PURCHASE",
+
+    /**
+     * value: "SERVICES_PAYMENT"
+     * @const
+     */
+    "SERVICES_PAYMENT": "SERVICES_PAYMENT",
+
+    /**
+     * value: "INVOICE_PAYMENT"
+     * @const
+     */
+    "INVOICE_PAYMENT": "INVOICE_PAYMENT",
+
+    /**
+     * value: "LOAN_REPAYMENT"
+     * @const
+     */
+    "LOAN_REPAYMENT": "LOAN_REPAYMENT",
+
+    /**
+     * value: "BILLS_PAYMENT"
+     * @const
+     */
+    "BILLS_PAYMENT": "BILLS_PAYMENT",
+
+    /**
+     * value: "SALARY_AND_WAGES"
+     * @const
+     */
+    "SALARY_AND_WAGES": "SALARY_AND_WAGES",
+
+    /**
+     * value: "P2P_TRANSFER"
+     * @const
+     */
+    "P2P_TRANSFER": "P2P_TRANSFER",
+
+    /**
+     * value: "REMITTANCE"
+     * @const
+     */
+    "REMITTANCE": "REMITTANCE",
+
+    /**
+     * value: "DONATION"
+     * @const
+     */
+    "DONATION": "DONATION",
+
+    /**
+     * value: "GRANTS_AND_SCHOLARSHIPS"
+     * @const
+     */
+    "GRANTS_AND_SCHOLARSHIPS": "GRANTS_AND_SCHOLARSHIPS",
+
+    /**
+     * value: "TRAVEL_AND_ACCOMMODATION"
+     * @const
+     */
+    "TRAVEL_AND_ACCOMMODATION": "TRAVEL_AND_ACCOMMODATION",
+
+    /**
+     * value: "TAX_PAYMENT"
+     * @const
+     */
+    "TAX_PAYMENT": "TAX_PAYMENT",
+
+    /**
+     * value: "INSURANCE_PREMIUM"
+     * @const
+     */
+    "INSURANCE_PREMIUM": "INSURANCE_PREMIUM"
+};
 
 
 

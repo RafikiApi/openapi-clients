@@ -27,6 +27,7 @@ export class OpenapiPayoutCreateResponse {
     * The recipient payment account receiving funds
     */
     'paymentAccountId'?: string;
+    'purpose'?: OpenapiPayoutCreateResponse.PurposeEnum;
     'sender'?: OpenapiPayoutCreateResponseSender;
     'state'?: OpenapiPayoutCreateResponseState;
     /**
@@ -63,6 +64,11 @@ export class OpenapiPayoutCreateResponse {
             "type": "string"
         },
         {
+            "name": "purpose",
+            "baseName": "purpose",
+            "type": "OpenapiPayoutCreateResponse.PurposeEnum"
+        },
+        {
             "name": "sender",
             "baseName": "sender",
             "type": "OpenapiPayoutCreateResponseSender"
@@ -83,3 +89,20 @@ export class OpenapiPayoutCreateResponse {
     }
 }
 
+export namespace OpenapiPayoutCreateResponse {
+    export enum PurposeEnum {
+        GoodsPurchase = <any> 'GOODS_PURCHASE',
+        ServicesPayment = <any> 'SERVICES_PAYMENT',
+        InvoicePayment = <any> 'INVOICE_PAYMENT',
+        LoanRepayment = <any> 'LOAN_REPAYMENT',
+        BillsPayment = <any> 'BILLS_PAYMENT',
+        SalaryAndWages = <any> 'SALARY_AND_WAGES',
+        P2PTransfer = <any> 'P2P_TRANSFER',
+        Remittance = <any> 'REMITTANCE',
+        Donation = <any> 'DONATION',
+        GrantsAndScholarships = <any> 'GRANTS_AND_SCHOLARSHIPS',
+        TravelAndAccommodation = <any> 'TRAVEL_AND_ACCOMMODATION',
+        TaxPayment = <any> 'TAX_PAYMENT',
+        InsurancePremium = <any> 'INSURANCE_PREMIUM'
+    }
+}

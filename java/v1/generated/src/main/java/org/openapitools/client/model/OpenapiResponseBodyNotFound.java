@@ -49,7 +49,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiResponseBodyNotFound
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-28T13:24:05.956985Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-06T15:34:03.279613Z[Etc/UTC]")
 public class OpenapiResponseBodyNotFound {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

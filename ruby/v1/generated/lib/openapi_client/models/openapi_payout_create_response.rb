@@ -27,12 +27,36 @@ module OpenapiClient
     # The recipient payment account receiving funds
     attr_accessor :payment_account_id
 
+    attr_accessor :purpose
+
     attr_accessor :sender
 
     attr_accessor :state
 
     # The wallet ID from which the money will disburse
     attr_accessor :wallet_id
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -42,6 +66,7 @@ module OpenapiClient
         :'custom_id' => :'custom_id',
         :'id' => :'id',
         :'payment_account_id' => :'payment_account_id',
+        :'purpose' => :'purpose',
         :'sender' => :'sender',
         :'state' => :'state',
         :'wallet_id' => :'wallet_id'
@@ -61,6 +86,7 @@ module OpenapiClient
         :'custom_id' => :'String',
         :'id' => :'String',
         :'payment_account_id' => :'String',
+        :'purpose' => :'String',
         :'sender' => :'OpenapiPayoutCreateResponseSender',
         :'state' => :'OpenapiPayoutCreateResponseState',
         :'wallet_id' => :'String'
@@ -108,6 +134,10 @@ module OpenapiClient
         self.payment_account_id = attributes[:'payment_account_id']
       end
 
+      if attributes.key?(:'purpose')
+        self.purpose = attributes[:'purpose']
+      end
+
       if attributes.key?(:'sender')
         self.sender = attributes[:'sender']
       end
@@ -133,7 +163,19 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      purpose_validator = EnumAttributeValidator.new('String', ["GOODS_PURCHASE", "SERVICES_PAYMENT", "INVOICE_PAYMENT", "LOAN_REPAYMENT", "BILLS_PAYMENT", "SALARY_AND_WAGES", "P2P_TRANSFER", "REMITTANCE", "DONATION", "GRANTS_AND_SCHOLARSHIPS", "TRAVEL_AND_ACCOMMODATION", "TAX_PAYMENT", "INSURANCE_PREMIUM"])
+      return false unless purpose_validator.valid?(@purpose)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] purpose Object to be assigned
+    def purpose=(purpose)
+      validator = EnumAttributeValidator.new('String', ["GOODS_PURCHASE", "SERVICES_PAYMENT", "INVOICE_PAYMENT", "LOAN_REPAYMENT", "BILLS_PAYMENT", "SALARY_AND_WAGES", "P2P_TRANSFER", "REMITTANCE", "DONATION", "GRANTS_AND_SCHOLARSHIPS", "TRAVEL_AND_ACCOMMODATION", "TAX_PAYMENT", "INSURANCE_PREMIUM"])
+      unless validator.valid?(purpose)
+        fail ArgumentError, "invalid value for \"purpose\", must be one of #{validator.allowable_values}."
+      end
+      @purpose = purpose
     end
 
     # Checks equality by comparing each attribute.
@@ -146,6 +188,7 @@ module OpenapiClient
           custom_id == o.custom_id &&
           id == o.id &&
           payment_account_id == o.payment_account_id &&
+          purpose == o.purpose &&
           sender == o.sender &&
           state == o.state &&
           wallet_id == o.wallet_id
@@ -160,7 +203,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, created_at, custom_id, id, payment_account_id, sender, state, wallet_id].hash
+      [amount, created_at, custom_id, id, payment_account_id, purpose, sender, state, wallet_id].hash
     end
 
     # Builds the object from hash

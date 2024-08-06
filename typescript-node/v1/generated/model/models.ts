@@ -133,11 +133,14 @@ let enumsMap: {[index: string]: any} = {
         "OpenapiPaymentAccountGetOrCreateRequestMobileMoney.OperatorEnum": OpenapiPaymentAccountGetOrCreateRequestMobileMoney.OperatorEnum,
         "OpenapiPaymentAccountGetOrCreateResponseHolder.TypeEnum": OpenapiPaymentAccountGetOrCreateResponseHolder.TypeEnum,
         "OpenapiPaymentAccountGetOrCreateResponseMobileMoney.OperatorEnum": OpenapiPaymentAccountGetOrCreateResponseMobileMoney.OperatorEnum,
+        "OpenapiPayoutCreateRequest.PurposeEnum": OpenapiPayoutCreateRequest.PurposeEnum,
         "OpenapiPayoutCreateRequestSender.TypeEnum": OpenapiPayoutCreateRequestSender.TypeEnum,
         "OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.TypeEnum": OpenapiPayoutCreateRequestSenderIndividualIdentityDocument.TypeEnum,
+        "OpenapiPayoutCreateResponse.PurposeEnum": OpenapiPayoutCreateResponse.PurposeEnum,
         "OpenapiPayoutCreateResponseSender.TypeEnum": OpenapiPayoutCreateResponseSender.TypeEnum,
         "OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.TypeEnum": OpenapiPayoutCreateResponseSenderIndividualIdentityDocument.TypeEnum,
         "OpenapiPayoutCreateResponseState.CodeEnum": OpenapiPayoutCreateResponseState.CodeEnum,
+        "OpenapiPayoutGetResponse.PurposeEnum": OpenapiPayoutGetResponse.PurposeEnum,
 }
 
 let typeMap: {[index: string]: any} = {

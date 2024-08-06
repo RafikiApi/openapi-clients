@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, validator
 from rafikigen.models.openapi_payment_account_get_or_create_request import OpenapiPaymentAccountGetOrCreateRequest
 from rafikigen.models.openapi_payout_create_request_amount import OpenapiPayoutCreateRequestAmount
 from rafikigen.models.openapi_payout_create_request_sender import OpenapiPayoutCreateRequestSender
@@ -32,9 +32,20 @@ class OpenapiPayoutCreateRequest(BaseModel):
     custom_id: Optional[StrictStr] = Field(None, description="An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".")
     payment_account: Optional[OpenapiPaymentAccountGetOrCreateRequest] = None
     payment_account_id: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.")
+    purpose: Optional[StrictStr] = Field(None, description="<span style=\"color:#e95f6a;\">required if payment_account country is GH,UG,EG,CI,SN or CM</span>  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  <ul> <li><code>GOODS_PURCHASE</code>: Payments made for buying physical or digital goods.</li> <li><code>SERVICES_PAYMENT</code>: Payments made for services rendered, including professional services, consulting, and freelance work.</li> <li><code>INVOICE_PAYMENT</code>: Payments made to settle invoices issued for goods or services.</li> <li><code>LOAN_REPAYMENT</code>: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.</li> <li><code>BILLS_PAYMENT</code>: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.</li> <li><code>SALARY_AND_WAGES</code>: Disbursements made to employees for their salaries and wages.</li> <li><code>P2P_TRANSFER</code>: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>REMITTANCE</code>: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>DONATION</code>: Payments made to charitable organizations or causes.</li> <li><code>GRANTS_AND_SCHOLARSHIPS</code>: Payments distributed as grants, scholarships, or other forms of financial aid.</li> <li><code>TRAVEL_AND_ACCOMMODATION</code>: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.</li> <li><code>TAX_PAYMENT</code>: Payments made for settling taxes and duties.</li> <li><code>INSURANCE_PREMIUM</code>: Payments made towards insurance policies, including health, auto, and life insurance.</li> </ul>")
     sender: Optional[OpenapiPayoutCreateRequestSender] = None
     wallet_id: Optional[StrictStr] = Field(None, description="The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount.")
-    __properties = ["amount", "custom_id", "payment_account", "payment_account_id", "sender", "wallet_id"]
+    __properties = ["amount", "custom_id", "payment_account", "payment_account_id", "purpose", "sender", "wallet_id"]
+
+    @validator('purpose')
+    def purpose_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('GOODS_PURCHASE', 'SERVICES_PAYMENT', 'INVOICE_PAYMENT', 'LOAN_REPAYMENT', 'BILLS_PAYMENT', 'SALARY_AND_WAGES', 'P2P_TRANSFER', 'REMITTANCE', 'DONATION', 'GRANTS_AND_SCHOLARSHIPS', 'TRAVEL_AND_ACCOMMODATION', 'TAX_PAYMENT', 'INSURANCE_PREMIUM'):
+            raise ValueError("must be one of enum values ('GOODS_PURCHASE', 'SERVICES_PAYMENT', 'INVOICE_PAYMENT', 'LOAN_REPAYMENT', 'BILLS_PAYMENT', 'SALARY_AND_WAGES', 'P2P_TRANSFER', 'REMITTANCE', 'DONATION', 'GRANTS_AND_SCHOLARSHIPS', 'TRAVEL_AND_ACCOMMODATION', 'TAX_PAYMENT', 'INSURANCE_PREMIUM')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -85,6 +96,7 @@ class OpenapiPayoutCreateRequest(BaseModel):
             "custom_id": obj.get("custom_id"),
             "payment_account": OpenapiPaymentAccountGetOrCreateRequest.from_dict(obj.get("payment_account")) if obj.get("payment_account") is not None else None,
             "payment_account_id": obj.get("payment_account_id"),
+            "purpose": obj.get("purpose"),
             "sender": OpenapiPayoutCreateRequestSender.from_dict(obj.get("sender")) if obj.get("sender") is not None else None,
             "wallet_id": obj.get("wallet_id")
         })

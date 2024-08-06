@@ -120,8 +120,3 @@ lib/rafikigen/PaymentAccountApi.php
 lib/rafikigen/PayoutApi.php
 lib/rafikigen/WalletApi.php
 phpunit.xml.dist
-test/Api/LookupApiTest.php
-test/Model/LookupsAccountNumberGet200ResponseTest.php
-test/Model/OpenapiLookupGetResponseHolderTest.php
-test/Model/OpenapiLookupGetResponseTest.php
-test/Model/OpenapiResponseBodyLookupAccountNotFoundTest.php

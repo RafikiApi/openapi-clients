@@ -25,6 +25,8 @@ pub struct OpenapiPeriodPayoutCreateResponse {
     /// The recipient payment account receiving funds
     #[serde(rename = "payment_account_id", skip_serializing_if = "Option::is_none")]
     pub payment_account_id: Option<String>,
+    #[serde(rename = "purpose", skip_serializing_if = "Option::is_none")]
+    pub purpose: Option<Purpose>,
     #[serde(rename = "sender", skip_serializing_if = "Option::is_none")]
     pub sender: Option<Box<crate::models::OpenapiPayoutCreateResponseSender>>,
     #[serde(rename = "state", skip_serializing_if = "Option::is_none")]
@@ -42,6 +44,7 @@ impl OpenapiPeriodPayoutCreateResponse {
             custom_id: None,
             id: None,
             payment_account_id: None,
+            purpose: None,
             sender: None,
             state: None,
             wallet_id: None,
@@ -49,4 +52,40 @@ impl OpenapiPeriodPayoutCreateResponse {
     }
 }
 
+/// 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Purpose {
+    #[serde(rename = "GOODS_PURCHASE")]
+    GoodsPurchase,
+    #[serde(rename = "SERVICES_PAYMENT")]
+    ServicesPayment,
+    #[serde(rename = "INVOICE_PAYMENT")]
+    InvoicePayment,
+    #[serde(rename = "LOAN_REPAYMENT")]
+    LoanRepayment,
+    #[serde(rename = "BILLS_PAYMENT")]
+    BillsPayment,
+    #[serde(rename = "SALARY_AND_WAGES")]
+    SalaryAndWages,
+    #[serde(rename = "P2P_TRANSFER")]
+    P2PTransfer,
+    #[serde(rename = "REMITTANCE")]
+    Remittance,
+    #[serde(rename = "DONATION")]
+    Donation,
+    #[serde(rename = "GRANTS_AND_SCHOLARSHIPS")]
+    GrantsAndScholarships,
+    #[serde(rename = "TRAVEL_AND_ACCOMMODATION")]
+    TravelAndAccommodation,
+    #[serde(rename = "TAX_PAYMENT")]
+    TaxPayment,
+    #[serde(rename = "INSURANCE_PREMIUM")]
+    InsurancePremium,
+}
+
+impl Default for Purpose {
+    fn default() -> Purpose {
+        Self::GoodsPurchase
+    }
+}
 

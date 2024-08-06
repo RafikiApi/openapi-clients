@@ -65,6 +65,9 @@ class OpenapiPayoutCreateResponse {
             if (data.hasOwnProperty('payment_account_id')) {
                 obj['payment_account_id'] = ApiClient.convertToType(data['payment_account_id'], 'String');
             }
+            if (data.hasOwnProperty('purpose')) {
+                obj['purpose'] = ApiClient.convertToType(data['purpose'], 'String');
+            }
             if (data.hasOwnProperty('sender')) {
                 obj['sender'] = OpenapiPayoutCreateResponseSender.constructFromObject(data['sender']);
             }
@@ -103,6 +106,10 @@ class OpenapiPayoutCreateResponse {
         // ensure the json data is a string
         if (data['payment_account_id'] && !(typeof data['payment_account_id'] === 'string' || data['payment_account_id'] instanceof String)) {
             throw new Error("Expected the field `payment_account_id` to be a primitive type in the JSON string but got " + data['payment_account_id']);
+        }
+        // ensure the json data is a string
+        if (data['purpose'] && !(typeof data['purpose'] === 'string' || data['purpose'] instanceof String)) {
+            throw new Error("Expected the field `purpose` to be a primitive type in the JSON string but got " + data['purpose']);
         }
         // validate the optional field `sender`
         if (data['sender']) { // data not null
@@ -153,6 +160,11 @@ OpenapiPayoutCreateResponse.prototype['id'] = undefined;
 OpenapiPayoutCreateResponse.prototype['payment_account_id'] = undefined;
 
 /**
+ * @member {module:model/OpenapiPayoutCreateResponse.PurposeEnum} purpose
+ */
+OpenapiPayoutCreateResponse.prototype['purpose'] = undefined;
+
+/**
  * @member {module:model/OpenapiPayoutCreateResponseSender} sender
  */
 OpenapiPayoutCreateResponse.prototype['sender'] = undefined;
@@ -170,6 +182,93 @@ OpenapiPayoutCreateResponse.prototype['wallet_id'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>purpose</code> property.
+ * @enum {String}
+ * @readonly
+ */
+OpenapiPayoutCreateResponse['PurposeEnum'] = {
+
+    /**
+     * value: "GOODS_PURCHASE"
+     * @const
+     */
+    "GOODS_PURCHASE": "GOODS_PURCHASE",
+
+    /**
+     * value: "SERVICES_PAYMENT"
+     * @const
+     */
+    "SERVICES_PAYMENT": "SERVICES_PAYMENT",
+
+    /**
+     * value: "INVOICE_PAYMENT"
+     * @const
+     */
+    "INVOICE_PAYMENT": "INVOICE_PAYMENT",
+
+    /**
+     * value: "LOAN_REPAYMENT"
+     * @const
+     */
+    "LOAN_REPAYMENT": "LOAN_REPAYMENT",
+
+    /**
+     * value: "BILLS_PAYMENT"
+     * @const
+     */
+    "BILLS_PAYMENT": "BILLS_PAYMENT",
+
+    /**
+     * value: "SALARY_AND_WAGES"
+     * @const
+     */
+    "SALARY_AND_WAGES": "SALARY_AND_WAGES",
+
+    /**
+     * value: "P2P_TRANSFER"
+     * @const
+     */
+    "P2P_TRANSFER": "P2P_TRANSFER",
+
+    /**
+     * value: "REMITTANCE"
+     * @const
+     */
+    "REMITTANCE": "REMITTANCE",
+
+    /**
+     * value: "DONATION"
+     * @const
+     */
+    "DONATION": "DONATION",
+
+    /**
+     * value: "GRANTS_AND_SCHOLARSHIPS"
+     * @const
+     */
+    "GRANTS_AND_SCHOLARSHIPS": "GRANTS_AND_SCHOLARSHIPS",
+
+    /**
+     * value: "TRAVEL_AND_ACCOMMODATION"
+     * @const
+     */
+    "TRAVEL_AND_ACCOMMODATION": "TRAVEL_AND_ACCOMMODATION",
+
+    /**
+     * value: "TAX_PAYMENT"
+     * @const
+     */
+    "TAX_PAYMENT": "TAX_PAYMENT",
+
+    /**
+     * value: "INSURANCE_PREMIUM"
+     * @const
+     */
+    "INSURANCE_PREMIUM": "INSURANCE_PREMIUM"
+};
 
 
 

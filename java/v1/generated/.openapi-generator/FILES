@@ -142,8 +142,3 @@ src/main/java/rafikigen/LookupApi.java
 src/main/java/rafikigen/PaymentAccountApi.java
 src/main/java/rafikigen/PayoutApi.java
 src/main/java/rafikigen/WalletApi.java
-src/test/java/org/openapitools/client/model/LookupsAccountNumberGet200ResponseTest.java
-src/test/java/org/openapitools/client/model/OpenapiLookupGetResponseHolderTest.java
-src/test/java/org/openapitools/client/model/OpenapiLookupGetResponseTest.java
-src/test/java/org/openapitools/client/model/OpenapiResponseBodyLookupAccountNotFoundTest.java
-src/test/java/rafikigen/LookupApiTest.java

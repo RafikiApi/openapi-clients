@@ -26,6 +26,7 @@ type OpenapiPayoutGetResponse struct {
 	Id *string `json:"id,omitempty"`
 	// The recipient payment account receiving funds
 	PaymentAccountId *string `json:"payment_account_id,omitempty"`
+	Purpose *string `json:"purpose,omitempty"`
 	// The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
 	Receipt *string `json:"receipt,omitempty"`
 	Sender *OpenapiPayoutCreateResponseSender `json:"sender,omitempty"`
@@ -211,6 +212,38 @@ func (o *OpenapiPayoutGetResponse) SetPaymentAccountId(v string) {
 	o.PaymentAccountId = &v
 }
 
+// GetPurpose returns the Purpose field value if set, zero value otherwise.
+func (o *OpenapiPayoutGetResponse) GetPurpose() string {
+	if o == nil || IsNil(o.Purpose) {
+		var ret string
+		return ret
+	}
+	return *o.Purpose
+}
+
+// GetPurposeOk returns a tuple with the Purpose field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutGetResponse) GetPurposeOk() (*string, bool) {
+	if o == nil || IsNil(o.Purpose) {
+		return nil, false
+	}
+	return o.Purpose, true
+}
+
+// HasPurpose returns a boolean if a field has been set.
+func (o *OpenapiPayoutGetResponse) HasPurpose() bool {
+	if o != nil && !IsNil(o.Purpose) {
+		return true
+	}
+
+	return false
+}
+
+// SetPurpose gets a reference to the given string and assigns it to the Purpose field.
+func (o *OpenapiPayoutGetResponse) SetPurpose(v string) {
+	o.Purpose = &v
+}
+
 // GetReceipt returns the Receipt field value if set, zero value otherwise.
 func (o *OpenapiPayoutGetResponse) GetReceipt() string {
 	if o == nil || IsNil(o.Receipt) {
@@ -363,6 +396,9 @@ func (o OpenapiPayoutGetResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentAccountId) {
 		toSerialize["payment_account_id"] = o.PaymentAccountId
+	}
+	if !IsNil(o.Purpose) {
+		toSerialize["purpose"] = o.Purpose
 	}
 	if !IsNil(o.Receipt) {
 		toSerialize["receipt"] = o.Receipt

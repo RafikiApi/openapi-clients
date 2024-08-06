@@ -65,6 +65,9 @@ class OpenapiPayoutGetResponse {
             if (data.hasOwnProperty('payment_account_id')) {
                 obj['payment_account_id'] = ApiClient.convertToType(data['payment_account_id'], 'String');
             }
+            if (data.hasOwnProperty('purpose')) {
+                obj['purpose'] = ApiClient.convertToType(data['purpose'], 'String');
+            }
             if (data.hasOwnProperty('receipt')) {
                 obj['receipt'] = ApiClient.convertToType(data['receipt'], 'String');
             }
@@ -106,6 +109,10 @@ class OpenapiPayoutGetResponse {
         // ensure the json data is a string
         if (data['payment_account_id'] && !(typeof data['payment_account_id'] === 'string' || data['payment_account_id'] instanceof String)) {
             throw new Error("Expected the field `payment_account_id` to be a primitive type in the JSON string but got " + data['payment_account_id']);
+        }
+        // ensure the json data is a string
+        if (data['purpose'] && !(typeof data['purpose'] === 'string' || data['purpose'] instanceof String)) {
+            throw new Error("Expected the field `purpose` to be a primitive type in the JSON string but got " + data['purpose']);
         }
         // ensure the json data is a string
         if (data['receipt'] && !(typeof data['receipt'] === 'string' || data['receipt'] instanceof String)) {
@@ -160,6 +167,11 @@ OpenapiPayoutGetResponse.prototype['id'] = undefined;
 OpenapiPayoutGetResponse.prototype['payment_account_id'] = undefined;
 
 /**
+ * @member {module:model/OpenapiPayoutGetResponse.PurposeEnum} purpose
+ */
+OpenapiPayoutGetResponse.prototype['purpose'] = undefined;
+
+/**
  * The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
  * @member {String} receipt
  */
@@ -183,6 +195,93 @@ OpenapiPayoutGetResponse.prototype['wallet_id'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>purpose</code> property.
+ * @enum {String}
+ * @readonly
+ */
+OpenapiPayoutGetResponse['PurposeEnum'] = {
+
+    /**
+     * value: "GOODS_PURCHASE"
+     * @const
+     */
+    "GOODS_PURCHASE": "GOODS_PURCHASE",
+
+    /**
+     * value: "SERVICES_PAYMENT"
+     * @const
+     */
+    "SERVICES_PAYMENT": "SERVICES_PAYMENT",
+
+    /**
+     * value: "INVOICE_PAYMENT"
+     * @const
+     */
+    "INVOICE_PAYMENT": "INVOICE_PAYMENT",
+
+    /**
+     * value: "LOAN_REPAYMENT"
+     * @const
+     */
+    "LOAN_REPAYMENT": "LOAN_REPAYMENT",
+
+    /**
+     * value: "BILLS_PAYMENT"
+     * @const
+     */
+    "BILLS_PAYMENT": "BILLS_PAYMENT",
+
+    /**
+     * value: "SALARY_AND_WAGES"
+     * @const
+     */
+    "SALARY_AND_WAGES": "SALARY_AND_WAGES",
+
+    /**
+     * value: "P2P_TRANSFER"
+     * @const
+     */
+    "P2P_TRANSFER": "P2P_TRANSFER",
+
+    /**
+     * value: "REMITTANCE"
+     * @const
+     */
+    "REMITTANCE": "REMITTANCE",
+
+    /**
+     * value: "DONATION"
+     * @const
+     */
+    "DONATION": "DONATION",
+
+    /**
+     * value: "GRANTS_AND_SCHOLARSHIPS"
+     * @const
+     */
+    "GRANTS_AND_SCHOLARSHIPS": "GRANTS_AND_SCHOLARSHIPS",
+
+    /**
+     * value: "TRAVEL_AND_ACCOMMODATION"
+     * @const
+     */
+    "TRAVEL_AND_ACCOMMODATION": "TRAVEL_AND_ACCOMMODATION",
+
+    /**
+     * value: "TAX_PAYMENT"
+     * @const
+     */
+    "TAX_PAYMENT": "TAX_PAYMENT",
+
+    /**
+     * value: "INSURANCE_PREMIUM"
+     * @const
+     */
+    "INSURANCE_PREMIUM": "INSURANCE_PREMIUM"
+};
 
 
 

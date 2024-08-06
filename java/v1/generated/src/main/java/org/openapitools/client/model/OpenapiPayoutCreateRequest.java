@@ -52,7 +52,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-28T13:24:05.956985Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-06T15:34:03.279613Z[Etc/UTC]")
 public class OpenapiPayoutCreateRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -69,6 +69,79 @@ public class OpenapiPayoutCreateRequest {
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT_ID = "payment_account_id";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT_ID)
   private String paymentAccountId;
+
+  /**
+   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;
+   */
+  @JsonAdapter(PurposeEnum.Adapter.class)
+  public enum PurposeEnum {
+    GOODS_PURCHASE("GOODS_PURCHASE"),
+    
+    SERVICES_PAYMENT("SERVICES_PAYMENT"),
+    
+    INVOICE_PAYMENT("INVOICE_PAYMENT"),
+    
+    LOAN_REPAYMENT("LOAN_REPAYMENT"),
+    
+    BILLS_PAYMENT("BILLS_PAYMENT"),
+    
+    SALARY_AND_WAGES("SALARY_AND_WAGES"),
+    
+    P2P_TRANSFER("P2P_TRANSFER"),
+    
+    REMITTANCE("REMITTANCE"),
+    
+    DONATION("DONATION"),
+    
+    GRANTS_AND_SCHOLARSHIPS("GRANTS_AND_SCHOLARSHIPS"),
+    
+    TRAVEL_AND_ACCOMMODATION("TRAVEL_AND_ACCOMMODATION"),
+    
+    TAX_PAYMENT("TAX_PAYMENT"),
+    
+    INSURANCE_PREMIUM("INSURANCE_PREMIUM");
+
+    private String value;
+
+    PurposeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PurposeEnum fromValue(String value) {
+      for (PurposeEnum b : PurposeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PurposeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PurposeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PurposeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PurposeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
+  @SerializedName(SERIALIZED_NAME_PURPOSE)
+  private PurposeEnum purpose;
 
   public static final String SERIALIZED_NAME_SENDER = "sender";
   @SerializedName(SERIALIZED_NAME_SENDER)
@@ -165,6 +238,27 @@ public class OpenapiPayoutCreateRequest {
   }
 
 
+  public OpenapiPayoutCreateRequest purpose(PurposeEnum purpose) {
+    
+    this.purpose = purpose;
+    return this;
+  }
+
+   /**
+   * &lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;
+   * @return purpose
+  **/
+  @javax.annotation.Nullable
+  public PurposeEnum getPurpose() {
+    return purpose;
+  }
+
+
+  public void setPurpose(PurposeEnum purpose) {
+    this.purpose = purpose;
+  }
+
+
   public OpenapiPayoutCreateRequest sender(OpenapiPayoutCreateRequestSender sender) {
     
     this.sender = sender;
@@ -221,13 +315,14 @@ public class OpenapiPayoutCreateRequest {
         Objects.equals(this.customId, openapiPayoutCreateRequest.customId) &&
         Objects.equals(this.paymentAccount, openapiPayoutCreateRequest.paymentAccount) &&
         Objects.equals(this.paymentAccountId, openapiPayoutCreateRequest.paymentAccountId) &&
+        Objects.equals(this.purpose, openapiPayoutCreateRequest.purpose) &&
         Objects.equals(this.sender, openapiPayoutCreateRequest.sender) &&
         Objects.equals(this.walletId, openapiPayoutCreateRequest.walletId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, customId, paymentAccount, paymentAccountId, sender, walletId);
+    return Objects.hash(amount, customId, paymentAccount, paymentAccountId, purpose, sender, walletId);
   }
 
   @Override
@@ -238,6 +333,7 @@ public class OpenapiPayoutCreateRequest {
     sb.append("    customId: ").append(toIndentedString(customId)).append("\n");
     sb.append("    paymentAccount: ").append(toIndentedString(paymentAccount)).append("\n");
     sb.append("    paymentAccountId: ").append(toIndentedString(paymentAccountId)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
     sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("}");
@@ -266,6 +362,7 @@ public class OpenapiPayoutCreateRequest {
     openapiFields.add("custom_id");
     openapiFields.add("payment_account");
     openapiFields.add("payment_account_id");
+    openapiFields.add("purpose");
     openapiFields.add("sender");
     openapiFields.add("wallet_id");
 
@@ -307,6 +404,9 @@ public class OpenapiPayoutCreateRequest {
       }
       if ((jsonObj.get("payment_account_id") != null && !jsonObj.get("payment_account_id").isJsonNull()) && !jsonObj.get("payment_account_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payment_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_account_id").toString()));
+      }
+      if ((jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonNull()) && !jsonObj.get("purpose").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
       }
       // validate the optional field `sender`
       if (jsonObj.get("sender") != null && !jsonObj.get("sender").isJsonNull()) {
