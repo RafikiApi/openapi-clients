@@ -20,9 +20,13 @@ var _ MappedNullable = &OpenapiPayoutCreateRequest{}
 // OpenapiPayoutCreateRequest struct for OpenapiPayoutCreateRequest
 type OpenapiPayoutCreateRequest struct {
 	Amount *OpenapiPayoutCreateRequestAmount `json:"amount,omitempty"`
+	// An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
+	CustomId *string `json:"custom_id,omitempty"`
 	PaymentAccount *OpenapiPaymentAccountGetOrCreateRequest `json:"payment_account,omitempty"`
 	// <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
 	PaymentAccountId *string `json:"payment_account_id,omitempty"`
+	// <span style=\"color:#e95f6a;\">required if payment_account country is GH,UG,EG,CI,SN or CM</span>  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  <ul> <li><code>GOODS_PURCHASE</code>: Payments made for buying physical or digital goods.</li> <li><code>SERVICES_PAYMENT</code>: Payments made for services rendered, including professional services, consulting, and freelance work.</li> <li><code>INVOICE_PAYMENT</code>: Payments made to settle invoices issued for goods or services.</li> <li><code>LOAN_REPAYMENT</code>: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.</li> <li><code>BILLS_PAYMENT</code>: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.</li> <li><code>SALARY_AND_WAGES</code>: Disbursements made to employees for their salaries and wages.</li> <li><code>P2P_TRANSFER</code>: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>REMITTANCE</code>: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.</li> <li><code>DONATION</code>: Payments made to charitable organizations or causes.</li> <li><code>GRANTS_AND_SCHOLARSHIPS</code>: Payments distributed as grants, scholarships, or other forms of financial aid.</li> <li><code>TRAVEL_AND_ACCOMMODATION</code>: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.</li> <li><code>TAX_PAYMENT</code>: Payments made for settling taxes and duties.</li> <li><code>INSURANCE_PREMIUM</code>: Payments made towards insurance policies, including health, auto, and life insurance.</li> </ul>
+	Purpose *string `json:"purpose,omitempty"`
 	Sender *OpenapiPayoutCreateRequestSender `json:"sender,omitempty"`
 	// The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount.
 	WalletId *string `json:"wallet_id,omitempty"`
@@ -75,6 +79,38 @@ func (o *OpenapiPayoutCreateRequest) HasAmount() bool {
 // SetAmount gets a reference to the given OpenapiPayoutCreateRequestAmount and assigns it to the Amount field.
 func (o *OpenapiPayoutCreateRequest) SetAmount(v OpenapiPayoutCreateRequestAmount) {
 	o.Amount = &v
+}
+
+// GetCustomId returns the CustomId field value if set, zero value otherwise.
+func (o *OpenapiPayoutCreateRequest) GetCustomId() string {
+	if o == nil || IsNil(o.CustomId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomId
+}
+
+// GetCustomIdOk returns a tuple with the CustomId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutCreateRequest) GetCustomIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomId) {
+		return nil, false
+	}
+	return o.CustomId, true
+}
+
+// HasCustomId returns a boolean if a field has been set.
+func (o *OpenapiPayoutCreateRequest) HasCustomId() bool {
+	if o != nil && !IsNil(o.CustomId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomId gets a reference to the given string and assigns it to the CustomId field.
+func (o *OpenapiPayoutCreateRequest) SetCustomId(v string) {
+	o.CustomId = &v
 }
 
 // GetPaymentAccount returns the PaymentAccount field value if set, zero value otherwise.
@@ -139,6 +175,38 @@ func (o *OpenapiPayoutCreateRequest) HasPaymentAccountId() bool {
 // SetPaymentAccountId gets a reference to the given string and assigns it to the PaymentAccountId field.
 func (o *OpenapiPayoutCreateRequest) SetPaymentAccountId(v string) {
 	o.PaymentAccountId = &v
+}
+
+// GetPurpose returns the Purpose field value if set, zero value otherwise.
+func (o *OpenapiPayoutCreateRequest) GetPurpose() string {
+	if o == nil || IsNil(o.Purpose) {
+		var ret string
+		return ret
+	}
+	return *o.Purpose
+}
+
+// GetPurposeOk returns a tuple with the Purpose field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutCreateRequest) GetPurposeOk() (*string, bool) {
+	if o == nil || IsNil(o.Purpose) {
+		return nil, false
+	}
+	return o.Purpose, true
+}
+
+// HasPurpose returns a boolean if a field has been set.
+func (o *OpenapiPayoutCreateRequest) HasPurpose() bool {
+	if o != nil && !IsNil(o.Purpose) {
+		return true
+	}
+
+	return false
+}
+
+// SetPurpose gets a reference to the given string and assigns it to the Purpose field.
+func (o *OpenapiPayoutCreateRequest) SetPurpose(v string) {
+	o.Purpose = &v
 }
 
 // GetSender returns the Sender field value if set, zero value otherwise.
@@ -218,11 +286,17 @@ func (o OpenapiPayoutCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
+	if !IsNil(o.CustomId) {
+		toSerialize["custom_id"] = o.CustomId
+	}
 	if !IsNil(o.PaymentAccount) {
 		toSerialize["payment_account"] = o.PaymentAccount
 	}
 	if !IsNil(o.PaymentAccountId) {
 		toSerialize["payment_account_id"] = o.PaymentAccountId
+	}
+	if !IsNil(o.Purpose) {
+		toSerialize["purpose"] = o.Purpose
 	}
 	if !IsNil(o.Sender) {
 		toSerialize["sender"] = o.Sender

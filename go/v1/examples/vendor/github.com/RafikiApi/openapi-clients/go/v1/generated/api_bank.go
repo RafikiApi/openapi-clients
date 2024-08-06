@@ -36,7 +36,8 @@ BanksGet List
 
 Within the scope of this API, the "Bank" resource serves the purpose of identifying the financial institutions that own payment accounts.
 
-This endpoint enables you to retrieve the list of banks, including their branches, provided by our API.
+This endpoint enables you to retrieve the list of banks provided by our API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBanksGetRequest
