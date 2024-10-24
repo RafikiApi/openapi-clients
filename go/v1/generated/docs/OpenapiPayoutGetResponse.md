@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CustomId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** | The payout unique identifier | [optional] 
+**OnBehalfOf** | Pointer to **[]string** |  | [optional] 
 **PaymentAccountId** | Pointer to **string** | The recipient payment account receiving funds | [optional] 
 **Purpose** | Pointer to **string** |  | [optional] 
 **Receipt** | Pointer to **string** | The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property. | [optional] 
@@ -133,6 +134,31 @@ SetId sets Id field to given value.
 `func (o *OpenapiPayoutGetResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetOnBehalfOf
+
+`func (o *OpenapiPayoutGetResponse) GetOnBehalfOf() []string`
+
+GetOnBehalfOf returns the OnBehalfOf field if non-nil, zero value otherwise.
+
+### GetOnBehalfOfOk
+
+`func (o *OpenapiPayoutGetResponse) GetOnBehalfOfOk() (*[]string, bool)`
+
+GetOnBehalfOfOk returns a tuple with the OnBehalfOf field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnBehalfOf
+
+`func (o *OpenapiPayoutGetResponse) SetOnBehalfOf(v []string)`
+
+SetOnBehalfOf sets OnBehalfOf field to given value.
+
+### HasOnBehalfOf
+
+`func (o *OpenapiPayoutGetResponse) HasOnBehalfOf() bool`
+
+HasOnBehalfOf returns a boolean if a field has been set.
 
 ### GetPaymentAccountId
 

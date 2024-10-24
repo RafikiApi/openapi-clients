@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
  - [OpenapiClient::OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
  - [OpenapiClient::OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [OpenapiClient::OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [OpenapiClient::OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable](docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md)
  - [OpenapiClient::OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [OpenapiClient::OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
  - [OpenapiClient::OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **string** |  | [optional]
 **custom_id** | **string** |  | [optional]
 **id** | **string** | The payout unique identifier | [optional]
+**on_behalf_of** | **string[]** |  | [optional]
 **payment_account_id** | **string** | The recipient payment account receiving funds | [optional]
 **purpose** | **string** |  | [optional]
 **sender** | [**\OpenAPI\Client\Model\OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  | [optional]

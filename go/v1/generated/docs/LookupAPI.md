@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## LookupsAccountNumberGet
 
-> LookupsAccountNumberGet200Response LookupsAccountNumberGet(ctx, accountNumber).PaymentAccountType(paymentAccountType).BankId(bankId).Execute()
+> LookupsAccountNumberGet200Response LookupsAccountNumberGet(ctx, accountNumber).PaymentAccountType(paymentAccountType).BankId(bankId).Operator(operator).Execute()
 
 Get
 
@@ -32,10 +32,11 @@ func main() {
     paymentAccountType := "paymentAccountType_example" // string | The payment account type to lookup for
     accountNumber := "accountNumber_example" // string | The account number, that is either the mobile money number or bank account number
     bankId := "bankId_example" // string | If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+    operator := "operator_example" // string | If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LookupAPI.LookupsAccountNumberGet(context.Background(), accountNumber).PaymentAccountType(paymentAccountType).BankId(bankId).Execute()
+    resp, r, err := apiClient.LookupAPI.LookupsAccountNumberGet(context.Background(), accountNumber).PaymentAccountType(paymentAccountType).BankId(bankId).Operator(operator).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LookupAPI.LookupsAccountNumberGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +64,7 @@ Name | Type | Description  | Notes
  **paymentAccountType** | **string** | The payment account type to lookup for | 
 
  **bankId** | **string** | If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to | 
+ **operator** | **string** | If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator | 
 
 ### Return type
 

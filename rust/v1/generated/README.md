@@ -74,6 +74,7 @@ Class | Method | HTTP request | Description
  - [OpenapiPeriodResponseBodyInternalServerError](docs/OpenapiPeriodResponseBodyInternalServerError.md)
  - [OpenapiPeriodResponseBodyLookupAccountNotFound](docs/OpenapiPeriodResponseBodyLookupAccountNotFound.md)
  - [OpenapiPeriodResponseBodyNotFound](docs/OpenapiPeriodResponseBodyNotFound.md)
+ - [OpenapiPeriodResponseBodyPayoutPaymentAccountTemporarilyUnavailable](docs/OpenapiPeriodResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md)
  - [OpenapiPeriodResponseBodySuccessCollection](docs/OpenapiPeriodResponseBodySuccessCollection.md)
  - [OpenapiPeriodResponseBodySuccessCollectionNoMeta](docs/OpenapiPeriodResponseBodySuccessCollectionNoMeta.md)
  - [OpenapiPeriodResponseBodySuccessNoMeta](docs/OpenapiPeriodResponseBodySuccessNoMeta.md)

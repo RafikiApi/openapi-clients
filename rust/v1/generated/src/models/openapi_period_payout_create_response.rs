@@ -22,6 +22,8 @@ pub struct OpenapiPeriodPayoutCreateResponse {
     /// The payout unique identifier
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
+    #[serde(rename = "on_behalf_of", skip_serializing_if = "Option::is_none")]
+    pub on_behalf_of: Option<Vec<String>>,
     /// The recipient payment account receiving funds
     #[serde(rename = "payment_account_id", skip_serializing_if = "Option::is_none")]
     pub payment_account_id: Option<String>,
@@ -43,6 +45,7 @@ impl OpenapiPeriodPayoutCreateResponse {
             created_at: None,
             custom_id: None,
             id: None,
+            on_behalf_of: None,
             payment_account_id: None,
             purpose: None,
             sender: None,

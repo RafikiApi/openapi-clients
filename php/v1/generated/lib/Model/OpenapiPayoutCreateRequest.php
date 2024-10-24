@@ -59,6 +59,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'amount' => '\OpenAPI\Client\Model\OpenapiPayoutCreateRequestAmount',
         'custom_id' => 'string',
+        'on_behalf_of' => 'string[]',
         'payment_account' => '\OpenAPI\Client\Model\OpenapiPaymentAccountGetOrCreateRequest',
         'payment_account_id' => 'string',
         'purpose' => 'string',
@@ -76,6 +77,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'amount' => null,
         'custom_id' => '[a-zA-Z0-9-_]{1,64}',
+        'on_behalf_of' => '.{1,32}',
         'payment_account' => null,
         'payment_account_id' => null,
         'purpose' => null,
@@ -91,6 +93,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'amount' => false,
 		'custom_id' => false,
+		'on_behalf_of' => false,
 		'payment_account' => false,
 		'payment_account_id' => false,
 		'purpose' => false,
@@ -186,6 +189,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'amount' => 'amount',
         'custom_id' => 'custom_id',
+        'on_behalf_of' => 'on_behalf_of',
         'payment_account' => 'payment_account',
         'payment_account_id' => 'payment_account_id',
         'purpose' => 'purpose',
@@ -201,6 +205,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'amount' => 'setAmount',
         'custom_id' => 'setCustomId',
+        'on_behalf_of' => 'setOnBehalfOf',
         'payment_account' => 'setPaymentAccount',
         'payment_account_id' => 'setPaymentAccountId',
         'purpose' => 'setPurpose',
@@ -216,6 +221,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'amount' => 'getAmount',
         'custom_id' => 'getCustomId',
+        'on_behalf_of' => 'getOnBehalfOf',
         'payment_account' => 'getPaymentAccount',
         'payment_account_id' => 'getPaymentAccountId',
         'purpose' => 'getPurpose',
@@ -319,6 +325,7 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('custom_id', $data ?? [], null);
+        $this->setIfExists('on_behalf_of', $data ?? [], null);
         $this->setIfExists('payment_account', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
         $this->setIfExists('purpose', $data ?? [], null);
@@ -427,6 +434,33 @@ class OpenapiPayoutCreateRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable custom_id cannot be null');
         }
         $this->container['custom_id'] = $custom_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_of
+     *
+     * @return string[]|null
+     */
+    public function getOnBehalfOf()
+    {
+        return $this->container['on_behalf_of'];
+    }
+
+    /**
+     * Sets on_behalf_of
+     *
+     * @param string[]|null $on_behalf_of on_behalf_of
+     *
+     * @return self
+     */
+    public function setOnBehalfOf($on_behalf_of)
+    {
+        if (is_null($on_behalf_of)) {
+            throw new \InvalidArgumentException('non-nullable on_behalf_of cannot be null');
+        }
+        $this->container['on_behalf_of'] = $on_behalf_of;
 
         return $this;
     }

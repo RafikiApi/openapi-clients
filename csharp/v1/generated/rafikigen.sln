@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rafikigen", "src\rafikigen\rafikigen.csproj", "{B6188CF5-E4FD-47DB-9F36-A5124EC52E71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rafikigen", "src\rafikigen\rafikigen.csproj", "{51DCC97B-BD40-4D33-924F-C9E0FE25377E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rafikigen.Test", "src\rafikigen.Test\rafikigen.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6188CF5-E4FD-47DB-9F36-A5124EC52E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6188CF5-E4FD-47DB-9F36-A5124EC52E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6188CF5-E4FD-47DB-9F36-A5124EC52E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6188CF5-E4FD-47DB-9F36-A5124EC52E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51DCC97B-BD40-4D33-924F-C9E0FE25377E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51DCC97B-BD40-4D33-924F-C9E0FE25377E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51DCC97B-BD40-4D33-924F-C9E0FE25377E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51DCC97B-BD40-4D33-924F-C9E0FE25377E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

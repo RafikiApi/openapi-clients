@@ -130,18 +130,20 @@ namespace rafikigen.Model
         /// <param name="createdAt">createdAt.</param>
         /// <param name="customId">customId.</param>
         /// <param name="id">The payout unique identifier.</param>
+        /// <param name="onBehalfOf">onBehalfOf.</param>
         /// <param name="paymentAccountId">The recipient payment account receiving funds.</param>
         /// <param name="purpose">purpose.</param>
         /// <param name="receipt">The reference provided by the recipient account&#39;s actual bank or telco on a successful payout.  &gt; ⚠️ &gt; It&#39;s important to be aware that this information might not be accessible for every payout. If there&#39;s no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property..</param>
         /// <param name="sender">sender.</param>
         /// <param name="state">state.</param>
         /// <param name="walletId">The wallet ID from which the money will disburse.</param>
-        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string customId = default(string), string id = default(string), string paymentAccountId = default(string), PurposeEnum? purpose = default(PurposeEnum?), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
+        public OpenapiPayoutGetResponse(OpenapiPayoutCreateResponseAmount amount = default(OpenapiPayoutCreateResponseAmount), string createdAt = default(string), string customId = default(string), string id = default(string), List<string> onBehalfOf = default(List<string>), string paymentAccountId = default(string), PurposeEnum? purpose = default(PurposeEnum?), string receipt = default(string), OpenapiPayoutCreateResponseSender sender = default(OpenapiPayoutCreateResponseSender), OpenapiPayoutCreateResponseState state = default(OpenapiPayoutCreateResponseState), string walletId = default(string))
         {
             this.Amount = amount;
             this.CreatedAt = createdAt;
             this.CustomId = customId;
             this.Id = id;
+            this.OnBehalfOf = onBehalfOf;
             this.PaymentAccountId = paymentAccountId;
             this.Purpose = purpose;
             this.Receipt = receipt;
@@ -177,6 +179,13 @@ namespace rafikigen.Model
         /// <example>pyt-xxx</example>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OnBehalfOf
+        /// </summary>
+        /// <example>[&quot;[\&quot;org-xxx\&quot;]&quot;]</example>
+        [DataMember(Name = "on_behalf_of", EmitDefaultValue = false)]
+        public List<string> OnBehalfOf { get; set; }
 
         /// <summary>
         /// The recipient payment account receiving funds
@@ -226,6 +235,7 @@ namespace rafikigen.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  OnBehalfOf: ").Append(OnBehalfOf).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Receipt: ").Append(Receipt).Append("\n");
@@ -288,6 +298,12 @@ namespace rafikigen.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.OnBehalfOf == input.OnBehalfOf ||
+                    this.OnBehalfOf != null &&
+                    input.OnBehalfOf != null &&
+                    this.OnBehalfOf.SequenceEqual(input.OnBehalfOf)
+                ) && 
+                (
                     this.PaymentAccountId == input.PaymentAccountId ||
                     (this.PaymentAccountId != null &&
                     this.PaymentAccountId.Equals(input.PaymentAccountId))
@@ -342,6 +358,10 @@ namespace rafikigen.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.OnBehalfOf != null)
+                {
+                    hashCode = (hashCode * 59) + this.OnBehalfOf.GetHashCode();
                 }
                 if (this.PaymentAccountId != null)
                 {

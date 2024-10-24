@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.client.model.OpenapiPayoutCreateResponseAmount;
 import org.openapitools.client.model.OpenapiPayoutCreateResponseSender;
 import org.openapitools.client.model.OpenapiPayoutCreateResponseState;
@@ -52,7 +54,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutGetResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-06T15:34:03.279613Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T12:18:08.434805Z[Etc/UTC]")
 public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -69,6 +71,10 @@ public class OpenapiPayoutGetResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_ON_BEHALF_OF = "on_behalf_of";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_OF)
+  private List<String> onBehalfOf;
 
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT_ID = "payment_account_id";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT_ID)
@@ -250,6 +256,35 @@ public class OpenapiPayoutGetResponse {
   }
 
 
+  public OpenapiPayoutGetResponse onBehalfOf(List<String> onBehalfOf) {
+    
+    this.onBehalfOf = onBehalfOf;
+    return this;
+  }
+
+  public OpenapiPayoutGetResponse addOnBehalfOfItem(String onBehalfOfItem) {
+    if (this.onBehalfOf == null) {
+      this.onBehalfOf = new ArrayList<>();
+    }
+    this.onBehalfOf.add(onBehalfOfItem);
+    return this;
+  }
+
+   /**
+   * Get onBehalfOf
+   * @return onBehalfOf
+  **/
+  @javax.annotation.Nullable
+  public List<String> getOnBehalfOf() {
+    return onBehalfOf;
+  }
+
+
+  public void setOnBehalfOf(List<String> onBehalfOf) {
+    this.onBehalfOf = onBehalfOf;
+  }
+
+
   public OpenapiPayoutGetResponse paymentAccountId(String paymentAccountId) {
     
     this.paymentAccountId = paymentAccountId;
@@ -390,6 +425,7 @@ public class OpenapiPayoutGetResponse {
         Objects.equals(this.createdAt, openapiPayoutGetResponse.createdAt) &&
         Objects.equals(this.customId, openapiPayoutGetResponse.customId) &&
         Objects.equals(this.id, openapiPayoutGetResponse.id) &&
+        Objects.equals(this.onBehalfOf, openapiPayoutGetResponse.onBehalfOf) &&
         Objects.equals(this.paymentAccountId, openapiPayoutGetResponse.paymentAccountId) &&
         Objects.equals(this.purpose, openapiPayoutGetResponse.purpose) &&
         Objects.equals(this.receipt, openapiPayoutGetResponse.receipt) &&
@@ -400,7 +436,7 @@ public class OpenapiPayoutGetResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, createdAt, customId, id, paymentAccountId, purpose, receipt, sender, state, walletId);
+    return Objects.hash(amount, createdAt, customId, id, onBehalfOf, paymentAccountId, purpose, receipt, sender, state, walletId);
   }
 
   @Override
@@ -411,6 +447,7 @@ public class OpenapiPayoutGetResponse {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    customId: ").append(toIndentedString(customId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    onBehalfOf: ").append(toIndentedString(onBehalfOf)).append("\n");
     sb.append("    paymentAccountId: ").append(toIndentedString(paymentAccountId)).append("\n");
     sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    receipt: ").append(toIndentedString(receipt)).append("\n");
@@ -443,6 +480,7 @@ public class OpenapiPayoutGetResponse {
     openapiFields.add("created_at");
     openapiFields.add("custom_id");
     openapiFields.add("id");
+    openapiFields.add("on_behalf_of");
     openapiFields.add("payment_account_id");
     openapiFields.add("purpose");
     openapiFields.add("receipt");
@@ -487,6 +525,10 @@ public class OpenapiPayoutGetResponse {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("on_behalf_of") != null && !jsonObj.get("on_behalf_of").isJsonNull() && !jsonObj.get("on_behalf_of").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `on_behalf_of` to be an array in the JSON string but got `%s`", jsonObj.get("on_behalf_of").toString()));
       }
       if ((jsonObj.get("payment_account_id") != null && !jsonObj.get("payment_account_id").isJsonNull()) && !jsonObj.get("payment_account_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payment_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_account_id").toString()));

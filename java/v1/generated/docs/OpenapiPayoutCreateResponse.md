@@ -11,6 +11,7 @@
 |**createdAt** | **String** |  |  [optional] |
 |**customId** | **String** |  |  [optional] |
 |**id** | **String** | The payout unique identifier |  [optional] |
+|**onBehalfOf** | **List&lt;String&gt;** |  |  [optional] |
 |**paymentAccountId** | **String** | The recipient payment account receiving funds |  [optional] |
 |**purpose** | [**PurposeEnum**](#PurposeEnum) |  |  [optional] |
 |**sender** | [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  |  [optional] |

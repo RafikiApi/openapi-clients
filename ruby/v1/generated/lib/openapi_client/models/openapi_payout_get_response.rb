@@ -24,6 +24,8 @@ module OpenapiClient
     # The payout unique identifier
     attr_accessor :id
 
+    attr_accessor :on_behalf_of
+
     # The recipient payment account receiving funds
     attr_accessor :payment_account_id
 
@@ -68,6 +70,7 @@ module OpenapiClient
         :'created_at' => :'created_at',
         :'custom_id' => :'custom_id',
         :'id' => :'id',
+        :'on_behalf_of' => :'on_behalf_of',
         :'payment_account_id' => :'payment_account_id',
         :'purpose' => :'purpose',
         :'receipt' => :'receipt',
@@ -89,6 +92,7 @@ module OpenapiClient
         :'created_at' => :'String',
         :'custom_id' => :'String',
         :'id' => :'String',
+        :'on_behalf_of' => :'Array<String>',
         :'payment_account_id' => :'String',
         :'purpose' => :'String',
         :'receipt' => :'String',
@@ -133,6 +137,12 @@ module OpenapiClient
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'on_behalf_of')
+        if (value = attributes[:'on_behalf_of']).is_a?(Array)
+          self.on_behalf_of = value
+        end
       end
 
       if attributes.key?(:'payment_account_id')
@@ -196,6 +206,7 @@ module OpenapiClient
           created_at == o.created_at &&
           custom_id == o.custom_id &&
           id == o.id &&
+          on_behalf_of == o.on_behalf_of &&
           payment_account_id == o.payment_account_id &&
           purpose == o.purpose &&
           receipt == o.receipt &&
@@ -213,7 +224,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, created_at, custom_id, id, payment_account_id, purpose, receipt, sender, state, wallet_id].hash
+      [amount, created_at, custom_id, id, on_behalf_of, payment_account_id, purpose, receipt, sender, state, wallet_id].hash
     end
 
     # Builds the object from hash

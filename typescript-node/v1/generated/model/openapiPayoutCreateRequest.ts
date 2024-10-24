@@ -21,6 +21,7 @@ export class OpenapiPayoutCreateRequest {
     * An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
     */
     'customId'?: string;
+    'onBehalfOf'?: Array<string>;
     'paymentAccount'?: OpenapiPaymentAccountGetOrCreateRequest;
     /**
     * <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
@@ -48,6 +49,11 @@ export class OpenapiPayoutCreateRequest {
             "name": "customId",
             "baseName": "custom_id",
             "type": "string"
+        },
+        {
+            "name": "onBehalfOf",
+            "baseName": "on_behalf_of",
+            "type": "Array<string>"
         },
         {
             "name": "paymentAccount",

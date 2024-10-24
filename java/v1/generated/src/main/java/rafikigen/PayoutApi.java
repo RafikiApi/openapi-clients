@@ -31,6 +31,7 @@ import org.openapitools.client.model.OpenapiPayoutCreateRequest;
 import org.openapitools.client.model.OpenapiResponseBodyIdempotencyConflict;
 import org.openapitools.client.model.OpenapiResponseBodyInternalServerError;
 import org.openapitools.client.model.OpenapiResponseBodyNotFound;
+import org.openapitools.client.model.OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable;
 import org.openapitools.client.model.OpenapiResponseBodyValidationFailed;
 import org.openapitools.client.model.OpenapiResponseBodyWalletInsufficientBalance;
 import org.openapitools.client.model.PayoutsGet200Response;
@@ -379,6 +380,7 @@ public class PayoutApi {
         <tr><td> 409 </td><td> Idempotency conflict, see [error codes](error-codes#idempotency_race-http-409) </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Receiving bank/operation temporarily unavailable see [error codes](error-codes) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call payoutsPostCall(String xIdempotencyKey, OpenapiPayoutCreateRequest openapiPayoutCreateRequest, final ApiCallback _callback) throws ApiException {
@@ -461,6 +463,7 @@ public class PayoutApi {
         <tr><td> 409 </td><td> Idempotency conflict, see [error codes](error-codes#idempotency_race-http-409) </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Receiving bank/operation temporarily unavailable see [error codes](error-codes) </td><td>  -  </td></tr>
      </table>
      */
     public PayoutsPost202Response payoutsPost(String xIdempotencyKey, OpenapiPayoutCreateRequest openapiPayoutCreateRequest) throws ApiException {
@@ -483,6 +486,7 @@ public class PayoutApi {
         <tr><td> 409 </td><td> Idempotency conflict, see [error codes](error-codes#idempotency_race-http-409) </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Receiving bank/operation temporarily unavailable see [error codes](error-codes) </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PayoutsPost202Response> payoutsPostWithHttpInfo(String xIdempotencyKey, OpenapiPayoutCreateRequest openapiPayoutCreateRequest) throws ApiException {
@@ -507,6 +511,7 @@ public class PayoutApi {
         <tr><td> 409 </td><td> Idempotency conflict, see [error codes](error-codes#idempotency_race-http-409) </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation failed, see [error codes](error-codes#validation_failed-http-422) </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Receiving bank/operation temporarily unavailable see [error codes](error-codes) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call payoutsPostAsync(String xIdempotencyKey, OpenapiPayoutCreateRequest openapiPayoutCreateRequest, final ApiCallback<PayoutsPost202Response> _callback) throws ApiException {

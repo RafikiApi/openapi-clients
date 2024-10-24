@@ -130,15 +130,16 @@ class LookupApi
      * @param  string $payment_account_type The payment account type to lookup for (required)
      * @param  string $account_number The account number, that is either the mobile money number or bank account number (required)
      * @param  string $bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param  string $operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lookupsAccountNumberGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\LookupsAccountNumberGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyLookupAccountNotFound|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
      */
-    public function lookupsAccountNumberGet($payment_account_type, $account_number, $bank_id = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
+    public function lookupsAccountNumberGet($payment_account_type, $account_number, $bank_id = null, $operator = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
     {
-        list($response) = $this->lookupsAccountNumberGetWithHttpInfo($payment_account_type, $account_number, $bank_id, $contentType);
+        list($response) = $this->lookupsAccountNumberGetWithHttpInfo($payment_account_type, $account_number, $bank_id, $operator, $contentType);
         return $response;
     }
 
@@ -150,15 +151,16 @@ class LookupApi
      * @param  string $payment_account_type The payment account type to lookup for (required)
      * @param  string $account_number The account number, that is either the mobile money number or bank account number (required)
      * @param  string $bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param  string $operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lookupsAccountNumberGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\LookupsAccountNumberGet200Response|\OpenAPI\Client\Model\OpenapiResponseBodyLookupAccountNotFound|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function lookupsAccountNumberGetWithHttpInfo($payment_account_type, $account_number, $bank_id = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
+    public function lookupsAccountNumberGetWithHttpInfo($payment_account_type, $account_number, $bank_id = null, $operator = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
     {
-        $request = $this->lookupsAccountNumberGetRequest($payment_account_type, $account_number, $bank_id, $contentType);
+        $request = $this->lookupsAccountNumberGetRequest($payment_account_type, $account_number, $bank_id, $operator, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -321,14 +323,15 @@ class LookupApi
      * @param  string $payment_account_type The payment account type to lookup for (required)
      * @param  string $account_number The account number, that is either the mobile money number or bank account number (required)
      * @param  string $bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param  string $operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lookupsAccountNumberGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lookupsAccountNumberGetAsync($payment_account_type, $account_number, $bank_id = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
+    public function lookupsAccountNumberGetAsync($payment_account_type, $account_number, $bank_id = null, $operator = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
     {
-        return $this->lookupsAccountNumberGetAsyncWithHttpInfo($payment_account_type, $account_number, $bank_id, $contentType)
+        return $this->lookupsAccountNumberGetAsyncWithHttpInfo($payment_account_type, $account_number, $bank_id, $operator, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -344,15 +347,16 @@ class LookupApi
      * @param  string $payment_account_type The payment account type to lookup for (required)
      * @param  string $account_number The account number, that is either the mobile money number or bank account number (required)
      * @param  string $bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param  string $operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lookupsAccountNumberGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lookupsAccountNumberGetAsyncWithHttpInfo($payment_account_type, $account_number, $bank_id = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
+    public function lookupsAccountNumberGetAsyncWithHttpInfo($payment_account_type, $account_number, $bank_id = null, $operator = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
     {
         $returnType = '\OpenAPI\Client\Model\LookupsAccountNumberGet200Response';
-        $request = $this->lookupsAccountNumberGetRequest($payment_account_type, $account_number, $bank_id, $contentType);
+        $request = $this->lookupsAccountNumberGetRequest($payment_account_type, $account_number, $bank_id, $operator, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -396,12 +400,13 @@ class LookupApi
      * @param  string $payment_account_type The payment account type to lookup for (required)
      * @param  string $account_number The account number, that is either the mobile money number or bank account number (required)
      * @param  string $bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param  string $operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lookupsAccountNumberGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function lookupsAccountNumberGetRequest($payment_account_type, $account_number, $bank_id = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
+    public function lookupsAccountNumberGetRequest($payment_account_type, $account_number, $bank_id = null, $operator = null, string $contentType = self::contentTypes['lookupsAccountNumberGet'][0])
     {
 
         // verify the required parameter 'payment_account_type' is set
@@ -417,6 +422,7 @@ class LookupApi
                 'Missing the required parameter $account_number when calling lookupsAccountNumberGet'
             );
         }
+
 
 
 
@@ -440,6 +446,15 @@ class LookupApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $bank_id,
             'bank_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $operator,
+            'operator', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

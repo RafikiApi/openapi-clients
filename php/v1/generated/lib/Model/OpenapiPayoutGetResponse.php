@@ -61,6 +61,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'created_at' => 'string',
         'custom_id' => 'string',
         'id' => 'string',
+        'on_behalf_of' => 'string[]',
         'payment_account_id' => 'string',
         'purpose' => 'string',
         'receipt' => 'string',
@@ -81,6 +82,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'created_at' => 'RFC 3339',
         'custom_id' => '[a-zA-Z0-9-_]{1,64}',
         'id' => null,
+        'on_behalf_of' => null,
         'payment_account_id' => null,
         'purpose' => null,
         'receipt' => null,
@@ -99,6 +101,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
 		'created_at' => false,
 		'custom_id' => false,
 		'id' => false,
+		'on_behalf_of' => false,
 		'payment_account_id' => false,
 		'purpose' => false,
 		'receipt' => false,
@@ -197,6 +200,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'created_at' => 'created_at',
         'custom_id' => 'custom_id',
         'id' => 'id',
+        'on_behalf_of' => 'on_behalf_of',
         'payment_account_id' => 'payment_account_id',
         'purpose' => 'purpose',
         'receipt' => 'receipt',
@@ -215,6 +219,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'created_at' => 'setCreatedAt',
         'custom_id' => 'setCustomId',
         'id' => 'setId',
+        'on_behalf_of' => 'setOnBehalfOf',
         'payment_account_id' => 'setPaymentAccountId',
         'purpose' => 'setPurpose',
         'receipt' => 'setReceipt',
@@ -233,6 +238,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'created_at' => 'getCreatedAt',
         'custom_id' => 'getCustomId',
         'id' => 'getId',
+        'on_behalf_of' => 'getOnBehalfOf',
         'payment_account_id' => 'getPaymentAccountId',
         'purpose' => 'getPurpose',
         'receipt' => 'getReceipt',
@@ -339,6 +345,7 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('custom_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('on_behalf_of', $data ?? [], null);
         $this->setIfExists('payment_account_id', $data ?? [], null);
         $this->setIfExists('purpose', $data ?? [], null);
         $this->setIfExists('receipt', $data ?? [], null);
@@ -502,6 +509,33 @@ class OpenapiPayoutGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_of
+     *
+     * @return string[]|null
+     */
+    public function getOnBehalfOf()
+    {
+        return $this->container['on_behalf_of'];
+    }
+
+    /**
+     * Sets on_behalf_of
+     *
+     * @param string[]|null $on_behalf_of on_behalf_of
+     *
+     * @return self
+     */
+    public function setOnBehalfOf($on_behalf_of)
+    {
+        if (is_null($on_behalf_of)) {
+            throw new \InvalidArgumentException('non-nullable on_behalf_of cannot be null');
+        }
+        $this->container['on_behalf_of'] = $on_behalf_of;
 
         return $this;
     }

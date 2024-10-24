@@ -241,6 +241,11 @@ class OpenapiPaymentAccountGetOrCreateResponseMobileMoney implements ModelInterf
     public const OPERATOR_HALOTEL = 'HALOTEL';
     public const OPERATOR_TTCL = 'TTCL';
     public const OPERATOR_MTN = 'MTN';
+    public const OPERATOR_VODAFONE = 'VODAFONE';
+    public const OPERATOR_MOOV = 'MOOV';
+    public const OPERATOR_ORANGE = 'ORANGE';
+    public const OPERATOR_FREE = 'FREE';
+    public const OPERATOR_EXPRESSO = 'EXPRESSO';
 
     /**
      * Gets allowable values of the enum
@@ -257,6 +262,11 @@ class OpenapiPaymentAccountGetOrCreateResponseMobileMoney implements ModelInterf
             self::OPERATOR_HALOTEL,
             self::OPERATOR_TTCL,
             self::OPERATOR_MTN,
+            self::OPERATOR_VODAFONE,
+            self::OPERATOR_MOOV,
+            self::OPERATOR_ORANGE,
+            self::OPERATOR_FREE,
+            self::OPERATOR_EXPRESSO,
         ];
     }
 

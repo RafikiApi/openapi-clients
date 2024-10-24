@@ -18,6 +18,8 @@ pub struct OpenapiPeriodPayoutCreateRequest {
     /// An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
     #[serde(rename = "custom_id", skip_serializing_if = "Option::is_none")]
     pub custom_id: Option<String>,
+    #[serde(rename = "on_behalf_of", skip_serializing_if = "Option::is_none")]
+    pub on_behalf_of: Option<Vec<String>>,
     #[serde(rename = "payment_account", skip_serializing_if = "Option::is_none")]
     pub payment_account: Option<Box<crate::models::OpenapiPeriodPaymentAccountGetOrCreateRequest>>,
     /// <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
@@ -38,6 +40,7 @@ impl OpenapiPeriodPayoutCreateRequest {
         OpenapiPeriodPayoutCreateRequest {
             amount: None,
             custom_id: None,
+            on_behalf_of: None,
             payment_account: None,
             payment_account_id: None,
             purpose: None,

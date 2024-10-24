@@ -141,7 +141,37 @@ OpenapiPaymentAccountGetOrCreateResponseMobileMoney['OperatorEnum'] = {
      * value: "MTN"
      * @const
      */
-    "MTN": "MTN"
+    "MTN": "MTN",
+
+    /**
+     * value: "VODAFONE"
+     * @const
+     */
+    "VODAFONE": "VODAFONE",
+
+    /**
+     * value: "MOOV"
+     * @const
+     */
+    "MOOV": "MOOV",
+
+    /**
+     * value: "ORANGE"
+     * @const
+     */
+    "ORANGE": "ORANGE",
+
+    /**
+     * value: "FREE"
+     * @const
+     */
+    "FREE": "FREE",
+
+    /**
+     * value: "EXPRESSO"
+     * @const
+     */
+    "EXPRESSO": "EXPRESSO"
 };
 
 

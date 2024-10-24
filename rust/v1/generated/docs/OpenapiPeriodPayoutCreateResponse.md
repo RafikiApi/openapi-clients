@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_at** | Option<**String**> |  | [optional]
 **custom_id** | Option<**String**> |  | [optional]
 **id** | Option<**String**> | The payout unique identifier | [optional]
+**on_behalf_of** | Option<**Vec<String>**> |  | [optional]
 **payment_account_id** | Option<**String**> | The recipient payment account receiving funds | [optional]
 **purpose** | Option<**String**> |  | [optional]
 **sender** | Option<[**crate::models::OpenapiPayoutCreateResponseSender**](openapi_PayoutCreateResponse_sender.md)> |  | [optional]

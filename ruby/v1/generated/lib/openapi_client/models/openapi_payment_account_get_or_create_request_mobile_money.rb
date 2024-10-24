@@ -106,7 +106,7 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      operator_validator = EnumAttributeValidator.new('String', ["SAFARICOM", "AIRTEL", "VODACOM", "TIGO", "HALOTEL", "TTCL", "MTN"])
+      operator_validator = EnumAttributeValidator.new('String', ["SAFARICOM", "AIRTEL", "VODACOM", "TIGO", "HALOTEL", "TTCL", "MTN", "VODAFONE", "MOOV", "ORANGE", "FREE", "EXPRESSO"])
       return false unless operator_validator.valid?(@operator)
       true
     end
@@ -114,7 +114,7 @@ module OpenapiClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operator Object to be assigned
     def operator=(operator)
-      validator = EnumAttributeValidator.new('String', ["SAFARICOM", "AIRTEL", "VODACOM", "TIGO", "HALOTEL", "TTCL", "MTN"])
+      validator = EnumAttributeValidator.new('String', ["SAFARICOM", "AIRTEL", "VODACOM", "TIGO", "HALOTEL", "TTCL", "MTN", "VODAFONE", "MOOV", "ORANGE", "FREE", "EXPRESSO"])
       unless validator.valid?(operator)
         fail ArgumentError, "invalid value for \"operator\", must be one of #{validator.allowable_values}."
       end

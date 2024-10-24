@@ -43,6 +43,11 @@ export namespace OpenapiPaymentAccountGetOrCreateResponseMobileMoney {
         Tigo = <any> 'TIGO',
         Halotel = <any> 'HALOTEL',
         Ttcl = <any> 'TTCL',
-        Mtn = <any> 'MTN'
+        Mtn = <any> 'MTN',
+        Vodafone = <any> 'VODAFONE',
+        Moov = <any> 'MOOV',
+        Orange = <any> 'ORANGE',
+        Free = <any> 'FREE',
+        Expresso = <any> 'EXPRESSO'
     }
 }

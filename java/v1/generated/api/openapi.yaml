@@ -44,11 +44,16 @@ paths:
 
         In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.
 
+        For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the `LOOKUP_ACCOUNT_NOT_FOUND` error. If we respond with the same error again, it is likely that the account is not registered with the operator.
+
         ### Supported countries/account types
 
-        |  Country  | Mobile Money | Bank Account |
-        |:---------:|:------------:|:------------:|
-        |🇳🇬 Nigeria |      ❌      |      ✅      |
+        | Country       | Mobile Money | Bank Account |
+        |:--------------|:------------:|:------------:|
+        | 🇳🇬 Nigeria  |     ❌       |      ✅      |
+        | 🇺🇬 Uganda   |     ✅       |      ✅      |
+        | 🇬🇭 Ghana    |     ✅       |      ✅      |
+        | 🇰🇪 Kenya    |     ✅       |      ✅      |
       parameters:
       - description: The payment account type to lookup for
         explode: true
@@ -80,6 +85,21 @@ paths:
         schema:
           type: string
         style: simple
+      - description: "If payment_account_type is MOBILE_MONEY, this will be a mandatory\
+          \ field representing the mobile money operator"
+        explode: true
+        in: query
+        name: operator
+        required: false
+        schema:
+          enum:
+          - AIRTEL
+          - TIGO
+          - MTN
+          - VODAFONE
+          - SAFARICOM
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -176,11 +196,17 @@ paths:
 
         The following table outlines the operators supported by our API for each specific country.
 
-        | Country | Operators                            |
-        | ------- | ------------------------------------ |
-        | KE      | SAFARICOM, AIRTEL                    |
-        | TZ      | VODACOM, AIRTEL, TIGO, HALOTEL, TTCL |
-        | RW      | AIRTEL, MTN                          |
+
+        | Country   | Operators                            |
+        | --------- | ------------------------------------ |
+        | 🇰🇪 KE     | SAFARICOM, AIRTEL                    |
+        | 🇹🇿 TZ     | VODACOM, AIRTEL, TIGO, HALOTEL, TTCL |
+        | 🇷🇼 RW     | AIRTEL, MTN                          |
+        | 🇬🇭 GH     | AIRTEL, MTN, TIGO, VODAFONE          |
+        | 🇺🇬 UG     | AIRTEL, MTN                          |
+        | 🇨🇮 CI     | MTN, ORANGE, MOOV                    |
+        | 🇸🇳 SN     | ORANGE, FREE, EXPRESSO               |
+        | 🇨🇲 CM     | MTN, ORANGE                          |
 
         ### Bank account
 
@@ -1340,6 +1366,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/openapi.ResponseBodyInternalServerError'
           description: Internal server error
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openapi.ResponseBodyPayoutPaymentAccountTemporarilyUnavailable'
+          description: "Receiving bank/operation temporarily unavailable see [error\
+            \ codes](error-codes)"
       security:
       - Bearer: []
       summary: Create
@@ -1493,6 +1526,13 @@ components:
           example: custom-id-xxx
           format: "[a-zA-Z0-9-_]{1,64}"
           type: string
+        on_behalf_of:
+          example:
+          - "[\"org-xxx\"]"
+          items:
+            format: ".{1,32}"
+            type: string
+          type: array
         payment_account:
           allOf:
           - $ref: '#/components/schemas/openapi.PaymentAccountGetOrCreateRequest'
@@ -1569,6 +1609,12 @@ components:
           description: The payout unique identifier
           example: pyt-xxx
           type: string
+        on_behalf_of:
+          example:
+          - "[\"org-xxx\"]"
+          items:
+            type: string
+          type: array
         payment_account_id:
           description: The recipient payment account receiving funds
           example: pac-xxx
@@ -1615,6 +1661,12 @@ components:
           description: The payout unique identifier
           example: pyt-xxx
           type: string
+        on_behalf_of:
+          example:
+          - "[\"org-xxx\"]"
+          items:
+            type: string
+          type: array
         payment_account_id:
           description: The recipient payment account receiving funds
           example: pac-xxx
@@ -1702,6 +1754,17 @@ components:
         message:
           description: E.g. "The resource you are looking for cannot be found."
           example: The resource you are looking for cannot be found.
+          type: string
+      type: object
+    openapi.ResponseBodyPayoutPaymentAccountTemporarilyUnavailable:
+      properties:
+        code:
+          description: '`PAYOUT_BANK_TEMPORARILY_UNAVAILABLE`'
+          example: PAYOUT_BANK_TEMPORARILY_UNAVAILABLE
+          type: string
+        message:
+          description: E.g. "Payout to this bank is not available."
+          example: Payout to this bank is not available.
           type: string
       type: object
     openapi.ResponseBodySuccessCollection:
@@ -1923,6 +1986,11 @@ components:
           - HALOTEL
           - TTCL
           - MTN
+          - VODAFONE
+          - MOOV
+          - ORANGE
+          - FREE
+          - EXPRESSO
           type: string
       type: object
       x-order: "4"
@@ -1963,6 +2031,11 @@ components:
           - HALOTEL
           - TTCL
           - MTN
+          - VODAFONE
+          - MOOV
+          - ORANGE
+          - FREE
+          - EXPRESSO
           example: SAFARICOM
           type: string
       type: object

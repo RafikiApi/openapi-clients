@@ -62,6 +62,9 @@ class OpenapiPayoutCreateResponse {
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
+            if (data.hasOwnProperty('on_behalf_of')) {
+                obj['on_behalf_of'] = ApiClient.convertToType(data['on_behalf_of'], ['String']);
+            }
             if (data.hasOwnProperty('payment_account_id')) {
                 obj['payment_account_id'] = ApiClient.convertToType(data['payment_account_id'], 'String');
             }
@@ -102,6 +105,10 @@ class OpenapiPayoutCreateResponse {
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['on_behalf_of'])) {
+            throw new Error("Expected the field `on_behalf_of` to be an array in the JSON data but got " + data['on_behalf_of']);
         }
         // ensure the json data is a string
         if (data['payment_account_id'] && !(typeof data['payment_account_id'] === 'string' || data['payment_account_id'] instanceof String)) {
@@ -152,6 +159,11 @@ OpenapiPayoutCreateResponse.prototype['custom_id'] = undefined;
  * @member {String} id
  */
 OpenapiPayoutCreateResponse.prototype['id'] = undefined;
+
+/**
+ * @member {Array.<String>} on_behalf_of
+ */
+OpenapiPayoutCreateResponse.prototype['on_behalf_of'] = undefined;
 
 /**
  * The recipient payment account receiving funds

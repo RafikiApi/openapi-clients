@@ -847,7 +847,7 @@ class PayoutApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError
+     * @return \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError|\OpenAPI\Client\Model\OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable
      */
     public function payoutsPost($x_idempotency_key, $openapi_payout_create_request, string $contentType = self::contentTypes['payoutsPost'][0])
     {
@@ -866,7 +866,7 @@ class PayoutApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PayoutsPost202Response|\OpenAPI\Client\Model\OpenapiResponseBodyWalletInsufficientBalance|\OpenAPI\Client\Model\OpenapiResponseBodyIdempotencyConflict|\OpenAPI\Client\Model\OpenapiResponseBodyValidationFailed|\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError|\OpenAPI\Client\Model\OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable, HTTP status code, HTTP response headers (array of strings)
      */
     public function payoutsPostWithHttpInfo($x_idempotency_key, $openapi_payout_create_request, string $contentType = self::contentTypes['payoutsPost'][0])
     {
@@ -983,6 +983,21 @@ class PayoutApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 503:
+                    if ('\OpenAPI\Client\Model\OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\PayoutsPost202Response';
@@ -1039,6 +1054,14 @@ class PayoutApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OpenapiResponseBodyInternalServerError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

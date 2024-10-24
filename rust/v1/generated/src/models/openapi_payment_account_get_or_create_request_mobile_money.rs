@@ -47,6 +47,16 @@ pub enum Operator {
     Ttcl,
     #[serde(rename = "MTN")]
     Mtn,
+    #[serde(rename = "VODAFONE")]
+    Vodafone,
+    #[serde(rename = "MOOV")]
+    Moov,
+    #[serde(rename = "ORANGE")]
+    Orange,
+    #[serde(rename = "FREE")]
+    Free,
+    #[serde(rename = "EXPRESSO")]
+    Expresso,
 }
 
 impl Default for Operator {

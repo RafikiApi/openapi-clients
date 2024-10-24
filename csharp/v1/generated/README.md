@@ -167,6 +167,7 @@ Class | Method | HTTP request | Description
  - [Model.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
  - [Model.OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [Model.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [Model.OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable](docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md)
  - [Model.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [Model.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
  - [Model.OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)

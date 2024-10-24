@@ -20,11 +20,12 @@ module OpenapiClient
       @api_client = api_client
     end
     # Get
-    # The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+    # The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the `LOOKUP_ACCOUNT_NOT_FOUND` error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
     # @param payment_account_type [String] The payment account type to lookup for
     # @param account_number [String] The account number, that is either the mobile money number or bank account number
     # @param [Hash] opts the optional parameters
     # @option opts [String] :bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to
+    # @option opts [String] :operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator
     # @return [LookupsAccountNumberGet200Response]
     def lookups_account_number_get(payment_account_type, account_number, opts = {})
       data, _status_code, _headers = lookups_account_number_get_with_http_info(payment_account_type, account_number, opts)
@@ -32,11 +33,12 @@ module OpenapiClient
     end
 
     # Get
-    # The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+    # The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the &#x60;LOOKUP_ACCOUNT_NOT_FOUND&#x60; error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
     # @param payment_account_type [String] The payment account type to lookup for
     # @param account_number [String] The account number, that is either the mobile money number or bank account number
     # @param [Hash] opts the optional parameters
     # @option opts [String] :bank_id If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to
+    # @option opts [String] :operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator
     # @return [Array<(LookupsAccountNumberGet200Response, Integer, Hash)>] LookupsAccountNumberGet200Response data, response status code and response headers
     def lookups_account_number_get_with_http_info(payment_account_type, account_number, opts = {})
       if @api_client.config.debugging
@@ -55,6 +57,10 @@ module OpenapiClient
       if @api_client.config.client_side_validation && account_number.nil?
         fail ArgumentError, "Missing the required parameter 'account_number' when calling LookupApi.lookups_account_number_get"
       end
+      allowable_values = ["AIRTEL", "TIGO", "MTN", "VODAFONE", "SAFARICOM"]
+      if @api_client.config.client_side_validation && opts[:'operator'] && !allowable_values.include?(opts[:'operator'])
+        fail ArgumentError, "invalid value for \"operator\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/lookups/{accountNumber}'.sub('{' + 'accountNumber' + '}', CGI.escape(account_number.to_s))
 
@@ -62,6 +68,7 @@ module OpenapiClient
       query_params = opts[:query_params] || {}
       query_params[:'payment_account_type'] = payment_account_type
       query_params[:'bank_id'] = opts[:'bank_id'] if !opts[:'bank_id'].nil?
+      query_params[:'operator'] = opts[:'operator'] if !opts[:'operator'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

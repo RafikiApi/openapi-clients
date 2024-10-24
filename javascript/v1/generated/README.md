@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
  - [Resources.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
  - [Resources.OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [Resources.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [Resources.OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable](docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md)
  - [Resources.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [Resources.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
  - [Resources.OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)

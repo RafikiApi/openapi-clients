@@ -44,6 +44,7 @@ docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
 docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
+docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
 docs/OpenapiResponseBodySuccessNoMeta.md
@@ -124,6 +125,7 @@ src/main/java/org/openapitools/client/model/OpenapiResponseBodyIdempotencyConfli
 src/main/java/org/openapitools/client/model/OpenapiResponseBodyInternalServerError.java
 src/main/java/org/openapitools/client/model/OpenapiResponseBodyLookupAccountNotFound.java
 src/main/java/org/openapitools/client/model/OpenapiResponseBodyNotFound.java
+src/main/java/org/openapitools/client/model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.java
 src/main/java/org/openapitools/client/model/OpenapiResponseBodySuccessCollection.java
 src/main/java/org/openapitools/client/model/OpenapiResponseBodySuccessCollectionNoMeta.java
 src/main/java/org/openapitools/client/model/OpenapiResponseBodySuccessNoMeta.java

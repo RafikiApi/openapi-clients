@@ -23,6 +23,11 @@
 | HALOTEL | &quot;HALOTEL&quot; |
 | TTCL | &quot;TTCL&quot; |
 | MTN | &quot;MTN&quot; |
+| VODAFONE | &quot;VODAFONE&quot; |
+| MOOV | &quot;MOOV&quot; |
+| ORANGE | &quot;ORANGE&quot; |
+| FREE | &quot;FREE&quot; |
+| EXPRESSO | &quot;EXPRESSO&quot; |
 
 
 

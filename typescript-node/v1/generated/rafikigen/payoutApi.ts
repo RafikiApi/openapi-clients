@@ -19,6 +19,7 @@ import { OpenapiPayoutCreateRequest } from '../model/openapiPayoutCreateRequest'
 import { OpenapiResponseBodyIdempotencyConflict } from '../model/openapiResponseBodyIdempotencyConflict';
 import { OpenapiResponseBodyInternalServerError } from '../model/openapiResponseBodyInternalServerError';
 import { OpenapiResponseBodyNotFound } from '../model/openapiResponseBodyNotFound';
+import { OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable } from '../model/openapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable';
 import { OpenapiResponseBodyValidationFailed } from '../model/openapiResponseBodyValidationFailed';
 import { OpenapiResponseBodyWalletInsufficientBalance } from '../model/openapiResponseBodyWalletInsufficientBalance';
 import { PayoutsGet200Response } from '../model/payoutsGet200Response';

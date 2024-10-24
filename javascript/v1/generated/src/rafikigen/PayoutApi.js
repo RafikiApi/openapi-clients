@@ -17,6 +17,7 @@ import OpenapiPayoutCreateRequest from '../model/OpenapiPayoutCreateRequest';
 import OpenapiResponseBodyIdempotencyConflict from '../model/OpenapiResponseBodyIdempotencyConflict';
 import OpenapiResponseBodyInternalServerError from '../model/OpenapiResponseBodyInternalServerError';
 import OpenapiResponseBodyNotFound from '../model/OpenapiResponseBodyNotFound';
+import OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable from '../model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable';
 import OpenapiResponseBodyValidationFailed from '../model/OpenapiResponseBodyValidationFailed';
 import OpenapiResponseBodyWalletInsufficientBalance from '../model/OpenapiResponseBodyWalletInsufficientBalance';
 import PayoutsGet200Response from '../model/PayoutsGet200Response';
