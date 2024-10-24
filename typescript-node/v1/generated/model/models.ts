@@ -37,6 +37,7 @@ export * from './openapiResponseBodyIdempotencyConflict';
 export * from './openapiResponseBodyInternalServerError';
 export * from './openapiResponseBodyLookupAccountNotFound';
 export * from './openapiResponseBodyNotFound';
+export * from './openapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable';
 export * from './openapiResponseBodySuccessCollection';
 export * from './openapiResponseBodySuccessCollectionNoMeta';
 export * from './openapiResponseBodySuccessNoMeta';
@@ -101,6 +102,7 @@ import { OpenapiResponseBodyIdempotencyConflict } from './openapiResponseBodyIde
 import { OpenapiResponseBodyInternalServerError } from './openapiResponseBodyInternalServerError';
 import { OpenapiResponseBodyLookupAccountNotFound } from './openapiResponseBodyLookupAccountNotFound';
 import { OpenapiResponseBodyNotFound } from './openapiResponseBodyNotFound';
+import { OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable } from './openapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable';
 import { OpenapiResponseBodySuccessCollection } from './openapiResponseBodySuccessCollection';
 import { OpenapiResponseBodySuccessCollectionNoMeta } from './openapiResponseBodySuccessCollectionNoMeta';
 import { OpenapiResponseBodySuccessNoMeta } from './openapiResponseBodySuccessNoMeta';
@@ -181,6 +183,7 @@ let typeMap: {[index: string]: any} = {
     "OpenapiResponseBodyInternalServerError": OpenapiResponseBodyInternalServerError,
     "OpenapiResponseBodyLookupAccountNotFound": OpenapiResponseBodyLookupAccountNotFound,
     "OpenapiResponseBodyNotFound": OpenapiResponseBodyNotFound,
+    "OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable": OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable,
     "OpenapiResponseBodySuccessCollection": OpenapiResponseBodySuccessCollection,
     "OpenapiResponseBodySuccessCollectionNoMeta": OpenapiResponseBodySuccessCollectionNoMeta,
     "OpenapiResponseBodySuccessNoMeta": OpenapiResponseBodySuccessNoMeta,

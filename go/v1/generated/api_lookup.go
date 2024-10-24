@@ -29,6 +29,7 @@ type ApiLookupsAccountNumberGetRequest struct {
 	paymentAccountType *string
 	accountNumber string
 	bankId *string
+	operator *string
 }
 
 // The payment account type to lookup for
@@ -40,6 +41,12 @@ func (r ApiLookupsAccountNumberGetRequest) PaymentAccountType(paymentAccountType
 // If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to
 func (r ApiLookupsAccountNumberGetRequest) BankId(bankId string) ApiLookupsAccountNumberGetRequest {
 	r.bankId = &bankId
+	return r
+}
+
+// If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator
+func (r ApiLookupsAccountNumberGetRequest) Operator(operator string) ApiLookupsAccountNumberGetRequest {
+	r.operator = &operator
 	return r
 }
 
@@ -60,11 +67,16 @@ While we strive to ensure that our lookup sources are always up to date with the
 
 In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.
 
+For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the `LOOKUP_ACCOUNT_NOT_FOUND` error. If we respond with the same error again, it is likely that the account is not registered with the operator.
+
 ### Supported countries/account types
 
-|  Country  | Mobile Money | Bank Account |
-|:---------:|:------------:|:------------:|
-|🇳🇬 Nigeria |      ❌      |      ✅      |
+| Country       | Mobile Money | Bank Account |
+|:--------------|:------------:|:------------:|
+| 🇳🇬 Nigeria  |     ❌       |      ✅      |
+| 🇺🇬 Uganda   |     ✅       |      ✅      |
+| 🇬🇭 Ghana    |     ✅       |      ✅      |
+| 🇰🇪 Kenya    |     ✅       |      ✅      |
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -107,6 +119,9 @@ func (a *LookupAPIService) LookupsAccountNumberGetExecute(r ApiLookupsAccountNum
 	parameterAddToHeaderOrQuery(localVarQueryParams, "payment_account_type", r.paymentAccountType, "")
 	if r.bankId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_id", r.bankId, "")
+	}
+	if r.operator != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "operator", r.operator, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

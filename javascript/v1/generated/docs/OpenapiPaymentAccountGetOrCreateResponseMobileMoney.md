@@ -26,6 +26,16 @@ Name | Type | Description | Notes
 
 * `MTN` (value: `"MTN"`)
 
+* `VODAFONE` (value: `"VODAFONE"`)
+
+* `MOOV` (value: `"MOOV"`)
+
+* `ORANGE` (value: `"ORANGE"`)
+
+* `FREE` (value: `"FREE"`)
+
+* `EXPRESSO` (value: `"EXPRESSO"`)
+
 
 
 

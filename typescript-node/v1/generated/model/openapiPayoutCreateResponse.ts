@@ -23,6 +23,7 @@ export class OpenapiPayoutCreateResponse {
     * The payout unique identifier
     */
     'id'?: string;
+    'onBehalfOf'?: Array<string>;
     /**
     * The recipient payment account receiving funds
     */
@@ -57,6 +58,11 @@ export class OpenapiPayoutCreateResponse {
             "name": "id",
             "baseName": "id",
             "type": "string"
+        },
+        {
+            "name": "onBehalfOf",
+            "baseName": "on_behalf_of",
+            "type": "Array<string>"
         },
         {
             "name": "paymentAccountId",

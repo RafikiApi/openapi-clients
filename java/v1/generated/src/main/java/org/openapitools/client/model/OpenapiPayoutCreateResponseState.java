@@ -49,7 +49,7 @@ import invalidPackageName.JSON;
 /**
  * OpenapiPayoutCreateResponseState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-06T15:34:03.279613Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T12:18:08.434805Z[Etc/UTC]")
 public class OpenapiPayoutCreateResponseState {
   /**
    * The state code signifies the overall status of a payout. For detailed information about the meaning of each state, please consult the lifecycle section above.

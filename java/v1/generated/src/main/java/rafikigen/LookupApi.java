@@ -80,6 +80,7 @@ public class LookupApi {
      * @param paymentAccountType The payment account type to lookup for (required)
      * @param accountNumber The account number, that is either the mobile money number or bank account number (required)
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -92,7 +93,7 @@ public class LookupApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call lookupsAccountNumberGetCall(String paymentAccountType, String accountNumber, String bankId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call lookupsAccountNumberGetCall(String paymentAccountType, String accountNumber, String bankId, String operator, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -126,6 +127,10 @@ public class LookupApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_id", bankId));
         }
 
+        if (operator != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("operator", operator));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -146,7 +151,7 @@ public class LookupApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call lookupsAccountNumberGetValidateBeforeCall(String paymentAccountType, String accountNumber, String bankId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call lookupsAccountNumberGetValidateBeforeCall(String paymentAccountType, String accountNumber, String bankId, String operator, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'paymentAccountType' is set
         if (paymentAccountType == null) {
             throw new ApiException("Missing the required parameter 'paymentAccountType' when calling lookupsAccountNumberGet(Async)");
@@ -157,16 +162,17 @@ public class LookupApi {
             throw new ApiException("Missing the required parameter 'accountNumber' when calling lookupsAccountNumberGet(Async)");
         }
 
-        return lookupsAccountNumberGetCall(paymentAccountType, accountNumber, bankId, _callback);
+        return lookupsAccountNumberGetCall(paymentAccountType, accountNumber, bankId, operator, _callback);
 
     }
 
     /**
      * Get
-     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the &#x60;LOOKUP_ACCOUNT_NOT_FOUND&#x60; error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
      * @param paymentAccountType The payment account type to lookup for (required)
      * @param accountNumber The account number, that is either the mobile money number or bank account number (required)
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @return LookupsAccountNumberGet200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -178,17 +184,18 @@ public class LookupApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public LookupsAccountNumberGet200Response lookupsAccountNumberGet(String paymentAccountType, String accountNumber, String bankId) throws ApiException {
-        ApiResponse<LookupsAccountNumberGet200Response> localVarResp = lookupsAccountNumberGetWithHttpInfo(paymentAccountType, accountNumber, bankId);
+    public LookupsAccountNumberGet200Response lookupsAccountNumberGet(String paymentAccountType, String accountNumber, String bankId, String operator) throws ApiException {
+        ApiResponse<LookupsAccountNumberGet200Response> localVarResp = lookupsAccountNumberGetWithHttpInfo(paymentAccountType, accountNumber, bankId, operator);
         return localVarResp.getData();
     }
 
     /**
      * Get
-     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the &#x60;LOOKUP_ACCOUNT_NOT_FOUND&#x60; error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
      * @param paymentAccountType The payment account type to lookup for (required)
      * @param accountNumber The account number, that is either the mobile money number or bank account number (required)
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @return ApiResponse&lt;LookupsAccountNumberGet200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -200,18 +207,19 @@ public class LookupApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LookupsAccountNumberGet200Response> lookupsAccountNumberGetWithHttpInfo(String paymentAccountType, String accountNumber, String bankId) throws ApiException {
-        okhttp3.Call localVarCall = lookupsAccountNumberGetValidateBeforeCall(paymentAccountType, accountNumber, bankId, null);
+    public ApiResponse<LookupsAccountNumberGet200Response> lookupsAccountNumberGetWithHttpInfo(String paymentAccountType, String accountNumber, String bankId, String operator) throws ApiException {
+        okhttp3.Call localVarCall = lookupsAccountNumberGetValidateBeforeCall(paymentAccountType, accountNumber, bankId, operator, null);
         Type localVarReturnType = new TypeToken<LookupsAccountNumberGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get (asynchronously)
-     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the &#x60;LOOKUP_ACCOUNT_NOT_FOUND&#x60; error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
      * @param paymentAccountType The payment account type to lookup for (required)
      * @param accountNumber The account number, that is either the mobile money number or bank account number (required)
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param operator If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -224,9 +232,9 @@ public class LookupApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call lookupsAccountNumberGetAsync(String paymentAccountType, String accountNumber, String bankId, final ApiCallback<LookupsAccountNumberGet200Response> _callback) throws ApiException {
+    public okhttp3.Call lookupsAccountNumberGetAsync(String paymentAccountType, String accountNumber, String bankId, String operator, final ApiCallback<LookupsAccountNumberGet200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = lookupsAccountNumberGetValidateBeforeCall(paymentAccountType, accountNumber, bankId, _callback);
+        okhttp3.Call localVarCall = lookupsAccountNumberGetValidateBeforeCall(paymentAccountType, accountNumber, bankId, operator, _callback);
         Type localVarReturnType = new TypeToken<LookupsAccountNumberGet200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

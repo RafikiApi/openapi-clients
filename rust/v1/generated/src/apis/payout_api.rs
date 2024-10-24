@@ -41,6 +41,7 @@ pub enum PayoutsPostError {
     Status409(crate::models::OpenapiPeriodResponseBodyIdempotencyConflict),
     Status422(crate::models::OpenapiPeriodResponseBodyValidationFailed),
     Status500(crate::models::OpenapiPeriodResponseBodyInternalServerError),
+    Status503(crate::models::OpenapiPeriodResponseBodyPayoutPaymentAccountTemporarilyUnavailable),
     UnknownValue(serde_json::Value),
 }
 

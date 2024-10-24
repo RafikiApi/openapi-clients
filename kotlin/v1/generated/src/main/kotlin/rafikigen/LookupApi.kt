@@ -57,11 +57,23 @@ class LookupApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      }
 
     /**
+     * enum for parameter &#x60;operator&#x60;
+     */
+     enum class &#x60;Operator&#x60;LookupsAccountNumberGet(val value: kotlin.String) {
+         @Json(name = "AIRTEL") aIRTEL("AIRTEL"),
+         @Json(name = "TIGO") tIGO("TIGO"),
+         @Json(name = "MTN") mTN("MTN"),
+         @Json(name = "VODAFONE") vODAFONE("VODAFONE"),
+         @Json(name = "SAFARICOM") sAFARICOM("SAFARICOM")
+     }
+
+    /**
      * Get
-     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the &#x60;LOOKUP_ACCOUNT_NOT_FOUND&#x60; error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
      * @param accountNumber The account number, that is either the mobile money number or bank account number
      * @param paymentAccountType The payment account type to lookup for
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param `operator` If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @return LookupsAccountNumberGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -71,8 +83,8 @@ class LookupApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun lookupsAccountNumberGet(accountNumber: kotlin.String, paymentAccountType: PaymentAccountTypeLookupsAccountNumberGet, bankId: kotlin.String? = null) : LookupsAccountNumberGet200Response {
-        val localVarResponse = lookupsAccountNumberGetWithHttpInfo(accountNumber = accountNumber, paymentAccountType = paymentAccountType, bankId = bankId)
+    fun lookupsAccountNumberGet(accountNumber: kotlin.String, paymentAccountType: PaymentAccountTypeLookupsAccountNumberGet, bankId: kotlin.String? = null, `operator`: &#x60;Operator&#x60;LookupsAccountNumberGet? = null) : LookupsAccountNumberGet200Response {
+        val localVarResponse = lookupsAccountNumberGetWithHttpInfo(accountNumber = accountNumber, paymentAccountType = paymentAccountType, bankId = bankId, `operator` = `operator`)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as LookupsAccountNumberGet200Response
@@ -91,18 +103,19 @@ class LookupApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
 
     /**
      * Get
-     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+     * The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the &#x60;LOOKUP_ACCOUNT_NOT_FOUND&#x60; error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
      * @param accountNumber The account number, that is either the mobile money number or bank account number
      * @param paymentAccountType The payment account type to lookup for
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param `operator` If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @return ApiResponse<LookupsAccountNumberGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun lookupsAccountNumberGetWithHttpInfo(accountNumber: kotlin.String, paymentAccountType: PaymentAccountTypeLookupsAccountNumberGet, bankId: kotlin.String?) : ApiResponse<LookupsAccountNumberGet200Response?> {
-        val localVariableConfig = lookupsAccountNumberGetRequestConfig(accountNumber = accountNumber, paymentAccountType = paymentAccountType, bankId = bankId)
+    fun lookupsAccountNumberGetWithHttpInfo(accountNumber: kotlin.String, paymentAccountType: PaymentAccountTypeLookupsAccountNumberGet, bankId: kotlin.String?, `operator`: &#x60;Operator&#x60;LookupsAccountNumberGet?) : ApiResponse<LookupsAccountNumberGet200Response?> {
+        val localVariableConfig = lookupsAccountNumberGetRequestConfig(accountNumber = accountNumber, paymentAccountType = paymentAccountType, bankId = bankId, `operator` = `operator`)
 
         return request<Unit, LookupsAccountNumberGet200Response>(
             localVariableConfig
@@ -115,15 +128,19 @@ class LookupApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param accountNumber The account number, that is either the mobile money number or bank account number
      * @param paymentAccountType The payment account type to lookup for
      * @param bankId If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional)
+     * @param `operator` If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional)
      * @return RequestConfig
      */
-    fun lookupsAccountNumberGetRequestConfig(accountNumber: kotlin.String, paymentAccountType: PaymentAccountTypeLookupsAccountNumberGet, bankId: kotlin.String?) : RequestConfig<Unit> {
+    fun lookupsAccountNumberGetRequestConfig(accountNumber: kotlin.String, paymentAccountType: PaymentAccountTypeLookupsAccountNumberGet, bankId: kotlin.String?, `operator`: &#x60;Operator&#x60;LookupsAccountNumberGet?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("payment_account_type", listOf(paymentAccountType.value))
                 if (bankId != null) {
                     put("bank_id", listOf(bankId.toString()))
+                }
+                if (`operator` != null) {
+                    put("operator", listOf(`operator`.value))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

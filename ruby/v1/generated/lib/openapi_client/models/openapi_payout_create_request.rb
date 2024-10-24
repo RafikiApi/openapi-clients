@@ -20,6 +20,8 @@ module OpenapiClient
     # An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \"-\" and \"_\".
     attr_accessor :custom_id
 
+    attr_accessor :on_behalf_of
+
     attr_accessor :payment_account
 
     # <span style=\"color:#e95f6a;\">required if payment_account is empty</span>  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout.
@@ -60,6 +62,7 @@ module OpenapiClient
       {
         :'amount' => :'amount',
         :'custom_id' => :'custom_id',
+        :'on_behalf_of' => :'on_behalf_of',
         :'payment_account' => :'payment_account',
         :'payment_account_id' => :'payment_account_id',
         :'purpose' => :'purpose',
@@ -78,6 +81,7 @@ module OpenapiClient
       {
         :'amount' => :'OpenapiPayoutCreateRequestAmount',
         :'custom_id' => :'String',
+        :'on_behalf_of' => :'Array<String>',
         :'payment_account' => :'OpenapiPaymentAccountGetOrCreateRequest',
         :'payment_account_id' => :'String',
         :'purpose' => :'String',
@@ -113,6 +117,12 @@ module OpenapiClient
 
       if attributes.key?(:'custom_id')
         self.custom_id = attributes[:'custom_id']
+      end
+
+      if attributes.key?(:'on_behalf_of')
+        if (value = attributes[:'on_behalf_of']).is_a?(Array)
+          self.on_behalf_of = value
+        end
       end
 
       if attributes.key?(:'payment_account')
@@ -170,6 +180,7 @@ module OpenapiClient
       self.class == o.class &&
           amount == o.amount &&
           custom_id == o.custom_id &&
+          on_behalf_of == o.on_behalf_of &&
           payment_account == o.payment_account &&
           payment_account_id == o.payment_account_id &&
           purpose == o.purpose &&
@@ -186,7 +197,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, custom_id, payment_account, payment_account_id, purpose, sender, wallet_id].hash
+      [amount, custom_id, on_behalf_of, payment_account, payment_account_id, purpose, sender, wallet_id].hash
     end
 
     # Builds the object from hash

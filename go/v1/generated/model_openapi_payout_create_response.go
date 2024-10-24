@@ -24,6 +24,7 @@ type OpenapiPayoutCreateResponse struct {
 	CustomId *string `json:"custom_id,omitempty"`
 	// The payout unique identifier
 	Id *string `json:"id,omitempty"`
+	OnBehalfOf []string `json:"on_behalf_of,omitempty"`
 	// The recipient payment account receiving funds
 	PaymentAccountId *string `json:"payment_account_id,omitempty"`
 	Purpose *string `json:"purpose,omitempty"`
@@ -176,6 +177,38 @@ func (o *OpenapiPayoutCreateResponse) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OpenapiPayoutCreateResponse) SetId(v string) {
 	o.Id = &v
+}
+
+// GetOnBehalfOf returns the OnBehalfOf field value if set, zero value otherwise.
+func (o *OpenapiPayoutCreateResponse) GetOnBehalfOf() []string {
+	if o == nil || IsNil(o.OnBehalfOf) {
+		var ret []string
+		return ret
+	}
+	return o.OnBehalfOf
+}
+
+// GetOnBehalfOfOk returns a tuple with the OnBehalfOf field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenapiPayoutCreateResponse) GetOnBehalfOfOk() ([]string, bool) {
+	if o == nil || IsNil(o.OnBehalfOf) {
+		return nil, false
+	}
+	return o.OnBehalfOf, true
+}
+
+// HasOnBehalfOf returns a boolean if a field has been set.
+func (o *OpenapiPayoutCreateResponse) HasOnBehalfOf() bool {
+	if o != nil && !IsNil(o.OnBehalfOf) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnBehalfOf gets a reference to the given []string and assigns it to the OnBehalfOf field.
+func (o *OpenapiPayoutCreateResponse) SetOnBehalfOf(v []string) {
+	o.OnBehalfOf = v
 }
 
 // GetPaymentAccountId returns the PaymentAccountId field value if set, zero value otherwise.
@@ -359,6 +392,9 @@ func (o OpenapiPayoutCreateResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.OnBehalfOf) {
+		toSerialize["on_behalf_of"] = o.OnBehalfOf
 	}
 	if !IsNil(o.PaymentAccountId) {
 		toSerialize["payment_account_id"] = o.PaymentAccountId

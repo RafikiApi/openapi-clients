@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **createdAt** | **kotlin.String** |  |  [optional]
 **customId** | **kotlin.String** |  |  [optional]
 **id** | **kotlin.String** | The payout unique identifier |  [optional]
+**onBehalfOf** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional]
 **paymentAccountId** | **kotlin.String** | The recipient payment account receiving funds |  [optional]
 **purpose** | [**inline**](#Purpose) |  |  [optional]
 **sender** | [**OpenapiPayoutCreateResponseSender**](OpenapiPayoutCreateResponseSender.md) |  |  [optional]

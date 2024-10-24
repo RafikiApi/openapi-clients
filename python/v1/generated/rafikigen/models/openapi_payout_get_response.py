@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from rafikigen.models.openapi_payout_create_response_amount import OpenapiPayoutCreateResponseAmount
 from rafikigen.models.openapi_payout_create_response_sender import OpenapiPayoutCreateResponseSender
 from rafikigen.models.openapi_payout_create_response_state import OpenapiPayoutCreateResponseState
@@ -32,13 +32,14 @@ class OpenapiPayoutGetResponse(BaseModel):
     created_at: Optional[StrictStr] = None
     custom_id: Optional[StrictStr] = None
     id: Optional[StrictStr] = Field(None, description="The payout unique identifier")
+    on_behalf_of: Optional[conlist(StrictStr)] = None
     payment_account_id: Optional[StrictStr] = Field(None, description="The recipient payment account receiving funds")
     purpose: Optional[StrictStr] = None
     receipt: Optional[StrictStr] = Field(None, description="The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.")
     sender: Optional[OpenapiPayoutCreateResponseSender] = None
     state: Optional[OpenapiPayoutCreateResponseState] = None
     wallet_id: Optional[StrictStr] = Field(None, description="The wallet ID from which the money will disburse")
-    __properties = ["amount", "created_at", "custom_id", "id", "payment_account_id", "purpose", "receipt", "sender", "state", "wallet_id"]
+    __properties = ["amount", "created_at", "custom_id", "id", "on_behalf_of", "payment_account_id", "purpose", "receipt", "sender", "state", "wallet_id"]
 
     @validator('purpose')
     def purpose_validate_enum(cls, value):
@@ -99,6 +100,7 @@ class OpenapiPayoutGetResponse(BaseModel):
             "created_at": obj.get("created_at"),
             "custom_id": obj.get("custom_id"),
             "id": obj.get("id"),
+            "on_behalf_of": obj.get("on_behalf_of"),
             "payment_account_id": obj.get("payment_account_id"),
             "purpose": obj.get("purpose"),
             "receipt": obj.get("receipt"),

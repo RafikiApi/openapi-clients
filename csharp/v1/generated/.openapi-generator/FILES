@@ -41,6 +41,7 @@ docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
 docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
+docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
 docs/OpenapiResponseBodySuccessNoMeta.md
@@ -114,6 +115,7 @@ src/rafikigen/Model/OpenapiResponseBodyIdempotencyConflict.cs
 src/rafikigen/Model/OpenapiResponseBodyInternalServerError.cs
 src/rafikigen/Model/OpenapiResponseBodyLookupAccountNotFound.cs
 src/rafikigen/Model/OpenapiResponseBodyNotFound.cs
+src/rafikigen/Model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.cs
 src/rafikigen/Model/OpenapiResponseBodySuccessCollection.cs
 src/rafikigen/Model/OpenapiResponseBodySuccessCollectionNoMeta.cs
 src/rafikigen/Model/OpenapiResponseBodySuccessNoMeta.cs

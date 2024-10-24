@@ -35,8 +35,8 @@ class OpenapiPaymentAccountGetOrCreateRequestMobileMoney(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SAFARICOM', 'AIRTEL', 'VODACOM', 'TIGO', 'HALOTEL', 'TTCL', 'MTN'):
-            raise ValueError("must be one of enum values ('SAFARICOM', 'AIRTEL', 'VODACOM', 'TIGO', 'HALOTEL', 'TTCL', 'MTN')")
+        if value not in ('SAFARICOM', 'AIRTEL', 'VODACOM', 'TIGO', 'HALOTEL', 'TTCL', 'MTN', 'VODAFONE', 'MOOV', 'ORANGE', 'FREE', 'EXPRESSO'):
+            raise ValueError("must be one of enum values ('SAFARICOM', 'AIRTEL', 'VODACOM', 'TIGO', 'HALOTEL', 'TTCL', 'MTN', 'VODAFONE', 'MOOV', 'ORANGE', 'FREE', 'EXPRESSO')")
         return value
 
     class Config:

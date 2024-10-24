@@ -78,7 +78,37 @@ namespace rafikigen.Model
             /// Enum MTN for value: MTN
             /// </summary>
             [EnumMember(Value = "MTN")]
-            MTN = 7
+            MTN = 7,
+
+            /// <summary>
+            /// Enum VODAFONE for value: VODAFONE
+            /// </summary>
+            [EnumMember(Value = "VODAFONE")]
+            VODAFONE = 8,
+
+            /// <summary>
+            /// Enum MOOV for value: MOOV
+            /// </summary>
+            [EnumMember(Value = "MOOV")]
+            MOOV = 9,
+
+            /// <summary>
+            /// Enum ORANGE for value: ORANGE
+            /// </summary>
+            [EnumMember(Value = "ORANGE")]
+            ORANGE = 10,
+
+            /// <summary>
+            /// Enum FREE for value: FREE
+            /// </summary>
+            [EnumMember(Value = "FREE")]
+            FREE = 11,
+
+            /// <summary>
+            /// Enum EXPRESSO for value: EXPRESSO
+            /// </summary>
+            [EnumMember(Value = "EXPRESSO")]
+            EXPRESSO = 12
         }
 
 

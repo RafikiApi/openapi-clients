@@ -496,6 +496,7 @@ class PayoutApi:
             '409': "OpenapiResponseBodyIdempotencyConflict",
             '422': "OpenapiResponseBodyValidationFailed",
             '500': "OpenapiResponseBodyInternalServerError",
+            '503': "OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable",
         }
 
         return self.api_client.call_api(

@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [rafikigen.models.OpenapiResponseBodyInternalServerError](docs/OpenapiResponseBodyInternalServerError.md)
  - [rafikigen.models.OpenapiResponseBodyLookupAccountNotFound](docs/OpenapiResponseBodyLookupAccountNotFound.md)
  - [rafikigen.models.OpenapiResponseBodyNotFound](docs/OpenapiResponseBodyNotFound.md)
+ - [rafikigen.models.OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable](docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md)
  - [rafikigen.models.OpenapiResponseBodySuccessCollection](docs/OpenapiResponseBodySuccessCollection.md)
  - [rafikigen.models.OpenapiResponseBodySuccessCollectionNoMeta](docs/OpenapiResponseBodySuccessCollectionNoMeta.md)
  - [rafikigen.models.OpenapiResponseBodySuccessNoMeta](docs/OpenapiResponseBodySuccessNoMeta.md)

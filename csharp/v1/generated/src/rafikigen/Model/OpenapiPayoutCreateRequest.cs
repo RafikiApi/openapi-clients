@@ -130,15 +130,17 @@ namespace rafikigen.Model
         /// </summary>
         /// <param name="amount">amount.</param>
         /// <param name="customId">An optional unique custom id that can be used to reconcile payouts with your own internal systems, this is particularly useful in the event of network failures.  The accepted format can include up to 64 characters, which may consist of both letters, digits, and the symbols \&quot;-\&quot; and \&quot;_\&quot;..</param>
+        /// <param name="onBehalfOf">onBehalfOf.</param>
         /// <param name="paymentAccount">paymentAccount.</param>
         /// <param name="paymentAccountId">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account is empty&lt;/span&gt;  The payment account ID represents a pre-existing payment account that acts as the recipient for the payout..</param>
         /// <param name="purpose">&lt;span style&#x3D;\&quot;color:#e95f6a;\&quot;&gt;required if payment_account country is GH,UG,EG,CI,SN or CM&lt;/span&gt;  The purpose of the payout is a mandatory property that must be provided for compliance and reporting purposes. Choose one of the following predefined values that best describes the nature of the payout:  &lt;ul&gt; &lt;li&gt;&lt;code&gt;GOODS_PURCHASE&lt;/code&gt;: Payments made for buying physical or digital goods.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SERVICES_PAYMENT&lt;/code&gt;: Payments made for services rendered, including professional services, consulting, and freelance work.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INVOICE_PAYMENT&lt;/code&gt;: Payments made to settle invoices issued for goods or services.&lt;/li&gt; &lt;li&gt;&lt;code&gt;LOAN_REPAYMENT&lt;/code&gt;: Payments made towards repaying loans, including personal, auto, mortgage, and business loans.&lt;/li&gt; &lt;li&gt;&lt;code&gt;BILLS_PAYMENT&lt;/code&gt;: Payments for recurring bills such as utilities, rent, insurance, and telecommunications.&lt;/li&gt; &lt;li&gt;&lt;code&gt;SALARY_AND_WAGES&lt;/code&gt;: Disbursements made to employees for their salaries and wages.&lt;/li&gt; &lt;li&gt;&lt;code&gt;P2P_TRANSFER&lt;/code&gt;: Domestic person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMITTANCE&lt;/code&gt;: Cross-border person-to-person transfers for sending money to friends, family, or acquaintances.&lt;/li&gt; &lt;li&gt;&lt;code&gt;DONATION&lt;/code&gt;: Payments made to charitable organizations or causes.&lt;/li&gt; &lt;li&gt;&lt;code&gt;GRANTS_AND_SCHOLARSHIPS&lt;/code&gt;: Payments distributed as grants, scholarships, or other forms of financial aid.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TRAVEL_AND_ACCOMMODATION&lt;/code&gt;: Payments made for travel-related expenses, including flight bookings, hotel reservations, and car rentals.&lt;/li&gt; &lt;li&gt;&lt;code&gt;TAX_PAYMENT&lt;/code&gt;: Payments made for settling taxes and duties.&lt;/li&gt; &lt;li&gt;&lt;code&gt;INSURANCE_PREMIUM&lt;/code&gt;: Payments made towards insurance policies, including health, auto, and life insurance.&lt;/li&gt; &lt;/ul&gt;.</param>
         /// <param name="sender">sender.</param>
         /// <param name="walletId">The wallet ID from which to disburse money, if not provided, we will attempt to use the one that matches the provided currency amount..</param>
-        public OpenapiPayoutCreateRequest(OpenapiPayoutCreateRequestAmount amount = default(OpenapiPayoutCreateRequestAmount), string customId = default(string), OpenapiPaymentAccountGetOrCreateRequest paymentAccount = default(OpenapiPaymentAccountGetOrCreateRequest), string paymentAccountId = default(string), PurposeEnum? purpose = default(PurposeEnum?), OpenapiPayoutCreateRequestSender sender = default(OpenapiPayoutCreateRequestSender), string walletId = default(string))
+        public OpenapiPayoutCreateRequest(OpenapiPayoutCreateRequestAmount amount = default(OpenapiPayoutCreateRequestAmount), string customId = default(string), List<string> onBehalfOf = default(List<string>), OpenapiPaymentAccountGetOrCreateRequest paymentAccount = default(OpenapiPaymentAccountGetOrCreateRequest), string paymentAccountId = default(string), PurposeEnum? purpose = default(PurposeEnum?), OpenapiPayoutCreateRequestSender sender = default(OpenapiPayoutCreateRequestSender), string walletId = default(string))
         {
             this.Amount = amount;
             this.CustomId = customId;
+            this.OnBehalfOf = onBehalfOf;
             this.PaymentAccount = paymentAccount;
             this.PaymentAccountId = paymentAccountId;
             this.Purpose = purpose;
@@ -159,6 +161,13 @@ namespace rafikigen.Model
         /// <example>custom-id-xxx</example>
         [DataMember(Name = "custom_id", EmitDefaultValue = false)]
         public string CustomId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OnBehalfOf
+        /// </summary>
+        /// <example>[&quot;[\&quot;org-xxx\&quot;]&quot;]</example>
+        [DataMember(Name = "on_behalf_of", EmitDefaultValue = false)]
+        public List<string> OnBehalfOf { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentAccount
@@ -198,6 +207,7 @@ namespace rafikigen.Model
             sb.Append("class OpenapiPayoutCreateRequest {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  CustomId: ").Append(CustomId).Append("\n");
+            sb.Append("  OnBehalfOf: ").Append(OnBehalfOf).Append("\n");
             sb.Append("  PaymentAccount: ").Append(PaymentAccount).Append("\n");
             sb.Append("  PaymentAccountId: ").Append(PaymentAccountId).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
@@ -249,6 +259,12 @@ namespace rafikigen.Model
                     this.CustomId.Equals(input.CustomId))
                 ) && 
                 (
+                    this.OnBehalfOf == input.OnBehalfOf ||
+                    this.OnBehalfOf != null &&
+                    input.OnBehalfOf != null &&
+                    this.OnBehalfOf.SequenceEqual(input.OnBehalfOf)
+                ) && 
+                (
                     this.PaymentAccount == input.PaymentAccount ||
                     (this.PaymentAccount != null &&
                     this.PaymentAccount.Equals(input.PaymentAccount))
@@ -290,6 +306,10 @@ namespace rafikigen.Model
                 if (this.CustomId != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomId.GetHashCode();
+                }
+                if (this.OnBehalfOf != null)
+                {
+                    hashCode = (hashCode * 59) + this.OnBehalfOf.GetHashCode();
                 }
                 if (this.PaymentAccount != null)
                 {

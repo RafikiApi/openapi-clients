@@ -46,14 +46,14 @@ class LookupApi:
         self.api_client = api_client
 
     @validate_arguments
-    def lookups_account_number_get(self, payment_account_type : Annotated[StrictStr, Field(..., description="The payment account type to lookup for")], account_number : Annotated[StrictStr, Field(..., description="The account number, that is either the mobile money number or bank account number")], bank_id : Annotated[Optional[StrictStr], Field(description="If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to")] = None, **kwargs) -> LookupsAccountNumberGet200Response:  # noqa: E501
+    def lookups_account_number_get(self, payment_account_type : Annotated[StrictStr, Field(..., description="The payment account type to lookup for")], account_number : Annotated[StrictStr, Field(..., description="The account number, that is either the mobile money number or bank account number")], bank_id : Annotated[Optional[StrictStr], Field(description="If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to")] = None, operator : Annotated[Optional[StrictStr], Field(description="If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator")] = None, **kwargs) -> LookupsAccountNumberGet200Response:  # noqa: E501
         """Get  # noqa: E501
 
-        The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      |   # noqa: E501
+        The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the `LOOKUP_ACCOUNT_NOT_FOUND` error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      |   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.lookups_account_number_get(payment_account_type, account_number, bank_id, async_req=True)
+        >>> thread = api.lookups_account_number_get(payment_account_type, account_number, bank_id, operator, async_req=True)
         >>> result = thread.get()
 
         :param payment_account_type: The payment account type to lookup for (required)
@@ -62,6 +62,8 @@ class LookupApi:
         :type account_number: str
         :param bank_id: If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to
         :type bank_id: str
+        :param operator: If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator
+        :type operator: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -77,17 +79,17 @@ class LookupApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the lookups_account_number_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.lookups_account_number_get_with_http_info(payment_account_type, account_number, bank_id, **kwargs)  # noqa: E501
+        return self.lookups_account_number_get_with_http_info(payment_account_type, account_number, bank_id, operator, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def lookups_account_number_get_with_http_info(self, payment_account_type : Annotated[StrictStr, Field(..., description="The payment account type to lookup for")], account_number : Annotated[StrictStr, Field(..., description="The account number, that is either the mobile money number or bank account number")], bank_id : Annotated[Optional[StrictStr], Field(description="If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def lookups_account_number_get_with_http_info(self, payment_account_type : Annotated[StrictStr, Field(..., description="The payment account type to lookup for")], account_number : Annotated[StrictStr, Field(..., description="The account number, that is either the mobile money number or bank account number")], bank_id : Annotated[Optional[StrictStr], Field(description="If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to")] = None, operator : Annotated[Optional[StrictStr], Field(description="If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get  # noqa: E501
 
-        The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:---------:|:------------:|:------------:| |🇳🇬 Nigeria |      ❌      |      ✅      |   # noqa: E501
+        The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the `LOOKUP_ACCOUNT_NOT_FOUND` error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:--------------|:------------:|:------------:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      |   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.lookups_account_number_get_with_http_info(payment_account_type, account_number, bank_id, async_req=True)
+        >>> thread = api.lookups_account_number_get_with_http_info(payment_account_type, account_number, bank_id, operator, async_req=True)
         >>> result = thread.get()
 
         :param payment_account_type: The payment account type to lookup for (required)
@@ -96,6 +98,8 @@ class LookupApi:
         :type account_number: str
         :param bank_id: If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to
         :type bank_id: str
+        :param operator: If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator
+        :type operator: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -126,7 +130,8 @@ class LookupApi:
         _all_params = [
             'payment_account_type',
             'account_number',
-            'bank_id'
+            'bank_id',
+            'operator'
         ]
         _all_params.extend(
             [
@@ -165,6 +170,9 @@ class LookupApi:
 
         if _params.get('bank_id') is not None:  # noqa: E501
             _query_params.append(('bank_id', _params['bank_id']))
+
+        if _params.get('operator') is not None:  # noqa: E501
+            _query_params.append(('operator', _params['operator']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))

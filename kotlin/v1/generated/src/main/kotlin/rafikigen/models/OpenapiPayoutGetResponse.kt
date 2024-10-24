@@ -29,6 +29,7 @@ import com.squareup.moshi.JsonClass
  * @param createdAt 
  * @param customId 
  * @param id The payout unique identifier
+ * @param onBehalfOf 
  * @param paymentAccountId The recipient payment account receiving funds
  * @param purpose 
  * @param receipt The reference provided by the recipient account's actual bank or telco on a successful payout.  > ⚠️ > It's important to be aware that this information might not be accessible for every payout. If there's no way for us to obtain it, this property will be omitted entirely. Hence, we highly recommend implementing conditional checks to confirm the presence of this property.
@@ -52,6 +53,9 @@ data class OpenapiPayoutGetResponse (
     /* The payout unique identifier */
     @Json(name = "id")
     val id: kotlin.String? = null,
+
+    @Json(name = "on_behalf_of")
+    val onBehalfOf: kotlin.collections.List<kotlin.String>? = null,
 
     /* The recipient payment account receiving funds */
     @Json(name = "payment_account_id")

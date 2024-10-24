@@ -45,6 +45,7 @@ docs/Model/OpenapiResponseBodyIdempotencyConflict.md
 docs/Model/OpenapiResponseBodyInternalServerError.md
 docs/Model/OpenapiResponseBodyLookupAccountNotFound.md
 docs/Model/OpenapiResponseBodyNotFound.md
+docs/Model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md
 docs/Model/OpenapiResponseBodySuccessCollection.md
 docs/Model/OpenapiResponseBodySuccessCollectionNoMeta.md
 docs/Model/OpenapiResponseBodySuccessNoMeta.md
@@ -100,6 +101,7 @@ lib/Model/OpenapiResponseBodyIdempotencyConflict.php
 lib/Model/OpenapiResponseBodyInternalServerError.php
 lib/Model/OpenapiResponseBodyLookupAccountNotFound.php
 lib/Model/OpenapiResponseBodyNotFound.php
+lib/Model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.php
 lib/Model/OpenapiResponseBodySuccessCollection.php
 lib/Model/OpenapiResponseBodySuccessCollectionNoMeta.php
 lib/Model/OpenapiResponseBodySuccessNoMeta.php

@@ -50,6 +50,7 @@ import OpenapiResponseBodyIdempotencyConflict from './model/OpenapiResponseBodyI
 import OpenapiResponseBodyInternalServerError from './model/OpenapiResponseBodyInternalServerError';
 import OpenapiResponseBodyLookupAccountNotFound from './model/OpenapiResponseBodyLookupAccountNotFound';
 import OpenapiResponseBodyNotFound from './model/OpenapiResponseBodyNotFound';
+import OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable from './model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable';
 import OpenapiResponseBodySuccessCollection from './model/OpenapiResponseBodySuccessCollection';
 import OpenapiResponseBodySuccessCollectionNoMeta from './model/OpenapiResponseBodySuccessCollectionNoMeta';
 import OpenapiResponseBodySuccessNoMeta from './model/OpenapiResponseBodySuccessNoMeta';
@@ -329,6 +330,12 @@ export {
      * @property {module:model/OpenapiResponseBodyNotFound}
      */
     OpenapiResponseBodyNotFound,
+
+    /**
+     * The OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable model constructor.
+     * @property {module:model/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable}
+     */
+    OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable,
 
     /**
      * The OpenapiResponseBodySuccessCollection model constructor.

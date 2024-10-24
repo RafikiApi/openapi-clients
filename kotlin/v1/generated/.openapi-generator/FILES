@@ -39,6 +39,7 @@ docs/OpenapiResponseBodyIdempotencyConflict.md
 docs/OpenapiResponseBodyInternalServerError.md
 docs/OpenapiResponseBodyLookupAccountNotFound.md
 docs/OpenapiResponseBodyNotFound.md
+docs/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.md
 docs/OpenapiResponseBodySuccessCollection.md
 docs/OpenapiResponseBodySuccessCollectionNoMeta.md
 docs/OpenapiResponseBodySuccessNoMeta.md
@@ -119,6 +120,7 @@ src/main/kotlin/rafikigen/models/OpenapiResponseBodyIdempotencyConflict.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodyInternalServerError.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodyLookupAccountNotFound.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodyNotFound.kt
+src/main/kotlin/rafikigen/models/OpenapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodySuccessCollection.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodySuccessCollectionNoMeta.kt
 src/main/kotlin/rafikigen/models/OpenapiResponseBodySuccessNoMeta.kt

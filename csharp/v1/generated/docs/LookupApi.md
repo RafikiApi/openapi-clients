@@ -8,11 +8,11 @@ All URIs are relative to *https://rest.sandbox.rafiki-api.com/v1*
 
 <a id="lookupsaccountnumberget"></a>
 # **LookupsAccountNumberGet**
-> LookupsAccountNumberGet200Response LookupsAccountNumberGet (string paymentAccountType, string accountNumber, string? bankId = null)
+> LookupsAccountNumberGet200Response LookupsAccountNumberGet (string paymentAccountType, string accountNumber, string? bankId = null, string? varOperator = null)
 
 Get
 
-The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  ### Supported countries/account types  |  Country  | Mobile Money | Bank Account | |:- -- -- -- --:|:- -- -- -- -- -- -:|:- -- -- -- -- -- -:| |🇳🇬 Nigeria |      ❌      |      ✅      | 
+The lookup resource facilitates the retrieval of metadata associated with mobile money or bank accounts. For instance, prior to creating payment accounts, you can utilize this endpoint to validate whether an account number corresponds to a specific business or individual.  This functionality proves especially valuable in ensuring that only validated payment accounts are utilized; for example, when integrated with other processes, such as payouts, it helps mitigate the risk of costly reversals or refunds resulting from funds being sent to an incorrect recipient.  ### Account not found  While we strive to ensure that our lookup sources are always up to date with the most recent data, we must consider instances when we cannot retrieve metadata for a requested payment account.  In such cases, our API will respond with the error code [LOOKUP_ACCOUNT_NOT_FOUND](error-codes#lookup_account_not_found-http-404), providing a way to programmatically determine whether the account lookup was unsuccessful.  For some cases like Kenya mobile money lookups, try again in 5 minutes after getting the `LOOKUP_ACCOUNT_NOT_FOUND` error. If we respond with the same error again, it is likely that the account is not registered with the operator.  ### Supported countries/account types  | Country       | Mobile Money | Bank Account | |:- -- -- -- -- -- -- -|:- -- -- -- -- -- -:|:- -- -- -- -- -- -:| | 🇳🇬 Nigeria  |     ❌       |      ✅      | | 🇺🇬 Uganda   |     ✅       |      ✅      | | 🇬🇭 Ghana    |     ✅       |      ✅      | | 🇰🇪 Kenya    |     ✅       |      ✅      | 
 
 ### Example
 ```csharp
@@ -39,11 +39,12 @@ namespace Example
             var paymentAccountType = "MOBILE_MONEY";  // string | The payment account type to lookup for
             var accountNumber = "accountNumber_example";  // string | The account number, that is either the mobile money number or bank account number
             var bankId = "bankId_example";  // string? | If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to (optional) 
+            var varOperator = "AIRTEL";  // string? | If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator (optional) 
 
             try
             {
                 // Get
-                LookupsAccountNumberGet200Response result = apiInstance.LookupsAccountNumberGet(paymentAccountType, accountNumber, bankId);
+                LookupsAccountNumberGet200Response result = apiInstance.LookupsAccountNumberGet(paymentAccountType, accountNumber, bankId, varOperator);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -64,7 +65,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get
-    ApiResponse<LookupsAccountNumberGet200Response> response = apiInstance.LookupsAccountNumberGetWithHttpInfo(paymentAccountType, accountNumber, bankId);
+    ApiResponse<LookupsAccountNumberGet200Response> response = apiInstance.LookupsAccountNumberGetWithHttpInfo(paymentAccountType, accountNumber, bankId, varOperator);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -84,6 +85,7 @@ catch (ApiException e)
 | **paymentAccountType** | **string** | The payment account type to lookup for |  |
 | **accountNumber** | **string** | The account number, that is either the mobile money number or bank account number |  |
 | **bankId** | **string?** | If payment_account_type is BANK_ACCOUNT, this will be a mandatory field representing the bank id (bnk-xxx) used to identify which bank the account number belongs to | [optional]  |
+| **varOperator** | **string?** | If payment_account_type is MOBILE_MONEY, this will be a mandatory field representing the mobile money operator | [optional]  |
 
 ### Return type
 

@@ -40,7 +40,7 @@ data class OpenapiPaymentAccountGetOrCreateResponseMobileMoney (
     /**
      * 
      *
-     * Values: sAFARICOM,aIRTEL,vODACOM,tIGO,hALOTEL,tTCL,mTN
+     * Values: sAFARICOM,aIRTEL,vODACOM,tIGO,hALOTEL,tTCL,mTN,vODAFONE,mOOV,oRANGE,fREE,eXPRESSO
      */
     @JsonClass(generateAdapter = false)
     enum class `Operator`(val value: kotlin.String) {
@@ -50,7 +50,12 @@ data class OpenapiPaymentAccountGetOrCreateResponseMobileMoney (
         @Json(name = "TIGO") tIGO("TIGO"),
         @Json(name = "HALOTEL") hALOTEL("HALOTEL"),
         @Json(name = "TTCL") tTCL("TTCL"),
-        @Json(name = "MTN") mTN("MTN");
+        @Json(name = "MTN") mTN("MTN"),
+        @Json(name = "VODAFONE") vODAFONE("VODAFONE"),
+        @Json(name = "MOOV") mOOV("MOOV"),
+        @Json(name = "ORANGE") oRANGE("ORANGE"),
+        @Json(name = "FREE") fREE("FREE"),
+        @Json(name = "EXPRESSO") eXPRESSO("EXPRESSO");
     }
 }
 

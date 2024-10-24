@@ -257,6 +257,7 @@ Name | Type | Description  | Notes
 **409** | Idempotency conflict, see [error codes](error-codes#idempotency_race-http-409) |  -  |
 **422** | Validation failed, see [error codes](error-codes#validation_failed-http-422) |  -  |
 **500** | Internal server error |  -  |
+**503** | Receiving bank/operation temporarily unavailable see [error codes](error-codes) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

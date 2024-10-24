@@ -39,6 +39,7 @@ model/openapiResponseBodyIdempotencyConflict.ts
 model/openapiResponseBodyInternalServerError.ts
 model/openapiResponseBodyLookupAccountNotFound.ts
 model/openapiResponseBodyNotFound.ts
+model/openapiResponseBodyPayoutPaymentAccountTemporarilyUnavailable.ts
 model/openapiResponseBodySuccessCollection.ts
 model/openapiResponseBodySuccessCollectionNoMeta.ts
 model/openapiResponseBodySuccessNoMeta.ts
